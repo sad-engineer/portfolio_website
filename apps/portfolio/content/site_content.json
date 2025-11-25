@@ -1,0 +1,90 @@
+{
+  "hero": {
+    "firstName": "Андрей",
+    "lastName": "Коренюк",
+    "email": "korenyuk.a.n@mail.ru",
+    "lead": "Какое-то короткое описание."
+  },
+  "social": [
+    { "icon": "fab fa-github", "url": "https://github.com/sad-engineer" },
+    { "icon": "fab fa-telegram", "url": "https://t.me/sad_engineer" }
+  ],
+  "experience": [
+    {
+      "role": "Senior Web Developer",
+      "company": "Intelitec Solutions",
+      "description": "Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.",
+      "period": "March 2013 - Present"
+    },
+    {
+      "role": "Web Developer",
+      "company": "Intelitec Solutions",
+      "description": "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.",
+      "period": "December 2011 - March 2013"
+    },
+    {
+      "role": "Junior Web Designer",
+      "company": "Shout! Media Productions",
+      "description": "Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.",
+      "period": "July 2010 - December 2011"
+    },
+    {
+      "role": "Web Design Intern",
+      "company": "Shout! Media Productions",
+      "description": "Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.",
+      "period": "September 2008 - June 2010"
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Colorado Boulder",
+      "degree": "Bachelor of Science",
+      "details": "Computer Science - Web Development Track",
+      "gpa": "GPA: 3.23",
+      "period": "August 2006 - May 2010"
+    },
+    {
+      "institution": "James Buchanan High School",
+      "degree": "Technology Magnet Program",
+      "details": "",
+      "gpa": "GPA: 3.56",
+      "period": "August 2002 - May 2006"
+    }
+  ],
+  "skills": {
+    "tools": [
+      "fab fa-html5",
+      "fab fa-css3-alt",
+      "fab fa-js-square",
+      "fab fa-angular",
+      "fab fa-react",
+      "fab fa-node-js",
+      "fab fa-sass",
+      "fab fa-less",
+      "fab fa-wordpress",
+      "fab fa-gulp",
+      "fab fa-grunt",
+      "fab fa-npm"
+    ],
+    "workflow": [
+      "Mobile-First, Responsive Design",
+      "Cross Browser Testing & Debugging",
+      "Cross Functional Teams",
+      "Agile Development & Scrum"
+    ]
+  },
+  "interests": [
+    "Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.",
+    "When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the front-end web development world."
+  ],
+  "awards": [
+    "Google Analytics Certified Developer",
+    "Mobile Web Specialist - Google Certification",
+    "1st Place - University of Colorado Boulder - Emerging Tech Competition 2009",
+    "1st Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)",
+    "2nd Place - University of Colorado Boulder - Emerging Tech Competition 2008",
+    "1st Place - James Buchanan High School - Hackathon 2006",
+    "3rd Place - James Buchanan High School - Hackathon 2005"
+  ]
+}
+
