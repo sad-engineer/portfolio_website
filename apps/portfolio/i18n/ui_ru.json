@@ -1,0 +1,32 @@
+{
+  "language": "ru",
+  "nav": [
+    { "href": "#about", "label": "Обо мне" },
+    { "href": "#projects", "label": "Проекты" },
+    { "href": "#skills", "label": "Навыки" },
+    { "href": "#experience", "label": "Опыт" },
+    { "href": "#education", "label": "Образование" },
+    { "href": "#awards", "label": "Сертификаты" }
+  ],
+  "sections": {
+    "about": { "title": "Обо мне" },
+    "projects": { "title": "Проекты" },
+    "skills": {
+      "title": "Навыки",
+      "languages": "Языки программирования",
+      "tools": "Инструменты",
+      "workflow": "Workflow"
+    },
+    "experience": {
+      "title": "Опыт",
+      "responsibilitiesTitle": "Обязанности",
+      "achievementsTitle": "Достижения"
+    },
+    "education": { "title": "Образование" },
+    "awards": {
+      "title": "Сертификаты",
+      "viewButton": "Открыть сертификат"
+    }    
+  }
+}
+

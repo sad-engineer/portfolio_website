@@ -4,17 +4,25 @@ from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from portfolio._version import get_version
+
 
 class Settings(BaseSettings):
     """Базовые настройки приложения."""
 
     app_name: str = "Portfolio"
-    app_version: str = "0.1.0"
+    app_version: str = get_version()
     debug: bool = False
 
-    base_dir: Path = Path(__file__).resolve().parent
-    static_dir: Path = Path(__file__).resolve().parent / "static"
-    templates_dir: Path = Path(__file__).resolve().parent / "templates"
+    base_dir: Path = Path(__file__).resolve().parents[2]
+    app_dir: Path = base_dir / "src" / "portfolio"
+    static_dir: Path = app_dir / "static"
+    templates_dir: Path = app_dir / "templates"
+    content_dir: Path = base_dir / "content"
+    i18n_dir: Path = base_dir / "i18n"
 
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    default_locale: str = "ru"
 
+    model_config = SettingsConfigDict(
+        env_file=".env", env_file_encoding="utf-8"
+    )
