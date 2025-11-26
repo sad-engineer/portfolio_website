@@ -10,5 +10,5 @@ async def test_index_returns_ok() -> None:
         response = await client.get("/")
 
     assert response.status_code == 200
-    assert "Resume" in response.text or "портфолио" in response.text.lower()
-
+    assert "Обо мне" in response.text
+    assert "Проекты" in response.text

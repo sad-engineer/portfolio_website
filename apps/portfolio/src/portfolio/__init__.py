@@ -1,6 +1,5 @@
 """Package инициализации для приложения портфолио."""
 
-from .main import create_app
+from portfolio.main import create_app
 
 __all__ = ["create_app"]
-
