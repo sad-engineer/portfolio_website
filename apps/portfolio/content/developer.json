@@ -1,0 +1,144 @@
+{
+  "title": "Разработчик",
+  "summary": "Строю API и приложения, автоматизирую расчеты и документооборот, проектирую базы данных и тестирую решения.",
+  "technologies": {
+    "title": "Технологии",
+    "items": {
+      "languages": {
+        "title": "Языки программирования и SQL",
+        "items": [
+          { "icon": "fa-solid fa-object-group", "label": "ООП" },
+          { "icon": "devicon-python-plain", "label": "Python 2.7" },
+          { "icon": "devicon-python-plain", "label": "Python 3.10" },
+          { "icon": "devicon-java-plain", "label": "Java" },
+          { "icon": "devicon-javascript-plain", "label": "JavaScript" },
+          { "icon": "fa-solid fa-database", "label": "SQL" },
+          { "icon": "fa-solid fa-database", "label": "PostgreSQL" },
+          { "icon": "fa-solid fa-database", "label": "MySQL" },
+          { "icon": "fa-solid fa-code", "label": "VBA" },
+          { "icon": "fa-solid fa-code", "label": "Delphi" },
+          { "icon": "fa-solid fa-code", "label": "Pascal" }
+        ]
+      },
+      "frameworks": {
+        "title": "Фреймворки, библиотеки и инструменты",
+        "items": [
+          { "icon": "devicon-fastapi-plain", "label": "FastAPI" },
+          { "icon": "fa-solid fa-vial", "label": "Unit Testing" },
+          { "icon": "devicon-pandas-plain", "label": "pandas" },
+          { "icon": "devicon-sqlalchemy-plain", "label": "SQLAlchemy" },
+          { "icon": "devicon-git-plain", "label": "Git" },
+          { "icon": "devicon-docker-plain", "label": "Docker-compose" },
+          { "icon": "devicon-jinja-plain", "label": "Jinja2" }
+        ]
+      },
+      "profile": {
+        "title": "Профиль и предметная область",
+        "items": [
+          { "icon": "fa-solid fa-cubes", "label": "3D Моделирование" },
+          { "icon": "fa-solid fa-gears", "label": "Автоматизация процессов" },
+          { "icon": "fa-solid fa-cube", "label": "KOMPAS SDK" },
+          { "icon": "fa-solid fa-window-maximize", "label": "PyQT5" },
+          { "icon": "fa-solid fa-layer-group", "label": "Kivy" },
+          { "icon": "fa-solid fa-database", "label": "NoSQL" },
+          { "icon": "devicon-androidstudio-plain", "label": "Android Studio" },
+          { "icon": "fa-brands fa-android", "label": "Android SDK" },
+          { "icon": "fa-brands fa-android", "label": "Android" }
+        ]
+      }
+    }
+  },
+  "work_methods": {
+    "title": "Методы организации работы",
+    "items": [
+      { "icon": "fa-solid fa-comments", "label": "Коммуникация с заказчиком и оценка задач" },
+      { "icon": "fa-solid fa-sitemap", "label": "Проектирование архитектуры и модулей" },
+      { "icon": "fa-solid fa-flask", "label": "Покрытие кода unit-тестами" },
+      { "icon": "fa-solid fa-bug", "label": "Исправление багов и стабилизация решений" },
+      { "icon": "fa-solid fa-file-lines", "label": "Документирование технических решений" },
+      { "icon": "fa-solid fa-brain", "label": "Работа с неопределенными требованиями" },
+      { "icon": "fa-solid fa-user-friends", "label": "Коммуникация с не-техническим заказчиком" },
+      { "icon": "fa-solid fa-list-check", "label": "Приоритизация задач, работа через трекер" },
+      { "icon": "fa-solid fa-lightbulb", "label": "Обучение и исследование технологий под задачу" }
+    ]
+  },
+  "skills": {
+    "title": "Навыки",
+    "items": [
+      { "icon": "fa-solid fa-robot", "label": "Автоматизация инженерных процессов" },
+      { "icon": "fa-solid fa-server", "label": "Разработка backend-сервисов и API" },
+      { "icon": "fa-solid fa-database", "label": "Проектирование SQL-баз данных" },
+      { "icon": "fa-solid fa-cubes", "label": "3D/инженерные расчеты и прототипирование" },
+      { "icon": "fa-solid fa-desktop", "label": "Desktop-прототипы (GUI/без GUI)" },
+      { "icon": "fa-solid fa-code-branch", "label": "Контроль версий (Git)" },
+      { "icon": "devicon-pandas-plain", "label": "Анализ данных (pandas/numpy)" },
+      { "icon": "devicon-androidstudio-plain", "label": "Android (базовый уровень)" }
+    ]
+  },
+  "document_types": {
+    "title": "Типы решений",
+    "items": [
+      { "icon": "fa-solid fa-calculator", "label": "Автоматизация рутинных расчетов" },
+      { "icon": "fa-solid fa-server", "label": "Разработка внутренних сервисов для инженеров" },
+      { "icon": "fa-solid fa-database", "label": "Парсинг и агрегирование инженерных данных" },
+      { "icon": "fa-solid fa-desktop", "label": "Прототипирование GUI-инструментов" },
+      { "icon": "fa-solid fa-mobile-screen", "label": "Базовые Android-проекты" }
+    ]
+  },
+  "languages": {
+    "title": "Иностранные языки:",
+    "items": [
+      { "icon": "fa-solid fa-language", "label": "Русский" },
+      { "icon": "fa-solid fa-earth-europe", "label": "Английский" }
+    ]
+  },
+  "lastWorksRef": "work_places.json",
+  "coursesRef": "education.json",
+  
+  "i18n": {
+    "en": {
+      "title": "Developer",
+      "summary": "I build APIs and applications, automate calculations and document management, design databases, and test solutions.",
+      "sections": {
+        "technologies": "Technologies",
+        "work_methods": "Work Methods",
+        "skills": "Skills",
+        "document_types": "Document Types",
+        "languages": "Foreign Languages:"
+      },
+      "tags": {
+        "Языки программирования и SQL": "Programming languages and SQL",
+        "Фреймворки, библиотеки и инструменты": "Frameworks, libraries, and tools",
+        "Профиль и предметная область": "Profile and domain",
+        "ООП": "OOP",
+        "Автоматизация процессов": "Process automation",
+        "Коммуникация с заказчиком и оценка задач": "Client communication and task estimation",
+        "Проектирование архитектуры и модулей": "Architecture and module design",
+        "Покрытие кода unit-тестами": "Unit test coverage",
+        "Исправление багов и стабилизация решений": "Bug fixing and solution stabilization",
+        "Документирование технических решений": "Technical documentation",
+        "Работа с неопределенными требованиями": "Working with uncertain requirements",
+        "Коммуникация с не-техническим заказчиком": "Communication with non-technical clients",
+        "Приоритизация задач, работа через трекер": "Task prioritization and tracker-based workflow",
+        "Обучение и исследование технологий под задачу": "Learning and research for task needs",
+        "Автоматизация инженерных процессов": "Engineering process automation",
+        "Разработка backend-сервисов и API": "Backend services and API development",
+        "Проектирование SQL-баз данных": "SQL database design",
+        "3D/инженерные расчеты и прототипирование": "3D/engineering calculations and prototyping",
+        "Desktop-прототипы (GUI/без GUI)": "Desktop prototypes (GUI/non-GUI)",
+        "Контроль версий (Git)": "Version control (Git)",
+        "Анализ данных (pandas/numpy)": "Data analysis (pandas/numpy)",
+        "Android (базовый уровень)": "Android (basic level)",
+        "Типы решений": "Solution Types",
+        "Автоматизация рутинных расчетов": "Automation of routine calculations",
+        "Разработка внутренних сервисов для инженеров": "Development of internal services for engineers",
+        "Парсинг и агрегирование инженерных данных": "Parsing and aggregation of engineering data",
+        "Прототипирование GUI-инструментов": "GUI tool prototyping",
+        "Базовые Android-проекты": "Basic Android projects",
+        "Русский": "Russian",
+        "Английский": "English"
+      }
+    }
+  }
+}
+  

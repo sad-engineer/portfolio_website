@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% set page_title = content.education.title %}
+
+{% block content %}
+<section class="section-head">
+    <h1>{{ content.education.title }}</h1>
+</section>
+
+<section class="card-list">
+    {% for edu in content.education["items"] %}
+    <article class="card">
+        <h2>{{ edu.type|capitalize }} / {{ edu.year }}</h2>
+        {% if edu.institution %}<p><strong>{{ edu.institution }}</strong></p>{% endif %}
+        {% if edu.program %}<p>{{ edu.program }}</p>{% endif %}
+        {% if edu.level %}<p class="muted">Уровень: {{ edu.level }}</p>{% endif %}
+        {% if edu.title %}<p>{{ edu.title }}</p>{% endif %}
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

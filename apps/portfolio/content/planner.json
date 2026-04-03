@@ -1,0 +1,103 @@
+{
+  "title": "Инженер-планировщик",
+  "summary": "Разрабатываю планировочные решения цехов и участков, подбираю компоновки оборудования и оптимизирую маршруты в производстве.",
+  "technologies": {
+    "title": "Технологии",
+    "items": {
+      "SAPR": {
+        "title": "САПР-системы и программы 3D-моделирования",
+        "items": [
+          { "icon": "assets/icons/kompas.svg", "label": "Компас" },
+          { "icon": "assets/icons/solidworks.svg", "label": "SolidWorks" }
+        ]
+      },
+      "CAE": {
+        "title": "CAE и системы инженерных расчетов",
+        "items": [
+          { "icon": "assets/icons/passat.svg", "label": "Passat" },
+          { "icon": "assets/icons/kompas_flow.svg", "label": "KompasFlow" },
+          { "icon": "assets/icons/flowvision.svg", "label": "FlowVision" }
+        ]
+      },
+      "CRM": {
+        "title": "CRM-системы, трекеры, системы контроля работы",
+        "items": [
+          { "icon": "assets/icons/bitrix24.svg", "label": "Битрикс24" },
+          { "icon": "assets/icons/amocrm.svg", "label": "amoCRM" },
+          { "icon": "assets/icons/google_sheets.svg", "label": "Google Sheets" }
+        ]
+      }
+    }
+  },
+  "work_methods": {
+    "title": "Методы организации работы",
+    "items": [
+      { "icon": "fa-solid fa-sliders", "label": "Метод двойного планирования" },
+      { "icon": "fa-solid fa-arrow-up", "label": "Метод обратного планирования" },
+      { "icon": "fa-solid fa-arrow-down", "label": "Матрица Эйзенхауэуэра" }
+    ]
+  },
+  "skills": {
+    "title": "Навыки",
+    "items": [
+      { "icon": "fa-solid fa-industry", "label": "Разработка производственных планов" },
+      { "icon": "fa-solid fa-users", "label": "Анализ производственных мощностей" },
+      { "icon": "fa-solid fa-file-lines", "label": "Оптимизация процессов" },
+      { "icon": "fa-solid fa-cubes", "label": "Оценка экономической эффективности решений" },
+      { "icon": "fa-solid fa-file-circle-check", "label": "Документирование планов и результатов" }
+    ]
+  },
+  "document_types": {
+    "title": "Типы документов",
+    "items": [
+      { "icon": "fa-solid fa-cube", "label": "Планировка участка" },
+      { "icon": "fa-solid fa-file-lines", "label": "Планировка цеха" },
+      { "icon": "fa-solid fa-cubes", "label": "Теплотехническая схема принципиальная" },
+      { "icon": "fa-solid fa-cubes-stacked", "label": "Гидравлическая схема принципиальная" }
+    ]
+  },
+  "languages": {
+    "title": "Иностранные языки:",
+    "items": [
+      { "icon": "fa-solid fa-language", "label": "Русский" },
+      { "icon": "fa-solid fa-earth-europe", "label": "Английский" }
+    ]
+  },
+  "lastWorksRef": "work_places.json",
+  "coursesRef": "education.json",
+  
+  "i18n": {
+    "en": {
+      "title": "Layout/Planning Engineer",
+      "summary": "I develop layout solutions for shops and production areas, choose equipment placement, and optimize production routing.",
+      "sections": {
+        "technologies": "Technologies",
+        "work_methods": "Work Methods",
+        "skills": "Skills",
+        "document_types": "Document Types",
+        "languages": "Foreign Languages:"
+      },
+      "tags": {
+        "САПР-системы и программы 3D-моделирования": "CAD systems and 3D modeling software",
+        "CAE и системы инженерных расчетов": "CAE and engineering analysis systems",
+        "CRM-системы, трекеры, системы контроля работы": "CRM systems, trackers, and workflow control tools",
+        "Метод двойного планирования": "Dual planning method",
+        "Метод обратного планирования": "Backward planning method",
+        "Матрица Эйзенхауэуэра": "Eisenhower matrix",
+        "Разработка производственных планов": "Production planning",
+        "Анализ производственных мощностей": "Production capacity analysis",
+        "Оптимизация процессов": "Process optimization",
+        "Оценка экономической эффективности решений": "Evaluation of economic efficiency",
+        "Документирование планов и результатов": "Documentation of plans and outcomes",
+        "Типы документов": "Document Types",
+        "Планировка участка": "Site layout",
+        "Планировка цеха": "Workshop layout",
+        "Теплотехническая схема принципиальная": "Principal thermal process diagram",
+        "Гидравлическая схема принципиальная": "Principal hydraulic diagram",
+        "Русский": "Russian",
+        "Английский": "English"
+      }
+    }
+  }
+}
+  

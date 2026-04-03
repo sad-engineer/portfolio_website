@@ -1,0 +1,114 @@
+{
+  "site": {
+    "language": "ru",
+    "locales": ["ru", "en"]
+  },
+  "i18n": {
+    "ru": {
+      "navigation": {
+        "items": [
+          {
+            "id": "home",
+            "label": "Главная",
+            "href": "/"
+          },
+          {
+            "id": "inzhener_konstruktor",
+            "label": "Инженер-конструктор",
+            "href": "/inzhener-konstruktor"
+          },
+          {
+            "id": "proektirovshchik",
+            "label": "Проектировщик",
+            "href": "/proektirovshchik"
+          },
+          {
+            "id": "it_razrabotchik",
+            "label": "IT-разработчик",
+            "href": "/it-razrabotchik"
+          },
+          {
+            "id": "blog",
+            "label": "Блог",
+            "href": "/blog"
+          },
+          {
+            "id": "blog_advertising",
+            "label": "Реклама в блоге",
+            "href": "/blog-advertising"
+          }
+        ]
+      },
+      "pages": {
+        "home": { "title": "Главная" },
+        "blog": { "title": "Блог" },
+        "inzhener_konstruktor": { "title": "Инженер-конструктор" },
+        "proektirovshchik": { "title": "Проектировщик" },
+        "it_razrabotchik": { "title": "IT-разработчик" },
+        "blog_advertising": { "title": "Реклама в блоге" }
+      },
+      "feedback": {
+        "bannerText": "У Вас есть вопрос, на который Вы не нашли ответа? Напишите мне любым способом или закажите звонок ниже. Я постараюсь помочь Вам советом, идеей или ссылкой на статью (книгу) другого автора",
+        "form": {
+          "title": "Позвоните мне",
+          "phoneInputLabel": "Ваш номер",
+          "subtitle": "Куда звонить / писать?",
+          "channelOptions": [
+            { "value": "telegram", "label": "Telegram" },
+            { "value": "whatsapp", "label": "WhatsApp" },
+            { "value": "viber", "label": "Viber" },
+            { "value": "email", "label": "Почта" },
+            { "value": "call", "label": "Звонок" }
+          ],
+          "consentText": "Ставя галочку, даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности",
+          "submitButtonText": "Позвоните мне!"
+        }
+      },
+      "links": {
+        "privacyPolicy": {"href": "/politika-konfidencialnosti", "label": "Политика конфиденциальности" },
+        "userAgreement": { "href": "/polzovatelskoe-soglashenie", "label": "Пользовательское соглашение" }
+      }
+    },
+    "en": {
+      "navigation": {
+        "items": [
+          { "id": "home", "label": "Home", "href": "/" },
+          { "id": "blog", "label": "Blog", "href": "/blog" },
+          { "id": "inzhener_konstruktor", "label": "Engineering Designer", "href": "/inzhener-konstruktor" },
+          { "id": "proektirovshchik", "label": "Project Planner", "href": "/proektirovshchik" },
+          { "id": "it_razrabotchik", "label": "IT Developer", "href": "/it-razrabotchik" },
+          { "id": "blog_advertising", "label": "Blog Advertising", "href": "/blog-advertising" }
+        ]
+      },
+      "pages": {
+        "home": { "title": "Home" },
+        "blog": { "title": "Blog" },
+        "inzhener_konstruktor": { "title": "Engineering Designer" },
+        "proektirovshchik": { "title": "Project Planner" },
+        "it_razrabotchik": { "title": "IT Developer" },
+        "blog_advertising": { "title": "Blog Advertising" }
+      },
+      "feedback": {
+        "bannerText": "Do you have a question you couldn't find an answer to? Write to me any way you like or book a call below. I will help you with advice, ideas, or a link to an article (book) by another author.",
+        "form": {
+          "title": "Call me",
+          "phoneInputLabel": "Your phone number",
+          "subtitle": "Where to call / write?",
+          "channelOptions": [
+            { "value": "telegram", "label": "Telegram" },
+            { "value": "whatsapp", "label": "WhatsApp" },
+            { "value": "viber", "label": "Viber" },
+            { "value": "email", "label": "Email" },
+            { "value": "call", "label": "Call" }
+          ],
+          "consentText": "By checking the box, I consent to the processing of personal data and agree to the privacy policy.",
+          "submitButtonText": "Call me!"
+        }
+      },
+      "links": {
+        "privacyPolicy": { "href": "/politika-konfidencialnosti", "label": "Privacy Policy" },
+        "userAgreement": { "href": "/polzovatelskoe-soglashenie", "label": "User Agreement" }
+      }
+    }
+  }
+}

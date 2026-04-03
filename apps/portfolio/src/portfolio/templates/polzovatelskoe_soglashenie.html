@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% set page_title = content.agreement.i18n.ru.title %}
+
+{% block content %}
+<section class="section-head">
+    <h1>{{ content.agreement.i18n.ru.title }}</h1>
+    <p class="muted">{{ content.agreement.i18n.ru.updatedAtText }}</p>
+</section>
+
+<section class="card legal">
+    {% for block in content.agreement.i18n.ru.blocks %}
+        {% if block.type == "h1" %}
+        <h1>{{ block.text }}</h1>
+        {% elif block.type == "h2" %}
+        <h2>{{ block.text }}</h2>
+        {% else %}
+        <p>{{ block.text }}</p>
+        {% endif %}
+    {% endfor %}
+</section>
+{% endblock %}

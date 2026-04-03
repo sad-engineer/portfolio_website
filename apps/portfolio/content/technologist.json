@@ -1,0 +1,159 @@
+{
+  "title": "Инженер-технолог",
+  "summary": "Разрабатываю и оптимизирую технологические процессы, маршрутные решения и документацию, обеспечивая качество и эффективность.",
+  "technologies": {
+    "title": "Технологии",
+    "items": {
+      "SAPR": {
+        "title": "САПР-системы и программы 3D-моделирования",
+        "items": [
+          { "icon": "assets/icons/kompas.svg", "label": "Компас" },
+          { "icon": "assets/icons/solidworks.svg", "label": "SolidWorks" },
+          { "icon": "assets/icons/autocad.svg", "label": "AutoCAD" }
+        ]
+      },
+      "CAM": {
+        "title": "CAD- и CAM-системы",
+        "items": [
+          { "icon": "assets/icons/vertikal.png", "label": "Вертикаль" },
+          { "icon": "assets/icons/sprutcam.svg", "label": "SprutCAM" }
+        ]
+      },
+      "CRM": {
+        "title": "CRM-системы, трекеры, системы контроля работы",
+        "items": [
+          { "icon": "assets/icons/bitrix24.svg", "label": "Битрикс24" },
+          { "icon": "assets/icons/amocrm.svg", "label": "amoCRM" },
+          { "icon": "assets/icons/google_sheets.svg", "label": "Google Sheets" }
+        ]
+      },
+      "PLM": {
+        "title": "PLM-системы",
+        "items": [
+          { "icon": "fa-solid fa-diagram-project", "label": "ЛОЦМАН:PLM" },
+          { "icon": "fa-solid fa-folder-tree", "label": "T-FLEX PLM" }
+        ]
+      }
+    }
+  },
+  "work_methods": {
+    "title": "Методы организации работы",
+    "items": [
+      { "icon": "fa-solid fa-rotate", "label": "Принцип «замыкания цикла»" },
+      { "icon": "fa-solid fa-copy", "label": "Использование шаблонов" },
+      { "icon": "fa-solid fa-book", "label": "Библиотеки стандартных решений" },
+      { "icon": "fa-solid fa-code-compare", "label": "Унификация процессов" },
+      { "icon": "fa-solid fa-layer-group", "label": "Типизация похожих процессов" },
+      { "icon": "fa-solid fa-object-group", "label": "Группировка процессов" },
+      { "icon": "fa-solid fa-list-check", "label": "Использование систем управления задачами" }
+    ]
+  },
+  "skills": {
+    "title": "Навыки",
+    "items": [
+      { "icon": "fa-solid fa-industry", "label": "Анализ производственных процессов" },
+      { "icon": "fa-solid fa-diagram-project", "label": "Разработка технологических процессов" },
+      { "icon": "fa-solid fa-file-lines", "label": "Разработка документации по ЕСТД" },
+      { "icon": "fa-solid fa-gauge-high", "label": "Оптимизация производства" },
+      { "icon": "fa-solid fa-screwdriver-wrench", "label": "Подбор оборудования" },
+      { "icon": "fa-solid fa-scale-balanced", "label": "Разработка стандартов" },
+      { "icon": "fa-solid fa-chalkboard-user", "label": "Обучение персонала и наставничество" },
+      { "icon": "fa-solid fa-stopwatch", "label": "Нормирование труда" },
+      { "icon": "fa-solid fa-compass-drafting", "label": "Проектирование оснастки" },
+      { "icon": "fa-solid fa-shield-halved", "label": "Управление качеством" },
+      { "icon": "fa-solid fa-microchip", "label": "Работа с ЧПУ" }
+    ]
+  },
+  "document_types": {
+    "title": "Типы документов",
+    "items": [
+      { "icon": "fa-solid fa-route", "label": "Маршрутная карта" },
+      { "icon": "fa-solid fa-list-ol", "label": "Операционная карта" },
+      { "icon": "fa-solid fa-pen-ruler", "label": "Карта эскизов" },
+      { "icon": "fa-solid fa-diagram-next", "label": "Схема сборки" },
+      { "icon": "fa-solid fa-link", "label": "Схема сварных швов" },
+      { "icon": "fa-solid fa-arrows-spin", "label": "Схема технологического цикла" },
+      { "icon": "fa-solid fa-cube", "label": "Электронная геометрическая модель технологическая" },
+      { "icon": "fa-solid fa-circle-info", "label": "Технологическая инструкция" },
+      { "icon": "fa-solid fa-file-lines", "label": "Карта технологического процесса" },
+      { "icon": "fa-solid fa-layer-group", "label": "Карта типового (группового) технологического процесса" },
+      { "icon": "fa-solid fa-list-check", "label": "Карта типовой (групповой) операции" },
+      { "icon": "fa-solid fa-sliders", "label": "Карта наладки" },
+      { "icon": "fa-solid fa-toolbox", "label": "Ведомость оснастки" },
+      { "icon": "fa-solid fa-gears", "label": "Ведомость оборудования" },
+      { "icon": "fa-solid fa-boxes-stacked", "label": "Ведомость материалов" },
+      { "icon": "fa-solid fa-list", "label": "Ведомость операций" },
+      { "icon": "fa-solid fa-folder-open", "label": "Ведомость технологических документов" },
+      { "icon": "fa-solid fa-code", "label": "Управляющая программа" }
+    ]
+  },
+  "languages": {
+    "title": "Иностранные языки:",
+    "items": [
+      { "icon": "fa-solid fa-language", "label": "Русский" },
+      { "icon": "fa-solid fa-earth-europe", "label": "Английский" }
+    ]
+  },
+  "lastWorksRef": "work_places.json",
+  "coursesRef": "education.json",
+
+  "i18n": {
+    "en": {
+      "title": "Process Engineer",
+      "summary": "I develop and optimize manufacturing processes, routing, and documentation to ensure quality and efficiency.",
+      "sections": {
+        "technologies": "Technologies",
+        "work_methods": "Work Methods",
+        "skills": "Skills",
+        "document_types": "Document Types",
+        "languages": "Foreign Languages:"
+      },
+      "tags": {
+        "САПР-системы и программы 3D-моделирования": "CAD systems and 3D modeling software",
+        "CAD- и CAM-системы": "CAD and CAM systems",
+        "CRM-системы, трекеры, системы контроля работы": "CRM systems, trackers, and workflow control tools",
+        "PLM-системы": "PLM systems",
+        "Принцип «замыкания цикла»": "Closed-loop principle",
+        "Использование шаблонов": "Template-based work",
+        "Библиотеки стандартных решений": "Standard solution libraries",
+        "Унификация процессов": "Process unification",
+        "Типизация похожих процессов": "Typification of similar processes",
+        "Группировка процессов": "Process grouping",
+        "Использование систем управления задачами": "Use of task management systems",
+        "Анализ производственных процессов": "Production process analysis",
+        "Разработка технологических процессов": "Development of manufacturing processes",
+        "Разработка документации по ЕСТД": "Development of documentation according to ESTD",
+        "Оптимизация производства": "Production optimization",
+        "Подбор оборудования": "Equipment selection",
+        "Разработка стандартов": "Standards development",
+        "Обучение персонала и наставничество": "Staff training and mentoring",
+        "Нормирование труда": "Work standardization",
+        "Проектирование оснастки": "Tooling design",
+        "Управление качеством": "Quality management",
+        "Работа с ЧПУ": "CNC operations",
+        "Типы документов": "Document Types",
+        "Маршрутная карта": "Route sheet",
+        "Операционная карта": "Operation sheet",
+        "Карта эскизов": "Sketch sheet",
+        "Схема сборки": "Assembly diagram",
+        "Схема сварных швов": "Weld seam diagram",
+        "Схема технологического цикла": "Technological cycle diagram",
+        "Электронная геометрическая модель технологическая": "Electronic technological geometric model",
+        "Технологическая инструкция": "Process instruction",
+        "Карта технологического процесса": "Process sheet",
+        "Карта типового (группового) технологического процесса": "Standard (group) process sheet",
+        "Карта типовой (групповой) операции": "Standard (group) operation sheet",
+        "Карта наладки": "Setup sheet",
+        "Ведомость оснастки": "Tooling list",
+        "Ведомость оборудования": "Equipment list",
+        "Ведомость материалов": "Materials list",
+        "Ведомость операций": "Operations list",
+        "Ведомость технологических документов": "Process documents list",
+        "Управляющая программа": "Control program",
+        "Русский": "Russian",
+        "Английский": "English"
+      }
+    }
+  }
+}
+  
