@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page_title }} | Портфолио</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', path='assets/img/favicon.ico') }}" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.15.1/devicon.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/portfolio-layout.css') }}" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="/main">{{ content.main.hero.firstName }} {{ content.main.hero.lastName }}</a>
+            <nav class="main-nav">
+                <a href="/main">Главная</a>
+                <a href="/constructor">Конструктор</a>
+                <a href="/planner">Планировщик</a>
+                <a href="/developer">Разработчик</a>
+                <a href="/technologist">Технолог</a>
+                <a href="/work_places">Места работы</a>
+                <a href="/education">Образование</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <section class="feedback">
+        <div class="container">
+            <h2>{{ content.basic.i18n.ru.feedback.form.title }}</h2>
+            <p>{{ content.basic.i18n.ru.feedback.bannerText }}</p>
+            <form class="feedback-form" action="#" method="post">
+                <label for="phone">{{ content.basic.i18n.ru.feedback.form.phoneInputLabel }}</label>
+                <input id="phone" name="phone" type="text" placeholder="+7 (___) ___-__-__" />
+
+                <p class="small-title">{{ content.basic.i18n.ru.feedback.form.subtitle }}</p>
+                <div class="channels">
+                    {% for option in content.basic.i18n.ru.feedback.form.channelOptions %}
+                    <label><input type="checkbox" name="channel" value="{{ option.value }}" /> {{ option.label }}</label>
+                    {% endfor %}
+                </div>
+
+                <label class="consent">
+                    <input type="checkbox" name="consent" />
+                    {{ content.basic.i18n.ru.feedback.form.consentText }}
+                </label>
+                <button type="submit">{{ content.basic.i18n.ru.feedback.form.submitButtonText }}</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <a href="/polzovatelskoe-soglashenie">Пользовательское соглашение</a>
+            <span>•</span>
+            <a href="/politika-konfidencialnosti">Политика конфиденциальности</a>
+        </div>
+    </footer>
+</body>
+</html>

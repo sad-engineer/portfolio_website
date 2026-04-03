@@ -1,0 +1,46 @@
+  {
+    "hero": {
+      "firstName": "{{firstName}}",
+      "lastName": "{{lastName}}",
+      "email": "{{EMAIL}}",
+      "lead": "{{EXPERIENCE_DAYS}} дней\nв инженирии,\nпроектировании,\nи IT-разработке",
+      "i18n": {
+        "en": {
+          "lead": "{{EXPERIENCE_DAYS}} days\nin engineering,\ndesign,\nand IT development"
+        }
+      }
+    },
+    "social": [
+      { "icon": "fa-brands fa-github", "url": "{{GITHUB_URL}}" },
+      { "icon": "fa-brands fa-telegram", "url": "{{TELEGRAM_URL}}" },
+      { "icon": "fa-brands fa-profi", "url": "{{PROFI_RU_URL}}" },
+      { "icon": "fa-brands fa-hh", "url": "{{HH_RU_URL}}" },
+      { "icon": "fa-brands fa-freelance", "url": "{{FREELANCE_RU_URL}}" }
+    ],
+    "direction":{
+      "lead": "Выберите направление, в котором я вам интересен",
+      "directions": [
+        {"constructor": "3D-моделирование инженерных узлов, разработка полного комплекта РКД, сопроводительной, эксплуатационной документации."},
+        {"planner": "Разработка планировочных решений цехов, участков, расположений оборудований, оптимизация маршрутных путей изделий внутри производства."},
+        {"developer": "Автоматизация инженерных работ, разработка приложений с и без GUI, с использованием баз данных, выводом результата в необходимый формат данных."},
+        {"technologist": "Разработка и оптимизация технологических процессов, маршрутов изготовления и производственной документации с учетом требований качества, сроков и себестоимости."}
+      ],
+      "i18n": {
+        "en": {
+          "lead": "Choose the direction you are interested in",
+          "directions": [
+            {"constructor": "3D modeling of engineering units, development of a complete set of design documentation (RKD), along with supporting and operational documentation."},
+            {"planner": "Development of layout/planning solutions for workshops and sites, equipment placement, and optimization of routing paths for parts/products within the production facility."},
+            {"developer": "Automation of engineering work, development of applications with and without GUI, using databases, and outputting results in the required data format."},
+            {"technologist": "Development and optimization of technological processes, manufacturing routes, and production documentation considering quality requirements, timelines, and unit cost."}
+          ]
+        },
+        "tags": {
+          "Выберите направление, в котором я вам интересен": "Choose the direction you are interested in"
+        }
+      }
+    },
+    "footer": "{{shortFIO}} (ИИН — {{INN}}) Россия © 2026. Разработка и дизайн сайта — {{shortFIO}}. Частная собственность, защищенная правообладателем. Копирование запрещено. <a href=\"/soglashenie\">Соглашение</a>"
+
+  }
+  

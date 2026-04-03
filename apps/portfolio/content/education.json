@@ -1,0 +1,175 @@
+{
+  "title": "Образование и курсы",
+  "rolesCatalog": [
+    "constructor",
+    "planner",
+    "developer",
+    "technologist"
+  ],
+  "items": [
+    {
+      "id": "diploma-001",
+      "type": "diploma",
+      "roleTags": [
+        "constructor",
+        "planner",
+        "developer",
+        "technologist"
+      ],
+      "institution": "АНО ДПО \"Академия АйТи\"",
+      "program": "Разработчик \"Python\"",
+      "year": "2022",
+      "level": "Высшее"
+    },
+    {
+      "id": "diploma-002",
+      "type": "diploma",
+      "roleTags": [
+        "constructor",
+        "planner",
+        "developer",
+        "technologist"
+      ],
+      "institution": "Орский гуманитарно-технологический институт (филиал) Оренбургского государственного университета, Орск",
+      "program": "Конструкторско-технологическое обеспечение автоматизированных машиностроительных производств",
+      "year": "2016",
+      "level": "Высшее"
+    },
+    {
+      "id": "course-001",
+      "type": "course",
+      "roleTags": [
+        "constructor",
+        "planner",
+        "developer",
+        "technologist"
+      ],
+      "institution": "НОЧУ ДПО «Национальный открытый университет ИНТУИТ»",
+      "program": "Самостоятельно",
+      "year": "2017"
+    },
+    {
+      "id": "course-002",
+      "type": "course",
+      "roleTags": [
+        "constructor",
+        "planner",
+        "technologist"
+      ],
+      "institution": "НОУ «УЦ АСКОН-Урал»",
+      "program": "НОУ «УЦ АСКОН-Урал»",
+      "year": "2014"
+    },
+    {
+      "id": "cert-001",
+      "type": "certificate",
+      "roleTags": [
+        "developer"
+      ],
+      "title": "Тренировки. ML-забег",
+      "year": "2025"
+    },
+    {
+      "id": "cert-002",
+      "type": "certificate",
+      "roleTags": [
+        "developer"
+      ],
+      "title": "Тренировки. Забег по алгоритмам",
+      "year": "2025"
+    }
+  ],
+  "i18n": {
+    "en": {
+      "title": "Education and Courses",
+      "rolesCatalog": [
+        "constructor",
+        "planner",
+        "developer",
+        "technologist"
+      ],
+      "items": [
+        {
+          "id": "diploma-001",
+          "type": "diploma",
+          "roleTags": [
+            "constructor",
+            "planner",
+            "developer",
+            "technologist"
+          ],
+          "institution": "АНО ДПО \"Академия АйТи\"",
+          "program": "Разработчик \"Python\"",
+          "year": "2022",
+          "level": "Высшее"
+        },
+        {
+          "id": "diploma-002",
+          "type": "diploma",
+          "roleTags": [
+            "constructor",
+            "planner",
+            "developer",
+            "technologist"
+          ],
+          "institution": "Орский гуманитарно-технологический институт (филиал) Оренбургского государственного университета, Орск",
+          "program": "Конструкторско-технологическое обеспечение автоматизированных машиностроительных производств",
+          "year": "2016",
+          "level": "Высшее"
+        },
+        {
+          "id": "course-001",
+          "type": "course",
+          "roleTags": [
+            "constructor",
+            "planner",
+            "developer",
+            "technologist"
+          ],
+          "institution": "НОЧУ ДПО «Национальный открытый университет ИНТУИТ»",
+          "program": "Самостоятельно",
+          "year": "2017"
+        },
+        {
+          "id": "course-002",
+          "type": "course",
+          "roleTags": [
+            "constructor",
+            "planner",
+            "technologist"
+          ],
+          "institution": "НОУ «УЦ АСКОН-Урал»",
+          "program": "НОУ «УЦ АСКОН-Урал»",
+          "year": "2014"
+        },
+        {
+          "id": "cert-001",
+          "type": "certificate",
+          "roleTags": [
+            "developer"
+          ],
+          "title": "Тренировки. ML-забег",
+          "year": "2025"
+        },
+        {
+          "id": "cert-002",
+          "type": "certificate",
+          "roleTags": [
+            "developer"
+          ],
+          "title": "Тренировки. Забег по алгоритмам",
+          "year": "2025"
+        }
+      ],
+      "tags": {
+        "diploma": "Diploma",
+        "course": "Course",
+        "certificate": "Certificate",
+        "Высшее": "Higher education",
+        "Самостоятельно": "Self-paced",
+        "Тренировки. ML-забег": "ML Training Run",
+        "Тренировки. Забег по алгоритмам": "Algorithms Training Run"
+      }
+    }
+  }
+}

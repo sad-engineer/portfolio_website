@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% set page_title = content.work_places.title %}
+
+{% block content %}
+<section class="section-head">
+    <h1>{{ content.work_places.title }}</h1>
+</section>
+
+<section class="card-list">
+    {% for job in content.work_places["items"] %}
+    <article class="card">
+        <h2>{{ job.roleTitle }}</h2>
+        <p><strong>{{ job.company }}</strong></p>
+        <p class="muted">{{ job.period }}</p>
+        <ul>
+            {% for row in job.description %}
+            <li>{{ row }}</li>
+            {% endfor %}
+        </ul>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

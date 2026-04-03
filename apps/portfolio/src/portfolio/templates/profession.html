@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% macro tech_tile(item) %}
+                {% set is_svg = item.icon.endswith('.svg') %}
+                {% set is_flowvision = item.icon.endswith('flowvision.svg') %}
+                <div class="tech-tile{% if is_svg %} tech-tile--svg{% if is_flowvision %} tech-tile--svg-multicolor{% endif %}{% endif %}"{% if is_svg and not is_flowvision %} style="--tech-icon: url('{{ url_for('static', path=item.icon) }}');"{% endif %} title="{{ item.label }}" aria-label="{{ item.label }}">
+                    {% if is_svg and is_flowvision %}
+                    <img class="tech-tile__svg-img" src="{{ url_for('static', path=item.icon) }}" alt="" decoding="async" />
+                    {% elif not is_svg %}
+                    <i class="{{ item.icon }}" aria-hidden="true"></i>
+                    {% endif %}
+                </div>
+{% endmacro %}
+
+{% block content %}
+<section class="section-head">
+    <h1>{{ profession.title }}</h1>
+    <p class="lead">{{ profession.summary }}</p>
+</section>
+
+<section class="tech-layout">
+    <aside class="card photo-placeholder">
+        Тут было бы фото, но мне лень.
+    </aside>
+    <article class="card technologies">
+        <h2>{{ profession.technologies.title }}</h2>
+        {% for block in profession.technologies["items"].values() %}
+        <div class="tech-group">
+            <h3>{{ block.title }}</h3>
+            <div class="tech-grid">
+                {% for item in block["items"] %}
+                {{ tech_tile(item) }}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </article>
+</section>
+
+<section class="card work-methods-full">
+    <div class="work-methods-content">
+        <h2>{{ profession.work_methods.title }}</h2>
+        <div class="tech-group">
+            <div class="tech-grid">
+                {% for item in profession.work_methods["items"] %}
+                {{ tech_tile(item) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="card skills-full">
+    <div class="skills-content">
+        <h2>{{ profession.skills.title }}</h2>
+        <div class="tech-group">
+            <div class="tech-grid">
+                {% for item in profession.skills["items"] %}
+                {{ tech_tile(item) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="card document-types-full">
+    <div class="document-types-content">
+        <h2>{{ profession.document_types.title }}</h2>
+        <div class="tech-group">
+            <div class="tech-grid">
+                {% for item in profession.document_types["items"] %}
+                {{ tech_tile(item) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="card languages-full">
+    <div class="languages-content">
+        <h2>{{ profession.languages.title }}</h2>
+        <div class="tech-group">
+            <div class="tech-grid">
+                {% for item in profession.languages["items"] %}
+                {{ tech_tile(item) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
