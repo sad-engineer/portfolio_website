@@ -15,7 +15,7 @@
       "CAM": {
         "title": "CAD- и CAM-системы",
         "items": [
-          { "icon": "assets/icons/vertikal.png", "label": "Вертикаль" },
+          { "icon": "assets/icons/vertikal.jpg", "label": "Вертикаль" },
           { "icon": "assets/icons/sprutcam.svg", "label": "SprutCAM" }
         ]
       },
@@ -30,8 +30,8 @@
       "PLM": {
         "title": "PLM-системы",
         "items": [
-          { "icon": "fa-solid fa-diagram-project", "label": "ЛОЦМАН:PLM" },
-          { "icon": "fa-solid fa-folder-tree", "label": "T-FLEX PLM" }
+          { "icon": "assets/icons/locman_plm.jpg", "label": "ЛОЦМАН:PLM" },
+          { "icon": "assets/icons/tflex_plm.png", "label": "T-FLEX PLM" }
         ]
       }
     }
@@ -61,37 +61,48 @@
       { "icon": "fa-solid fa-stopwatch", "label": "Нормирование труда" },
       { "icon": "fa-solid fa-compass-drafting", "label": "Проектирование оснастки" },
       { "icon": "fa-solid fa-shield-halved", "label": "Управление качеством" },
-      { "icon": "fa-solid fa-microchip", "label": "Работа с ЧПУ" }
+      { "icon": "fa-solid fa-microchip", "label": "Работа с ЧПУ" },
+      { "icon": "assets/icons/authors_supervision.svg", "label": "Технологический надзор" }
     ]
   },
   "document_types": {
     "title": "Типы документов",
     "items": [
-      { "icon": "fa-solid fa-route", "label": "Маршрутная карта" },
-      { "icon": "fa-solid fa-list-ol", "label": "Операционная карта" },
-      { "icon": "fa-solid fa-pen-ruler", "label": "Карта эскизов" },
-      { "icon": "fa-solid fa-diagram-next", "label": "Схема сборки" },
-      { "icon": "fa-solid fa-link", "label": "Схема сварных швов" },
-      { "icon": "fa-solid fa-arrows-spin", "label": "Схема технологического цикла" },
-      { "icon": "fa-solid fa-cube", "label": "Электронная геометрическая модель технологическая" },
-      { "icon": "fa-solid fa-circle-info", "label": "Технологическая инструкция" },
-      { "icon": "fa-solid fa-file-lines", "label": "Карта технологического процесса" },
-      { "icon": "fa-solid fa-layer-group", "label": "Карта типового (группового) технологического процесса" },
-      { "icon": "fa-solid fa-list-check", "label": "Карта типовой (групповой) операции" },
-      { "icon": "fa-solid fa-sliders", "label": "Карта наладки" },
-      { "icon": "fa-solid fa-toolbox", "label": "Ведомость оснастки" },
-      { "icon": "fa-solid fa-gears", "label": "Ведомость оборудования" },
-      { "icon": "fa-solid fa-boxes-stacked", "label": "Ведомость материалов" },
-      { "icon": "fa-solid fa-list", "label": "Ведомость операций" },
-      { "icon": "fa-solid fa-folder-open", "label": "Ведомость технологических документов" },
-      { "icon": "fa-solid fa-code", "label": "Управляющая программа" }
+      { "icon": "assets/icons/ke.svg", "label": "Карта эскизов" },
+      { "icon": "assets/icons/egmt.svg", "label": "Электронная геометрическая модель технологическая" },
+      { "icon": "assets/icons/ti.svg", "label": "Технологическая инструкция" },
+      { "icon": "assets/icons/ktp.svg", "label": "Карта технологического процесса" },
+      { "icon": "assets/icons/kttp.svg", "label": "Карта типового (группового) технологического процесса" },
+      { "icon": "assets/icons/emtp.svg", "label": "Электронная модель технологического процесса" },
+      { "icon": "assets/icons/mk.svg", "label": "Маршрутная карта" },
+      { "icon": "assets/icons/emtm.svg", "label": "Электронная модель технологического маршрута" },
+      { "icon": "assets/icons/ok.svg", "label": "Операционная карта" },
+      { "icon": "assets/icons/kto.svg", "label": "Карта типовой (групповой) операции" },
+      { "icon": "assets/icons/emto.svg", "label": "Электронная модель технологической операции" },
+      { "icon": "assets/icons/kk.svg", "label": "Комплектовочная карта" },
+      { "icon": "assets/icons/tnk.svg", "label": "Техниконормировочная карта" },
+      { "icon": "assets/icons/kn.svg", "label": "Карта наладки" },
+      { "icon": "assets/icons/vo.svg", "label": "Ведомость оснастки" },
+      { "icon": "assets/icons/vob.svg", "label": "Ведомость оборудования" },
+      { "icon": "assets/icons/vm.svg", "label": "Ведомость материалов" },
+      { "icon": "assets/icons/tv.svg", "label": "Технологическая ведомость" },
+      { "icon": "assets/icons/vp.svg", "label": "Ведомость применяемости" },
+      { "icon": "assets/icons/vsi.svg", "label": "Ведомость сборки изделия" },
+      { "icon": "assets/icons/vop.svg", "label": "Ведомость операций" },
+      { "icon": "assets/icons/vd.svg", "label": "Ведомость дефектации" },
+      { "icon": "assets/icons/vtd.svg", "label": "Ведомость технологических документов" },
+      { "icon": "assets/icons/up.svg", "label": "Управляющая программа" },
+      { "icon": "assets/icons/est.svg", "label": "Технологическая электронная структура" },
+      { "icon": "assets/icons/ssb.svg", "label": "Схема сборки" },
+      { "icon": "assets/icons/sssh.svg", "label": "Схема сварных швов" },
+      { "icon": "assets/icons/stc.svg", "label": "Схема технологического цикла" }
     ]
   },
   "languages": {
     "title": "Иностранные языки:",
     "items": [
-      { "icon": "fa-solid fa-language", "label": "Русский" },
-      { "icon": "fa-solid fa-earth-europe", "label": "Английский" }
+      { "icon": "assets/icons/ru.svg", "label": "Русский" },
+      { "icon": "assets/icons/en.svg", "label": "Английский" }
     ]
   },
   "lastWorksRef": "work_places.json",
@@ -143,12 +154,22 @@
         "Карта технологического процесса": "Process sheet",
         "Карта типового (группового) технологического процесса": "Standard (group) process sheet",
         "Карта типовой (групповой) операции": "Standard (group) operation sheet",
+        "Электронная модель технологического процесса": "Electronic model of manufacturing process",
+        "Электронная модель технологического маршрута": "Electronic model of manufacturing route",
+        "Электронная модель технологической операции": "Electronic model of manufacturing operation",
+        "Комплектовочная карта": "Kitting sheet",
+        "Техниконормировочная карта": "Techno-norming sheet",
+        "Технологическая ведомость": "Process list",
+        "Ведомость применяемости": "Applicability list",
+        "Ведомость сборки изделия": "Product assembly list",
+        "Ведомость дефектации": "Defect list",
         "Карта наладки": "Setup sheet",
         "Ведомость оснастки": "Tooling list",
         "Ведомость оборудования": "Equipment list",
         "Ведомость материалов": "Materials list",
         "Ведомость операций": "Operations list",
         "Ведомость технологических документов": "Process documents list",
+        "Технологическая электронная структура": "Technological electronic structure",
         "Управляющая программа": "Control program",
         "Русский": "Russian",
         "Английский": "English"

@@ -39,64 +39,86 @@
   "work_methods": {
     "title": "Методы организации работы",
     "items": [
-      { "icon": "fa-solid fa-sliders", "label": "Параметризация" },
-      { "icon": "fa-solid fa-arrow-up", "label": "Сверху вниз" },
-      { "icon": "fa-solid fa-arrow-down", "label": "Снизу вверх" },
-      { "icon": "fa-solid fa-chart-line", "label": "Контроль ключевых показателей проекта" }
+      { "icon": "assets/icons/parameterization.svg", "label": "Параметризация" },
+      { "icon": "assets/icons/top_down_link_chart.svg", "label": "Паттерн проектирования «Сверху вниз»" },
+      { "icon": "assets/icons/bottom_up_link_chart.svg", "label": "Паттерн проектирования «Снизу вверх»" },
+      { "icon": "assets/icons/monitoring_key_project_indicators.svg", "label": "Контроль ключевых показателей проекта" }
     ]
   },
   "skills": {
     "title": "Навыки",
     "items": [
-      { "icon": "fa-solid fa-industry", "label": "Анализ производственных процессов" },
-      { "icon": "fa-solid fa-users", "label": "Организаторские навыки" },
-      { "icon": "fa-solid fa-file-lines", "label": "Разработка документации по ЕСКД" },
-      { "icon": "fa-solid fa-cubes", "label": "3D-моделирование" },
-      { "icon": "fa-solid fa-file-circle-check", "label": "Разработка конструкторской документации" },
-      { "icon": "fa-solid fa-eye", "label": "Авторский надзор" },
-      { "icon": "fa-solid fa-list-check", "label": "Работа в условиях многозадачности" },
-      { "icon": "fa-solid fa-scale-balanced", "label": "ГОСТ 34347-2017" },
-      { "icon": "fa-solid fa-scale-balanced", "label": "ГОСТ Р 54803-2011" },
-      { "icon": "fa-solid fa-gauge-high", "label": "Сосуды высокого давления" },
-      { "icon": "fa-solid fa-flask", "label": "Машины и аппараты химических производств" },
-      { "icon": "fa-solid fa-folder-open", "label": "Документальное сопровождение" },
-      { "icon": "fa-solid fa-diagram-project", "label": "Управление проектами" }
+      { "icon": "assets/icons/eskd.svg", "label": "Разработка документации по ЕСКД" },
+      { "icon": "assets/icons/3d.svg", "label": "3D-моделирование" },
+      { "icon": "assets/icons/rkd.svg", "label": "Разработка конструкторской документации" },
+      { "icon": "assets/icons/high-pressure_vessels.svg", "label": "Сосуды высокого давления" },
+      { "icon": "assets/icons/pipeline.svg", "label": "Трубопроводы по ГОСТ 32569-2013" },
+      { "icon": "assets/icons/container.svg", "label": "Блочно-модульные конструкции, мобильные установки, в т.ч. контейнерного исполнения" },
+      { "icon": "assets/icons/34347.svg", "label": "ГОСТ 34347-2017" },
+      { "icon": "assets/icons/54803.svg", "label": "ГОСТ Р 54803-2011" },
+      { "icon": "assets/icons/authors_supervision.svg", "label": "Авторский надзор" },
+      { "icon": "assets/icons/project_management.svg", "label": "Управление проектами" },
+      { "icon": "assets/icons/documentary_support.svg", "label": "Документальное сопровождение" },
+      { "icon": "assets/icons/mentoring.svg", "label": "Наставничество" },
+      { "icon": "assets/icons/analysis_production_processes.svg", "label": "Анализ производственных процессов" },
+      { "icon": "assets/icons/organizational_skills.svg", "label": "Организаторские навыки" },
+      { "icon": "assets/icons/working_in_multitasking_environment.svg", "label": "Работа в условиях многозадачности" },
+      { "icon": "assets/icons/chemical_production.svg", "label": "Машины и аппараты химических производств" }
     ]
   },
   "document_types": {
     "title": "Типы документов",
-    "items": [
-      { "icon": "fa-solid fa-cube", "label": "Электронная модель детали" },
-      { "icon": "fa-solid fa-file-lines", "label": "Чертеж детали" },
-      { "icon": "fa-solid fa-cubes", "label": "Электронная модель сборочной единицы" },
-      { "icon": "fa-solid fa-cubes-stacked", "label": "Электронная модель специализированная" },
-      { "icon": "fa-solid fa-file-pen", "label": "Сборочный чертеж" },
-      { "icon": "fa-solid fa-file-signature", "label": "Чертеж общего вида" },
-      { "icon": "fa-solid fa-ruler-combined", "label": "Теоретический чертеж" },
-      { "icon": "fa-solid fa-up-right-and-down-left-from-center", "label": "Габаритный чертеж" },
-      { "icon": "fa-solid fa-screwdriver-wrench", "label": "Монтажный чертеж" },
-      { "icon": "fa-solid fa-box", "label": "Упаковочный чертеж" },
-      { "icon": "fa-solid fa-diagram-project", "label": "Схемы" },
-      { "icon": "fa-solid fa-list", "label": "Спецификация" },
-      { "icon": "fa-solid fa-rectangle-list", "label": "Ведомость спецификаций" },
-      { "icon": "fa-solid fa-link", "label": "Ведомость ссылочных документов" },
-      { "icon": "fa-solid fa-cart-shopping", "label": "Ведомость покупных изделий" },
-      { "icon": "fa-solid fa-lightbulb", "label": "Ведомость эскизного проекта" },
-      { "icon": "fa-solid fa-diagram-next", "label": "Ведомость технического проекта" },
-      { "icon": "fa-solid fa-book", "label": "Пояснительная записка" },
-      { "icon": "fa-solid fa-clipboard-check", "label": "Технические условия" },
-      { "icon": "fa-solid fa-vial", "label": "Программа и методика испытаний" },
-      { "icon": "fa-solid fa-table", "label": "Таблица" },
-      { "icon": "fa-solid fa-calculator", "label": "Расчет" },
-      { "icon": "fa-solid fa-circle-info", "label": "Инструкция" },
-      { "icon": "fa-solid fa-file-shield", "label": "Эксплуатационные документы" }
-    ]
+    "items": {
+      "constructor": {
+        "title": "Типы конструкторских документов",
+        "items": [
+          { "icon": "assets/icons/emd.svg", "label": "Электронная модель детали по ГОСТ 2.056" },
+          { "icon": "assets/icons/chd.svg", "label": "Чертеж детали по ГОСТ Р 2.109" },
+          { "icon": "assets/icons/esb.svg", "label": "Электронная модель сборочной единицы по ГОСТ Р 2.057" },
+          { "icon": "assets/icons/em.svg", "label": "Электронная модель специализированная" },
+          { "icon": "assets/icons/sb.svg", "label": "Сборочный чертеж по ГОСТ Р 2.109" },
+          { "icon": "assets/icons/ov.svg", "label": "Чертеж общего вида по ГОСТ 2.119" },
+          { "icon": "assets/icons/tch.svg", "label": "Теоретический чертеж" },
+          { "icon": "assets/icons/gch.svg", "label": "Габаритный чертеж по ГОСТ Р 2.109" },
+          { "icon": "assets/icons/mch.svg", "label": "Монтажный чертеж по ГОСТ Р 2.109" },
+          { "icon": "assets/icons/uch.svg", "label": "Упаковочный чертеж по ГОСТ 2.418" },
+          { "icon": "assets/icons/sx.svg", "label": "Схемы по ГОСТ 2.701" },
+          { "icon": "assets/icons/sp.svg", "label": "Спецификация по ГОСТ Р 2.106" },
+          { "icon": "assets/icons/vs.svg", "label": "Ведомость спецификаций по ГОСТ Р 2.106" },
+          { "icon": "assets/icons/vd.svg", "label": "Ведомость ссылочных документов по ГОСТ 2.106" },
+          { "icon": "assets/icons/vp.svg", "label": "Ведомость покупных изделий по ГОСТ Р 2.106" },
+          { "icon": "assets/icons/ep.svg", "label": "Ведомость эскизного проекта по ГОСТ Р 2.106" },
+          { "icon": "assets/icons/tp.svg", "label": "Ведомость технического проекта по ГОСТ Р 2.106" },
+          { "icon": "assets/icons/pz.svg", "label": "Пояснительная записка по ГОСТ Р 2.106" },
+          { "icon": "assets/icons/tu.svg", "label": "Технические условия по ГОСТ 2.114" },
+          { "icon": "assets/icons/pm.svg", "label": "Программа и методика испытаний по ГОСТ Р 2.106" },
+          { "icon": "assets/icons/tb.svg", "label": "Таблица по ГОСТ 2.106" },
+          { "icon": "assets/icons/rr.svg", "label": "Расчет по ГОСТ Р 2.106" },
+          { "icon": "assets/icons/i.svg", "label": "Инструкция по ГОСТ Р 2.106" }
+        ]
+      },
+      "operational": {
+        "title": "Типы эксплуатационных документов",
+        "items": [
+          { "icon": "assets/icons/ed.svg", "label": "Эксплуатационные документы по ГОСТ Р 2.601" },
+          { "icon": "assets/icons/re.svg", "label": "Руководство по эксплуатации" },
+          { "icon": "assets/icons/im.svg", "label": "Инструкция по монтажу, пуску, регулированию и обкатке изделия" },
+          { "icon": "assets/icons/fo.svg", "label": "Формуляр" },
+          { "icon": "assets/icons/ps.svg", "label": "Паспорт" },
+          { "icon": "assets/icons/et.svg", "label": "Этикетка" },
+          { "icon": "assets/icons/ki.svg", "label": "Каталог изделия" },
+          { "icon": "assets/icons/zi.svg", "label": "Ведомость ЗИП" },
+          { "icon": "assets/icons/ve.svg", "label": "Ведомость эксплуатационных документов" },
+          { "icon": "assets/icons/psk.svg", "label": "Паспорт качества" }
+         ]
+      }
+    }
   },
   "languages": {
     "title": "Иностранные языки:",
     "items": [
-      { "icon": "fa-solid fa-language", "label": "Русский" },
-      { "icon": "fa-solid fa-earth-europe", "label": "Английский" }
+      { "icon": "assets/icons/ru.svg", "label": "Русский" },
+      { "icon": "assets/icons/en.svg", "label": "Английский" }
     ]
   },
   "lastWorksRef": "work_places.json",
@@ -133,6 +155,8 @@
         "Документальное сопровождение": "Documentation support",
         "Управление проектами": "Project management",
         "Типы документов": "Document Types",
+        "Типы конструкторских документов": "Types of design documentation",
+        "Типы эксплуатационных документов": "Types of operational documentation",
         "Электронная модель детали": "Electronic part model",
         "Чертеж детали": "Part drawing",
         "Электронная модель сборочной единицы": "Electronic assembly model",

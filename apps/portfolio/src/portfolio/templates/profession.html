@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
 {% macro tech_tile(item) %}
-                {% set is_svg = item.icon.endswith('.svg') %}
-                {% set is_flowvision = item.icon.endswith('flowvision.svg') %}
-                <div class="tech-tile{% if is_svg %} tech-tile--svg{% if is_flowvision %} tech-tile--svg-multicolor{% endif %}{% endif %}"{% if is_svg and not is_flowvision %} style="--tech-icon: url('{{ url_for('static', path=item.icon) }}');"{% endif %} title="{{ item.label }}" aria-label="{{ item.label }}">
+                {% set icon_lc = item.icon|lower %}
+                {% set is_svg = icon_lc.endswith('.svg') %}
+                {% set is_raster = icon_lc.endswith('.png') or icon_lc.endswith('.jpg') or icon_lc.endswith('.jpeg') or icon_lc.endswith('.webp') or icon_lc.endswith('.gif') %}
+                {% set raster_fill = icon_lc.endswith('vertikal.jpg') or icon_lc.endswith('locman_plm.jpg') %}
+                {% set is_flowvision = icon_lc.endswith('flowvision.svg') %}
+                <div class="tech-tile{% if is_svg %} tech-tile--svg{% if is_flowvision %} tech-tile--svg-multicolor{% endif %}{% elif is_raster %} tech-tile--raster{% if raster_fill %} tech-tile--raster-fill{% endif %}{% endif %}"{% if is_svg and not is_flowvision %} style="--tech-icon: url('{{ url_for('static', path=item.icon) }}');"{% endif %} title="{{ item.label }}" aria-label="{{ item.label }}">
                     {% if is_svg and is_flowvision %}
-                    <img class="tech-tile__svg-img" src="{{ url_for('static', path=item.icon) }}" alt="" decoding="async" />
+                    <img class="tech-tile__svg-img" src="{{ url_for('static', path=item.icon) }}" alt="" width="43" height="43" decoding="async" />
+                    {% elif is_raster %}
+                    <img class="tech-tile__raster-img" src="{{ url_for('static', path=item.icon) }}" alt="" {% if raster_fill %}width="60" height="60"{% else %}width="43" height="43"{% endif %} decoding="async" />
                     {% elif not is_svg %}
                     <i class="{{ item.icon }}" aria-hidden="true"></i>
                     {% endif %}
@@ -66,6 +71,18 @@
 <section class="card document-types-full">
     <div class="document-types-content">
         <h2>{{ profession.document_types.title }}</h2>
+        {% if profession.document_types["items"] is mapping %}
+        {% for block in profession.document_types["items"].values() %}
+        <div class="tech-group">
+            <h3>{{ block.title }}</h3>
+            <div class="tech-grid">
+                {% for item in block["items"] %}
+                {{ tech_tile(item) }}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
         <div class="tech-group">
             <div class="tech-grid">
                 {% for item in profession.document_types["items"] %}
@@ -73,6 +90,7 @@
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
     </div>
 </section>
 

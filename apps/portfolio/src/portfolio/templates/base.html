@@ -10,25 +10,25 @@
     <link rel="stylesheet" href="{{ url_for('static', path='css/portfolio-layout.css') }}" />
 </head>
 <body>
-    <header class="site-header">
+    <header class="site-header {{ page_id | default('page-default') }}">
         <div class="container">
             <a class="brand" href="/main">{{ content.main.hero.firstName }} {{ content.main.hero.lastName }}</a>
             <nav class="main-nav">
-                <a href="/main">Главная</a>
                 <a href="/constructor">Конструктор</a>
-                <a href="/planner">Планировщик</a>
-                <a href="/developer">Разработчик</a>
                 <a href="/technologist">Технолог</a>
+                <a href="/planner">Планировщик</a>
+                <a href="/developer">IT-Разработчик</a>
                 <a href="/work_places">Места работы</a>
                 <a href="/education">Образование</a>
             </nav>
         </div>
     </header>
 
-    <main class="container page-content">
+    <main class="container page-content {{ page_id | default('page-default') }}">
         {% block content %}{% endblock %}
     </main>
 
+    {% if show_feedback is not defined or show_feedback %}
     <section class="feedback">
         <div class="container">
             <h2>{{ content.basic.i18n.ru.feedback.form.title }}</h2>
@@ -52,6 +52,7 @@
             </form>
         </div>
     </section>
+    {% endif %}
 
     <footer class="site-footer">
         <div class="container">
