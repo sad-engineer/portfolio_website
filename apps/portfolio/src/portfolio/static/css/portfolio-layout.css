@@ -1,120 +1,247 @@
 :root {
-  --bg: #f4f4f4;
-  --surface: #ffffff;
-  --surface-dark: #e9e9e9;
-  --text: #1f1f1f;
-  --muted: #666666;
-  --line: #d0d0d0;
+  --bg: #4b4b4b;                  /* Базовый цвет фона страницы (подложка под общий фон) */
+  --surface: #ffffff;             /* Цвет карточек/блоков контента */
+  --surface-dark: #e9e9e9;        /* Альтернативный светло-серый фон для секций */
+  --text: #d0d0d0;                /* Основной цвет текста */
+  --text-head: #e7e7e7;           /* Основной цвет заголовка  */
+  --text-lead: #e7e7e7;           /* Основной цвет подзаголовка */
+  --text-dark: #2f2f2f;           /* Инвертированный цвет текста */
+  --text-head-dark: #181818;      /* Инвертированный цвет заголовка */
+  --text-lead-dark: #181818;      /* Инвертированный цвет подзаголовка */
+  --muted: #666666;               /* Приглушенный цвет вторичного текста */
+  --line: #d0d0d0;                /* Цвет рамок, разделителей и контуров */
+  --banner: #fa842b;              /* Цвет баннера/кнопок/акцентов */
+  --site-bg-image: url("../assets/img/backgrounds/6.jpg"); /* Общая фоновая картинка сайта */
 }
 
+
+/* ===================================================================================================== */
+/* Глобальные стили для всех элементов */
+
+/* отступы и границы */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* В ширину/высоту включаются padding и border */
 }
 
+/* Стили для body */
 body {
-  margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  color: var(--text);
-  background: var(--bg);
-  line-height: 1.5;
+  margin: 0;                                /* Убирает стандартные внешние отступы браузера */
+  font-family: "Segoe UI", Arial, sans-serif; /* Базовый шрифт сайта (если не указан в HTML) */
+  color: var(--text);                       /* Базовый цвет текста */
+  background-color: var(--bg);              /* Базовый цвет фона страницы (подложка под общий фон) */
+  background-image: var(--site-bg-image);   /* Общая фоновая картинка сайта */
+  background-size: cover;                   /* Масштабирует фон с заполнением области body */
+  background-position: center;              /* Центрирует изображение фона */
+  background-repeat: no-repeat;             /* Не повторяет фоновую картинку */
+  background-attachment: fixed;             /* Фон закреплён относительно окна (эффект параллакса при скролле) */
+  line-height: 1.0;                         /* Межстрочный интервал по умолчанию */
 }
 
+/* Стили для основного контейнера сайта */
 .container {
-  width: min(1100px, 95%);
-  margin: 0 auto;
+  width: min(1200px, 100%);  /* Ограничение ширины контента: не больше 1200px и не шире 100% экрана */
+  margin: 0 auto;           /* Горизонтальное центрирование контейнера с контентом */
 }
 
-.site-header {
-  position: sticky;
-  top: 0;
-  background: var(--surface-dark);
-  border-bottom: 1px solid var(--line);
-}
-
-.site-header .container {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-}
-
-.brand {
-  font-weight: 700;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.main-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.main-nav a {
-  text-decoration: none;
-  color: var(--text);
-  padding: 6px 10px;
-  border: 1px solid transparent;
-}
-
-.main-nav a:hover {
-  border-color: var(--line);
-}
-
-.page-content {
-  padding: 10px 0;
-}
-
-.hero {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 10px;
-  align-items: center;
-}
-
-.hero img {
-  width: 100%;
-  border: 1px solid var(--line);
-}
-
-.lead {
-  font-size: 1.1rem;
-}
-
+/* Стили для заголовка секции в шаблоне main.html */
 .section-head {
-  margin-bottom: 10px;
+  font-size: 1.5rem;                              /* Размер текста (по умолчанию 1.1rem) */
+  color: var(--text-head);                         /* Цвет текста заголовка */
 }
 
+/* Стили для подзаголовка секции в шаблоне main.html */
+.lead {
+  font-size: 1.1rem;                              /* Размер текста (по умолчанию 1.1rem) */
+  color: var(--text-lead);                         /* Цвет текста подзаголовка */
+}
+
+/* Переменные верхнего баннера (глобальные, со ссылками на :root) */
+:root {
+  --header-bg-image: var(--site-bg-image);           /* Фоновая картинка баннера */
+  --header-bg-size: cover;                           /* Масштаб фоновой картинки баннера */
+  --header-bg-position: center;                      /* Позиция фоновой картинки баннера */
+  --header-bg-repeat: no-repeat;                     /* Повтор фоновой картинки баннера */
+  --header-bg-attachment: fixed;                     /* Привязка фона баннера к viewport */
+  --header-border-color: var(--line);                /* Цвет нижней границы баннера */
+  --header-text-color: var(--text);                  /* Цвет текста бренда и ссылок меню */
+  --header-link-hover-border-color: var(--line);     /* Цвет рамки ссылок меню при наведении */
+  --header-link-hover-color: rgba(255, 255, 255, 0.2);            /* Цвет текста ссылок при наведении */
+
+}
+
+/* Стили для верхнего баннера/шапки */
+.site-header {
+  position: sticky; /* Шапка прилипает при прокрутке */
+  top: 0; /* Точка прилипания — верх окна */
+  background-image: var(--header-bg-image);           /* Фоновая картинка шапки */
+  background-size: var(--header-bg-size);             /* Масштаб фоновой картинки */
+  background-position: var(--header-bg-position);     /* Позиция фона */
+  background-repeat: var(--header-bg-repeat);         /* Повтор фона */
+  background-attachment: var(--header-bg-attachment); /* fixed/scroll для фона шапки */
+  border-bottom: 1px solid var(--header-border-color); /* Нижняя граница шапки */
+  z-index: 5;                                         /* Шапка выше основного контента */
+}
+
+/* Оверлей для доп. затемнения/градиента */
+.site-header::before {
+  content: none;            /* Оверлей отключен (можно включить для доп. затемнения/градиента) */
+  position: absolute;       /* Растягивается внутри шапки */
+  inset: 0;                 /* На всю область шапки */
+  pointer-events: none;     /* Не перехватывает клики по меню (по умолчанию) */
+  z-index: 0;               /* Лежит под содержимым .container (по умолчанию) */
+}
+
+/* Контейнер для логотипа и меню */
+.site-header .container {
+  position: relative;             /* Создает контекст поверх ::before (по умолчанию)    */
+  z-index: 1;                     /* Контент шапки поверх фонового слоя (по умолчанию) */
+  display: flex;                  /* Логотип и меню в одну строку */
+  gap: 24px;                      /* Отступы между элементами в контейнере */
+  align-items: center;            /* Вертикальное выравнивание по центру */
+  justify-content: space-between; /* Логотип слева, меню справа */
+  padding: 0px 0;                /* Внутренние отступы шапки сверху/снизу */
+}
+
+/* Стили для личного логотипа (тут в виде ФИ) */
+.brand {
+  font-weight: 700;                 /* Жирный шрифт для логотипа */
+  color: var(--header-text-color);  /* Цвет текста логотипа */
+  text-decoration: none;            /* Убирает подчеркивание для ссылок логотипа */
+}
+
+/* Стили для основного меню */
+.main-nav {
+  display: flex;      /* Меню в одну строку */
+  flex-wrap: wrap;    /* Меню переносится на новую строку, если не помещается в одну строку */
+  gap: 0px;           /* Отступы между элементами в меню */
+}
+
+/* Стили для ссылок в основном меню */
+.main-nav a {
+  text-decoration: none;            /* Убирает подчеркивание для ссылок в меню */
+  color: var(--header-text-color);  /* Цвет текста ссылок в меню */
+  padding: 20px 10px;               /* Внутренние отступы ссылок в меню */
+  border: 1px solid transparent;    /* Нет рамки по умолчанию */
+}
+
+/* Стили для ссылок в основном меню при наведении */
+.main-nav a:hover {
+  border-color: var(--header-link-hover-border-color);   /* Цвет рамки ссылок меню при наведении */
+  background-color: var(--header-link-hover-color);  /* Цвет фона ссылки при наведении */
+}
+
+
+/* ===================================================================================================== */
+/* настройки страницы main.html */
+
+
+/* настройки секции hero в шаблоне main.html */
+.hero {
+  display: grid;                                /* Сетка для основного контента (по умолчанию grid) */
+  grid-template-columns: minmax(0, 1fr) 600px;  /* Первый столбец - 100% ширины, второй столбец - фиксированная ширина (по умолчанию minmax(0, 1fr) фикс.) */
+  gap: 5px;                                     /* Отступы между элементами в сетке */
+  align-items: stretch;                         /* Выравнивание элементов по высоте (по умолчанию stretch) */
+}
+
+/* настройки основного контента в секции hero в шаблоне main.html */
+.hero-main {
+  display: grid;                                /* Сетка для основного контента (по умолчанию grid) */
+  gap: 60px;                                    /* Отступы между элементами в сетке (по умолчанию 10px) */
+  padding-top: 20px;                            /* Отступ сверху */
+  color: var(--text-head);                      /* Цвет текста заголовка */
+}
+
+/* настройки фотографии в секции hero в шаблоне main.html */
+.hero img {
+  width: 100%;                                    /* Ширина фотографии (по умолчанию 100%) */
+  height: 100%;                                   /* Высота фотографии (по умолчанию 100%) */
+  max-width: 100%;                                /* Максимальная ширина фотографии (по умолчанию 100%) */
+  border: 1px solid var(--line);                  /* Рамка для фотографии (по умолчанию 1px solid var(--line)) */
+  object-fit: cover;                              /* Объект фотографии заполняет контейнер (по умолчанию cover) */
+}
+
+/* настройки placeholder для фотографии в секции hero в шаблоне main.html */
+.hero-photo-placeholder {
+  width: 100%;                                    /* Ширина placeholder (по умолчанию 100%) */
+  height: 100%;                                   /* Высота placeholder (по умолчанию 100%) */
+  max-width: 100%;                                /* Максимальная ширина placeholder (по умолчанию 100%) */
+  border: 1px dashed var(--line);                  /* Рамка для placeholder (по умолчанию 1px dashed var(--line)) */
+  border-radius: 6px;                             /* Закругление углов для placeholder (по умолчанию 6px) */
+  display: flex;                                   /* Flexbox для placeholder (по умолчанию flex) */
+  align-items: center;                             /* Выравнивание элементов по центру (по умолчанию center) */
+  justify-content: center;                         /* Выравнивание элементов по центру (по умолчанию center) */
+  text-align: center;                              /* Выравнивание текста по центру (по умолчанию center) */
+  color: var(--muted);                             /* Цвет текста placeholder (по умолчанию var(--muted)) */
+  background: rgba(255, 255, 255, 0.15);         /* Цвет фона placeholder (по умолчанию rgba(255, 255, 255, 0.35)) */
+  padding: 16px;                                   /* Внутренние отступы placeholder (по умолчанию 16px) */
+}
+
+/* настройки сетки в секции hero в шаблоне main.html */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  display: grid;                            /* Сетка для основного контента (по умолчанию grid) */
+  grid-template-columns: repeat(2, 295px);  /* Первый столбец - 295px, второй столбец - 295px (по умолчанию repeat(2, 295px)) */
+  gap: 5px;                                 /* Отступы между элементами в сетке (по умолчанию 5px) */
 }
 
+/* настройки сетки в секции hero в шаблоне main.html */
 .grid.two {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);  /* Первый столбец - 1fr, второй столбец - 1fr (по умолчанию repeat(2, 1fr)) */
 }
 
-.card-list {
-  display: grid;
-  gap: 10px;
+
+/* Переменные для карточек */
+:root {
+  --card-title-color: var(--text-lead-dark);         /* Цвет заголовка карточки */
+  --card-title-size: 1.1rem;                         /* Размер заголовка карточки */
+  --card-title-font-weight: bold;                    /* Начертание заголовка карточки */
+  --card-text-color: var(--text-dark);               /* Цвет текста карточки */
+  --card-text-size: 1.0rem;                          /* Размер текста карточки */
+  --card-text-font-weight: normal;                   /* Начертание текста карточки */
+  --card-bg-color: var(--surface);                   /* Цвет фона карточки */
+  --card-bg-opacity: 0.75;                              /* Прозрачность фона карточки */
+  --card-border-color: var(--line);                  /* Цвет рамки карточки */
+  --card-border-radius: 4px;                         /* Закругление углов карточки */
+  --card-padding: 20px;                              /* Отступы карточки */
+
 }
 
+/* настройки карточки в секции hero в шаблоне main.html */  
+.grid > .card {
+  width: 295px;               /* Ширина карточки  */
+  height: 350px;              /* Высота карточки  */
+  display: flex;              /* Контейнер для карточки  */
+  flex-direction: column;     /* Направление flex-контейнера  */
+  justify-content: center;    /* Выравнивание элементов по центру */
+}
+
+/* настройки карточки в секции hero в шаблоне main.html */
 .card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  padding: 16px;
-  border-radius: 6px;
-  color: var(--text);
-  text-decoration: none;
+  background: var(--card-bg-color);             /* Цвет фона карточки  */
+  border: 1px solid var(--card-border-color);   /* Цвет рамки карточки  */
+  padding: var(--card-padding);                 /* Отступы карточки */
+  border-radius: var(--card-border-radius);     /* Закругление углов карточки */
+  color: var(--card-text-color);                /* Цвет текста карточки*/
+  text-decoration: none;                        /* Убирает подчеркивание для ссылок карточки*/
+  opacity: var(--card-bg-opacity);              /* Прозрачность фона карточки */
 }
 
+/* настройки заголовка карточки в секции hero в шаблоне main.html */
 .card h2,
 .card h3 {
-  margin-top: 0;
+  margin-top: 10;                                  /* Отступ сверху заголовка карточки (по умолчанию 0) */
 }
 
+/* настройки первой карточки в секции hero в шаблоне main.html */
+/*добавить на карточку слой с подложкой */
+
+
+
+
+
+
+
+
+/* настройки секции technologies в шаблоне profession.html */
 .technologies {
   margin-bottom: 14px;
   width: 100%;
@@ -160,7 +287,11 @@ body {
   box-sizing: border-box;
   background: #bdbdbd;
   width: 60px;
+  min-width: 60px;
+  max-width: 60px;
   height: 60px;
+  min-height: 60px;
+  max-height: 60px;
   padding: 5px;
   border-radius: 6px;
   display: flex;
@@ -168,6 +299,7 @@ body {
   justify-content: center;
   cursor: help;
   transition: background 0.15s ease, transform 0.15s ease;
+  overflow: hidden;
 }
 
 /* SVG: серый залив, логотип — «дырка» (виден фон страницы/секции) */
@@ -225,14 +357,39 @@ body {
   background: #ababab;
 }
 
-.tech-tile__svg-img {
+/* Любой <img> в плитке: JPG/PNG и SVG с огромным intrinsic — иначе grid/flex раздувают строку */
+.tech-tile > img.tech-tile__svg-img,
+.tech-tile > img.tech-tile__raster-img {
   position: relative;
   z-index: 1;
-  width: var(--tech-icon-size);
-  height: var(--tech-icon-size);
+  display: block;
+  box-sizing: border-box;
+  width: 43px;
+  height: 43px;
+  max-width: 43px;
+  max-height: 43px;
   object-fit: contain;
   flex-shrink: 0;
+  margin: 0;
+  padding: 0;
 }
+
+/* Растр на всю плитку 60×60: без padding, cover убирает лишние поля в файле */
+.tech-tile.tech-tile--raster-fill {
+  padding: 0;
+}
+
+.tech-tile.tech-tile--raster-fill > img.tech-tile__raster-img {
+  width: 60px;
+  height: 60px;
+  max-width: 60px;
+  max-height: 60px;
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* PNG / JPG / …: серая плитка и картинка поверх (класс с макроса) */
 
 .tech-tile:hover {
   transform: translateY(-1px);
@@ -337,22 +494,27 @@ body {
   overflow: hidden;
   margin-bottom: 3px;
   min-height: 100px;
-  background: #c6c6c6;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* Подложка под прозрачные области languages.png */
+  background: linear-gradient(
+    135deg,
+    rgba(198, 198, 198, 1) 5%,
+    rgba(210, 210, 210, 0.65) 30%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .languages-full::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.75) 48%,
-    rgba(255, 255, 255, 0.9) 100%
-  );
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  background-image: url("../assets/img/backgrounds/languages.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 10%;
   pointer-events: none;
 }
 

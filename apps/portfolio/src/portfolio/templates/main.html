@@ -1,32 +1,34 @@
 {% extends "base.html" %}
 {% set page_title = "Главная" %}
+{% set page_id = "page-main" %}
+{% set show_feedback = false %}
 
 {% block content %}
 <section class="hero">
-    <div>
-        <h1>{{ content.main.hero.firstName }} {{ content.main.hero.lastName }}</h1>
-        <p class="lead">{{ content.main.hero.lead }}</p>
-        <p>{{ content.main.direction.lead }}</p>
+    <div class="hero-main">
+        <h1>{{ content.main.hero.lead }}</h1>
+        <p class="lead">{{ content.main.direction.lead }}</p>
+        <section class="grid">
+            <a class="card" href="/constructor">
+                <h3>Инженер-конструктор</h3>
+                <p>{{ content.main.direction.directions[0].constructor }}</p>
+            </a>
+            <a class="card" href="/planner">
+                <h3>Инженер-планировщик</h3>
+                <p>{{ content.main.direction.directions[1].planner }}</p>
+            </a>
+            <a class="card" href="/developer">
+                <h3>Разработчик</h3>
+                <p>{{ content.main.direction.directions[2].developer }}</p>
+            </a>
+            <a class="card" href="/technologist">
+                <h3>Инженер-технолог</h3>
+                <p>{{ content.main.direction.directions[3].technologist }}</p>
+            </a>
+        </section>
     </div>
-    <img src="{{ url_for('static', path='assets/img/profile.jpg') }}" alt="Фото профиля" />
-</section>
-
-<section class="grid">
-    <a class="card" href="/constructor">
-        <h3>Инженер-конструктор</h3>
-        <p>{{ content.main.direction.directions[0].constructor }}</p>
-    </a>
-    <a class="card" href="/planner">
-        <h3>Инженер-планировщик</h3>
-        <p>{{ content.main.direction.directions[1].planner }}</p>
-    </a>
-    <a class="card" href="/developer">
-        <h3>Разработчик</h3>
-        <p>{{ content.main.direction.directions[2].developer }}</p>
-    </a>
-    <a class="card" href="/technologist">
-        <h3>Инженер-технолог</h3>
-        <p>{{ content.main.direction.directions[3].technologist }}</p>
-    </a>
+    <div class="hero-photo-placeholder" aria-label="Фото профиля отсутствует">
+        Фото скоро будет
+    </div>
 </section>
 {% endblock %}

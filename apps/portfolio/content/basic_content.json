@@ -18,6 +18,11 @@
             "href": "/inzhener-konstruktor"
           },
           {
+            "id": "inzhener_tehnolog",
+            "label": "Инженер-технолог",
+            "href": "/inzhener-tehnolog"
+          },
+          {
             "id": "proektirovshchik",
             "label": "Проектировщик",
             "href": "/proektirovshchik"
@@ -43,6 +48,7 @@
         "home": { "title": "Главная" },
         "blog": { "title": "Блог" },
         "inzhener_konstruktor": { "title": "Инженер-конструктор" },
+        "inzhener_tehnolog": { "title": "Инженер-технолог" },
         "proektirovshchik": { "title": "Проектировщик" },
         "it_razrabotchik": { "title": "IT-разработчик" },
         "blog_advertising": { "title": "Реклама в блоге" }

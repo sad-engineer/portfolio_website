@@ -50,17 +50,17 @@
   "document_types": {
     "title": "Типы документов",
     "items": [
-      { "icon": "fa-solid fa-cube", "label": "Планировка участка" },
-      { "icon": "fa-solid fa-file-lines", "label": "Планировка цеха" },
-      { "icon": "fa-solid fa-cubes", "label": "Теплотехническая схема принципиальная" },
-      { "icon": "fa-solid fa-cubes-stacked", "label": "Гидравлическая схема принципиальная" }
+      { "icon": "assets/icons/pu.svg", "label": "Планировка участка" },
+      { "icon": "assets/icons/pc.svg", "label": "Планировка цеха" },
+      { "icon": "assets/icons/tts.svg", "label": "Теплотехническая схема принципиальная" },
+      { "icon": "assets/icons/gs.svg", "label": "Гидравлическая схема принципиальная" }
     ]
   },
   "languages": {
     "title": "Иностранные языки:",
     "items": [
-      { "icon": "fa-solid fa-language", "label": "Русский" },
-      { "icon": "fa-solid fa-earth-europe", "label": "Английский" }
+      { "icon": "assets/icons/ru.svg", "label": "Русский" },
+      { "icon": "assets/icons/en.svg", "label": "Английский" }
     ]
   },
   "lastWorksRef": "work_places.json",
