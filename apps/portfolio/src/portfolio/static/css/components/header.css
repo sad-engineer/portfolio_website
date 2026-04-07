@@ -1,0 +1,185 @@
+/* Токены шапки: визуальная схема header и hover-состояния. */
+:root {
+  --header-bg-image: var(--site-bg-image); /* Фон шапки (обычно общий фон сайта). */
+  --header-bg-size: cover; /* Масштаб фона шапки. */
+  --header-bg-position: center; /* Позиция фона шапки. */
+  --header-bg-repeat: no-repeat; /* Повтор фоновой картинки. */
+  --header-bg-attachment: fixed; /* Поведение фона при скролле. */
+  --header-border-color: var(--line); /* Цвет нижней границы шапки. */
+  --header-text-color: var(--text); /* Цвет текста и ссылок в шапке. */
+  --header-link-hover-border-color: var(--line); /* Цвет рамки ссылки при hover. */
+  --header-link-hover-color: rgba(255, 255, 255, 0.2); /* Фон ссылки при hover. */
+}
+
+/* Корневой контейнер шапки, закрепленный сверху. */
+.site-header {
+  position: sticky; /* Закрепляет шапку в верхней части окна. */
+  top: 0; /* Точка прилипания к верхней границе viewport. */
+  background-image: var(--header-bg-image); /* Подключает фоновую картинку. */
+  background-size: var(--header-bg-size); /* Управляет масштабом фоновой картинки. */
+  background-position: var(--header-bg-position); /* Управляет позицией фона. */
+  background-repeat: var(--header-bg-repeat); /* Управляет повторением фона. */
+  background-attachment: var(--header-bg-attachment); /* Управляет фиксацией фона. */
+  border-bottom: 1px solid var(--header-border-color); /* Нижний разделитель шапки. */
+  z-index: 5; /* Держит шапку выше основного контента. */
+}
+
+/* Служебный псевдо-слой под контентом шапки (под оверлей/градиент). */
+.site-header::before {
+  content: none; /* Выключает слой; можно сменить на "" для активации. */
+  position: absolute; /* Позиционирует слой относительно .site-header. */
+  inset: 0; /* Растягивает слой на всю площадь шапки. */
+  pointer-events: none; /* Не блокирует клики по меню. */
+  z-index: 0; /* Размещает слой ниже содержимого шапки. */
+}
+
+/* Внутренний контейнер шапки: бренд слева, действия справа. */
+.site-header .container {
+  position: relative; /* Создает контекст поверх псевдо-слоя. */
+  z-index: 1; /* Размещает контент над ::before. */
+  display: flex; /* Выстраивает элементы в горизонтальный ряд. */
+  gap: 24px; /* Расстояние между основными блоками шапки. */
+  align-items: center; /* Вертикальное выравнивание по центру. */
+  justify-content: space-between; /* Разводит блоки по краям. */
+  padding: 0; /* Убирает внутренние отступы контейнера. */
+}
+
+/* Ссылка-бренд в шапке. */
+.brand {
+  font-weight: 700; /* Делает бренд визуально акцентным. */
+  color: var(--header-text-color); /* Синхронизирует цвет с темой шапки. */
+  text-decoration: none; /* Убирает стандартное подчеркивание ссылки. */
+}
+
+/* Контейнер основных пунктов навигации. */
+.main-nav {
+  display: flex; /* Размещает ссылки меню в ряд. */
+  flex-wrap: wrap; /* Переносит пункты на новую строку при нехватке ширины. */
+  gap: 0; /* Зазор контролируется padding самих ссылок. */
+}
+
+/* Группа действий в правой части шапки (навигация + языки). */
+.header-actions {
+  display: flex; /* Строит горизонтальную группу действий. */
+  align-items: center; /* Выравнивает элементы по центру по вертикали. */
+  gap: 10px; /* Отступ между меню и переключателем языка. */
+}
+
+/* Ссылка основного меню в шапке. */
+.main-nav a {
+  text-decoration: none; /* Убирает underline в обычном состоянии. */
+  color: var(--header-text-color); /* Цвет текста ссылки. */
+  padding: 20px 10px; /* Увеличивает кликабельную область ссылки. */
+  border: 1px solid transparent; /* Резервирует место под рамку hover. */
+}
+
+/* Hover-состояние ссылок меню. */
+.main-nav a:hover {
+  border-color: var(--header-link-hover-border-color); /* Подсвечивает границу при наведении. */
+  background-color: var(--header-link-hover-color); /* Добавляет легкую подложку при наведении. */
+}
+
+/* Корневой элемент выпадающего переключателя языка. */
+.lang-switcher {
+  position: relative; /* Нужен для абсолютного позиционирования меню. */
+}
+
+/* Кнопка-триггер раскрытия списка языков. */
+.lang-switcher__trigger {
+  list-style: none; /* Убирает маркер summary/details. */
+  cursor: pointer; /* Показывает кликабельность. */
+  width: 60px; /* Ширина зоны триггера. */
+  height: 60px; /* Высота зоны триггера. */
+  display: inline-flex; /* Использует flex для иконки и стрелки. */
+  align-items: center; /* Центрирует содержимое по вертикали. */
+  justify-content: center; /* Центрирует содержимое по горизонтали. */
+  gap: 4px; /* Отступ между иконкой и стрелкой. */
+  border-radius: 1px; /* Легкое скругление углов триггера. */
+}
+
+/* Hover-состояние триггера языков. */
+.lang-switcher__trigger:hover {
+  border-color: var(--header-link-hover-border-color); /* Цвет рамки при наведении. */
+  background-color: var(--header-link-hover-color); /* Фон при наведении. */
+  border: 1px solid var(--line); /* Явная рамка вокруг триггера. */
+}
+
+/* Скрывает встроенный маркер details в WebKit-браузерах. */
+.lang-switcher__trigger::-webkit-details-marker {
+  display: none; /* Полностью отключает дефолтный треугольник. */
+}
+
+/* Иконка языка (через CSS mask). */
+.lang-switcher__icon {
+  width: 26px; /* Ширина иконки языка. */
+  height: 26px; /* Высота иконки языка. */
+  display: inline-block; /* Делает span блочным инлайн-элементом. */
+  background-color: var(--header-text-color); /* Цвет силуэта иконки. */
+  -webkit-mask-image: var(--lang-switch-icon); /* Маска иконки для WebKit. */
+  -webkit-mask-size: contain; /* Вписывает маску без обрезки. */
+  -webkit-mask-repeat: no-repeat; /* Не повторяет маску. */
+  -webkit-mask-position: center; /* Центрирует маску внутри элемента. */
+  mask-image: var(--lang-switch-icon); /* Маска иконки для стандартных браузеров. */
+  mask-size: contain; /* Вписывает маску без обрезки. */
+  mask-repeat: no-repeat; /* Не повторяет маску. */
+  mask-position: center; /* Центрирует маску внутри элемента. */
+}
+
+/* Стрелка состояния раскрытия списка языков. */
+.lang-switcher__arrow {
+  width: 8px; /* Ширина стрелки. */
+  height: 8px; /* Высота стрелки. */
+  border-right: 2px solid var(--header-text-color); /* Правая грань стрелки. */
+  border-bottom: 2px solid var(--header-text-color); /* Нижняя грань стрелки. */
+  transform: rotate(45deg) translateY(-1px); /* Поворот в вид закрытого dropdown. */
+  transition: transform 0.2s ease; /* Плавная анимация поворота. */
+}
+
+/* Вид стрелки в открытом состоянии details. */
+.lang-switcher[open] .lang-switcher__arrow {
+  transform: rotate(-135deg) translateY(-1px); /* Разворачивает стрелку вверх. */
+}
+
+/* Выпадающее меню выбора языка. */
+.lang-switcher__menu {
+  position: absolute; /* Выводит меню поверх потока, относительно .lang-switcher. */
+  top: calc(100% + 1px); /* Располагает меню сразу под триггером. */
+  right: 0; /* Прижимает меню к правому краю триггера. */
+  margin: 0; /* Убирает стандартные внешние отступы списка. */
+  padding: 4px; /* Внутренний отступ контейнера меню. */
+  min-width: 60px; /* Минимальная ширина меню под двухбуквенные коды языка. */
+  list-style: none; /* Убирает маркеры списка. */
+  border: 1px solid var(--line); /* Граница выпадающего меню. */
+  border-radius: 4px; /* Скругление углов меню. */
+  background: rgba(255, 255, 255, 0.15); /* Полупрозрачный фон меню. */
+  z-index: 10; /* Поднимает меню над соседними элементами. */
+}
+
+/* Вертикальный интервал между пунктами меню языков. */
+.lang-switcher__menu li + li {
+  margin-top: 4px; /* Добавляет отступ только между соседними пунктами. */
+}
+
+/* Ссылка-пункт внутри меню выбора языка. */
+.lang-switcher__menu a {
+  display: block; /* Растягивает ссылку на всю ширину пункта. */
+  text-align: center; /* Центрирует подпись языка. */
+  text-decoration: none; /* Убирает underline. */
+  color: var(--text-head); /* Цвет текста пункта меню. */
+  padding: 6px 8px; /* Кликабельная зона внутри пункта. */
+  border-radius: 4px; /* Скругление hover-подложки. */
+}
+
+/* Hover-состояние пунктов в меню языков. */
+.lang-switcher__menu a:hover {
+  background: rgba(255, 255, 255, 0.25); /* Усиливает фон выбранного пункта. */
+  color: var(--text-head); /* Сохраняет читаемый цвет текста. */
+}
+
+/* Адаптация шапки для планшетной и мобильной ширины. */
+@media (max-width: 920px) {
+  .header-actions {
+    width: 100%; /* Растягивает блок действий на всю строку. */
+    justify-content: space-between; /* Разводит меню и языковой переключатель по краям. */
+  }
+}
