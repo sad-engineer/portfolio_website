@@ -9,6 +9,7 @@ from fastapi.templating import Jinja2Templates
 from portfolio.config import Settings
 
 PLACEHOLDER_RE = re.compile(r"\{\{([A-Za-z0-9_]+)\}\}")
+PERIOD_START_RE = re.compile(r"^\s*(\d{2})\.(\d{4})\s*")
 
 
 def _replace_placeholders(data: object, values: dict[str, str]) -> object:
@@ -40,10 +41,35 @@ def _build_template_values(settings: Settings) -> dict[str, str]:
         key: str(value) for key, value in locale_values.items()
     }
 
-    start_date_str = values.get("EXPERIENCE_START_DATE")
-    if start_date_str:
-        start_date = date.fromisoformat(start_date_str)
-        values["EXPERIENCE_DAYS"] = str((date.today() - start_date).days)
+    work_places_path = settings.content_dir / "work_places.json"
+    with work_places_path.open("r", encoding="utf-8-sig") as file:
+        work_places_payload = json.load(file)
+
+    start_dates: list[date] = []
+    for item in work_places_payload.get("items", []):
+        period = str(item.get("period", ""))
+        period_start = period.split("-", 1)[0].strip()
+        period_start_match = PERIOD_START_RE.match(period_start)
+        if not period_start_match:
+            continue
+
+        month = int(period_start_match.group(1))
+        year = int(period_start_match.group(2))
+        if month < 1 or month > 12:
+            continue
+
+        start_dates.append(date(year, month, 1))
+
+    if start_dates:
+        earliest_start_date = min(start_dates)
+        values["EXPERIENCE_DAYS"] = str(
+            (date.today() - earliest_start_date).days
+        )
+    else:
+        start_date_str = values.get("EXPERIENCE_START_DATE")
+        if start_date_str:
+            start_date = date.fromisoformat(start_date_str)
+            values["EXPERIENCE_DAYS"] = str((date.today() - start_date).days)
 
     return values
 

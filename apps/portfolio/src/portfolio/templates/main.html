@@ -1,14 +1,15 @@
 {% extends "base.html" %}
-{% set page_title = "Главная" %}
+{% set page_title = basic_locale.pages.home.title %}
 {% set page_id = "page-main" %}
 {% set show_feedback = false %}
 {% set hero_locale = main_locale.hero %}
 {% set direction_locale = main_locale.direction %}
+{% set info_banner_locale = main_locale.get('info_banner', {}) %}
 
 {% block content %}
 <section class="hero">
     <div class="hero-main">
-        <h1>{{ hero_locale.get('lead', '') }}</h1>
+        <h1 class="section-head">{{ hero_locale.get('lead', '') }}</h1>
         <p class="lead">{{ direction_locale.get('lead', '') }}</p>
         <section class="grid">
             {% for card in direction_locale.get('cards', []) %}
@@ -20,4 +21,8 @@
         {{ hero_locale.get('photoPlaceholderText', '') }}
     </div>
 </section>
+{% if info_banner_locale %}
+{% include "partials/info_banner.html" %}
+<script src="{{ url_for('static', path='js/info-banner.js') }}"></script>
+{% endif %}
 {% endblock %}

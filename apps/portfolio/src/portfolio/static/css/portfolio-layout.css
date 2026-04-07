@@ -2,7 +2,10 @@
 @import url("./base.css");                      /* Базовые переменные, reset и универсальные стили. */
 @import url("./components/cards.css");          /* Компонент карточек и их фоновых режимов. */
 @import url("./components/header.css");         /* Компонент шапки и переключателя языка. */
+@import url("./components/dropdown.css");       /* Универсальный компонент выпадающего меню. */
+@import url("./components/navigation.css");     /* Компонент основной и мобильной навигации. */
 @import url("./components/footer.css");         /* Компонент нижней полосы и футера. */
 @import url("./components/feedback.css");       /* Компонент формы обратной связи. */
+@import url("./components/info-banner.css");    /* Переиспользуемый информационный баннер. */
 @import url("./components/technologies.css");   /* Компоненты технологических плиток и профильных секций. */
 @import url("./pages/main.css");                /* Страничные стили главной страницы. */
