@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ page_title }} | Портфолио</title>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', path='assets/img/favicon.ico') }}" />
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', path='assets/icons/site_icon.svg') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', path='assets/icons/site_icon.svg') }}" />
+    <link rel="apple-touch-icon" href="{{ url_for('static', path='assets/icons/site_icon.svg') }}" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.15.1/devicon.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', path='css/portfolio-layout.css') }}" />
@@ -13,14 +15,26 @@
     <header class="site-header {{ page_id | default('page-default') }}">
         <div class="container">
             <a class="brand" href="/main">{{ content.main.hero.firstName }} {{ content.main.hero.lastName }}</a>
-            <nav class="main-nav">
-                <a href="/constructor">Конструктор</a>
-                <a href="/technologist">Технолог</a>
-                <a href="/planner">Планировщик</a>
-                <a href="/developer">IT-Разработчик</a>
-                <a href="/work_places">Места работы</a>
-                <a href="/education">Образование</a>
-            </nav>
+            <div class="header-actions">
+                <nav class="main-nav">
+                    <a href="/constructor">Конструктор</a>
+                    <a href="/technologist">Технолог</a>
+                    <a href="/planner">Планировщик</a>
+                    <a href="/developer">IT-Разработчик</a>
+                    <a href="/work_places">Места работы</a>
+                    <a href="/education">Образование</a>
+                </nav>
+                <details class="lang-switcher">
+                    <summary class="lang-switcher__trigger" aria-label="Переключатель языка">
+                        <span class="lang-switcher__icon" style="--lang-switch-icon: url('{{ url_for('static', path='assets/icons/language switch.svg') }}');" aria-hidden="true"></span>
+                        <span class="lang-switcher__arrow" aria-hidden="true"></span>
+                    </summary>
+                    <ul class="lang-switcher__menu">
+                        <li><a href="{{ request.url.include_query_params(lang='ru') }}">RU</a></li>
+                        <li><a href="{{ request.url.include_query_params(lang='en') }}">EN</a></li>
+                    </ul>
+                </details>
+            </div>
         </div>
     </header>
 
@@ -54,12 +68,26 @@
     </section>
     {% endif %}
 
-    <footer class="site-footer">
-        <div class="container">
-            <a href="/polzovatelskoe-soglashenie">Пользовательское соглашение</a>
-            <span>•</span>
-            <a href="/politika-konfidencialnosti">Политика конфиденциальности</a>
+    <div class="site-bottom-strip">
+        <div class="container site-bottom-strip__inner">
+            <div class="site-bottom-social" aria-label="Социальные сети">
+                {% for item in content.main.social %}
+                {% set icon_lc = item.icon|lower %}
+                {% set is_asset_icon = ('/' in item.icon) or icon_lc.endswith('.svg') or icon_lc.endswith('.png') or icon_lc.endswith('.jpg') or icon_lc.endswith('.jpeg') or icon_lc.endswith('.webp') or icon_lc.endswith('.gif') %}
+                <a class="site-social-link" href="{{ item.url }}" {% if item.url.startswith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                    {% if is_asset_icon %}
+                    <img class="site-social-link__img" src="{{ url_for('static', path=item.icon) }}" alt="" width="22" height="22" decoding="async" />
+                    {% else %}
+                    <i class="{{ item.icon }}" aria-hidden="true"></i>
+                    {% endif %}
+                </a>
+                {% endfor %}
+            </div>
+            <div class="site-bottom-legal">
+                {{ content.main.hero_bottom_legal | safe }}
+            </div>
         </div>
-    </footer>
+    </div>
+
 </body>
 </html>

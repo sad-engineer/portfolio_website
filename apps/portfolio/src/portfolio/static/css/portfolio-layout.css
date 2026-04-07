@@ -116,6 +116,13 @@ body {
   gap: 0px;           /* Отступы между элементами в меню */
 }
 
+/* настройки секции header-actions в шаблоне base.html */
+.header-actions {
+  display: flex;                               /* отображение для контейнера */
+  align-items: center;                         /* Выравнивание элементов по центру */
+  gap: 10px;                                   /* Отступы между элементами в контейнере */
+}
+
 /* Стили для ссылок в основном меню */
 .main-nav a {
   text-decoration: none;            /* Убирает подчеркивание для ссылок в меню */
@@ -130,11 +137,182 @@ body {
   background-color: var(--header-link-hover-color);  /* Цвет фона ссылки при наведении */
 }
 
+/* настройки секции переключателя языка в шаблоне base.html */
+.lang-switcher {
+  position: relative;                           /* позиционирование для переключателя */
+  
+}
+
+/* настройки триггера переключателя языка в шаблоне base.html */
+.lang-switcher__trigger {
+  list-style: none;                             /* убирает маркеры списка */
+  cursor: pointer;                              /* курсор при наведении */
+  width: 60px;                                  /* ширина триггера */
+  height: 60px;                                 /* высота триггера */
+  display: inline-flex;                         /* отображение для триггера */
+  align-items: center;                          /* Выравнивание элементов по центру */
+  justify-content: center;                      /* Выравнивание элементов по центру */
+  gap: 4px;                                     /* Отступы между элементами в триггере */
+  border-radius: 1px;                           /* закругление углов триггера */
+}
+
+/* настройки триггера переключателя языка при наведении в шаблоне base.html */
+.lang-switcher__trigger:hover {
+  border-color: var(--header-link-hover-border-color);   /* Цвет рамки ссылок меню при наведении */
+  background-color: var(--header-link-hover-color);  /* Цвет фона ссылки при наведении */
+  border: 1px solid var(--line);                /* цвет рамки триггера */
+
+}
+
+/* настройки маркера переключателя языка в шаблоне base.html */
+.lang-switcher__trigger::-webkit-details-marker {
+  display: none;                                  /* убирает маркеры списка */
+}
+
+/* настройки иконки переключателя языка в шаблоне base.html */
+.lang-switcher__icon {
+  width: 26px;                                    /* ширина иконки */
+  height: 26px;                                   /* высота иконки */
+  display: inline-block;                          /* отображение для иконки */
+  background-color: var(--header-text-color);     /* цвет иконки */
+  -webkit-mask-image: var(--lang-switch-icon);    /* маска для иконки */
+  -webkit-mask-size: contain;                     /* размер маски */
+  -webkit-mask-repeat: no-repeat;                  /* повтор маски */
+  -webkit-mask-position: center;                  /* позиция маски */
+  mask-image: var(--lang-switch-icon);             /* маска для иконки */
+  mask-size: contain;                              /* размер маски */
+  mask-repeat: no-repeat;                          /* повтор маски */
+  mask-position: center;                           /* позиция маски */
+}
+
+/* настройки стрелки переключателя языка в шаблоне base.html */
+.lang-switcher__arrow {
+  width: 8px;                                      /* ширина стрелки */
+  height: 8px;                                     /* высота стрелки */
+  border-right: 2px solid var(--header-text-color); /* цвет правой стороны стрелки */
+  border-bottom: 2px solid var(--header-text-color); /* цвет нижней стороны стрелки */
+  transform: rotate(45deg) translateY(-1px);        /* поворот стрелки */
+  transition: transform 0.2s ease;                   /* анимация поворота стрелки */
+}
+
+/* настройки стрелки переключателя языка при открытии в шаблоне base.html */
+.lang-switcher[open] .lang-switcher__arrow {
+  transform: rotate(-135deg) translateY(-1px);     /* поворот стрелки */
+}
+
+/* настройки меню переключателя языка в шаблоне base.html */
+.lang-switcher__menu {
+  position: absolute;                             /* позиционирование для меню */
+  top: calc(100% + 1px);                          /* расстояние от триггера до меню */
+  right: 0;                                       /* расположение меню справа */
+  margin: 0;                                      /* отступы для меню */
+  padding: 4px;                                   /* внутренние отступы меню */
+  min-width: 60px;                                /* минимальная ширина меню */
+  list-style: none;                               /* убирает маркеры списка */
+  border: 1px solid var(--line);                  /* цвет рамки меню */
+  border-radius: 6px;                             /* закругление углов меню */
+  background: rgba(255, 255, 255, 0.15);         /* полупрозрачный фон меню */
+  z-index: 10;                                    /* z-index для меню */
+  border-radius: 4px;                             /* закругление углов меню */
+}
+
+/* настройки элементов меню переключателя языка в шаблоне base.html */
+.lang-switcher__menu li + li {
+  margin-top: 4px;                                /* отступ между элементами меню */
+}
+
+/* настройки стороки в меню переключателя языка в шаблоне base.html */
+.lang-switcher__menu a {
+  display: block;                                  /* отображение для строки */
+  text-align: center;                              /* текст по центру */
+  text-decoration: none;                           /* убрает подчеркивание для строки */
+  color: var(--text-head);                              /* цвет текста строки */
+  padding: 6px 8px;                                /* внутренние отступы строки */
+  border-radius: 4px;                              /* закругление углов строки */
+}
+
+/* настройки ссылки в меню переключателя языка при наведении в шаблоне base.html */
+.lang-switcher__menu a:hover {
+  background: rgba(255, 255, 255, 0.25);         /* фон строки при наведении */
+  color: var(--text-head);                             /* цвет текста строки */
+}
+
+/* Соцсети + юридический текст: base.html, внутри .container (на всех страницах) */
+.site-bottom-strip {
+  padding: 20px 0 8px;  /* Отступы сверху/снизу и слева/справа */
+}
+
+/* настройки секции site-bottom-strip в шаблоне base.html */
+.site-bottom-strip__inner {
+  display: flex;                                 /* отображение для контейнера */
+  flex-direction: row;                           /* Направление flex-контейнера */
+  align-items: flex-start;                       /* Выравнивание элементов по верхнему краю */
+  gap: 16px 16px;                                /* Отступы между элементами в контейнере */
+}
+
+/* настройки секции иконок социальных сетей в шаблоне base.html */
+.site-bottom-social {
+  flex: 0 0 295px;                                /* flex-контейнер не растягивается */
+  width: 295px;                                   /* ширина контейнера */
+  max-width: 295px;                               /* максимальная ширина контейнера */
+  display: flex;                                  /* отображение для контейнера */
+  flex-wrap: wrap;                                /* перенос элементов на новую строку */
+  gap: 6px;                                       /* Отступы между элементами в контейнере */
+  align-items: center;                            /* Выравнивание элементов по центру */
+}
+
+/* настройки поля для иконки социальной сети в шаблоне base.html */
+.site-social-link {
+  display: inline-flex;                           /* отображение для ссылки */
+  align-items: center;                            /* Выравнивание элементов по центру */
+  justify-content: center;                        /* Выравнивание элементов по центру */
+  width: 2.5rem;                                  /* ширина ссылки */
+  height: 2.5rem;                                 /* высота ссылки */
+  border-radius: 6px;                             /* закругление углов ссылки */
+  background: var(--surface);                     /* цвет фона ссылки */
+  border: 1px solid var(--line);                  /* цвет рамки ссылки */
+  color: var(--text-dark);                        /* цвет текста ссылки */
+  text-decoration: none;                          /* убрает подчеркивание для ссылки */
+  opacity: 0.75;                                  /* прозрачность ссылки */
+}
+
+/* настройки ссылки социальной сети при наведении в шаблоне base.html */
+.site-social-link:hover {
+  opacity: 0.9;                                   /* прозрачность ссылки при наведении */
+}
+
+/* настройки изображения социальной сети в шаблоне base.html */
+.site-social-link__img {
+  width: 1.5rem;                                  /* ширина изображения */
+  height: 1.5rem;                                 /* высота изображения */
+  object-fit: contain;                            /* обрезка изображения */
+  display: block;
+  pointer-events: none;
+}
+
+/* настройки секции юридического текста в шаблоне base.html */
+.site-bottom-legal {
+  flex: 1;                                        /* flex-контейнер не растягивается */
+  min-width: 0;                                   /* минимальная ширина контейнера */
+  font-size: 0.82rem;                              /* размер текста */
+  line-height: 1.5;                                /* межстрочный интервал */
+  color: var(--muted);                             /* цвет текста */
+}
+
+/* настройки ссылки на страницу соглашения в шаблоне base.html */
+.site-bottom-legal a {
+  color: var(--muted);                         /* цвет текста ссылки */
+  text-decoration: underline;                     /* подчеркивание ссылки */
+}
+
+/* настройки ссылки на страницу соглашения при наведении в шаблоне base.html */
+.site-bottom-legal a:hover {
+  color: var(--banner);                            /* цвет текста ссылки при наведении */
+  text-decoration: none;                          /* убрает подчеркивание ссылки при наведении */
+}
 
 /* ===================================================================================================== */
 /* настройки страницы main.html */
-
-
 /* настройки секции hero в шаблоне main.html */
 .hero {
   display: grid;                                /* Сетка для основного контента (по умолчанию grid) */
@@ -208,7 +386,7 @@ body {
 /* настройки карточки в секции hero в шаблоне main.html */  
 .grid > .card {
   width: 295px;               /* Ширина карточки  */
-  height: 350px;              /* Высота карточки  */
+  height: 295px;              /* Высота карточки  */
   display: flex;              /* Контейнер для карточки  */
   flex-direction: column;     /* Направление flex-контейнера  */
   justify-content: center;    /* Выравнивание элементов по центру */
@@ -588,6 +766,21 @@ body {
 @media (max-width: 920px) {
   .hero {
     grid-template-columns: 1fr;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .site-bottom-strip__inner {
+    flex-direction: column;
+  }
+
+  .site-bottom-social {
+    flex: none;
+    width: 100%;
+    max-width: none;
   }
 
   .grid,

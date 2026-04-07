@@ -11,12 +11,14 @@
       }
     },
     "social": [
-      { "icon": "fa-brands fa-github", "url": "{{GITHUB_URL}}" },
-      { "icon": "fa-brands fa-telegram", "url": "{{TELEGRAM_URL}}" },
-      { "icon": "fa-brands fa-profi", "url": "{{PROFI_RU_URL}}" },
-      { "icon": "fa-brands fa-hh", "url": "{{HH_RU_URL}}" },
-      { "icon": "fa-brands fa-freelance", "url": "{{FREELANCE_RU_URL}}" }
+      { "icon": "assets/icons/github.svg", "url": "{{GITHUB_URL}}" },
+      { "icon": "assets/icons/telegram.svg", "url": "{{TELEGRAM_URL}}" },
+      { "icon": "assets/icons/profi.ru.png", "url": "{{PROFI_RU_URL}}" },
+      { "icon": "assets/icons/hh.svg", "url": "{{HH_RU_URL}}" },
+      { "icon": "assets/icons/fl.svg", "url": "{{FREELANCE_RU_URL}}" },
+      { "icon": "assets/icons/email.svg", "url": "mailto:{{EMAIL}}" }
     ],
+    "hero_bottom_legal": "{{shortFIO}} (ИИН — {{INN}}) Россия © 2026. Разработка и дизайн сайта — <a href=\"/\">{{firstName}} {{lastName}}</a>. Частная собственность, защищенная правообладателем. Копирование запрещено. <a href=\"/polzovatelskoe-soglashenie\">Соглашение</a>",
     "direction":{
       "lead": "Выберите направление, в котором я вам интересен",
       "directions": [
@@ -39,8 +41,6 @@
           "Выберите направление, в котором я вам интересен": "Choose the direction you are interested in"
         }
       }
-    },
-    "footer": "{{shortFIO}} (ИИН — {{INN}}) Россия © 2026. Разработка и дизайн сайта — {{shortFIO}}. Частная собственность, защищенная правообладателем. Копирование запрещено. <a href=\"/soglashenie\">Соглашение</a>"
-
+    }
   }
   
