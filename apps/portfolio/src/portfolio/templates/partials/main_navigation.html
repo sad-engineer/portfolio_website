@@ -1,0 +1,9 @@
+<nav class="main-nav">
+    {% for item in main_nav_locale.get('items', []) %}
+    <a href="{{ item.href }}">{{ item.label }}</a>
+    {% endfor %}
+</nav>
+{% set dropdown_class = "nav-dropdown" %}
+{% set dropdown_aria_label = basic_locale.ui.mobileMenuAriaLabel %}
+{% set dropdown_items = main_nav_locale.get('items', []) %}
+{% include "partials/dropdown_menu.html" %}

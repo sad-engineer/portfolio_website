@@ -1,0 +1,49 @@
+/* Токены поля выпадающего списка: контейнер и строки меню. */
+:root {
+  --dropdown-text-color: var(--text); /* Цвет текста пунктов выпадающего списка. */
+  --dropdown-border-color: var(--line); /* Цвет границы поля выпадающего списка. */
+  --dropdown-hover-bg-color: rgba(255, 255, 255, 0.2); /* Подложка пункта при наведении. */
+  --dropdown-menu-bg-color: var(--bg); /* Фон поля выпадающего списка в цвет фона сайта. */
+  --dropdown-item-padding-block: 8px; /* Вертикальный отступ текста в строках списка. */
+  --dropdown-item-padding-inline: 10px; /* Горизонтальный отступ текста в строках списка. */
+}
+
+/* Корневой элемент универсального выпадающего меню. */
+.dropdown-switcher {
+  position: relative; /* Нужен для абсолютного позиционирования списка меню. */
+  display: none; /* Скрывает dropdown до явного показа в адаптивных правилах. */
+}
+
+/* Выпадающий список пунктов dropdown-меню. */
+.dropdown-switcher__menu {
+  position: absolute; /* Выводит меню поверх потока, относительно .dropdown-switcher. */
+  top: calc(100% + 1px); /* Располагает меню сразу под триггером. */
+  right: 0; /* Прижимает меню к правому краю триггера. */
+  margin: 0; /* Убирает стандартные внешние отступы списка. */
+  padding: 4px; /* Добавляет внутренний отступ контейнера меню. */
+  min-width: 220px; /* Обеспечивает комфортную ширину для пунктов меню. */
+  list-style: none; /* Убирает маркеры списка. */
+  border: 1px solid var(--dropdown-border-color); /* Добавляет видимую границу меню. */
+  border-radius: 4px; /* Скругляет углы меню. */
+  background: var(--dropdown-menu-bg-color); /* Использует цвет фона сайта для меню. */
+  z-index: 10; /* Поднимает меню над соседними элементами. */
+}
+
+/* Вертикальный интервал между пунктами dropdown-меню. */
+.dropdown-switcher__menu li + li {
+  margin-top: 4px; /* Добавляет отступ только между соседними пунктами. */
+}
+
+/* Ссылка-пункт внутри dropdown-меню. */
+.dropdown-switcher__menu a {
+  display: block; /* Растягивает ссылку на всю ширину пункта. */
+  text-decoration: none; /* Убирает подчеркивание ссылки. */
+  color: var(--dropdown-text-color); /* Использует текстовый цвет темы сайта. */
+  padding: var(--dropdown-item-padding-block) var(--dropdown-item-padding-inline); /* Управляет отступами текста в строках через переменные компонента. */
+  border-radius: 4px; /* Скругляет фон hover-состояния. */
+}
+
+/* Hover-состояние пунктов dropdown-меню. */
+.dropdown-switcher__menu a:hover {
+  background-color: var(--dropdown-hover-bg-color); /* Подсвечивает пункт при наведении. */
+}

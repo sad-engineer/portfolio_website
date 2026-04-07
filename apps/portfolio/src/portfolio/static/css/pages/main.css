@@ -2,11 +2,39 @@
 :root {
   --main-hero-column-gap: 5px; /* Отступ между колонками hero-блока. */
   --main-grid-gap: 5px; /* Отступ между карточками направлений. */
-  --main-photo-placeholder-opacity: 0.15; /* Прозрачность подложки placeholder блока фото (0-1). */
-  --main-photo-placeholder-bg: rgba(var(--overlay-light-rgb), var(--main-photo-placeholder-opacity)); /* Фон placeholder на базе глобальной палитры и локальной прозрачности. */
+  --main-photo-placeholder-bg-color: var(--surface-dark); /* Фон placeholder блока фото на базе глобальной палитры. */
+  --main-hero-image-border-color: var(--line); /* Цвет рамки фото в hero-блоке. */
+  --main-photo-placeholder-border-color: var(--line); /* Цвет рамки placeholder фото. */
+  --main-photo-placeholder-text-color: var(--muted); /* Цвет текста placeholder фото. */
+  --main-card-glint-color: var(--surface); /* Базовый цвет полосы блика на карточке. */
   --card-text-color: var(--text-dark); /* Цвет основных линий/контента карточек на главной. */
-  --card-bg-opacity: 0.75; /* Прозрачность фона карточек на главной (0-1). */
-  --card-bg-color: var(--surface); /* Базовый цвет фона карточек на главной. */
+  --card-bg-opacity: 1; /* Непрозрачность карточки на главной, чтобы блик не приглушался родительским opacity. */
+  --card-bg-color: var(--surface); /* Базовый цвет карточек главной (без прозрачности). */
+  --main-card-bg-alpha: 0.75; /* Прозрачность фона карточек главной (0-1). */
+  --main-lead-to-cards-gap: 26px; /* Отступ между lead-подзаголовком и сеткой карточек. */
+  --main-header-reserve-height: 74px; /* Резерв высоты под шапку сайта. */
+  --main-bottom-reserve-height: 56px; /* Резерв высоты под нижнюю полосу (соцсети + legal). */
+  --main-info-banner-reserve-height: 130px; /* Резерв высоты под info-banner, чтобы первый экран помещался без прокрутки. */
+  --main-section-head-enter-duration: 700ms; /* Длительность анимации выезда заголовка. */
+  --main-section-head-enter-delay: 150ms; /* Задержка перед стартом анимации. */
+  --main-section-head-enter-distance: 42px; /* Стартовое смещение заголовка по Y. */
+  --main-section-head-enter-easing: cubic-bezier(0.22, 1, 0.36, 1); /* Плавная кривая движения заголовка. */
+  --main-card-glint-duration: 620ms; /* Длительность пробега блика по одной карточке. */
+  --main-card-glint-step-delay: 180ms; /* Задержка между стартами блика на соседних карточках. */
+  --main-card-glint-opacity: 1; /* Непрозрачность белой полосы блика. */
+  --main-card-glint-angle: -18deg; /* Угол наклона полосы блика. */
+  --main-card-glint-width: 56%; /* Ширина полосы блика для более заметного пробега. */
+  --main-mobile-inline-padding: 12px; /* Горизонтальный отступ контента на экранах <= 920px. */
+  --main-mobile-head-line-height: 1.1; /* Межстрочный интервал заголовка на узких экранах. */
+  --main-mobile-lead-line-height: 1.2; /* Межстрочный интервал подзаголовка на узких экранах. */
+  --main-mobile-head-to-lead-gap: 12px; /* Минимальный отступ между заголовком и подзаголовком на узких экранах. */
+}
+
+/* Контейнер главной страницы: растягивает рабочую область по высоте экрана. */
+.page-content.page-main {
+  display: flex; /* Включает вертикальный layout внутри главной страницы. */
+  flex-direction: column; /* Выстраивает секции главной сверху вниз. */
+  min-height: 0; /* Разрешает корректно рассчитывать высоту внутренних flex/grid блоков. */
 }
 
 /* Главный hero-блок страницы: текст слева, фото/placeholder справа. */
@@ -15,14 +43,39 @@
   grid-template-columns: minmax(0, 1fr) 600px; /* Левая колонка гибкая, правая фиксированная. */
   gap: var(--main-hero-column-gap); /* Отступ между двумя колонками hero. */
   align-items: stretch; /* Выравнивает колонки по общей высоте. */
+  height: auto; /* На экранах ниже 1080px сохраняет естественную высоту контента и прокрутку страницы. */
+  min-height: 0; /* Разрешает корректное сжатие контента в flex-контексте. */
 }
 
 /* Левая колонка hero с заголовком и карточками направлений. */
 .hero-main {
-  display: grid; /* Формирует вертикальную сетку внутренних блоков. */
-  gap: 60px; /* Крупный вертикальный отступ между заголовком и карточками. */
+  display: grid; /* Формирует управляемую вертикальную сетку контентных зон. */
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr) auto auto; /* Две растяжимые зоны вокруг section-head, затем lead и карточки. */
+  gap: 0; /* Управляет отступами точечно у конкретных блоков. */
   padding-top: 20px; /* Верхний отступ колонки от начала секции. */
   color: var(--text-head); /* Базовый цвет текста внутри левой колонки. */
+  min-height: 0; /* Разрешает растяжение/сжатие колонки в сетке hero. */
+}
+
+/* Заголовок секции на главной: центр в растягиваемом вертикальном пространстве. */
+.hero-main .section-head {
+  grid-row: 2; /* Явно ставит section-head во вторую строку сетки. */
+  margin: 0; /* Убирает внешние отступы заголовка для точного позиционирования. */
+  align-self: center; /* Центрирует заголовок внутри своей строковой зоны. */
+  font-size: 3rem; /* Размер заголовка. */
+  will-change: transform, opacity; /* Оптимизирует рендер для анимируемых свойств. */
+  animation-name: main-section-head-enter-up; /* Подключает анимацию выезда текста вверх. */
+  animation-duration: var(--main-section-head-enter-duration); /* Устанавливает длительность анимации. */
+  animation-delay: var(--main-section-head-enter-delay); /* Добавляет короткую задержку старта. */
+  animation-timing-function: var(--main-section-head-enter-easing); /* Задает плавность движения. */
+  animation-fill-mode: both; /* Сохраняет начальное и конечное состояние анимации. */
+}
+
+/* Lead-подзаголовок: прижимается к карточкам снизу. */
+.hero-main .lead {
+  grid-row: 4; /* Явно ставит lead в строку перед карточками. */
+  margin: 0 0 var(--main-lead-to-cards-gap) 0; /* Минимальный отступ до сетки карточек. */
+  align-self: end; /* Прижимает lead к нижней границе своей строковой зоны. */
 }
 
 /* Фото в правой колонке hero (если фото доступно). */
@@ -30,31 +83,114 @@
   width: 100%; /* Растягивает фото на ширину колонки. */
   height: 100%; /* Растягивает фото на высоту колонки. */
   max-width: 100%; /* Запрещает выход за пределы контейнера по ширине. */
-  border: 1px solid var(--line); /* Тонкая рамка вокруг фото. */
+  border: 1px solid var(--main-hero-image-border-color); /* Тонкая рамка вокруг фото. */
   object-fit: cover; /* Кадрирует фото без искажения пропорций. */
 }
 
 /* Placeholder вместо фото, когда изображение еще не задано. */
 .hero-photo-placeholder {
   width: 100%; /* Растягивает placeholder на ширину колонки. */
-  height: 100%; /* Растягивает placeholder на высоту колонки. */
+  height: auto; /* Высота берется из высоты grid-строки, без дополнительного форсирования. */
   max-width: 100%; /* Запрещает выход за контейнер. */
-  border: 1px dashed var(--line); /* Пунктирная рамка как визуальный маркер заглушки. */
+  border: 1px dashed var(--main-photo-placeholder-border-color); /* Пунктирная рамка как визуальный маркер заглушки. */
   border-radius: 6px; /* Скругляет углы placeholder. */
   display: flex; /* Включает flex-центрирование текста. */
   align-items: center; /* Центрирует текст по вертикали. */
   justify-content: center; /* Центрирует текст по горизонтали. */
   text-align: center; /* Центрирует многострочный текст внутри блока. */
-  color: var(--muted); /* Приглушенный цвет текста заглушки. */
-  background: var(--main-photo-placeholder-bg); /* Легкая полупрозрачная подложка. */
+  color: var(--main-photo-placeholder-text-color); /* Приглушенный цвет текста заглушки. */
+  background: var(--main-photo-placeholder-bg-color); /* Подложка заглушки на базе глобальной палитры. */
   padding: 16px; /* Внутренний отступ от рамки до текста. */
+  opacity: 0.3;
 }
 
 /* Сетка карточек направлений на главной странице. */
 .grid {
+  grid-row: 5; /* Явно ставит карточки в нижнюю строку контентной сетки. */
   display: grid; /* Включает grid-раскладку карточек. */
   grid-template-columns: repeat(2, 295px); /* Две колонки фиксированной ширины. */
   gap: var(--main-grid-gap); /* Отступ между карточками. */
+  align-self: end; /* Прижимает блок карточек к нижней части левой колонки. */
+}
+
+/* Карточки главной: подготавливает слой под эффект пробега блика. */
+.page-main .grid > .card {
+  position: relative; /* Создает контекст для псевдо-элемента блика. */
+  overflow: hidden; /* Обрезает полосу блика по границам карточки. */
+  background: color-mix(in srgb, var(--overlay-light) calc(var(--main-card-bg-alpha) * 100%), transparent); /* Собирает итоговый полупрозрачный фон из глобального HEX-цвета и локальной прозрачности. */
+}
+
+/* Полупрозрачная белая полоса блика под углом. */
+.page-main .grid > .card::after {
+  content: ""; /* Создает декоративный слой блика. */
+  position: absolute; /* Выводит блик поверх карточки без влияния на layout. */
+  top: -35%; /* Расширяет полосу выше карточки для диагонального пролета. */
+  left: -55%; /* Стартовая позиция блика за левой границей карточки. */
+  width: var(--main-card-glint-width); /* Ширина полосы блика. */
+  height: 190%; /* Высота полосы для полного перекрытия при наклоне. */
+  background: linear-gradient(to right, transparent 0%, var(--main-card-glint-color) 50%, transparent 100%); /* Градиент полосы с мягкими краями. */
+  opacity: var(--main-card-glint-opacity); /* Полупрозрачность блика. */
+  transform: rotate(var(--main-card-glint-angle)) translateX(-220%); /* Начальная позиция блика до пробега. */
+  pointer-events: none; /* Не перехватывает клики по карточке-ссылке. */
+  will-change: transform, opacity; /* Оптимизирует анимируемые свойства блика. */
+}
+
+/* Последовательный запуск блика по карточкам после анимации section-head. */
+.page-main .grid > .card:nth-child(1)::after {
+  animation: main-card-glint-sweep var(--main-card-glint-duration) linear calc(var(--main-section-head-enter-delay) + var(--main-section-head-enter-duration) + 40ms) 1 both; /* Старт блика первой карточки с постоянной скоростью. */
+}
+
+.page-main .grid > .card:nth-child(2)::after {
+  animation: main-card-glint-sweep var(--main-card-glint-duration) linear calc(var(--main-section-head-enter-delay) + var(--main-section-head-enter-duration) + 40ms + var(--main-card-glint-step-delay)) 1 both; /* Старт блика второй карточки с постоянной скоростью. */
+}
+
+.page-main .grid > .card:nth-child(3)::after {
+  animation: main-card-glint-sweep var(--main-card-glint-duration) linear calc(var(--main-section-head-enter-delay) + var(--main-section-head-enter-duration) + 40ms + (var(--main-card-glint-step-delay) * 2)) 1 both; /* Старт блика третьей карточки с постоянной скоростью. */
+}
+
+.page-main .grid > .card:nth-child(4)::after {
+  animation: main-card-glint-sweep var(--main-card-glint-duration) linear calc(var(--main-section-head-enter-delay) + var(--main-section-head-enter-duration) + 40ms + (var(--main-card-glint-step-delay) * 3)) 1 both; /* Старт блика четвертой карточки с постоянной скоростью. */
+}
+
+/* Анимация выезда текста вверх при загрузке главной страницы. */
+@keyframes main-section-head-enter-up {
+  from {
+    transform: translateY(var(--main-section-head-enter-distance)); /* Старт: заголовок ниже штатной позиции. */
+    opacity: 0; /* Старт: заголовок прозрачный. */
+  }
+  to {
+    transform: translateY(0); /* Финиш: заголовок в своей позиции. */
+    opacity: 1; /* Финиш: заголовок полностью видим. */
+  }
+}
+
+/* Анимация пробега диагонального блика по карточке слева направо. */
+@keyframes main-card-glint-sweep {
+  0% {
+    transform: rotate(var(--main-card-glint-angle)) translateX(-220%); /* Старт блика вне карточки слева. */
+    opacity: 0; /* Плавное появление полосы. */
+  }
+  14% {
+    opacity: var(--main-card-glint-opacity); /* Выводит блик на рабочую видимость. */
+  }
+  86% {
+    opacity: var(--main-card-glint-opacity); /* Держит блик видимым во время пробега. */
+  }
+  100% {
+    transform: rotate(var(--main-card-glint-angle)) translateX(330%); /* Уводит блик за правую границу карточки. */
+    opacity: 0; /* Плавно скрывает блик в конце анимации. */
+  }
+}
+
+/* Системное уменьшение анимации: отключает выезд текста. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-main .section-head {
+    animation: none; /* Отключает анимацию по пользовательским настройкам ОС. */
+  }
+
+  .page-main .grid > .card::after {
+    animation: none; /* Отключает анимацию блика по пользовательским настройкам ОС. */
+  }
 }
 
 /* Альтернативная сетка из двух равных гибких колонок. */
@@ -62,14 +198,130 @@
   grid-template-columns: repeat(2, 1fr); /* Делит ширину контейнера поровну между колонками. */
 }
 
+/* Адаптация отступов и типографики для всех экранов уже 1200px. */
+@media (max-width: 1200px) {
+  .hero-main {
+    padding-top: 16px; /* Сохраняет верхний отступ контента при перестроении в одну колонку. */
+    padding-inline: var(--main-mobile-inline-padding); /* Добавляет отступ слева/справа для заголовка, lead и карточек. */
+  }
+
+  .hero-main .section-head {
+    line-height: var(--main-mobile-head-line-height); /* Добавляет расстояние между строками длинного заголовка. */
+    margin-bottom: var(--main-mobile-head-to-lead-gap); /* Фиксирует минимальный зазор до подзаголовка. */
+  }
+
+  .hero-main .lead {
+    line-height: var(--main-mobile-lead-line-height); /* Добавляет расстояние между строками подзаголовка. */
+    margin: 0 0 var(--main-lead-to-cards-gap) 0; /* Сохраняет отступ снизу до карточек и сбрасывает лишние внешние отступы. */
+  }
+}
+
+/* Перекомпоновка блоков hero в диапазоне 900-1200px. */
+@media (max-width: 1199px) and (min-width: 901px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 600px; /* Делает левую колонку гибкой для карточек, правую фиксирует под фото как на больших экранах. */
+    grid-template-areas:
+      "head head"
+      "lead lead"
+      "cards photo"; /* Выстраивает заголовки в полную ширину, затем карточки слева и фото справа. */
+    align-items: stretch; /* Растягивает элементы по высоте строк для синхронного блока карточки/фото. */
+    height: auto; /* Снимает фиксацию по высоте при перекомпоновке. */
+    padding-inline: var(--main-mobile-inline-padding); /* Возвращает горизонтальные отступы в режиме с display: contents у .hero-main. */
+  }
+
+  .hero-main {
+    display: contents; /* Поднимает section-head/lead/grid на уровень grid-контейнера .hero. */
+  }
+
+  .hero-main .section-head {
+    grid-area: head; /* Размещает заголовок в строке на всю ширину hero. */
+  }
+
+  .hero-main .lead {
+    grid-area: lead; /* Размещает подзаголовок в строке на всю ширину hero. */
+  }
+
+  .hero-main .grid {
+    grid-area: cards; /* Ставит карточки в левую колонку. */
+    grid-template-columns: 1fr; /* Переводит карточки в один столбец. */
+    align-self: stretch; /* Растягивает блок карточек по высоте своей области. */
+  }
+
+  .hero .grid > .card {
+    width: 100%; /* Делает ширину карточек равной ширине левой колонки. */
+  }
+
+  .hero-photo-placeholder,
+  .hero img {
+    grid-area: photo; /* Ставит фото/placeholder в правую колонку. */
+    width: 600px; /* Фиксирует ширину фото-блока как на больших мониторах. */
+    max-width: 600px; /* Не дает расширяться шире фиксированного размера. */
+    height: 100%; /* Растягивает фото-блок на всю высоту области рядом с карточками. */
+    min-height: 100%; /* Не дает фото-блоку схлопнуться при расчете высоты строки. */
+    align-self: stretch; /* Прижимает фото к высоте строки карточек. */
+    justify-self: end; /* Прижимает фото к правому краю своей колонки. */
+  }
+}
+
+/* Компоновка для диапазона 601-900px: фото скрыто, карточки в 2 гибких столбца. */
+@media (max-width: 900px) and (min-width: 601px) {
+  .hero-photo-placeholder,
+  .hero img {
+    display: none; /* Скрывает фото/placeholder, освобождая пространство под контент. */
+  }
+
+  .hero-main .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Формирует 2 колонки карточек с растяжением по ширине контейнера. */
+  }
+
+  .hero .grid > .card {
+    width: 100%; /* Растягивает карточки на всю ширину своей колонки. */
+  }
+}
+
 /* Адаптация hero и карточек под узкие экраны. */
 @media (max-width: 920px) {
   .hero {
     grid-template-columns: 1fr; /* Складывает hero в одну колонку. */
+    height: auto; /* На узких экранах отключает фиксированную высоту hero. */
   }
 
   .grid,
   .grid.two {
     grid-template-columns: 1fr; /* Делает карточки одноколоночными. */
+  }
+}
+
+/* Компоновка для диапазона 0-600px: фото скрыто, карточки в 1 гибкий столбец. */
+@media (max-width: 600px) {
+  .hero-photo-placeholder,
+  .hero img {
+    display: none; /* Скрывает фото/placeholder, оставляя только контентную колонку. */
+  }
+
+  .hero-main .grid {
+    grid-template-columns: 1fr; /* Оставляет карточки в одном столбце. */
+  }
+
+  .hero .grid > .card {
+    width: 100%; /* Растягивает карточку на всю доступную ширину контейнера. */
+  }
+}
+
+/* Для высоких экранов (1079px и выше) вписывает первый экран без прокрутки. */
+@media (min-height: 1079px) {
+  .hero {
+    height: calc(100vh - var(--main-header-reserve-height) - var(--main-bottom-reserve-height) - var(--main-info-banner-reserve-height)); /* Ограничивает hero высотой экрана с учетом шапки, нижней полосы и info-banner. */
+  }
+}
+
+/* Приоритетная коррекция для невысоких экранов: гарантирует видимый зазор между h1 и lead. */
+@media (max-height: 1078px) {
+  .hero-main .section-head {
+    margin-bottom: calc(var(--main-mobile-head-to-lead-gap) + 6px); /* Добавляет гарантированный нижний отступ под заголовком. */
+  }
+
+  .hero-main .lead {
+    margin-top: var(--main-mobile-head-to-lead-gap); /* Добавляет гарантированный верхний отступ над подзаголовком. */
   }
 }

@@ -6,7 +6,7 @@
     "languagesBackgroundImage": "assets/img/backgrounds/languages.png"
   },
   "hero": {
-    "lead": "{{EXPERIENCE_DAYS}} дней\nв инженирии,\nпроектировании,\nи IT-разработке",
+    "lead": "{{EXPERIENCE_DAYS}} дней в инженирии, проектировании и IT-разработке",
     "photoPlaceholderText": "Фото скоро будет",
     "photoPlaceholderAriaLabel": "Фото профиля отсутствует"
   },
@@ -51,6 +51,10 @@
       }
     ]
   },
+  "info_banner": {
+    "title": "Технический специалист высокого уровня в области проектирования и разработки",
+    "description": "Успешно решаю задачи инженерного стека любой сложности с применением современных технологий и высокопроизводительных инструментов. Создаю уникальные решения под конкретные задачи на основе анализа, проектирования, оптимизации процессов и программирования."
+  },
   "i18n": {
     "en": {
       "hero": {
@@ -86,6 +90,10 @@
             "url": "/developer"
           }
         ]
+      },
+      "info_banner": {
+        "title": "Technical specialist of high level in the field of design and development",
+        "description": "Successfully solve engineering tasks of any complexity using modern technologies and high-performance tools. Create unique solutions based on analysis, design, process optimization, and programming."
       }
     }
   }
