@@ -8,7 +8,7 @@ from functools import lru_cache
 from fastapi.templating import Jinja2Templates
 from portfolio.config import Settings
 
-PLACEHOLDER_RE = re.compile(r"\{\{([A-Z0-9_]+)\}\}")
+PLACEHOLDER_RE = re.compile(r"\{\{([A-Za-z0-9_]+)\}\}")
 
 
 def _replace_placeholders(data: object, values: dict[str, str]) -> object:
