@@ -3,87 +3,73 @@
     "language": "ru",
     "locales": ["ru", "en"]
   },
-  "i18n": {
-    "ru": {
-      "navigation": {
-        "items": [
-          {
-            "id": "home",
-            "label": "Главная",
-            "href": "/"
-          },
-          {
-            "id": "inzhener_konstruktor",
-            "label": "Инженер-конструктор",
-            "href": "/inzhener-konstruktor"
-          },
-          {
-            "id": "inzhener_tehnolog",
-            "label": "Инженер-технолог",
-            "href": "/inzhener-tehnolog"
-          },
-          {
-            "id": "proektirovshchik",
-            "label": "Проектировщик",
-            "href": "/proektirovshchik"
-          },
-          {
-            "id": "it_razrabotchik",
-            "label": "IT-разработчик",
-            "href": "/it-razrabotchik"
-          },
-          {
-            "id": "blog",
-            "label": "Блог",
-            "href": "/blog"
-          },
-          {
-            "id": "blog_advertising",
-            "label": "Реклама в блоге",
-            "href": "/blog-advertising"
-          }
-        ]
+  "firstName": "{{firstName}}",
+  "lastName": "{{lastName}}",
+  "email": "{{EMAIL}}",
+  "navigation": {
+    "items": [
+      {
+        "id": "constructor",
+        "label": "Конструктор",
+        "href": "/constructor"
       },
-      "pages": {
-        "home": { "title": "Главная" },
-        "blog": { "title": "Блог" },
-        "inzhener_konstruktor": { "title": "Инженер-конструктор" },
-        "inzhener_tehnolog": { "title": "Инженер-технолог" },
-        "proektirovshchik": { "title": "Проектировщик" },
-        "it_razrabotchik": { "title": "IT-разработчик" },
-        "blog_advertising": { "title": "Реклама в блоге" }
+      {
+        "id": "technologist",
+        "label": "Технолог",
+        "href": "/technologist"
       },
-      "feedback": {
-        "bannerText": "У Вас есть вопрос, на который Вы не нашли ответа? Напишите мне любым способом или закажите звонок ниже. Я постараюсь помочь Вам советом, идеей или ссылкой на статью (книгу) другого автора",
-        "form": {
-          "title": "Позвоните мне",
-          "phoneInputLabel": "Ваш номер",
-          "subtitle": "Куда звонить / писать?",
-          "channelOptions": [
-            { "value": "telegram", "label": "Telegram" },
-            { "value": "whatsapp", "label": "WhatsApp" },
-            { "value": "viber", "label": "Viber" },
-            { "value": "email", "label": "Почта" },
-            { "value": "call", "label": "Звонок" }
-          ],
-          "consentText": "Ставя галочку, даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности",
-          "submitButtonText": "Позвоните мне!"
-        }
+      {
+        "id": "planner",
+        "label": "Проектировщик",
+        "href": "/planner"
       },
-      "links": {
-        "privacyPolicy": {"href": "/politika-konfidencialnosti", "label": "Политика конфиденциальности" },
-        "userAgreement": { "href": "/polzovatelskoe-soglashenie", "label": "Пользовательское соглашение" }
+      {
+        "id": "developer",
+        "label": "IT-разработчик",
+        "href": "/developer"
       }
-    },
+    ]
+  },
+  "pages": {
+    "home": { "title": "Главная" },
+    "blog": { "title": "Блог" },
+    "inzhener_konstruktor": { "title": "Инженер-конструктор" },
+    "inzhener_tehnolog": { "title": "Инженер-технолог" },
+    "proektirovshchik": { "title": "Проектировщик" },
+    "it_razrabotchik": { "title": "IT-разработчик" },
+    "blog_advertising": { "title": "Реклама в блоге" }
+  },
+  "feedback": {
+    "bannerText": "У Вас есть вопрос, на который Вы не нашли ответа? Напишите мне любым способом или закажите звонок ниже. Я постараюсь помочь Вам советом, идеей или ссылкой на статью (книгу) другого автора",
+    "form": {
+      "title": "Позвоните мне",
+      "phoneInputLabel": "Ваш номер",
+      "phoneInputPlaceholder": "+7 (___) ___-__-__",
+      "subtitle": "Куда звонить / писать?",
+      "channelOptions": [
+        { "value": "telegram", "label": "Telegram" },
+        { "value": "whatsapp", "label": "WhatsApp" },
+        { "value": "viber", "label": "Viber" },
+        { "value": "email", "label": "Почта" },
+        { "value": "call", "label": "Звонок" }
+      ],
+      "consentText": "Ставя галочку, даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности",
+      "submitButtonText": "Позвоните мне!"
+    }
+  },
+  "links": {
+    "privacyPolicy": {"href": "/politika-konfidencialnosti", "label": "Политика конфиденциальности" },
+    "userAgreement": { "href": "/polzovatelskoe-soglashenie", "label": "Пользовательское соглашение" }
+  },
+  "hero_bottom_legal": "{{shortFIO}} (ИИН — {{INN}}) Россия © 2026. Разработка и дизайн сайта — <a href=\"/\">{{firstName}} {{lastName}}</a>. Частная собственность, защищенная правообладателем. Копирование запрещено. <a href=\"/polzovatelskoe-soglashenie\">Соглашение</a>",
+  "i18n": {
     "en": {
       "navigation": {
         "items": [
-          { "id": "home", "label": "Home", "href": "/" },
-          { "id": "blog", "label": "Blog", "href": "/blog" },
-          { "id": "inzhener_konstruktor", "label": "Engineering Designer", "href": "/inzhener-konstruktor" },
-          { "id": "proektirovshchik", "label": "Project Planner", "href": "/proektirovshchik" },
-          { "id": "it_razrabotchik", "label": "IT Developer", "href": "/it-razrabotchik" },
-          { "id": "blog_advertising", "label": "Blog Advertising", "href": "/blog-advertising" }
+          { "id": "constructor", "label": "Design", "href": "/constructor" },
+          { "id": "technologist", "label": "Technology", "href": "/technologist" },
+          { "id": "planner", "label": "Planning", "href": "/planner" },
+          { "id": "developer", "label": "IT Development", "href": "/developer" }
         ]
       },
       "pages": {
@@ -99,6 +85,7 @@
         "form": {
           "title": "Call me",
           "phoneInputLabel": "Your phone number",
+          "phoneInputPlaceholder": "+7 (___) ___-__-__",
           "subtitle": "Where to call / write?",
           "channelOptions": [
             { "value": "telegram", "label": "Telegram" },
@@ -114,7 +101,8 @@
       "links": {
         "privacyPolicy": { "href": "/politika-konfidencialnosti", "label": "Privacy Policy" },
         "userAgreement": { "href": "/polzovatelskoe-soglashenie", "label": "User Agreement" }
-      }
+      },
+      "hero_bottom_legal": "{{shortFIO}} (TIN — {{INN}}) Russia © 2026. Website design and development — <a href=\"/\">{{firstName}} {{lastName}}</a>. Private property protected by copyright holder. Copying is prohibited. <a href=\"/polzovatelskoe-soglashenie\">Agreement</a>"
     }
   }
 }

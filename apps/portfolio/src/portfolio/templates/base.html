@@ -1,32 +1,29 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ current_lang }}">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ page_title }} | Портфолио</title>
-    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', path='assets/icons/site_icon.svg') }}" />
-    <link rel="shortcut icon" href="{{ url_for('static', path='assets/icons/site_icon.svg') }}" />
-    <link rel="apple-touch-icon" href="{{ url_for('static', path='assets/icons/site_icon.svg') }}" />
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', path=main_locale.assets.favicon) }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', path=main_locale.assets.favicon) }}" />
+    <link rel="apple-touch-icon" href="{{ url_for('static', path=main_locale.assets.favicon) }}" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.15.1/devicon.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', path='css/portfolio-layout.css') }}" />
 </head>
-<body>
+<body style="--site-bg-image: url('{{ url_for('static', path=main_locale.assets.siteBackgroundImage) }}'); --lang-switch-icon: url('{{ url_for('static', path=main_locale.assets.languageSwitcherIcon) }}'); --languages-bg-image: url('{{ url_for('static', path=main_locale.assets.languagesBackgroundImage) }}');">
     <header class="site-header {{ page_id | default('page-default') }}">
         <div class="container">
-            <a class="brand" href="/main">{{ content.main.hero.firstName }} {{ content.main.hero.lastName }}</a>
+            <a class="brand" href="/main">{{ basic_locale.firstName }} {{ basic_locale.lastName }}</a>
             <div class="header-actions">
                 <nav class="main-nav">
-                    <a href="/constructor">Конструктор</a>
-                    <a href="/technologist">Технолог</a>
-                    <a href="/planner">Планировщик</a>
-                    <a href="/developer">IT-Разработчик</a>
-                    <a href="/work_places">Места работы</a>
-                    <a href="/education">Образование</a>
+                    {% for item in main_nav_locale.get('items', []) %}
+                    <a href="{{ item.href }}">{{ item.label }}</a>
+                    {% endfor %}
                 </nav>
                 <details class="lang-switcher">
                     <summary class="lang-switcher__trigger" aria-label="Переключатель языка">
-                        <span class="lang-switcher__icon" style="--lang-switch-icon: url('{{ url_for('static', path='assets/icons/language switch.svg') }}');" aria-hidden="true"></span>
+                        <span class="lang-switcher__icon" aria-hidden="true"></span>
                         <span class="lang-switcher__arrow" aria-hidden="true"></span>
                     </summary>
                     <ul class="lang-switcher__menu">
@@ -45,24 +42,24 @@
     {% if show_feedback is not defined or show_feedback %}
     <section class="feedback">
         <div class="container">
-            <h2>{{ content.basic.i18n.ru.feedback.form.title }}</h2>
-            <p>{{ content.basic.i18n.ru.feedback.bannerText }}</p>
+            <h2>{{ basic_locale.feedback.form.title }}</h2>
+            <p>{{ basic_locale.feedback.bannerText }}</p>
             <form class="feedback-form" action="#" method="post">
-                <label for="phone">{{ content.basic.i18n.ru.feedback.form.phoneInputLabel }}</label>
-                <input id="phone" name="phone" type="text" placeholder="+7 (___) ___-__-__" />
+                <label for="phone">{{ basic_locale.feedback.form.phoneInputLabel }}</label>
+                <input id="phone" name="phone" type="text" placeholder="{{ basic_locale.feedback.form.phoneInputPlaceholder }}" />
 
-                <p class="small-title">{{ content.basic.i18n.ru.feedback.form.subtitle }}</p>
+                <p class="small-title">{{ basic_locale.feedback.form.subtitle }}</p>
                 <div class="channels">
-                    {% for option in content.basic.i18n.ru.feedback.form.channelOptions %}
+                    {% for option in basic_locale.feedback.form.channelOptions %}
                     <label><input type="checkbox" name="channel" value="{{ option.value }}" /> {{ option.label }}</label>
                     {% endfor %}
                 </div>
 
                 <label class="consent">
                     <input type="checkbox" name="consent" />
-                    {{ content.basic.i18n.ru.feedback.form.consentText }}
+                    {{ basic_locale.feedback.form.consentText }}
                 </label>
-                <button type="submit">{{ content.basic.i18n.ru.feedback.form.submitButtonText }}</button>
+                <button type="submit">{{ basic_locale.feedback.form.submitButtonText }}</button>
             </form>
         </div>
     </section>
@@ -71,11 +68,9 @@
     <div class="site-bottom-strip">
         <div class="container site-bottom-strip__inner">
             <div class="site-bottom-social" aria-label="Социальные сети">
-                {% for item in content.main.social %}
-                {% set icon_lc = item.icon|lower %}
-                {% set is_asset_icon = ('/' in item.icon) or icon_lc.endswith('.svg') or icon_lc.endswith('.png') or icon_lc.endswith('.jpg') or icon_lc.endswith('.jpeg') or icon_lc.endswith('.webp') or icon_lc.endswith('.gif') %}
+                {% for item in social_links %}
                 <a class="site-social-link" href="{{ item.url }}" {% if item.url.startswith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}>
-                    {% if is_asset_icon %}
+                    {% if item.is_asset_icon %}
                     <img class="site-social-link__img" src="{{ url_for('static', path=item.icon) }}" alt="" width="22" height="22" decoding="async" />
                     {% else %}
                     <i class="{{ item.icon }}" aria-hidden="true"></i>
@@ -84,7 +79,7 @@
                 {% endfor %}
             </div>
             <div class="site-bottom-legal">
-                {{ content.main.hero_bottom_legal | safe }}
+                {{ basic_locale.hero_bottom_legal | safe }}
             </div>
         </div>
     </div>

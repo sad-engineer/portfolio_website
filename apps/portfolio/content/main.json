@@ -1,46 +1,93 @@
-  {
-    "hero": {
-      "firstName": "{{firstName}}",
-      "lastName": "{{lastName}}",
-      "email": "{{EMAIL}}",
-      "lead": "{{EXPERIENCE_DAYS}} дней\nв инженирии,\nпроектировании,\nи IT-разработке",
-      "i18n": {
-        "en": {
-          "lead": "{{EXPERIENCE_DAYS}} days\nin engineering,\ndesign,\nand IT development"
-        }
+{
+  "assets": {
+    "favicon": "assets/icons/site_icon.svg",
+    "siteBackgroundImage": "assets/img/backgrounds/6.jpg",
+    "languageSwitcherIcon": "assets/icons/language switch.svg",
+    "languagesBackgroundImage": "assets/img/backgrounds/languages.png"
+  },
+  "hero": {
+    "lead": "{{EXPERIENCE_DAYS}} дней\nв инженирии,\nпроектировании,\nи IT-разработке",
+    "photoPlaceholderText": "Фото скоро будет",
+    "photoPlaceholderAriaLabel": "Фото профиля отсутствует"
+  },
+  "social": [
+    { "icon": "assets/icons/github.svg", "url": "{{GITHUB_URL}}" },
+    { "icon": "assets/icons/telegram.svg", "url": "{{TELEGRAM_URL}}" },
+    { "icon": "assets/icons/profi.ru.png", "url": "{{PROFI_RU_URL}}" },
+    { "icon": "assets/icons/hh.svg", "url": "{{HH_RU_URL}}" },
+    { "icon": "assets/icons/fl.svg", "url": "{{FREELANCE_RU_URL}}" },
+    { "icon": "assets/icons/email.svg", "url": "mailto:{{EMAIL}}" }
+  ],
+  "direction": {
+    "lead": "Выберите направление, в котором я вам интересен",
+    "cards": [
+      {
+        "id": "constructor",
+        "title": "Инженер-конструктор",
+        "description": "3D-моделирование деталей, сборок, узлов, блоков, установок; инженерные расчеты; разработка полного комплекта РКД; сопроводительной, эксплуатационной документации.",
+        "url": "/constructor",
+        "backgroundImage": "assets/img/backgrounds/constructor.webp"
+      },
+      {
+        "id": "technologist",
+        "title": "Инженер-технолог",
+        "description": "Разработка и оптимизация технологических процессов, маршрутов изготовления и производственной документации с учетом требований качества, сроков и себестоимости.",
+        "url": "/technologist",
+        "backgroundImage": "assets/img/backgrounds/technologist.png"
+      },
+      {
+        "id": "planner",
+        "title": "Инженер-проектировщик",
+        "description": "Разработка планировочных решений цехов, участков, расположений оборудований, оптимизация маршрутных путей изделий внутри производства.",
+        "url": "/planner",
+        "backgroundImage": "assets/img/backgrounds/planner.png"
+      },
+      {
+        "id": "developer",
+        "title": "Python-разработчик",
+        "description": "Автоматизация инженерных работ, разработка приложений с/без GUI, с использованием баз данных, выводом результата в необходимый формат данных.",
+        "url": "/developer",
+        "backgroundImage": "assets/img/backgrounds/developer.webp"
       }
-    },
-    "social": [
-      { "icon": "assets/icons/github.svg", "url": "{{GITHUB_URL}}" },
-      { "icon": "assets/icons/telegram.svg", "url": "{{TELEGRAM_URL}}" },
-      { "icon": "assets/icons/profi.ru.png", "url": "{{PROFI_RU_URL}}" },
-      { "icon": "assets/icons/hh.svg", "url": "{{HH_RU_URL}}" },
-      { "icon": "assets/icons/fl.svg", "url": "{{FREELANCE_RU_URL}}" },
-      { "icon": "assets/icons/email.svg", "url": "mailto:{{EMAIL}}" }
-    ],
-    "hero_bottom_legal": "{{shortFIO}} (ИИН — {{INN}}) Россия © 2026. Разработка и дизайн сайта — <a href=\"/\">{{firstName}} {{lastName}}</a>. Частная собственность, защищенная правообладателем. Копирование запрещено. <a href=\"/polzovatelskoe-soglashenie\">Соглашение</a>",
-    "direction":{
-      "lead": "Выберите направление, в котором я вам интересен",
-      "directions": [
-        {"constructor": "3D-моделирование инженерных узлов, разработка полного комплекта РКД, сопроводительной, эксплуатационной документации."},
-        {"planner": "Разработка планировочных решений цехов, участков, расположений оборудований, оптимизация маршрутных путей изделий внутри производства."},
-        {"developer": "Автоматизация инженерных работ, разработка приложений с и без GUI, с использованием баз данных, выводом результата в необходимый формат данных."},
-        {"technologist": "Разработка и оптимизация технологических процессов, маршрутов изготовления и производственной документации с учетом требований качества, сроков и себестоимости."}
-      ],
-      "i18n": {
-        "en": {
-          "lead": "Choose the direction you are interested in",
-          "directions": [
-            {"constructor": "3D modeling of engineering units, development of a complete set of design documentation (RKD), along with supporting and operational documentation."},
-            {"planner": "Development of layout/planning solutions for workshops and sites, equipment placement, and optimization of routing paths for parts/products within the production facility."},
-            {"developer": "Automation of engineering work, development of applications with and without GUI, using databases, and outputting results in the required data format."},
-            {"technologist": "Development and optimization of technological processes, manufacturing routes, and production documentation considering quality requirements, timelines, and unit cost."}
-          ]
-        },
-        "tags": {
-          "Выберите направление, в котором я вам интересен": "Choose the direction you are interested in"
-        }
+    ]
+  },
+  "i18n": {
+    "en": {
+      "hero": {
+        "lead": "{{EXPERIENCE_DAYS}} days\nin engineering,\ndesign,\nand IT development",
+        "photoPlaceholderText": "Photo will be added soon",
+        "photoPlaceholderAriaLabel": "Profile photo is not available"
+      },
+      "direction": {
+        "lead": "Choose the direction you are interested in",
+        "cards": [
+          {
+            "id": "constructor",
+            "title": "Design Engineer",
+            "description": "3D modeling of engineering units, development of a complete set of design documentation (RKD), along with supporting and operational documentation.",
+            "url": "/constructor"
+          },
+          {
+            "id": "technologist",
+            "title": "Manufacturing Engineer",
+            "description": "Development and optimization of technological processes, manufacturing routes, and production documentation considering quality requirements, timelines, and unit cost.",
+            "url": "/technologist"
+          },
+          {
+            "id": "planner",
+            "title": "Planning Engineer",
+            "description": "Development of layout and planning solutions for workshops and sites, equipment placement, and optimization of routing paths for parts and products within the production facility.",
+            "url": "/planner"
+          },
+          {
+            "id": "developer",
+            "title": "Python Developer",
+            "description": "Automation of engineering work, development of applications with and without GUI, using databases, and outputting results in the required data format.",
+            "url": "/developer"
+          }
+        ]
       }
     }
   }
+}
   
