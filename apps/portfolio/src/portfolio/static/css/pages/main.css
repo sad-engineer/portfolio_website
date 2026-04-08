@@ -78,30 +78,17 @@
   align-self: end; /* Прижимает lead к нижней границе своей строковой зоны. */
 }
 
-/* Фото в правой колонке hero (если фото доступно). */
-.hero img {
-  width: 100%; /* Растягивает фото на ширину колонки. */
-  height: 100%; /* Растягивает фото на высоту колонки. */
+/* Растягивание блока фото/заглушки на главной странице (page-специфично). */
+.hero .hero-photo {
+  width: 100%; /* Растягивает фото на ширину колонки текущей страницы. */
+  height: 100%; /* Растягивает фото на высоту колонки текущей страницы. */
   max-width: 100%; /* Запрещает выход за пределы контейнера по ширине. */
-  border: 1px solid var(--main-hero-image-border-color); /* Тонкая рамка вокруг фото. */
-  object-fit: cover; /* Кадрирует фото без искажения пропорций. */
 }
 
-/* Placeholder вместо фото, когда изображение еще не задано. */
-.hero-photo-placeholder {
-  width: 100%; /* Растягивает placeholder на ширину колонки. */
+.hero .hero-photo-placeholder {
+  width: 100%; /* Растягивает placeholder на ширину колонки текущей страницы. */
   height: auto; /* Высота берется из высоты grid-строки, без дополнительного форсирования. */
   max-width: 100%; /* Запрещает выход за контейнер. */
-  border: 1px dashed var(--main-photo-placeholder-border-color); /* Пунктирная рамка как визуальный маркер заглушки. */
-  border-radius: 6px; /* Скругляет углы placeholder. */
-  display: flex; /* Включает flex-центрирование текста. */
-  align-items: center; /* Центрирует текст по вертикали. */
-  justify-content: center; /* Центрирует текст по горизонтали. */
-  text-align: center; /* Центрирует многострочный текст внутри блока. */
-  color: var(--main-photo-placeholder-text-color); /* Приглушенный цвет текста заглушки. */
-  background: var(--main-photo-placeholder-bg-color); /* Подложка заглушки на базе глобальной палитры. */
-  padding: 16px; /* Внутренний отступ от рамки до текста. */
-  opacity: 0.3;
 }
 
 /* Сетка карточек направлений на главной странице. */
@@ -251,8 +238,8 @@
     width: 100%; /* Делает ширину карточек равной ширине левой колонки. */
   }
 
-  .hero-photo-placeholder,
-  .hero img {
+  .hero .hero-photo-placeholder,
+  .hero .hero-photo {
     grid-area: photo; /* Ставит фото/placeholder в правую колонку. */
     width: 600px; /* Фиксирует ширину фото-блока как на больших мониторах. */
     max-width: 600px; /* Не дает расширяться шире фиксированного размера. */
@@ -265,8 +252,8 @@
 
 /* Компоновка для диапазона 601-900px: фото скрыто, карточки в 2 гибких столбца. */
 @media (max-width: 900px) and (min-width: 601px) {
-  .hero-photo-placeholder,
-  .hero img {
+  .hero .hero-photo-placeholder,
+  .hero .hero-photo {
     display: none; /* Скрывает фото/placeholder, освобождая пространство под контент. */
   }
 
@@ -294,8 +281,8 @@
 
 /* Компоновка для диапазона 0-600px: фото скрыто, карточки в 1 гибкий столбец. */
 @media (max-width: 600px) {
-  .hero-photo-placeholder,
-  .hero img {
+  .hero .hero-photo-placeholder,
+  .hero .hero-photo {
     display: none; /* Скрывает фото/placeholder, оставляя только контентную колонку. */
   }
 
@@ -308,8 +295,8 @@
   }
 }
 
-/* Для высоких экранов (1079px и выше) вписывает первый экран без прокрутки. */
-@media (min-height: 1079px) {
+/* Для высоких и широких экранов вписывает первый экран без прокрутки. */
+@media (min-height: 1079px) and (min-width: 1200px) {
   .hero {
     height: calc(100vh - var(--main-header-reserve-height) - var(--main-bottom-reserve-height) - var(--main-info-banner-reserve-height)); /* Ограничивает hero высотой экрана с учетом шапки, нижней полосы и info-banner. */
   }

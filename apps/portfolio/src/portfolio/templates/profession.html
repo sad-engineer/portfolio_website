@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set page_id = "page-profession" %}
 
 {% macro tech_tile(item) %}
                 {% set icon_lc = item.icon|lower %}
@@ -23,53 +24,52 @@
     <p class="lead">{{ profession.summary }}</p>
 </section>
 
-<section class="tech-layout">
-    <aside class="card photo-placeholder">
-        Тут было бы фото, но мне лень.
-    </aside>
-    <article class="card technologies">
-        <h2>{{ profession.technologies.title }}</h2>
-        {% for block in profession.technologies["items"].values() %}
-        <div class="tech-group">
-            <h3>{{ block.title }}</h3>
-            <div class="tech-grid">
-                {% for item in block["items"] %}
-                {{ tech_tile(item) }}
+<div class="profession-content-container">
+    <section class="tech-layout">
+        <aside class="profession-photo-column">
+            {% set hero_locale = profession %}
+            {% include "partials/main_hero_photo.html" %}
+        </aside>
+        <div class="profession-side-column">
+            <article class="card technologies technologies-main">
+                <h2>{{ profession.technologies.title }}</h2>
+                {% for block in profession.technologies["items"].values() %}
+                <div class="tech-group">
+                    <h3>{{ block.title }}</h3>
+                    <div class="tech-grid">
+                        {% for item in block["items"] %}
+                        {{ tech_tile(item) }}
+                        {% endfor %}
+                    </div>
+                </div>
                 {% endfor %}
-            </div>
-        </div>
-        {% endfor %}
-    </article>
-</section>
+            </article>
 
-<section class="card work-methods-full">
-    <div class="work-methods-content">
-        <h2>{{ profession.work_methods.title }}</h2>
-        <div class="tech-group">
-            <div class="tech-grid">
-                {% for item in profession.work_methods["items"] %}
-                {{ tech_tile(item) }}
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</section>
+            <section class="card technologies work-methods">
+                <h2>{{ profession.work_methods.title }}</h2>
+                <div class="tech-group">
+                    <div class="tech-grid">
+                        {% for item in profession.work_methods["items"] %}
+                        {{ tech_tile(item) }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
 
-<section class="card skills-full">
-    <div class="skills-content">
-        <h2>{{ profession.skills.title }}</h2>
-        <div class="tech-group">
-            <div class="tech-grid">
-                {% for item in profession.skills["items"] %}
-                {{ tech_tile(item) }}
-                {% endfor %}
-            </div>
+            <section class="card technologies skills">
+                <h2>{{ profession.skills.title }}</h2>
+                <div class="tech-group">
+                    <div class="tech-grid">
+                        {% for item in profession.skills["items"] %}
+                        {{ tech_tile(item) }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="card document-types-full">
-    <div class="document-types-content">
+    <section class="card technologies document-types">
         <h2>{{ profession.document_types.title }}</h2>
         {% if profession.document_types["items"] is mapping %}
         {% for block in profession.document_types["items"].values() %}
@@ -91,19 +91,19 @@
             </div>
         </div>
         {% endif %}
-    </div>
-</section>
+    </section>
 
-<section class="card languages-full">
-    <div class="languages-content">
-        <h2>{{ profession.languages.title }}</h2>
-        <div class="tech-group">
-            <div class="tech-grid">
-                {% for item in profession.languages["items"] %}
-                {{ tech_tile(item) }}
-                {% endfor %}
+    <section class="card languages-full">
+        <div class="languages-content">
+            <h2>{{ profession.languages.title }}</h2>
+            <div class="tech-group">
+                <div class="tech-grid">
+                    {% for item in profession.languages["items"] %}
+                    {{ tech_tile(item) }}
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 {% endblock %}

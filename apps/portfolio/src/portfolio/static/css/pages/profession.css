@@ -1,0 +1,95 @@
+/* Токены страниц профессий: единые размеры фото/заглушки. */
+:root {
+  --profession-photo-width: 600px; /* Фиксированная ширина блока фото/заглушки. */
+  --profession-photo-aspect-ratio: 3 / 4; /* Базовое соотношение сторон фото/заглушки на мобильных. */
+}
+
+/* Единая страница профессий: отступы у заголовочного блока. */
+.page-content.page-profession .section-head {
+  margin: 20px 0 12px;
+}
+
+/* Верхняя зона: две колонки одинаковой высоты. */
+.page-content.page-profession .tech-layout {
+  align-items: stretch;
+}
+
+/* Колонка с фото: растягивается на высоту всей верхней зоны. */
+.page-content.page-profession .tech-layout > .profession-photo-column {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  align-self: stretch;
+  min-height: 0;
+}
+
+/* Правая колонка: technologies/work_methods/skills один под другим. */
+.page-content.page-profession .tech-layout > .profession-side-column {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-self: stretch;
+  min-height: 0;
+}
+
+/* В верхней зоне базово карточки идут по содержимому. */
+.page-content.page-profession .tech-layout > .profession-side-column > .card {
+  align-self: start;
+  min-height: auto;
+}
+
+/* Когда фото выше, technologies добирает недостающую высоту. */
+.page-content.page-profession .profession-side-column > .technologies-main {
+  flex: 1 1 auto;
+}
+
+/* work_methods и skills остаются по содержимому. */
+.page-content.page-profession .profession-side-column > .work-methods,
+.page-content.page-profession .profession-side-column > .skills {
+  flex: 0 0 auto;
+}
+
+/* Вне верхней зоны technologies-контейнеры не должны давать увеличенный зазор. */
+.page-content.page-profession .profession-content-container > .technologies {
+  margin-bottom: 3px;
+}
+
+/* Фото/заглушка заполняет высоту левой колонки верхней зоны. */
+.page-content.page-profession .hero-photo,
+.page-content.page-profession .hero-photo-placeholder {
+  width: 100%;
+  max-width: var(--profession-photo-width);
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+/* На мобильных отключаем выравнивание по общей высоте, оставляем по содержимому. */
+@media (max-width: 920px) {
+  .page-content.page-profession .tech-layout {
+    align-items: start;
+  }
+
+  .page-content.page-profession .tech-layout > .profession-photo-column {
+    order: -1;
+    margin-bottom: 3px;
+    align-self: start;
+    align-items: flex-start;
+  }
+
+  .page-content.page-profession .tech-layout > .profession-side-column {
+    gap: 3px;
+    align-self: start;
+  }
+
+  .page-content.page-profession .profession-side-column > .technologies-main {
+    flex: 0 0 auto;
+  }
+
+  .page-content.page-profession .hero-photo,
+  .page-content.page-profession .hero-photo-placeholder {
+    width: min(100%, var(--profession-photo-width));
+    max-width: var(--profession-photo-width);
+    height: auto;
+    aspect-ratio: var(--profession-photo-aspect-ratio);
+  }
+}
