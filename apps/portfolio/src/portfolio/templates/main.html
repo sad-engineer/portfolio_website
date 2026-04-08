@@ -17,9 +17,7 @@
             {% endfor %}
         </section>
     </div>
-    <div class="hero-photo-placeholder" aria-label="{{ hero_locale.get('photoPlaceholderAriaLabel', '') }}">
-        {{ hero_locale.get('photoPlaceholderText', '') }}
-    </div>
+    {% include "partials/main_hero_photo.html" %}
 </section>
 {% if info_banner_locale %}
 {% include "partials/info_banner.html" %}
