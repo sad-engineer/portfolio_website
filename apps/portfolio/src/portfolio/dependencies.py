@@ -24,8 +24,7 @@ def _replace_placeholders(data: object, values: dict[str, str]) -> object:
 
     if isinstance(data, dict):
         return {
-            key: _replace_placeholders(value, values)
-            for key, value in data.items()
+            key: _replace_placeholders(value, values) for key, value in data.items()
         }
 
     return data
@@ -37,9 +36,7 @@ def _build_template_values(settings: Settings) -> dict[str, str]:
         values_payload = json.load(file)
 
     locale_values = values_payload.get("i18n", {}).get(settings.default_locale, {})
-    values: dict[str, str] = {
-        key: str(value) for key, value in locale_values.items()
-    }
+    values: dict[str, str] = {key: str(value) for key, value in locale_values.items()}
 
     work_places_path = settings.content_dir / "work_places.json"
     with work_places_path.open("r", encoding="utf-8-sig") as file:
@@ -62,9 +59,7 @@ def _build_template_values(settings: Settings) -> dict[str, str]:
 
     if start_dates:
         earliest_start_date = min(start_dates)
-        values["EXPERIENCE_DAYS"] = str(
-            (date.today() - earliest_start_date).days
-        )
+        values["EXPERIENCE_DAYS"] = str((date.today() - earliest_start_date).days)
     else:
         start_date_str = values.get("EXPERIENCE_START_DATE")
         if start_date_str:
@@ -113,9 +108,7 @@ def get_site_content() -> dict:
         content_path = settings.content_dir / filename
         with content_path.open("r", encoding="utf-8-sig") as file:
             raw_content = json.load(file)
-            content[section_name] = _replace_placeholders(
-                raw_content, template_values
-            )
+            content[section_name] = _replace_placeholders(raw_content, template_values)
 
     return content
 

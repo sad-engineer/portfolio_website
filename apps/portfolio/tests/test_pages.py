@@ -1,6 +1,5 @@
 import pytest
 from httpx import AsyncClient
-
 from portfolio.main import app
 
 

@@ -2,9 +2,8 @@
 
 from pathlib import Path
 
-from pydantic_settings import BaseSettings, SettingsConfigDict
-
 from portfolio._version import get_version
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -23,6 +22,4 @@ class Settings(BaseSettings):
 
     default_locale: str = "ru"
 
-    model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf-8"
-    )
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
