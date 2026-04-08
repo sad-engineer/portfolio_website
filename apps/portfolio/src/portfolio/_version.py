@@ -20,4 +20,3 @@ def get_version() -> str:
         pyproject_data = tomllib.load(pyproject_file)
 
     return pyproject_data["tool"]["poetry"]["version"]
-

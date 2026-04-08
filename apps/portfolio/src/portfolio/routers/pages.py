@@ -5,12 +5,8 @@ from copy import deepcopy
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-
-from portfolio.dependencies import (
-    get_site_content,
-    get_templates,
-    get_ui_texts,
-)
+from portfolio.dependencies import (get_site_content, get_templates,
+                                    get_ui_texts)
 
 router = APIRouter(tags=["pages"])
 
@@ -18,11 +14,7 @@ router = APIRouter(tags=["pages"])
 def _deep_merge_dicts(base: dict, overlay: dict) -> dict:
     merged = deepcopy(base)
     for key, value in overlay.items():
-        if (
-            key in merged
-            and isinstance(merged[key], dict)
-            and isinstance(value, dict)
-        ):
+        if key in merged and isinstance(merged[key], dict) and isinstance(value, dict):
             merged[key] = _deep_merge_dicts(merged[key], value)
         else:
             merged[key] = deepcopy(value)
@@ -34,9 +26,7 @@ def _localized_content_block(block: dict, current_lang: str) -> dict:
         return {}
 
     base_payload = {
-        key: deepcopy(value)
-        for key, value in block.items()
-        if key != "i18n"
+        key: deepcopy(value) for key, value in block.items() if key != "i18n"
     }
 
     if current_lang == "en":
@@ -49,15 +39,9 @@ def _localized_content_block(block: dict, current_lang: str) -> dict:
 
 def _resolve_current_lang(request: Request, site_content: dict) -> str:
     supported_locales = (
-        site_content.get("basic", {})
-        .get("site", {})
-        .get("locales", ["ru", "en"])
+        site_content.get("basic", {}).get("site", {}).get("locales", ["ru", "en"])
     )
-    default_locale = (
-        site_content.get("basic", {})
-        .get("site", {})
-        .get("language", "ru")
-    )
+    default_locale = site_content.get("basic", {}).get("site", {}).get("language", "ru")
 
     requested_locale = request.query_params.get("lang", default_locale)
     if requested_locale in supported_locales:
@@ -68,12 +52,8 @@ def _resolve_current_lang(request: Request, site_content: dict) -> str:
 def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict:
     current_lang = _resolve_current_lang(request, site_content)
 
-    basic_locale = _localized_content_block(
-        site_content.get("basic", {}), current_lang
-    )
-    main_locale = _localized_content_block(
-        site_content.get("main", {}), current_lang
-    )
+    basic_locale = _localized_content_block(site_content.get("basic", {}), current_lang)
+    main_locale = _localized_content_block(site_content.get("main", {}), current_lang)
     main_nav_locale = basic_locale.get("navigation", {})
 
     social_links: list[dict] = []
@@ -241,5 +221,3 @@ async def education_page(
     return templates.TemplateResponse(
         "education.html", _build_context(request, site_content, ui_texts)
     )
-
-    
