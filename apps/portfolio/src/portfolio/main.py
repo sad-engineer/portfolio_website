@@ -3,8 +3,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request
+
 from portfolio.dependencies import get_settings
 from portfolio.routers import pages_router
+from portfolio.routers.pages import LANG_COOKIE_NAME
 
 
 def create_app() -> FastAPI:
@@ -25,6 +29,27 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+
+    supported_lang_cookie = frozenset({"ru", "en"})
+
+    class _LocaleCookieMiddleware(BaseHTTPMiddleware):
+        """Записывает выбранную локаль в cookie при ?lang=… для последующих переходов без параметра."""
+
+        async def dispatch(self, request: Request, call_next):
+            response = await call_next(request)
+            lang = request.query_params.get("lang")
+            if lang in supported_lang_cookie:
+                response.set_cookie(
+                    key=LANG_COOKIE_NAME,
+                    value=lang,
+                    max_age=365 * 24 * 60 * 60,
+                    path="/",
+                    httponly=False,
+                    samesite="lax",
+                )
+            return response
+
+    my_app.add_middleware(_LocaleCookieMiddleware)
 
     my_app.mount(
         "/static",

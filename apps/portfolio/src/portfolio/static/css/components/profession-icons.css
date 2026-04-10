@@ -1,0 +1,206 @@
+/* Визуал иконок/плиток на страницах профессий: локальные алиасы только на глобальную палитру (base.css). */
+:root {
+  --tech-tile-bg: var(--surface-tile); /* Фон плитки: токен --surface-tile в base.css. */
+  --tech-tile-bg-hover: var(--surface-dark); /* Hover: светлая подложка из палитры. */
+  --tech-icon-color: var(--text-dark); /* Иконки на светлой плитке. */
+}
+
+/* Сетка плиток-иконок фиксированного размера. */
+.tech-grid {
+  display: grid; /* Использует grid для аккуратной сетки плиток. */
+  grid-template-columns: repeat(auto-fit, minmax(60px, 60px)); /* Колонки по 60px с автозаполнением. */
+  gap: 3px; /* Отступ между плитками. */
+  justify-content: start; /* Прижимает сетку к левому краю контейнера. */
+}
+
+/* Базовая плитка одной технологии (иконка/логотип). */
+.tech-tile {
+  position: relative; /* Нужен для псевдо-слоя и абсолютных элементов. */
+  box-sizing: border-box; /* Учитывает border/padding в фиксированном размере плитки. */
+  background: var(--tech-tile-bg); /* Фон плитки по умолчанию. */
+  width: 60px; /* Фиксированная ширина плитки. */
+  min-width: 60px; /* Минимальная ширина плитки. */
+  max-width: 60px; /* Максимальная ширина плитки. */
+  height: 60px; /* Фиксированная высота плитки. */
+  min-height: 60px; /* Минимальная высота плитки. */
+  max-height: 60px; /* Максимальная высота плитки. */
+  padding: 5px; /* Внутренние отступы плитки. */
+  border-radius: 6px; /* Скругление углов плитки. */
+  display: flex; /* Использует flex для центрирования контента. */
+  align-items: center; /* Вертикальное центрирование контента. */
+  justify-content: center; /* Горизонтальное центрирование контента. */
+  cursor: help; /* Показывает курсор в виде вопроса при наведении. */
+  transition: background 0.15s ease, transform 0.15s ease; /* Плавный переход для эффектов hover. */
+  overflow: hidden; /* Скрывает контент, выходящий за границы плитки. */
+}
+
+/* Вариант плитки для SVG-маски: фон рисуется через псевдо-элемент. */
+.tech-tile--svg {
+  background: transparent; /* Прозрачный фон для SVG-маски. */
+  --tech-icon-size: 85%; /* Размер иконок в SVG-маске. */
+}
+
+/* Псевдо-элемент для SVG-маски: рисует фон через псевдо-слой. */
+.tech-tile--svg::before {
+  content: ""; /* Создает псевдо-элемент. */
+  position: absolute; /* Позиционирует псевдо-элемент абсолютно. */
+  inset: 0; /* Задает границы псевдо-элемента. */
+  border-radius: 4px; /* Скругление углов псевдо-элемента. */
+  background: var(--tech-tile-bg); /* Фон псевдо-элемента. */
+  pointer-events: none; /* Отключает интерактивность псевдо-элемента. */
+  -webkit-mask-image: linear-gradient(#fff, #fff), var(--tech-icon); /* Маска SVG-иконки. */
+  -webkit-mask-size: 100% 100%, var(--tech-icon-size) var(--tech-icon-size); /* Размер маски SVG-иконки. */
+  -webkit-mask-repeat: no-repeat, no-repeat; /* Повторение маски SVG-иконки. */
+  -webkit-mask-position: center, center; /* Положение маски SVG-иконки. */
+  -webkit-mask-composite: destination-out; /* Комбинация маски SVG-иконки. */
+  mask-image: linear-gradient(#fff, #fff), var(--tech-icon); /* Маска SVG-иконки. */
+  mask-size: 100% 100%, var(--tech-icon-size) var(--tech-icon-size); /* Размер маски SVG-иконки. */
+  mask-repeat: no-repeat, no-repeat; /* Повторение маски SVG-иконки. */
+  mask-position: center, center; /* Положение маски SVG-иконки. */
+  mask-composite: subtract; /* Комбинация маски SVG-иконки. */
+}
+
+/* Иконка-шрифт внутри плитки (Font Awesome/Devicon). */
+.tech-tile i {
+  position: relative; /* Позиционирует иконку относительно плитки. */
+  z-index: 1; /* Устанавливает уровень вложенности иконки. */
+  font-size: 44px; /* Размер иконки. */
+  line-height: 1; /* Высота строки иконки. */
+  color: var(--tech-icon-color); /* Цвет иконки. */
+  max-width: 100%; /* Максимальная ширина иконки. */
+}
+
+/* Hover для обычных плиток (не SVG-mask). */
+.tech-tile:not(.tech-tile--svg):hover {
+  background: var(--tech-tile-bg-hover); /* Фон плитки в hover-состоянии. */
+}
+
+/* Hover для SVG-mask плиток через псевдо-слой. */
+.tech-tile--svg:hover::before {
+  background: var(--tech-tile-bg-hover); /* Фон псевдо-элемента в hover-состоянии. */
+}
+
+/* Режим многоцветного SVG: фон обычный, без вырезания маской. */
+.tech-tile--svg.tech-tile--svg-multicolor {
+  background: var(--tech-tile-bg); /* Фон плитки в режиме многоцветного SVG. */
+}
+
+.tech-tile--svg.tech-tile--svg-multicolor::before {
+  display: none; /* Скрывает псевдо-элемент в режиме многоцветного SVG. */
+}
+
+.tech-tile--svg.tech-tile--svg-multicolor:hover {
+  background: var(--tech-tile-bg-hover); /* Фон плитки в hover-состоянии в режиме многоцветного SVG. */
+}
+
+/* Базовые размеры и правила рендера для картинок в плитках. */
+.tech-tile > img.tech-tile__svg-img,
+.tech-tile > img.tech-tile__raster-img {
+  position: relative; /* Позиционирует изображение относительно плитки. */  
+  z-index: 1; /* Устанавливает уровень вложенности изображения. */
+  display: block; /* Устанавливает блочный контейнер для изображения. */
+  box-sizing: border-box; /* Учитывает border/padding в фиксированном размере изображения. */
+  width: 43px; /* Фиксированная ширина изображения. */
+  height: 43px; /* Фиксированная высота изображения. */
+  max-width: 43px; /* Максимальная ширина изображения. */
+  max-height: 43px; /* Максимальная высота изображения. */
+  object-fit: contain; /* Вписывает SVG/растр в клетку без обрезки. */
+  flex-shrink: 0; /* Запрещает сжатие изображения. */
+  margin: 0; /* Убирает внешние отступы изображения. */ 
+  padding: 0; /* Убирает внутренние отступы изображения. */
+}
+
+/* Режим "растр на всю плитку": внутренний отступ отключается. */
+.tech-tile.tech-tile--raster-fill {
+  padding: 0; /* Убирает внутренние отступы плитки в режиме "растр на всю плитку". */
+}
+
+/* Настройки полноразмерного растрового изображения в плитке. */
+.tech-tile.tech-tile--raster-fill > img.tech-tile__raster-img {
+  width: 60px; /* Фиксированная ширина изображения. */
+  height: 60px; /* Фиксированная высота изображения. */
+  max-width: 60px; /* Максимальная ширина изображения. */
+  max-height: 60px; /* Максимальная высота изображения. */
+  border-radius: 6px; /* Скругление углов изображения. */
+  object-fit: cover; /* Масштабирование изображения без искажений. */
+  object-position: center; /* Центрирование изображения. */
+}
+
+/* Общий hover-эффект всех плиток технологий. */
+.tech-tile:hover {
+  transform: translateY(-1px) translateX(-1px) scale(0.97); /* Сдвиг плитки вверх на 1px и влево на 1px при наведении и уменьшение на 5% в размере. */
+
+}
+
+/* Контейнер выпадающего описания иконки. */
+.tech-tile-dropdown {
+  position: relative; /* Позиционирует выпадающий блок относительно триггера. */  
+  display: inline-block; /* Устанавливает блочный контейнер для выпадающего блока. */
+}
+
+/* Открытая плитка выше соседних в той же сетке (иначе следующие в DOM details рисуются поверх fixed-панели). */
+.tech-tile-dropdown[open] {
+  z-index: 50; /* Слой выше соседних details с z-index auto. */
+}
+
+/* Триггер выпадающего блока: сброс стандартных стилей summary. */
+.tech-tile-dropdown__trigger {
+  list-style: none; /* Убирает маркер summary/details. */
+  cursor: pointer; /* Показывает кликабельность триггера. */
+}
+
+.tech-tile-dropdown__trigger::-webkit-details-marker {
+  display: none; /* Скрывает встроенный маркер details в WebKit-браузерах. */
+}
+
+/* Панель описания иконки: выпадает вниз и не перекрывает иконку. */
+.tech-tile-dropdown__menu {
+  --tech-dropdown-max-width: 320px; /* Верхняя граница до переопределения скриптом от ширины контента. */
+  --tech-dropdown-min-width: 260px; /* Единая комфортная ширина во всех секциях (языки/типы док. не уже правой колонки). */
+  --tech-dropdown-max-height: 60vh; /* Запас до расчёта по низу .page-content в JS. */
+  position: fixed; /* Рендер поверх всех секций независимо от локальных stack-контекстов. */
+  top: 0; /* Координаты выставляются скриптом при открытии. */
+  left: 0; /* Координаты выставляются скриптом при открытии. */
+  visibility: hidden; /* Скрывает панель описания иконки по умолчанию. */
+  opacity: 0; /* Прозрачность панели в закрытом состоянии. */
+  z-index: 4000; /* Всегда поверх соседних секций страницы. */
+  box-sizing: border-box; /* Учитывает border/padding в фиксированном размере панели описания иконки. */
+  min-width: var(--tech-dropdown-min-width); /* Минимальная ширина панели описания иконки. */
+  width: max-content; /* Базово ширина панели следует за содержимым. */
+  max-width: var(--tech-dropdown-max-width); /* Максимальная ширина панели описания иконки. */
+  max-height: var(--tech-dropdown-max-height); /* Максимальная высота внутри границ контентного окна. */
+  padding: 10px; /* Внутренние отступы панели описания иконки. */
+  border: 1px solid var(--line); /* Добавляет рамку панели описания иконки. */
+  border-radius: 6px; /* Скругление углов панели описания иконки. */
+  background: var(--surface); /* Непрозрачный фон, чтобы контент под панелью не просвечивал. */
+  color: var(--text-dark); /* Цвет текста панели описания иконки. */
+  line-height: 1.25; /* Высота строки текста панели описания иконки. */
+  text-wrap: pretty; /* Обрабатывает длинные слова в тексте. */
+  overflow-wrap: break-word; /* Как в обычных карточках: не сжимать панель до узкой колонки родителя. */
+  height: auto; /* Высота по содержимому; фиксированный aspect-ratio давал пустое место и скролл при max-height. */
+  pointer-events: none; /* Отключает интерактивность панели описания иконки. */
+  overflow: auto; /* Добавляет прокрутку, если высота панели достигла лимита. */
+  transform: translateY(6px); /* Небольшой сдвиг вниз в закрытом состоянии для анимации входа. */
+  transition: opacity 140ms ease, transform 140ms ease, visibility 0ms linear 140ms; /* Плавное появление/скрытие панели. */
+}
+
+.tech-tile-dropdown[open] .tech-tile-dropdown__menu {
+  visibility: visible; /* Показывает панель описания иконки. */
+  opacity: 1; /* Делает панель полностью видимой. */
+  transform: translateY(0); /* Возвращает панель в исходную позицию при открытии. */
+  pointer-events: auto; /* Включает интерактивность панели описания иконки. */
+  transition: opacity 140ms ease, transform 140ms ease, visibility 0ms; /* Мгновенно включает visibility при открытии. */
+}
+
+/* Заголовок и описание внутри выпадающей панели. */
+.tech-tile-dropdown__title {
+  margin: 0 0 8px; /* Внешние отступы заголовка панели описания иконки. */
+  font-size: 1.25rem; /* Размер заголовка панели описания иконки. */
+  color: var(--text-head-dark); /* Цвет заголовка панели описания иконки. */
+} 
+
+/* Описание внутри панели описания иконки. */
+.tech-tile-dropdown__description {
+  margin: 0; /* Внешние отступы описания панели описания иконки. */
+  font-size: 1.1rem; /* Размер описания панели описания иконки. */
+}

@@ -17,6 +17,18 @@
   --banner-dark: #fa842b; /* Акцентный цвет ссылок/элементов на светлом фоне. */
   --overlay-light: #ffffff; /* Базовый светлый цвет (HEX) для полупрозрачных подложек. */
   --site-bg-image: none; /* Фоновое изображение сайта; задается из контента через шаблон. */
+  --languages-bg-image: none; /* Фон секции языков на страницах профессий; url задаётся в шаблоне body. */
+  --document-types-bg-image: none; /* Декоративный фон блока «Типы документов»; url задаётся в шаблоне body. */
+  /* Подложка секции языков: только color-mix от палитры и ключевое слово transparent (без rgba). */
+  --languages-overlay-gradient: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--line) 65%, var(--muted-dark) 35%) 5%,
+    color-mix(in srgb, var(--surface-dark) 50%, transparent) 30%,
+    transparent 50%,
+    transparent 100%
+  );
+  /* Плитки иконок на тёмном фоне страниц профессий; контрастнее --surface-dark. */
+  --surface-tile: #c7c7c7;
 }
 
 /* Универсальная нормализация размеров элементов. */

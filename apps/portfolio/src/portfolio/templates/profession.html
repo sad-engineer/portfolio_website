@@ -7,6 +7,42 @@
                 {% set is_raster = icon_lc.endswith('.png') or icon_lc.endswith('.jpg') or icon_lc.endswith('.jpeg') or icon_lc.endswith('.webp') or icon_lc.endswith('.gif') %}
                 {% set raster_fill = icon_lc.endswith('vertikal.jpg') or icon_lc.endswith('locman_plm.jpg') %}
                 {% set is_flowvision = icon_lc.endswith('flowvision.svg') %}
+                {% set has_description = item.get('description') %}
+                {% set tile_class = "tech-tile" %}
+                {% if is_svg %}
+                {% set tile_class = tile_class + " tech-tile--svg" %}
+                {% if is_flowvision %}
+                {% set tile_class = tile_class + " tech-tile--svg-multicolor" %}
+                {% endif %}
+                {% elif is_raster %}
+                {% set tile_class = tile_class + " tech-tile--raster" %}
+                {% if raster_fill %}
+                {% set tile_class = tile_class + " tech-tile--raster-fill" %}
+                {% endif %}
+                {% endif %}
+                {% set tile_style = "" %}
+                {% if is_svg and not is_flowvision %}
+                {% set tile_style = "--tech-icon: url('" ~ url_for('static', path=item.icon) ~ "');" %}
+                {% endif %}
+                {% if has_description %}
+                <details class="tech-tile-dropdown">
+                    <summary class="tech-tile-dropdown__trigger" aria-label="{{ item.label }}">
+                        <span class="{{ tile_class }}"{% if tile_style %} style="{{ tile_style }}"{% endif %} title="{{ item.label }}" aria-label="{{ item.label }}">
+                            {% if is_svg and is_flowvision %}
+                            <img class="tech-tile__svg-img" src="{{ url_for('static', path=item.icon) }}" alt="" width="43" height="43" decoding="async" />
+                            {% elif is_raster %}
+                            <img class="tech-tile__raster-img" src="{{ url_for('static', path=item.icon) }}" alt="" {% if raster_fill %}width="60" height="60"{% else %}width="43" height="43"{% endif %} decoding="async" />
+                            {% elif not is_svg %}
+                            <i class="{{ item.icon }}" aria-hidden="true"></i>
+                            {% endif %}
+                        </span>
+                    </summary>
+                    <div class="tech-tile-dropdown__menu" aria-label="{{ item.label }}">
+                        <h4 class="tech-tile-dropdown__title">{{ item.label }}</h4>
+                        <p class="tech-tile-dropdown__description">{{ item.get('description', '') }}</p>
+                    </div>
+                </details>
+                {% else %}
                 <div class="tech-tile{% if is_svg %} tech-tile--svg{% if is_flowvision %} tech-tile--svg-multicolor{% endif %}{% elif is_raster %} tech-tile--raster{% if raster_fill %} tech-tile--raster-fill{% endif %}{% endif %}"{% if is_svg and not is_flowvision %} style="--tech-icon: url('{{ url_for('static', path=item.icon) }}');"{% endif %} title="{{ item.label }}" aria-label="{{ item.label }}">
                     {% if is_svg and is_flowvision %}
                     <img class="tech-tile__svg-img" src="{{ url_for('static', path=item.icon) }}" alt="" width="43" height="43" decoding="async" />
@@ -16,6 +52,7 @@
                     <i class="{{ item.icon }}" aria-hidden="true"></i>
                     {% endif %}
                 </div>
+                {% endif %}
 {% endmacro %}
 
 {% block content %}
@@ -106,4 +143,10 @@
         </div>
     </section>
 </div>
+{% set info_banner_locale = profession.get('info_banner', {}) %}
+{% if info_banner_locale %}
+{% include "partials/info_banner.html" %}
+<script src="{{ url_for('static', path='js/info-banner.js') }}"></script>
+{% endif %}
+<script src="{{ url_for('static', path='js/tech-tile-dropdown.js') }}"></script>
 {% endblock %}

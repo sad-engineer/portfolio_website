@@ -41,7 +41,7 @@
     "blog_advertising": { "title": "Реклама в блоге" }
   },
   "feedback": {
-    "bannerText": "Есть интересная задвча или сложный проект? Не знаете специалиста для комплексного решения проблемы? Свяжитесь со мной любым способом или закажите звонок ниже. Я постараюсь помочь Вам советом, идеей или предложку трэк решения проблемы.",
+    "bannerText": "Есть интересная задача или сложный проект? Не знаете специалиста для комплексного решения проблемы? Свяжитесь со мной любым способом или закажите звонок ниже. Я постараюсь помочь вам советом, идеей или предложу путь решения проблемы.",
     "form": {
       "title": "Позвоните мне",
       "phoneInputLabel": "Ваш номер",
@@ -67,7 +67,7 @@
     "socialLinksAriaLabel": "Социальные сети",
     "mobileMenuAriaLabel": "Главное меню"
   },
-  "hero_bottom_legal": "{{shortFIO}} (ИИН — {{INN}}) Россия © 2026. Разработка и дизайн сайта — {{firstName}} {{lastName}}. Частная собственность, защищенная правообладателем. Копирование запрещено.",
+  "hero_bottom_legal": "{{shortFIO}} (ИИН — {{INN}}) Россия © 2026. Разработка и дизайн сайта — {{firstName}} {{lastName}}. Частная собственность, защищенная правообладателем. Копирование запрещено. Соглашение.",
   "i18n": {
     "en": {
       "site": {
@@ -85,12 +85,13 @@
         "home": { "title": "Home" },
         "blog": { "title": "Blog" },
         "inzhener_konstruktor": { "title": "Engineering Designer" },
+        "inzhener_tehnolog": { "title": "Manufacturing Engineer" },
         "proektirovshchik": { "title": "Project Planner" },
-        "it_razrabotchik": { "title": "IT Developer" },
+        "it_razrabotchik": { "title": "Python Developer" },
         "blog_advertising": { "title": "Blog Advertising" }
       },
       "feedback": {
-        "bannerText": "Do you have a question you couldn't find an answer to? Write to me any way you like or book a call below. I will help you with advice, ideas, or a link to an article (book) by another author.",
+        "bannerText": "Have an interesting task or a complex project? Need someone who can deliver an end-to-end solution? Contact me in any convenient way or request a call below. I will try to help with advice, ideas, or suggest a way to solve the problem.",
         "form": {
           "title": "Call me",
           "phoneInputLabel": "Your phone number",
