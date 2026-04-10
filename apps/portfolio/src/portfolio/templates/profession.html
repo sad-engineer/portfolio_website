@@ -5,7 +5,7 @@
                 {% set icon_lc = item.icon|lower %}
                 {% set is_svg = icon_lc.endswith('.svg') %}
                 {% set is_raster = icon_lc.endswith('.png') or icon_lc.endswith('.jpg') or icon_lc.endswith('.jpeg') or icon_lc.endswith('.webp') or icon_lc.endswith('.gif') %}
-                {% set raster_fill = icon_lc.endswith('vertikal.jpg') or icon_lc.endswith('locman_plm.jpg') %}
+                {% set raster_fill = icon_lc.endswith('vertikal.jpg') or icon_lc.endswith('vertikal.png') or icon_lc.endswith('locman_plm.jpg') %}
                 {% set is_flowvision = icon_lc.endswith('flowvision.svg') %}
                 {% set has_description = item.get('description') %}
                 {% set tile_class = "tech-tile" %}
