@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.15.1/devicon.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', path='css/portfolio-layout.css') }}" />
 </head>
-<body style="--site-bg-image: url('{{ url_for('static', path=main_locale.assets.siteBackgroundImage) }}'); --lang-switch-icon: url('{{ url_for('static', path=main_locale.assets.languageSwitcherIcon) }}'); --languages-bg-image: url('{{ url_for('static', path=main_locale.assets.languagesBackgroundImage) }}');">
+<body style="--site-bg-image: url('{{ url_for('static', path=main_locale.assets.siteBackgroundImage) }}'); --lang-switch-icon: url('{{ url_for('static', path=main_locale.assets.languageSwitcherIcon) }}'); --languages-bg-image: url('{{ url_for('static', path=main_locale.assets.languagesBackgroundImage) }}'); --document-types-bg-image: url('{{ url_for('static', path=main_locale.assets.documentTypesSectionBackgroundImage) }}');">
     <header class="site-header {{ page_id | default('page-default') }}" style="--header-bg-image: url('{{ url_for('static', path=main_locale.assets.siteBackgroundImage) }}');">
         <div class="container">
-            <a class="brand" href="/main">{{ basic_locale.firstName }} {{ basic_locale.lastName }}</a>
+            <a class="brand" href="{{ home_href }}">{{ basic_locale.firstName }} {{ basic_locale.lastName }}</a>
             <div class="header-actions">
                 {% include "partials/main_navigation.html" %}
                 {% set dropdown_class = "lang-dropdown" %}
@@ -73,7 +73,27 @@
                 </a>
                 {% endfor %}
             </div>
-            <div class="site-bottom-legal">{{ basic_locale.hero_bottom_legal }}</div>
+            {% set legal_text = basic_locale.hero_bottom_legal %}
+            {% set full_name = basic_locale.firstName ~ ' ' ~ basic_locale.lastName %}
+            {% set home_link_html = '<a href="' ~ home_href ~ '">' ~ full_name ~ '</a>' %}
+            {% set agreement_href = user_agreement_href %}
+            {% set agreement_link_html = '<a href="' ~ agreement_href ~ '">Соглашение</a>' %}
+            {% set legal_with_name_link = legal_text | replace(full_name, home_link_html) %}
+            {% set has_ru_agreement = 'Соглашение' in legal_with_name_link %}
+            {% set has_en_agreement = 'User Agreement' in legal_with_name_link %}
+            {% set legal_with_links = legal_with_name_link %}
+            {% if has_ru_agreement %}
+                {% set legal_with_links = legal_with_links | replace('Соглашение', agreement_link_html) %}
+            {% elif has_en_agreement %}
+                {% set legal_with_links = legal_with_links | replace('User Agreement', '<a href="' ~ agreement_href ~ '">User Agreement</a>') %}
+            {% else %}
+                {% if current_lang == 'en' %}
+                    {% set legal_with_links = legal_with_links ~ ' <a href="' ~ agreement_href ~ '">User Agreement</a>.' %}
+                {% else %}
+                    {% set legal_with_links = legal_with_links ~ ' <a href="' ~ agreement_href ~ '">Соглашение</a>.' %}
+                {% endif %}
+            {% endif %}
+            <div class="site-bottom-legal">{{ legal_with_links | safe }}</div>
         </div>
     </div>
 

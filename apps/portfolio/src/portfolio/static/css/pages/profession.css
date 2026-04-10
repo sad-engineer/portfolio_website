@@ -1,7 +1,17 @@
-/* Токены страниц профессий: единые размеры фото/заглушки. */
+/* Токены страниц профессий: размеры фото/заглушки. Градиент языков и фоновые картинки — в base.css и inline body (шаблон). */
 :root {
   --profession-photo-width: 600px; /* Фиксированная ширина блока фото/заглушки. */
   --profession-photo-aspect-ratio: 3 / 4; /* Базовое соотношение сторон фото/заглушки на мобильных. */
+}
+
+/*
+ * Контент профессии должен композиться выше секции обратной связи: fixed-панели описаний
+ * иконок остаются в дереве main, а .feedback в base.html следует за main — при перекрытии
+ * во вьюпорте иначе панель оказывается под формой.
+ */
+.page-content.page-profession {
+  position: relative;
+  z-index: 2;
 }
 
 /* Единая страница профессий: отступы у заголовочного блока. */
@@ -9,8 +19,10 @@
   margin: 20px 0 12px;
 }
 
-/* Верхняя зона: две колонки одинаковой высоты. */
+/* Верхняя зона: две колонки одинаковой высоты; слой выше .document-types, иначе панели из навыков/технологий уходят под следующую секцию. */
 .page-content.page-profession .tech-layout {
+  position: relative;
+  z-index: 2;
   align-items: stretch;
 }
 
@@ -63,9 +75,97 @@
   aspect-ratio: auto;
 }
 
+/* Фон секции "Типы документов": изображение по правому краю в зоне 66%. */
+.page-content.page-profession .document-types {
+  position: relative;
+  overflow: visible; /* Разрешает dropdown-описаниям иконок выходить поверх соседних секций. */
+  z-index: 1;
+}
+
+.page-content.page-profession .document-types::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 66%;
+  background-image: var(--document-types-bg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right center;
+  opacity: 0.9; /* Правая часть изображения до 90% видимости. */
+  -webkit-mask-image: linear-gradient(to right, #00000000 0%, #000000 100%); /* Плавное проявление картинки справа; альфа через 8-значный HEX. */
+  mask-image: linear-gradient(to right, #00000000 0%, #000000 100%); /* Стандартная маска без rgba(). */
+  pointer-events: none;
+}
+
+/* Наполнение контента document-types. */
+.page-content.page-profession .document-types > * {
+  position: relative;
+  z-index: 1;
+  width: 66%;
+}
+
+/*
+ * Несколько .tech-group подряд (и строки одной сетки) при равном z-index рисуются по порядку DOM —
+ * следующие иконки оказываются поверх fixed-панели. Поднимаем группу с открытым описанием.
+ */
+.page-content.page-profession .tech-group:has(.tech-tile-dropdown[open]) {
+  position: relative;
+  z-index: 40;
+}
+
+/* Контейнер выше .info-banner (в шаблоне баннер идёт после контейнера), чтобы панели не прятались под оранжевый блок. */
+.page-content.page-profession .profession-content-container {
+  z-index: 3;
+}
+
+.page-content.page-profession .info-banner {
+  z-index: 0;
+}
+
+/* Фон секции "Языки": градиент под прозрачные зоны изображения. */
+.page-content.page-profession .languages-full {
+  position: relative;
+  overflow: visible; /* Разрешает dropdown-описаниям иконок выходить поверх соседних секций. */
+  min-height: 100px;
+  background: var(--languages-overlay-gradient);
+  /* Ниже .document-types (z-index: 1), иначе при равном слое следующая в DOM секция перекрывает выпадающие панели «типов документов». */
+  z-index: 0;
+}
+
+/* Фоновая картинка секции "Языки" в левой половине блока. */
+.page-content.page-profession .languages-full::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 70%;
+  background-image: var(--languages-bg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 10%;
+  pointer-events: none;
+}
+
+/* Контентная область секции "Языки" справа. */
+.page-content.page-profession .languages-content {
+  position: relative;
+  z-index: 1;
+  width: 25%;
+  margin-left: auto;
+}
+
+/* Выравнивает верхний внутренний отступ языкового блока с соседними секциями. */
+.page-content.page-profession .languages-full .languages-content > h2 {
+  margin-top: 0;
+}
+
 /* На мобильных отключаем выравнивание по общей высоте, оставляем по содержимому. */
 @media (max-width: 920px) {
   .page-content.page-profession .tech-layout {
+    grid-template-columns: 1fr;
     align-items: start;
   }
 
@@ -91,5 +191,14 @@
     max-width: var(--profession-photo-width);
     height: auto;
     aspect-ratio: var(--profession-photo-aspect-ratio);
+  }
+
+  .page-content.page-profession .languages-content {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .page-content.page-profession .document-types > * {
+    width: 100%;
   }
 }

@@ -3,10 +3,11 @@
     "favicon": "assets/icons/site_icon.svg",
     "siteBackgroundImage": "assets/img/backgrounds/6.jpg",
     "languageSwitcherIcon": "assets/icons/language switch.svg",
-    "languagesBackgroundImage": "assets/img/backgrounds/languages.png"
+    "languagesBackgroundImage": "assets/img/backgrounds/languages.png",
+    "documentTypesSectionBackgroundImage": "assets/img/backgrounds/document_types.jpg"
   },
   "hero": {
-    "lead": "{{EXPERIENCE_DAYS}} дней в инженирии, проектировании и IT-разработке",
+    "lead": "{{EXPERIENCE_DAYS}} дней в инженерии, проектировании и IT-разработке",
     "photoPlaceholderText": "Фото скоро будет",
     "photoPlaceholderAriaLabel": "Фото профиля отсутствует"
   },
@@ -38,7 +39,7 @@
       {
         "id": "planner",
         "title": "Инженер-проектировщик",
-        "description": "Разработка планировочных решений цехов, участков, расположений оборудований, оптимизация маршрутных путей изделий внутри производства.",
+        "description": "Разработка планировочных решений цехов и участков, размещение оборудования, оптимизация маршрутных путей изделий внутри производства.",
         "url": "/planner",
         "backgroundImage": "assets/img/backgrounds/planner.png"
       },
@@ -68,7 +69,7 @@
           {
             "id": "constructor",
             "title": "Design Engineer",
-            "description": "3D modeling of engineering units, development of a complete set of design documentation (RKD), along with supporting and operational documentation.",
+            "description": "3D modeling of parts, assemblies, units, blocks, and installations; engineering calculations; full design documentation (RKD); supporting and operational documentation.",
             "url": "/constructor"
           },
           {
@@ -92,8 +93,8 @@
         ]
       },
       "info_banner": {
-        "title": "Technical specialist of high level in the field of design and development",
-        "description": "Successfully solve engineering tasks of any complexity using modern technologies and high-performance tools. Create unique solutions based on analysis, design, process optimization, and programming."
+        "title": "Highly skilled technical specialist in design and development",
+        "description": "I solve engineering tasks of any complexity using modern technologies and high-performance tools. I build tailored solutions through analysis, design, process optimization, and programming."
       }
     }
   }

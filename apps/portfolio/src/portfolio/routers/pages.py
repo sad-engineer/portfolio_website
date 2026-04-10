@@ -10,6 +10,9 @@ from portfolio.dependencies import (get_site_content, get_templates,
 
 router = APIRouter(tags=["pages"])
 
+# Имя cookie для сохранения выбранной локали (совпадает с middleware в main.py).
+LANG_COOKIE_NAME = "portfolio_lang"
+
 
 def _deep_merge_dicts(base: dict, overlay: dict) -> dict:
     merged = deepcopy(base)
@@ -37,24 +40,154 @@ def _localized_content_block(block: dict, current_lang: str) -> dict:
     return base_payload
 
 
+def _apply_label_tags(node: object, tags: dict) -> None:
+    """Подставляет переводы по словарю tags для полей label и title (ключ — исходная строка)."""
+    if isinstance(node, dict):
+        for field in ("label", "title"):
+            text = node.get(field)
+            if isinstance(text, str) and text in tags:
+                node[field] = tags[text]
+        for value in node.values():
+            _apply_label_tags(value, tags)
+    elif isinstance(node, list):
+        for item in node:
+            _apply_label_tags(item, tags)
+
+
+def _apply_descriptions_by_label(node: object, descriptions: dict) -> None:
+    """Подставляет перевод description по русскому label (до замены tags на EN)."""
+    if isinstance(node, dict):
+        label = node.get("label")
+        if (
+            isinstance(label, str)
+            and label in descriptions
+            and "description" in node
+            and isinstance(node.get("description"), str)
+        ):
+            node["description"] = descriptions[label]
+        for value in node.values():
+            _apply_descriptions_by_label(value, descriptions)
+    elif isinstance(node, list):
+        for item in node:
+            _apply_descriptions_by_label(item, descriptions)
+
+
+def _tag_bundle_is_nested(tag_bundle: dict) -> bool:
+    """Вложенный формат: tags.labels / tags.descriptions — объекты-словари, не строки."""
+    labels = tag_bundle.get("labels")
+    descriptions = tag_bundle.get("descriptions")
+    return isinstance(labels, dict) or isinstance(descriptions, dict)
+
+
+def _localized_profession_block(block: dict, current_lang: str) -> dict:
+    """Локализует JSON страницы профессии: sections, tags.labels (подписи), tags.descriptions (описания плиток)."""
+    if not isinstance(block, dict):
+        return {}
+
+    base_payload = {
+        key: deepcopy(value) for key, value in block.items() if key != "i18n"
+    }
+
+    if current_lang != "en":
+        return base_payload
+
+    en_overlay = block.get("i18n", {}).get("en", {})
+    if not isinstance(en_overlay, dict):
+        return base_payload
+
+    merged = _deep_merge_dicts(base_payload, en_overlay)
+
+    sections = merged.pop("sections", None)
+    if isinstance(sections, dict):
+        for key, title in sections.items():
+            section = merged.get(key)
+            if isinstance(section, dict) and isinstance(title, str):
+                section["title"] = title
+
+    legacy_descriptions = merged.pop("descriptions", None)
+
+    tag_bundle = merged.pop("tags", None)
+    if isinstance(tag_bundle, dict) and _tag_bundle_is_nested(tag_bundle):
+        nested_desc = tag_bundle.get("descriptions")
+        if isinstance(nested_desc, dict):
+            _apply_descriptions_by_label(merged, nested_desc)
+        label_map = tag_bundle.get("labels")
+        if isinstance(label_map, dict):
+            _apply_label_tags(merged, label_map)
+    elif isinstance(tag_bundle, dict):
+        if isinstance(legacy_descriptions, dict):
+            _apply_descriptions_by_label(merged, legacy_descriptions)
+        _apply_label_tags(merged, tag_bundle)
+
+    return merged
+
+
+_PROFESSION_KEYS = ("constructor", "planner", "developer", "technologist")
+
+
+def _append_lang_query(href: str, lang: str) -> str:
+    """Добавляет lang= к внутренним путям, чтобы навигация не сбрасывала локаль."""
+    if not isinstance(href, str) or not href.startswith("/") or href.startswith("//"):
+        return href
+    if "lang=" in href:
+        return href
+    joiner = "&" if "?" in href else "?"
+    return f"{href}{joiner}lang={lang}"
+
+
+def _navigation_with_lang_urls(nav: dict, lang: str) -> dict:
+    patched = deepcopy(nav)
+    for item in patched.get("items", []):
+        h = item.get("href")
+        if isinstance(h, str):
+            item["href"] = _append_lang_query(h, lang)
+    return patched
+
+
+def _main_locale_with_direction_lang(main_locale: dict, lang: str) -> dict:
+    """Карточки направлений на главной: url с текущей локалью."""
+    out = deepcopy(main_locale)
+    direction = out.get("direction")
+    if isinstance(direction, dict):
+        for card in direction.get("cards", []):
+            if isinstance(card, dict):
+                u = card.get("url")
+                if isinstance(u, str):
+                    card["url"] = _append_lang_query(u, lang)
+    return out
+
+
 def _resolve_current_lang(request: Request, site_content: dict) -> str:
-    supported_locales = (
+    supported_locales = tuple(
         site_content.get("basic", {}).get("site", {}).get("locales", ["ru", "en"])
     )
     default_locale = site_content.get("basic", {}).get("site", {}).get("language", "ru")
 
-    requested_locale = request.query_params.get("lang", default_locale)
-    if requested_locale in supported_locales:
-        return requested_locale
-    return default_locale
+    query_lang = request.query_params.get("lang")
+    if query_lang in supported_locales:
+        return query_lang
+
+    cookie_lang = request.cookies.get(LANG_COOKIE_NAME)
+    if cookie_lang in supported_locales:
+        return cookie_lang
+
+    if default_locale in supported_locales:
+        return default_locale
+    return supported_locales[0] if supported_locales else "ru"
 
 
 def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict:
     current_lang = _resolve_current_lang(request, site_content)
 
     basic_locale = _localized_content_block(site_content.get("basic", {}), current_lang)
-    main_locale = _localized_content_block(site_content.get("main", {}), current_lang)
-    main_nav_locale = basic_locale.get("navigation", {})
+    main_locale = _main_locale_with_direction_lang(
+        _localized_content_block(site_content.get("main", {}), current_lang),
+        current_lang,
+    )
+    main_nav_locale = _navigation_with_lang_urls(
+        basic_locale.get("navigation", {}),
+        current_lang,
+    )
 
     social_links: list[dict] = []
     for item in main_locale.get("social", []):
@@ -77,6 +210,19 @@ def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict
             }
         )
 
+    profession_locale = {
+        key: _localized_profession_block(site_content.get(key, {}), current_lang)
+        for key in _PROFESSION_KEYS
+    }
+
+    links = basic_locale.get("links", {})
+    agreement_path = str(
+        links.get("userAgreement", {}).get("href", "/polzovatelskoe-soglashenie")
+    )
+    privacy_path = str(
+        links.get("privacyPolicy", {}).get("href", "/politika-konfidencialnosti")
+    )
+
     return {
         "request": request,
         "content": site_content,
@@ -86,6 +232,10 @@ def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict
         "main_locale": main_locale,
         "main_nav_locale": main_nav_locale,
         "social_links": social_links,
+        "profession_locale": profession_locale,
+        "home_href": _append_lang_query("/main", current_lang),
+        "user_agreement_href": _append_lang_query(agreement_path, current_lang),
+        "privacy_policy_href": _append_lang_query(privacy_path, current_lang),
     }
 
 

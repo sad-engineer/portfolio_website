@@ -1,5 +1,5 @@
 {
-  "title": "Python-developer",
+  "title": "Python-разработчик",
   "summary": "Строю API и приложения, автоматизирую расчеты и документооборот, проектирую базы данных и тестирую решения.",
   "technologies": {
     "title": "Технологии",
@@ -7,43 +7,43 @@
       "languages": {
         "title": "Языки программирования и SQL",
         "items": [
-          { "icon": "fa-solid fa-object-group", "label": "ООП" },
-          { "icon": "devicon-python-plain", "label": "Python 2.7" },
-          { "icon": "devicon-python-plain", "label": "Python 3.10" },
-          { "icon": "devicon-java-plain", "label": "Java" },
-          { "icon": "devicon-javascript-plain", "label": "JavaScript" },
-          { "icon": "fa-solid fa-database", "label": "SQL" },
-          { "icon": "fa-solid fa-database", "label": "PostgreSQL" },
-          { "icon": "fa-solid fa-database", "label": "MySQL" },
-          { "icon": "fa-solid fa-code", "label": "VBA" },
-          { "icon": "fa-solid fa-code", "label": "Delphi" },
-          { "icon": "fa-solid fa-code", "label": "Pascal" }
+          { "icon": "fa-solid fa-object-group", "label": "ООП", "description": "Методология программирования на основе объектов, классов и наследования; инкапсуляция и полиморфизм (см. Википедию «Объектно-ориентированное программирование»)." },
+          { "icon": "devicon-python-plain", "label": "Python 2.7", "description": "Высокоуровневый интерпретируемый язык с динамической типизацией; ветка 2.x завершена, но встречается в легаси-коде (Википедия «Python»; python.org)." },
+          { "icon": "devicon-python-plain", "label": "Python 3.10", "description": "Современная ветка Python: читаемый синтаксис, структурное и объектно-ориентированное программирование, широкая экосистема библиотек (Википедия «Python»; python.org)." },
+          { "icon": "devicon-java-plain", "label": "Java", "description": "Объектно-ориентированный язык со статической типизацией, JVM и переносимостью «напиши один раз — запускай везде» (Википедия «Java»; Oracle Java)." },
+          { "icon": "devicon-javascript-plain", "label": "JavaScript", "description": "Язык сценариев для веба и не только, стандартизован как ECMAScript; динамическая типизация и прототипное наследование (Википедия «JavaScript»; ecma-international.org)." },
+          { "icon": "fa-solid fa-database", "label": "SQL", "description": "Декларативный язык структурированных запросов к реляционным базам данных: выборка, изменение схемы и данных (Википедия «SQL»)." },
+          { "icon": "fa-solid fa-database", "label": "PostgreSQL", "description": "Свободная объектно-реляционная СУБД с богатым SQL, расширяемостью типов и надёжностью; развитие проекта POSTGRES в Berkeley (Википедия «PostgreSQL»; postgresql.org)." },
+          { "icon": "fa-solid fa-database", "label": "MySQL", "description": "Реляционная СУБД с открытым исходным кодом и клиент-серверной архитектурой, широко применяемая в веб-приложениях (Википедия «MySQL»; mysql.com)." },
+          { "icon": "fa-solid fa-code", "label": "VBA", "description": "Встроенный язык автоматизации приложений Microsoft Office и других COM-приложений, диалект Visual Basic (Википедия «Visual Basic for Applications»; Microsoft)." },
+          { "icon": "fa-solid fa-code", "label": "Delphi", "description": "Среда и язык Object Pascal от Embarcadero для быстрой разработки нативных и кроссплатформенных приложений (Википедия «Delphi»; embarcadero.com)." },
+          { "icon": "fa-solid fa-code", "label": "Pascal", "description": "Процедурный язык, заложивший основы структурного программирования; исторически учебный и инженерный инструмент (Википедия «Паскаль»)." }
         ]
       },
       "frameworks": {
         "title": "Фреймворки, библиотеки и инструменты",
         "items": [
-          { "icon": "devicon-fastapi-plain", "label": "FastAPI" },
-          { "icon": "fa-solid fa-vial", "label": "Unit Testing" },
-          { "icon": "devicon-pandas-plain", "label": "pandas" },
-          { "icon": "devicon-sqlalchemy-plain", "label": "SQLAlchemy" },
-          { "icon": "devicon-git-plain", "label": "Git" },
-          { "icon": "devicon-docker-plain", "label": "Docker-compose" },
-          { "icon": "devicon-jinja-plain", "label": "Jinja2" }
+          { "icon": "devicon-fastapi-plain", "label": "FastAPI", "description": "Веб-фреймворк для API на Python с аннотациями типов, OpenAPI-документацией и высокой производительностью на Starlette/Uvicorn (Википедия «FastAPI»; fastapi.tiangolo.com)." },
+          { "icon": "fa-solid fa-vial", "label": "Unit Testing", "description": "Модульное (юнит-)тестирование: проверка отдельных функций и классов для регрессии и рефакторинга (Википедия «Модульное тестирование»)." },
+          { "icon": "devicon-pandas-plain", "label": "pandas", "description": "Библиотека Python для табличных данных, фильтрации, агрегирования и подготовки данных к анализу (Википедия «pandas»; pandas.pydata.org)." },
+          { "icon": "devicon-sqlalchemy-plain", "label": "SQLAlchemy", "description": "SQL toolkit и ORM для Python: декларативные модели, запросы и миграции схем (sqlalchemy.org)." },
+          { "icon": "devicon-git-plain", "label": "Git", "description": "Распределённая система контроля версий для исходного кода; ветвление, слияния, целостность объектов (Википедия «Git»; git-scm.com)." },
+          { "icon": "devicon-docker-plain", "label": "Docker-compose", "description": "Инструмент описания многоконтейнерных приложений в YAML и их совместного запуска (документация Docker Compose; docker.com)." },
+          { "icon": "devicon-jinja-plain", "label": "Jinja2", "description": "Шаблонизатор для Python: наследование шаблонов, фильтры, безопасное экранирование HTML; используется во Flask и др. (Википедия «Jinja»; jinja.palletsprojects.com)." }
         ]
       },
       "profile": {
         "title": "Профиль и предметная область",
         "items": [
-          { "icon": "fa-solid fa-cubes", "label": "3D Моделирование" },
-          { "icon": "fa-solid fa-gears", "label": "Автоматизация процессов" },
-          { "icon": "fa-solid fa-cube", "label": "KOMPAS SDK" },
-          { "icon": "fa-solid fa-window-maximize", "label": "PyQT5" },
-          { "icon": "fa-solid fa-layer-group", "label": "Kivy" },
-          { "icon": "fa-solid fa-database", "label": "NoSQL" },
-          { "icon": "devicon-androidstudio-plain", "label": "Android Studio" },
-          { "icon": "fa-brands fa-android", "label": "Android SDK" },
-          { "icon": "fa-brands fa-android", "label": "Android" }
+          { "icon": "fa-solid fa-cubes", "label": "3D Моделирование", "description": "Построение и использование трёхмерных моделей в инженерных и прототипных задачах (общие принципы САПР; см. Википедию «САПР»)." },
+          { "icon": "fa-solid fa-gears", "label": "Автоматизация процессов", "description": "Скрипты и сервисы, снимающие ручные операции в расчётах, отчётах и обмене данными между системами." },
+          { "icon": "fa-solid fa-cube", "label": "KOMPAS SDK", "description": "Программный интерфейс для встраивания и автоматизации КОМПАС-3D: макросы, импорт/экспорт моделей и документов (материалы АСКОН, ascon.ru)." },
+          { "icon": "fa-solid fa-window-maximize", "label": "PyQT5", "description": "Python-привязки к Qt5 для кроссплатформенных GUI-приложений (Википедия «PyQt»; riverbankcomputing.com / Qt)." },
+          { "icon": "fa-solid fa-layer-group", "label": "Kivy", "description": "Открытый фреймворк Python для мультитач-интерфейсов и приложений на десктопе и мобильных платформах (kivy.org)." },
+          { "icon": "fa-solid fa-database", "label": "NoSQL", "description": "Нереляционные и полуструктурированные хранилища (документные, ключ-значение и др.) для масштабирования и гибкой схемы (Википедия «NoSQL»)." },
+          { "icon": "devicon-androidstudio-plain", "label": "Android Studio", "description": "Официальная IDE для Android на базе IntelliJ: сборка, эмулятор, отладка (developer.android.com/studio)." },
+          { "icon": "fa-brands fa-android", "label": "Android SDK", "description": "Комплект инструментов, API и эмуляторов для разработки под ОС Android (developer.android.com/tools)." },
+          { "icon": "fa-brands fa-android", "label": "Android", "description": "Мобильная ОС на ядре Linux с собственным стеком приложений и распространением через Google Play (Википедия «Android»; android.com)." }
         ]
       }
     }
@@ -51,45 +51,45 @@
   "work_methods": {
     "title": "Методы организации работы",
     "items": [
-      { "icon": "fa-solid fa-comments", "label": "Коммуникация с заказчиком и оценка задач" },
-      { "icon": "fa-solid fa-sitemap", "label": "Проектирование архитектуры и модулей" },
-      { "icon": "fa-solid fa-flask", "label": "Покрытие кода unit-тестами" },
-      { "icon": "fa-solid fa-bug", "label": "Исправление багов и стабилизация решений" },
-      { "icon": "fa-solid fa-file-lines", "label": "Документирование технических решений" },
-      { "icon": "fa-solid fa-brain", "label": "Работа с неопределенными требованиями" },
-      { "icon": "fa-solid fa-user-friends", "label": "Коммуникация с не-техническим заказчиком" },
-      { "icon": "fa-solid fa-list-check", "label": "Приоритизация задач, работа через трекер" },
-      { "icon": "fa-solid fa-lightbulb", "label": "Обучение и исследование технологий под задачу" }
+      { "icon": "fa-solid fa-comments", "label": "Коммуникация с заказчиком и оценка задач", "description": "Уточнение целей, критериев готовности и оценка трудозатрат до старта разработки." },
+      { "icon": "fa-solid fa-sitemap", "label": "Проектирование архитектуры и модулей", "description": "Разбиение системы на слои и модули с явными границами ответственности и зависимостей." },
+      { "icon": "fa-solid fa-flask", "label": "Покрытие кода unit-тестами", "description": "Автоматические проверки критичной логики для безопасного изменения кода (см. Википедию «Модульное тестирование»)." },
+      { "icon": "fa-solid fa-bug", "label": "Исправление багов и стабилизация решений", "description": "Воспроизведение дефектов, исправления и контроль регрессии тестами." },
+      { "icon": "fa-solid fa-file-lines", "label": "Документирование технических решений", "description": "README, комментарии к API и краткие гайды для сопровождения." },
+      { "icon": "fa-solid fa-brain", "label": "Работа с неопределенными требованиями", "description": "Итерации, прототипы и уточнение scope при неполной постановке задачи." },
+      { "icon": "fa-solid fa-user-friends", "label": "Коммуникация с не-техническим заказчиком", "description": "Перевод технических ограничений и рисков на понятный бизнес-язык." },
+      { "icon": "fa-solid fa-list-check", "label": "Приоритизация задач, работа через трекер", "description": "Ведение backlog, статусов и дедлайнов в системе задач." },
+      { "icon": "fa-solid fa-lightbulb", "label": "Обучение и исследование технологий под задачу", "description": "Быстрый разбор документации и PoC перед внедрением новой библиотеки или сервиса." }
     ]
   },
   "skills": {
     "title": "Навыки",
     "items": [
-      { "icon": "fa-solid fa-robot", "label": "Автоматизация инженерных процессов" },
-      { "icon": "fa-solid fa-server", "label": "Разработка backend-сервисов и API" },
-      { "icon": "fa-solid fa-database", "label": "Проектирование SQL-баз данных" },
-      { "icon": "fa-solid fa-cubes", "label": "3D/инженерные расчеты и прототипирование" },
-      { "icon": "fa-solid fa-desktop", "label": "Desktop-прототипы (GUI/без GUI)" },
-      { "icon": "fa-solid fa-code-branch", "label": "Контроль версий (Git)" },
-      { "icon": "devicon-pandas-plain", "label": "Анализ данных (pandas/numpy)" },
-      { "icon": "devicon-androidstudio-plain", "label": "Android (базовый уровень)" }
+      { "icon": "fa-solid fa-robot", "label": "Автоматизация инженерных процессов", "description": "Скрипты и интеграции для чертежей, спецификаций, расчётов и отчётности инженерных подразделений." },
+      { "icon": "fa-solid fa-server", "label": "Разработка backend-сервисов и API", "description": "Серверная логика, REST/JSON, авторизация и устойчивость к ошибкам (в т.ч. на FastAPI)." },
+      { "icon": "fa-solid fa-database", "label": "Проектирование SQL-баз данных", "description": "Нормализация, ключи, индексы и миграции схем под нагрузку и целостность данных." },
+      { "icon": "fa-solid fa-cubes", "label": "3D/инженерные расчеты и прототипирование", "description": "Связка расчётных и геометрических данных в прототипах инженерного ПО." },
+      { "icon": "fa-solid fa-desktop", "label": "Desktop-прототипы (GUI/без GUI)", "description": "Локальные утилиты и окна для проверки идей до веб-релиза." },
+      { "icon": "fa-solid fa-code-branch", "label": "Контроль версий (Git)", "description": "Ветки, code review и история изменений в командной разработке (git-scm.com)." },
+      { "icon": "devicon-pandas-plain", "label": "Анализ данных (pandas/numpy)", "description": "Обработка табличных и числовых массивов, агрегации и подготовка выборок (pandas.pydata.org; numpy.org)." },
+      { "icon": "devicon-androidstudio-plain", "label": "Android (базовый уровень)", "description": "Простые приложения и понимание жизненного цикла Activity, макетов и сборки Gradle (developer.android.com)." }
     ]
   },
   "document_types": {
     "title": "Типы решений",
     "items": [
-      { "icon": "fa-solid fa-calculator", "label": "Автоматизация рутинных расчетов" },
-      { "icon": "fa-solid fa-server", "label": "Разработка внутренних сервисов для инженеров" },
-      { "icon": "fa-solid fa-database", "label": "Парсинг и агрегирование инженерных данных" },
-      { "icon": "fa-solid fa-desktop", "label": "Прототипирование GUI-инструментов" },
-      { "icon": "fa-solid fa-mobile-screen", "label": "Базовые Android-проекты" }
+      { "icon": "fa-solid fa-calculator", "label": "Автоматизация рутинных расчетов", "description": "Скрипты и формы, заменяющие повторяющиеся ручные расчёты в Excel или калькуляторах." },
+      { "icon": "fa-solid fa-server", "label": "Разработка внутренних сервисов для инженеров", "description": "Веб- и фоновые сервисы для обмена данными между САПР, БД и отчётностью." },
+      { "icon": "fa-solid fa-database", "label": "Парсинг и агрегирование инженерных данных", "description": "Извлечение и сведение данных из файлов, API и баз для аналитики и отчётов." },
+      { "icon": "fa-solid fa-desktop", "label": "Прототипирование GUI-инструментов", "description": "Быстрые интерфейсы на PyQt/Kivy для демонстрации сценариев пользователя." },
+      { "icon": "fa-solid fa-mobile-screen", "label": "Базовые Android-проекты", "description": "Небольшие мобильные клиенты или вспомогательные приложения под внутренние задачи." }
     ]
   },
   "languages": {
     "title": "Иностранные языки:",
     "items": [
-      { "icon": "fa-solid fa-language", "label": "Русский" },
-      { "icon": "fa-solid fa-earth-europe", "label": "Английский" }
+      { "icon": "fa-solid fa-language", "label": "Русский", "description": "Родной язык для внутренней документации и коммуникации в проектах." },
+      { "icon": "fa-solid fa-earth-europe", "label": "Английский", "description": "Чтение официальной документации, RFC и Stack Overflow; профессиональная переписка." }
     ]
   },
   "lastWorksRef": "work_places.json",
@@ -98,51 +98,133 @@
     "title": "Пишу на Python решения, которые ускоряют бизнес-процессы",
     "description": "Автоматизирую рутину, создаю внутренние инструменты и веб-сервисы, которые сократят время операций и снизят количество ошибок. Возьму на себя полный цикл: анализ, разработка, тестирование и сопровождение."
   },
-  
   "i18n": {
     "en": {
-      "title": "Developer",
+      "title": "Python Developer",
       "summary": "I build APIs and applications, automate calculations and document management, design databases, and test solutions.",
       "sections": {
         "technologies": "Technologies",
         "work_methods": "Work Methods",
         "skills": "Skills",
-        "document_types": "Document Types",
+        "document_types": "Solution Types",
         "languages": "Foreign Languages:"
       },
+      "info_banner": {
+        "title": "I build Python solutions that accelerate business processes",
+        "description": "I automate routine work, create internal tools and web services to shorten operations and reduce errors. I can own the full cycle: analysis, development, testing, and maintenance."
+      },
       "tags": {
-        "Языки программирования и SQL": "Programming languages and SQL",
-        "Фреймворки, библиотеки и инструменты": "Frameworks, libraries, and tools",
-        "Профиль и предметная область": "Profile and domain",
-        "ООП": "OOP",
-        "Автоматизация процессов": "Process automation",
-        "Коммуникация с заказчиком и оценка задач": "Client communication and task estimation",
-        "Проектирование архитектуры и модулей": "Architecture and module design",
-        "Покрытие кода unit-тестами": "Unit test coverage",
-        "Исправление багов и стабилизация решений": "Bug fixing and solution stabilization",
-        "Документирование технических решений": "Technical documentation",
-        "Работа с неопределенными требованиями": "Working with uncertain requirements",
-        "Коммуникация с не-техническим заказчиком": "Communication with non-technical clients",
-        "Приоритизация задач, работа через трекер": "Task prioritization and tracker-based workflow",
-        "Обучение и исследование технологий под задачу": "Learning and research for task needs",
-        "Автоматизация инженерных процессов": "Engineering process automation",
-        "Разработка backend-сервисов и API": "Backend services and API development",
-        "Проектирование SQL-баз данных": "SQL database design",
-        "3D/инженерные расчеты и прототипирование": "3D/engineering calculations and prototyping",
-        "Desktop-прототипы (GUI/без GUI)": "Desktop prototypes (GUI/non-GUI)",
-        "Контроль версий (Git)": "Version control (Git)",
-        "Анализ данных (pandas/numpy)": "Data analysis (pandas/numpy)",
-        "Android (базовый уровень)": "Android (basic level)",
-        "Типы решений": "Solution Types",
-        "Автоматизация рутинных расчетов": "Automation of routine calculations",
-        "Разработка внутренних сервисов для инженеров": "Development of internal services for engineers",
-        "Парсинг и агрегирование инженерных данных": "Parsing and aggregation of engineering data",
-        "Прототипирование GUI-инструментов": "GUI tool prototyping",
-        "Базовые Android-проекты": "Basic Android projects",
-        "Русский": "Russian",
-        "Английский": "English"
+        "labels": {
+          "Языки программирования и SQL": "Programming languages and SQL",
+          "Фреймворки, библиотеки и инструменты": "Frameworks, libraries, and tools",
+          "Профиль и предметная область": "Profile and domain",
+          "ООП": "OOP",
+          "Python 2.7": "Python 2.7",
+          "Python 3.10": "Python 3.10",
+          "Java": "Java",
+          "JavaScript": "JavaScript",
+          "SQL": "SQL",
+          "PostgreSQL": "PostgreSQL",
+          "MySQL": "MySQL",
+          "VBA": "VBA",
+          "Delphi": "Delphi",
+          "Pascal": "Pascal",
+          "FastAPI": "FastAPI",
+          "Unit Testing": "Unit testing",
+          "pandas": "pandas",
+          "SQLAlchemy": "SQLAlchemy",
+          "Git": "Git",
+          "Docker-compose": "Docker Compose",
+          "Jinja2": "Jinja2",
+          "3D Моделирование": "3D modeling",
+          "Автоматизация процессов": "Process automation",
+          "KOMPAS SDK": "KOMPAS SDK",
+          "PyQT5": "PyQt5",
+          "Kivy": "Kivy",
+          "NoSQL": "NoSQL",
+          "Android Studio": "Android Studio",
+          "Android SDK": "Android SDK",
+          "Android": "Android",
+          "Коммуникация с заказчиком и оценка задач": "Client communication and task estimation",
+          "Проектирование архитектуры и модулей": "Architecture and module design",
+          "Покрытие кода unit-тестами": "Unit test coverage",
+          "Исправление багов и стабилизация решений": "Bug fixing and solution stabilization",
+          "Документирование технических решений": "Technical documentation",
+          "Работа с неопределенными требованиями": "Working with uncertain requirements",
+          "Коммуникация с не-техническим заказчиком": "Communication with non-technical clients",
+          "Приоритизация задач, работа через трекер": "Task prioritization and tracker-based workflow",
+          "Обучение и исследование технологий под задачу": "Learning and research for task needs",
+          "Автоматизация инженерных процессов": "Engineering process automation",
+          "Разработка backend-сервисов и API": "Backend services and API development",
+          "Проектирование SQL-баз данных": "SQL database design",
+          "3D/инженерные расчеты и прототипирование": "3D/engineering calculations and prototyping",
+          "Desktop-прототипы (GUI/без GUI)": "Desktop prototypes (GUI/non-GUI)",
+          "Контроль версий (Git)": "Version control (Git)",
+          "Анализ данных (pandas/numpy)": "Data analysis (pandas/numpy)",
+          "Android (базовый уровень)": "Android (basic level)",
+          "Типы решений": "Solution Types",
+          "Автоматизация рутинных расчетов": "Automation of routine calculations",
+          "Разработка внутренних сервисов для инженеров": "Development of internal services for engineers",
+          "Парсинг и агрегирование инженерных данных": "Parsing and aggregation of engineering data",
+          "Прототипирование GUI-инструментов": "GUI tool prototyping",
+          "Базовые Android-проекты": "Basic Android projects",
+          "Русский": "Russian",
+          "Английский": "English"
+        },
+        "descriptions": {
+          "ООП": "Programming with objects, classes, and inheritance; encapsulation and polymorphism (Wikipedia: Object-oriented programming).",
+          "Python 2.7": "High-level interpreted language; Python 2.x is legacy but still maintained in older codebases (Wikipedia: Python; python.org).",
+          "Python 3.10": "Current Python line: readable syntax, OOP support, and a large library ecosystem (Wikipedia: Python; python.org).",
+          "Java": "Object-oriented language with static typing, the JVM, and write-once-run-anywhere portability (Wikipedia: Java; Oracle Java).",
+          "JavaScript": "Scripting language for the web and beyond, standardized as ECMAScript (Wikipedia: JavaScript; ECMA).",
+          "SQL": "Declarative language for querying and managing relational databases (Wikipedia: SQL).",
+          "PostgreSQL": "Open-source object-relational DBMS with rich SQL and extensibility; roots in Berkeley POSTGRES (Wikipedia: PostgreSQL; postgresql.org).",
+          "MySQL": "Popular open-source relational DBMS with client-server architecture (Wikipedia: MySQL; mysql.com).",
+          "VBA": "Automation language for Microsoft Office and other COM apps, a Visual Basic dialect (Wikipedia: VBA; Microsoft).",
+          "Delphi": "IDE and Object Pascal toolchain from Embarcadero for fast native apps (Wikipedia: Delphi; embarcadero.com).",
+          "Pascal": "Procedural language that shaped structured programming; historically used in education and engineering (Wikipedia: Pascal).",
+          "FastAPI": "Python web framework for APIs with type hints, auto OpenAPI docs, and high performance on Starlette/Uvicorn (Wikipedia: FastAPI; fastapi.tiangolo.com).",
+          "Unit Testing": "Module-level tests of functions and classes to catch regressions (Wikipedia: Unit testing).",
+          "pandas": "Python library for tables, filtering, aggregation, and data prep (Wikipedia: pandas; pandas.pydata.org).",
+          "SQLAlchemy": "Python SQL toolkit and ORM for schemas, queries, and migrations (sqlalchemy.org).",
+          "Git": "Distributed version control for source code: branching, merging, and object integrity (Wikipedia: Git; git-scm.com).",
+          "Docker-compose": "YAML-driven tool to define and run multi-container apps (Docker Compose docs; docker.com).",
+          "Jinja2": "Python template engine with inheritance, filters, and HTML escaping; used by Flask and others (Wikipedia: Jinja; jinja.palletsprojects.com).",
+          "3D Моделирование": "Building and using 3D models in engineering prototypes (general CAD principles; Wikipedia: CAD).",
+          "Автоматизация процессов": "Scripts and services that remove manual steps in calculations, reports, and data exchange.",
+          "KOMPAS SDK": "APIs to embed and automate KOMPAS-3D: macros, model and document exchange (ASCON materials; ascon.ru).",
+          "PyQT5": "Python bindings to Qt5 for cross-platform desktop GUIs (Wikipedia: PyQt; Riverbank / Qt).",
+          "Kivy": "Open-source Python framework for multitouch UIs on desktop and mobile (kivy.org).",
+          "NoSQL": "Non-relational and semi-structured stores for scale and flexible schemas (Wikipedia: NoSQL).",
+          "Android Studio": "Official Android IDE based on IntelliJ: build, emulator, debugging (developer.android.com/studio).",
+          "Android SDK": "Tools, APIs, and emulators for Android development (developer.android.com/tools).",
+          "Android": "Mobile OS on the Linux kernel with its own app ecosystem (Wikipedia: Android; android.com).",
+          "Коммуникация с заказчиком и оценка задач": "Clarify goals, acceptance criteria, and effort before development starts.",
+          "Проектирование архитектуры и модулей": "Split the system into layers and modules with clear responsibilities.",
+          "Покрытие кода unit-тестами": "Automated checks of critical logic for safe changes (see Wikipedia: Unit testing).",
+          "Исправление багов и стабилизация решений": "Reproduce defects, fix, and guard against regression with tests.",
+          "Документирование технических решений": "README, API notes, and short guides for maintainers.",
+          "Работа с неопределенными требованиями": "Iterations and prototypes when the scope is incomplete.",
+          "Коммуникация с не-техническим заказчиком": "Explain technical limits and risks in business terms.",
+          "Приоритизация задач, работа через трекер": "Backlog, status, and deadlines in a task system.",
+          "Обучение и исследование технологий под задачу": "Read docs and build PoCs before adopting new stacks.",
+          "Автоматизация инженерных процессов": "Scripts and integrations for drawings, BOMs, calculations, and reporting.",
+          "Разработка backend-сервисов и API": "Server logic, REST/JSON, auth, and resilience (including FastAPI).",
+          "Проектирование SQL-баз данных": "Normalization, keys, indexes, and schema migrations for integrity and load.",
+          "3D/инженерные расчеты и прототипирование": "Coupling geometry and calculation data in engineering prototypes.",
+          "Desktop-прототипы (GUI/без GUI)": "Local utilities and UIs to validate ideas before a web release.",
+          "Контроль версий (Git)": "Branches, reviews, and history in team development (git-scm.com).",
+          "Анализ данных (pandas/numpy)": "Tables and numerical arrays, aggregations, and dataset prep (pandas.pydata.org; numpy.org).",
+          "Android (базовый уровень)": "Simple apps and basics of Activity lifecycle, layouts, and Gradle builds (developer.android.com).",
+          "Автоматизация рутинных расчетов": "Scripts and forms replacing repeated manual calculations.",
+          "Разработка внутренних сервисов для инженеров": "Web and background services between CAD, databases, and reporting.",
+          "Парсинг и агрегирование инженерных данных": "Extract and merge data from files, APIs, and databases.",
+          "Прототипирование GUI-инструментов": "Quick PyQt/Kivy UIs to demo user flows.",
+          "Базовые Android-проекты": "Small mobile clients or helper apps for internal needs.",
+          "Русский": "Native language for internal documentation and team communication.",
+          "Английский": "Reading official docs, RFCs, and professional correspondence."
+        }
       }
     }
   }
 }
-  
