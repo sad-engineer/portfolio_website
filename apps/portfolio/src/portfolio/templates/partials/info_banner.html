@@ -1,4 +1,13 @@
 <section class="info-banner" aria-label="{{ info_banner_locale.get('title', '') }}">
-    <h2 class="info-banner__title">{{ info_banner_locale.get('title', '') }}</h2>
-    <p class="info-banner__description">{{ info_banner_locale.get('description', '') }}</p>
+    {% set info_icon = info_banner_locale.get('icon', '') %}
+    {% if info_icon %}
+    {% set is_external_icon = info_icon.startswith('http://') or info_icon.startswith('https://') %}
+    <div class="info-banner__media" aria-hidden="true">
+        <img class="info-banner__icon" src="{% if is_external_icon %}{{ info_icon }}{% else %}{{ url_for('static', path=info_icon) }}{% endif %}" alt="" decoding="async" />
+    </div>
+    {% endif %}
+    <div class="info-banner__content">
+        <h2 class="info-banner__title">{{ info_banner_locale.get('title', '') }}</h2>
+        <p class="info-banner__description">{{ info_banner_locale.get('description', '') }}</p>
+    </div>
 </section>

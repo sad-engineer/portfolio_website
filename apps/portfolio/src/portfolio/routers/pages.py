@@ -5,8 +5,7 @@ from copy import deepcopy
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from portfolio.dependencies import (get_site_content, get_templates,
-                                    get_ui_texts)
+from portfolio.dependencies import get_site_content, get_templates, get_ui_texts
 
 router = APIRouter(tags=["pages"])
 

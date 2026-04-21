@@ -3,12 +3,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from starlette.middleware.base import BaseHTTPMiddleware
-from starlette.requests import Request
-
 from portfolio.dependencies import get_settings
 from portfolio.routers import pages_router
 from portfolio.routers.pages import LANG_COOKIE_NAME
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request
 
 
 def create_app() -> FastAPI:

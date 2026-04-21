@@ -1,12 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<!-- Скачано с сайта svg4.ru / Downloaded from svg4.ru -->
-<svg fill="#000000" height="800px" width="800px" version="1.1" id="XMLID_223_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	 viewBox="0 0 24 24" xml:space="preserve">
-<g id="optimization">
-	<g>
-		<path d="M17,24V11h6v13H17z M19,13v9h2v-9H19z M15,24H9v-8h6V24z M11,22h2v-4h-2V22z M7,24H1v-6h6V24z M3,22h2v-2H3V22z M1,16v-2
-			c7.8,0,12.8-3.4,16.1-10.9l-4.3,1.7L12,2.9L19.5,0l3,7.2L20.6,8l-1.7-4.2C15.3,12.1,9.6,16,1,16z"/>
-	</g>
-</g>
+<svg
+  width="800px"
+  height="800px"
+  viewBox="0 0 24 24"
+  fill="#ffffff"
+  id="XMLID_223_"
+  xmlns="http://www.w3.org/2000/svg"
+  space="preserve"
+  version="1.1"
+>
+  <g
+    id="optimization"
+  >
+    <path
+      d="m17 24 v-13 h6 v13 h-6 z m2-11 v9 h2 v-9 h-2 z m-4 11 h-6 v-8 h6 v8 z m-4-2 h2 v-4 h-2 v4 z m-4 2 h-6 v-6 h6 v6 z m-4-2
+        h2 v-2 h-2 v2 z m-2-6 v-2 c7.8 0 12.8-3.4 16.1-10.9 l-4.3 1.7-0.8-1.9 7.5-2.9 3 7.2-1.9 0.8-1.7-4.2
+        c-3.6 8.3-9.3 12.2-17.9 12.2 z"
+    />
+  </g>
 </svg>

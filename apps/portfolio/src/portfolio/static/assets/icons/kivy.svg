@@ -1,0 +1,79 @@
+<svg
+  width="800px"
+  height="800px"
+  viewBox="0 0 32 32"
+  fill="#ffffff"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs
+  >
+    <linearGradient
+      id="linear-gradient"
+      gradientTransform="matrix(1 0 0 -1 0 34)"
+      gradientUnits="userSpaceOnUse"
+      x1="14.989"
+      x2="15.124"
+      y1="17.164"
+      y2="17.091"
+    >
+      <stop
+        offset="0"
+      />
+      <stop
+        offset=".085"
+        stop-color="#090909"
+        stop-opacity=".027"
+      />
+      <stop
+        offset=".224"
+        stop-color="#212121"
+        stop-opacity=".023"
+      />
+      <stop
+        offset=".398"
+        stop-color="#494949"
+        stop-opacity=".018"
+      />
+      <stop
+        offset=".603"
+        stop-color="gray"
+        stop-opacity=".012"
+      />
+      <stop
+        offset=".83"
+        stop-color="#c6c6c6"
+        stop-opacity=".005"
+      />
+      <stop
+        offset="1"
+        stop-color="#fff"
+        stop-opacity="0"
+      />
+    </linearGradient>
+  </defs>
+  <path
+    d="m26.469 12.631-8.992 1.019 4.146 4.14 4.948-4.942c0.145-0.148 0.097-0.241-0.102-0.217z"
+    fill="#ebeded"
+  />
+  <path
+    d="M20.273,17.76 l-3.785-3.785 L13.481,19.64 l2.441,2.441 a.994.994,0,0,0,.705.289 h0 a.994.994,0,0, 0,.705-.289
+      l2.935-2.917 a.98.98,0,0,0,.289-.7 A.964.964,0,0,0,20.273,17.76 Z"
+    fill="#ebeded"
+  />
+  <path
+    d="M12.1,9.588v7.407a3.618,3.618,0,0,0,.892,2.158l.488.488,3.007-5.665Z"
+    fill="#f9f9f9"
+  />
+  <path
+    d="m7.906 19.074 3.266 3.266v-7.75l-3.266 3.266a0.869 0.869 0 0 0 0 1.218z"
+    fill="#f9f9f9"
+  />
+  <path
+    d="m10.377 12.866-3.266-3.266v7.744l3.266-3.266a0.862 0.862 0 0 0 0-1.212z"
+    fill="#f9f9f9"
+  />
+  <polygon
+    fill="url(#linear-gradient)"
+    points="16.488 13.975 16.603 14.09 13.596 19.755 13.481 19.64"
+  />
+</svg>

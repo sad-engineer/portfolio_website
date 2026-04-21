@@ -8,8 +8,10 @@
 @import url("./components/feedback.css");       /* Компонент формы обратной связи. */
 @import url("./components/main-hero-photo.css"); /* Переиспользуемые базовые стили фото/заглушки главной. */
 @import url("./components/info-banner.css");    /* Переиспользуемый информационный баннер. */
+@import url("./components/legal-document.css"); /* Компонент карточки и типографики юридических документов. */
 @import url("./components/profession-sections.css"); /* Базовые секции контента страниц профессий. */
 @import url("./components/profession-icons.css"); /* Визуал иконок/плиток страниц профессий. */
 @import url("./components/profession-content-container.css"); /* Общий контейнер контента страниц профессий. */
 @import url("./pages/main.css");                /* Страничные стили главной страницы. */
 @import url("./pages/profession.css");          /* Страничные стили страниц профессий. */
+@import url("./pages/legal.css");               /* Страничный layout юридических документов. */

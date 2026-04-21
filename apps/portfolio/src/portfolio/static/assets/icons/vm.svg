@@ -1,16 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
-  <rect width="60" height="60" rx="8" fill="none" />
+<svg
+  width="60"
+  height="60"
+  viewBox="0 0 60 60"
+  fill="#ffffff"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    width="60"
+    height="60"
+    fill="none"
+    rx="8"
+  />
   <text
     x="30"
     y="30"
-    dominant-baseline="central"
-    text-anchor="middle"
-    textLength="45"
-    lengthAdjust="spacingAndGlyphs"
+    fill="#ffffff"
     font-family="Segoe UI, Arial, sans-serif"
     font-size="45"
     font-weight="700"
     letter-spacing="0.5"
-    fill="#ffffff"
-  >&#1042;&#1052;</text>
+    text-anchor="middle"
+    dominant-baseline="central"
+    textLength="45"
+    lengthAdjust="spacingAndGlyphs"
+  >
+    ВМ
+  </text>
 </svg>
