@@ -1,21 +1,15 @@
 {% extends "base.html" %}
-{% set page_title = content.agreement.i18n.ru.title %}
+{% set page_id = "page-legal" %}
+{% set agreement_i18n = content.agreement.get('i18n', {}) %}
+{% set agreement_locale = agreement_i18n.get(current_lang, agreement_i18n.get('ru', {})) %}
+{% set page_title = agreement_locale.get('title', 'User Agreement') %}
 
 {% block content %}
-<section class="section-head">
-    <h1>{{ content.agreement.i18n.ru.title }}</h1>
-    <p class="muted">{{ content.agreement.i18n.ru.updatedAtText }}</p>
-</section>
-
-<section class="card legal">
-    {% for block in content.agreement.i18n.ru.blocks %}
-        {% if block.type == "h1" %}
-        <h1>{{ block.text }}</h1>
-        {% elif block.type == "h2" %}
-        <h2>{{ block.text }}</h2>
-        {% else %}
-        <p>{{ block.text }}</p>
-        {% endif %}
-    {% endfor %}
-</section>
+{% set legal_doc = content.agreement %}
+{% include "partials/legal_document.html" %}
+{% set info_banner_locale = agreement_locale.get('info_banner', {}) %}
+{% if info_banner_locale %}
+{% include "partials/info_banner.html" %}
+<script src="{{ url_for('static', path='js/info-banner.js') }}"></script>
+{% endif %}
 {% endblock %}

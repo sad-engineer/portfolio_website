@@ -5,26 +5,26 @@
     "title": "Технологии",
     "items": {
       "SAPR": {
-        "title": "САПР-системы и программы 3D-моделирования",
+        "title": "Использую САПР-системы и программы 3D-моделирования:",
         "items": [
-          { "icon": "assets/icons/kompas.svg", "label": "Компас", "description": "Российская система автоматизированного проектирования КОМПАС (АСКОН): параметрическое 2D/3D-моделирование и выпуск конструкторской документации; см. также сведения о семействе КОМПАС-3D в открытых источниках (Википедия, ascon.ru)." },
-          { "icon": "assets/icons/solidworks.svg", "label": "SolidWorks", "description": "Система автоматизированного проектирования для параметрического 3D-моделирования, выпуска чертежей и подготовки конструкторской документации (обзор на Википедии; Dassault Systèmes SolidWorks)." }
+          { "icon": "assets/icons/kompas.svg", "label": "Компас", "description": "Российская система автоматизированного проектирования КОМПАС (АСКОН): параметрическое 2D/3D-моделирование и выпуск конструкторской документации." },
+          { "icon": "assets/icons/solidworks.svg", "label": "SolidWorks", "description": "Система автоматизированного проектирования для параметрического 3D-моделирования, выпуска чертежей и подготовки конструкторской документации." }
         ]
       },
       "CAE": {
-        "title": "CAE и системы инженерных расчетов",
+        "title": "Умею применять CAE и системы инженерных расчетов:",
         "items": [
           { "icon": "assets/icons/passat.svg", "label": "Passat", "description": "Инженерный расчетный инструмент для прикладных задач проектирования и проверки параметров элементов конструкции." },
-          { "icon": "assets/icons/kompas_flow.svg", "label": "KompasFlow", "description": "Инструмент CFD/CAE-класса для моделирования течений, теплообмена и связанных инженерных процессов (линейка КОМПАС, АСКОН)." },
-          { "icon": "assets/icons/flowvision.svg", "label": "FlowVision", "description": "CFD-пакет для численного моделирования газо- и гидродинамики, теплопереноса и многопараметрических инженерных задач (см. официальный сайт разработчика Capillary Technology)." }
+          { "icon": "assets/icons/kompas_flow.svg", "label": "KompasFlow", "description": "Инструмент CFD/CAE-класса для моделирования течений, теплообмена и связанных инженерных процессов." },
+          { "icon": "assets/icons/flowvision.svg", "label": "FlowVision", "description": "CFD-пакет для численного моделирования газо- и гидродинамики, теплопереноса и многопараметрических инженерных задач." }
         ]
       },
       "CRM": {
-        "title": "CRM-системы, трекеры, системы контроля работы",
+        "title": "Работаю с CRM-системами, трекерами, системами контроля работы:",
         "items": [
-          { "icon": "assets/icons/bitrix24.svg", "label": "Битрикс24", "description": "CRM и корпоративная платформа для постановки задач, контроля сроков, коммуникаций и совместной работы команды (1С-Битрикс)." },
-          { "icon": "assets/icons/amocrm.svg", "label": "amoCRM", "description": "CRM-система для ведения сделок, воронки взаимодействий, истории коммуникаций и управляемого процесса работы с клиентами (QSOFT)." },
-          { "icon": "assets/icons/google_sheets.svg", "label": "Google Sheets", "description": "Облачные электронные таблицы для совместной работы, учета данных, оперативной аналитики и стандартизации отчетности (Google Workspace)." }
+          { "icon": "assets/icons/bitrix24.svg", "label": "Битрикс24", "description": "CRM и корпоративная платформа для постановки задач, контроля сроков, коммуникаций и совместной работы команды." },
+          { "icon": "assets/icons/amocrm.svg", "label": "amoCRM", "description": "CRM-система для ведения сделок, воронки взаимодействий, истории коммуникаций и управляемого процесса работы с клиентами." },
+          { "icon": "assets/icons/google_sheets.svg", "label": "Google Sheets", "description": "Облачные электронные таблицы для совместной работы, учета данных, оперативной аналитики и стандартизации отчетности." }
         ]
       }
     }
@@ -32,19 +32,19 @@
   "work_methods": {
     "title": "Методы организации работы",
     "items": [
-      { "icon": "fa-solid fa-sliders", "label": "Метод двойного планирования", "description": "Согласование планов «сверху» (цели, сроки) и «снизу» (оценки исполнителей) для реалистичного графика и управляемых обязательств." },
-      { "icon": "fa-solid fa-arrow-up", "label": "Метод обратного планирования", "description": "Планирование от конечной даты или вехи назад ко входу, чтобы заранее зарезервировать буферы и зависимости между этапами." },
-      { "icon": "fa-solid fa-arrow-down", "label": "Матрица Эйзенхауэуэра", "description": "Приоритизация задач по срочности и важности (метод Дуайта Эйзенхауэра; см. Википедию «Матрица Эйзенхауэра»)." }
+      { "icon": "assets/icons/double_planning_method.svg", "label": "Метод двойного планирования", "description": "Согласование планов «сверху» (цели, сроки) и «снизу» (оценки исполнителей) для реалистичного графика и управляемых обязательств." },
+      { "icon": "assets/icons/reverse_planning_method.svg", "label": "Метод обратного планирования", "description": "Планирование от конечной даты или вехи назад ко входу, чтобы заранее зарезервировать буферы и зависимости между этапами." },
+      { "icon": "assets/icons/eisenhower_matrix.svg", "label": "Матрица Эйзенхауэуэра", "description": "Приоритизация задач по срочности и важности (метод Дуайта Эйзенхауэра)." }
     ]
   },
   "skills": {
     "title": "Навыки",
     "items": [
-      { "icon": "fa-solid fa-industry", "label": "Разработка производственных планов", "description": "Формирование планов загрузки мощностей, выпуска и размещения производства с учётом ограничений и нормативов." },
-      { "icon": "fa-solid fa-users", "label": "Анализ производственных мощностей", "description": "Оценка пропускной способности участков и оборудования, узких мест и резервов для планировочных решений." },
-      { "icon": "fa-solid fa-file-lines", "label": "Оптимизация процессов", "description": "Выявление потерь во времени и перемещениях, сокращение непроизводительных операций при размещении и маршрутизации." },
-      { "icon": "fa-solid fa-cubes", "label": "Оценка экономической эффективности решений", "description": "Сопоставление вариантов компоновки и маршрутов по затратам, срокам внедрения и рискам." },
-      { "icon": "fa-solid fa-file-circle-check", "label": "Документирование планов и результатов", "description": "Оформление планировок, расчётных обоснований и отчётности для согласований и передачи в производство." }
+      { "icon": "assets/icons/production_planning.svg", "label": "Разработка производственных планов", "description": "Формирование планов загрузки мощностей, выпуска и размещения производства с учётом ограничений и нормативов." },
+      { "icon": "assets/icons/production_capacity_analysis.svg", "label": "Анализ производственных мощностей", "description": "Оценка пропускной способности участков и оборудования, узких мест и резервов для планировочных решений." },
+      { "icon": "assets/icons/production_optimization.svg", "label": "Оптимизация процессов", "description": "Выявление потерь во времени и перемещениях, сокращение непроизводительных операций при размещении и маршрутизации." },
+      { "icon": "assets/icons/economic_efficiency_evaluation.svg", "label": "Оценка экономической эффективности решений", "description": "Сопоставление вариантов компоновки и маршрутов по затратам, срокам внедрения и рискам." },
+      { "icon": "assets/icons/documentation_of_plans_and_results.svg", "label": "Документирование планов и результатов", "description": "Оформление планировок, расчётных обоснований и отчётности для согласований и передачи в производство." }
     ]
   },
   "document_types": {
@@ -67,8 +67,8 @@
   "coursesRef": "education.json",
   "info_banner": {
     "title": "Инженер-проектировщик для надёжных и нормативно выверенных решений",
-    "description": "Обеспечу полный цикл проектирования: исходные данные, расчёты, чертежи, спецификации, координация смежных разделов и сопровождение внедрения проектных решений на практике."
-  },
+    "description": "Обеспечу полный цикл проектирования: исходные данные, расчёты, чертежи, спецификации, координация смежных разделов и сопровождение внедрения проектных решений на практике.",
+    "icon": "assets/icons/exclamation-triangle.svg"},
   "i18n": {
     "en": {
       "title": "Layout/Planning Engineer",
@@ -82,13 +82,22 @@
       },
       "info_banner": {
         "title": "Layout engineer for reliable, standards-aligned solutions",
-        "description": "I cover the full planning cycle: input data, calculations, drawings, specifications, coordination with related disciplines, and support for implementing design solutions on site."
+        "description": "I cover the full planning cycle: input data, calculations, drawings, specifications, coordination with related disciplines, and support for implementing design solutions on site.",
+        "icon": "assets/icons/exclamation-triangle.svg"
       },
       "tags": {
         "labels": {
-          "САПР-системы и программы 3D-моделирования": "CAD systems and 3D modeling software",
-          "CAE и системы инженерных расчетов": "CAE and engineering analysis systems",
-          "CRM-системы, трекеры, системы контроля работы": "CRM systems, trackers, and workflow control tools",
+          "Использую САПР-системы и программы 3D-моделирования:": "I use CAD systems and 3D modeling software:",
+          "Умею применять CAE и системы инженерных расчетов:": "I can apply CAE and engineering analysis systems:",
+          "Работаю с CRM-системами, трекерами, системами контроля работы:": "I work with CRM systems, trackers, and workflow control tools:",
+          "Компас": "KOMPAS",
+          "SolidWorks": "SolidWorks",
+          "Passat": "Passat",
+          "KompasFlow": "KompasFlow",
+          "FlowVision": "FlowVision",
+          "Битрикс24": "Bitrix24",
+          "amoCRM": "amoCRM",
+          "Google Sheets": "Google Sheets",
           "Метод двойного планирования": "Dual planning method",
           "Метод обратного планирования": "Backward planning method",
           "Матрица Эйзенхауэуэра": "Eisenhower matrix",
