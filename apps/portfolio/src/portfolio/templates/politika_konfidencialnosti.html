@@ -1,21 +1,15 @@
 {% extends "base.html" %}
-{% set page_title = content.privacy.i18n.ru.title %}
+{% set page_id = "page-legal" %}
+{% set privacy_i18n = content.privacy.get('i18n', {}) %}
+{% set privacy_locale = privacy_i18n.get(current_lang, privacy_i18n.get('ru', {})) %}
+{% set page_title = privacy_locale.get('title', 'Privacy Policy') %}
 
 {% block content %}
-<section class="section-head">
-    <h1>{{ content.privacy.i18n.ru.title }}</h1>
-    <p class="muted">{{ content.privacy.i18n.ru.updatedAtText }}</p>
-</section>
-
-<section class="card legal">
-    {% for block in content.privacy.i18n.ru.blocks %}
-        {% if block.type == "h1" %}
-        <h1>{{ block.text }}</h1>
-        {% elif block.type == "h2" %}
-        <h2>{{ block.text }}</h2>
-        {% else %}
-        <p>{{ block.text }}</p>
-        {% endif %}
-    {% endfor %}
-</section>
+{% set legal_doc = content.privacy %}
+{% include "partials/legal_document.html" %}
+{% set info_banner_locale = privacy_locale.get('info_banner', {}) %}
+{% if info_banner_locale %}
+{% include "partials/info_banner.html" %}
+<script src="{{ url_for('static', path='js/info-banner.js') }}"></script>
+{% endif %}
 {% endblock %}

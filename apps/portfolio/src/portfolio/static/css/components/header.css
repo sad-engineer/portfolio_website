@@ -9,10 +9,22 @@
   --header-border-color: var(--line); /* Цвет нижней границы шапки. */
   --header-text-color: var(--text); /* Цвет текста и ссылок в шапке. */
   --header-link-hover-border-color: var(--line); /* Цвет рамки ссылки при hover. */
-  --header-link-hover-color: rgba(255, 255, 255, 0.2); /* Фон ссылки при hover. */
+  --header-link-hover-base: var(--overlay-light); /* Базовый светлый цвет подложки ссылки при hover. */
+  --header-link-hover-alpha: 0.2; /* Прозрачность подложки ссылки при hover (без rgba). */
+  --header-link-hover-color: color-mix(
+    in srgb,
+    var(--header-link-hover-base) calc(var(--header-link-hover-alpha) * 100%),
+    transparent
+  ); /* Фон ссылки при hover, собранный из базового цвета и отдельной прозрачности. */
   --lang-dropdown-icon-color: var(--header-text-color); /* Цвет иконки выбора языка и стрелки. */
   --lang-dropdown-text-color: var(--text-head); /* Цвет текста в строках меню выбора языка. */
-  --lang-dropdown-hover-bg-color: rgba(255, 255, 255, 0.25); /* Подложка hover для меню выбора языка. */
+  --lang-dropdown-hover-base: var(--overlay-light); /* Базовый светлый цвет hover-подложки меню выбора языка. */
+  --lang-dropdown-hover-alpha: 0.25; /* Прозрачность hover-подложки меню выбора языка (без rgba). */
+  --lang-dropdown-hover-bg-color: color-mix(
+    in srgb,
+    var(--lang-dropdown-hover-base) calc(var(--lang-dropdown-hover-alpha) * 100%),
+    transparent
+  ); /* Подложка hover для меню выбора языка, собранная из базового цвета и отдельной прозрачности. */
   --lang-dropdown-item-padding-block: 20px; /* Вертикальный отступ текста в строках меню выбора языка. */
   --lang-dropdown-item-padding-inline: 8px; /* Горизонтальный отступ текста в строках меню выбора языка. */
 }

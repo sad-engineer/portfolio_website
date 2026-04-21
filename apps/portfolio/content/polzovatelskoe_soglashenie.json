@@ -9,20 +9,20 @@
         { "type": "h1", "text": "Пользовательское соглашение" },
 
         { "type": "h2", "text": "1. ОБЩИЕ ПОЛОЖЕНИЯ" },
-        { "type": "p", "text": "1.1. Настоящее Пользовательское соглашение (далее – Соглашение) относится к сайту «{{SITE_NAME}}», расположенному по адресу {{SITE_URL}}." },
-        { "type": "p", "text": "1.2. Сайт «{{SITE_NAME}}» (далее – Сайт) является собственностью {{FIO}} (ИИН {{INN}}): {{ADDRESS_RU}} (далее – Администрация сайта)." },
-        { "type": "p", "text": "1.3. Настоящее Соглашение регулирует отношения между Администрацией сайта «{{SITE_NAME}}» (далее – Администрация сайта) и Пользователем данного Сайта." },
+        { "type": "p", "text": "1.1. Настоящее Пользовательское соглашение (далее – Соглашение) относится к сайту «<a href='{{HOME_HREF}}'>{{SITE_NAME}}</a>», расположенному по адресу <a href='{{HOME_HREF}}'>{{SITE_URL}}</a>." },
+        { "type": "p", "text": "1.2. Сайт «<a href='{{HOME_HREF}}'>{{SITE_NAME}}</a>» (далее – Сайт) является собственностью {{FIO}} (ИИН {{INN}}): {{ADDRESS_RU}} (далее – Администрация сайта)." },
+        { "type": "p", "text": "1.3. Настоящее Соглашение регулирует отношения между Администрацией сайта «<a href='{{HOME_HREF}}'>{{SITE_NAME}}</a>» (далее – Администрация сайта) и Пользователем данного Сайта." },
         { "type": "p", "text": "1.4. Администрация сайта оставляет за собой право в любое время изменять, добавлять или удалять пункты настоящего Соглашения без уведомления Пользователя." },
         { "type": "p", "text": "1.5. Использование Сайта Пользователем означает принятие Соглашения и изменений, внесенных в настоящее Соглашение." },
         { "type": "p", "text": "1.6. Пользователь несет персональную ответственность за проверку настоящего Соглашения на наличие изменений в нем." },
 
         { "type": "h2", "text": "2. ОПРЕДЕЛЕНИЯ ТЕРМИНОВ" },
         { "type": "p", "text": "2.1. Перечисленные ниже термины имеют для целей настоящего Соглашения следующее значение:" },
-        { "type": "p", "text": "2.1.1 «Коренюк Андрей • Инженерное сопровождение проектов» – Интернет-ресурс, расположенный на доменном имени {{SITE_URL}}, осуществляющий свою деятельность посредством Интернет-ресурса и сопутствующих ему сервисов (далее – Сайт)." },
-        { "type": "p", "text": "2.1.2. «Коренюк Андрей • Инженерное сопровождение проектов» – сайт, содержащий информацию о Товарах и/или Услугах и/или Иных ценностях для пользователя, Продавце и/или Исполнителе услуг, позволяющий осуществить выбор, заказ и (или) приобретение Товара, и/или получение услуги; содержит справочную информацию об услугах, предназначенную для получения пользователями, оказываемых третьими лицами, не аффилированных по отношению к администрации сайта, ограниченную базой статей и страниц Сайта." },
+        { "type": "p", "text": "2.1.1 «<a href='{{HOME_HREF}}'>{{SITE_NAME}}</a>»  – Интернет-ресурс, расположенный на доменном имени <a href='{{HOME_HREF}}'>{{SITE_URL}}</a>, осуществляющий свою деятельность посредством Интернет-ресурса и сопутствующих ему сервисов (далее – Сайт)." },
+        { "type": "p", "text": "2.1.2. «<a href='{{HOME_HREF}}'>{{SITE_NAME}}</a>»  – сайт, содержащий информацию о Товарах и/или Услугах и/или Иных ценностях для пользователя, Продавце и/или Исполнителе услуг, позволяющий осуществить выбор, заказ и (или) приобретение Товара, и/или получение услуги; содержит справочную информацию об услугах, предназначенную для получения пользователями, оказываемых третьими лицами, не аффилированных по отношению к администрации сайта, ограниченную базой статей и страниц Сайта." },
         { "type": "p", "text": "2.1.3. Администрация сайта – уполномоченные сотрудники на управление Сайтом, действующие от имени сайта." },
         { "type": "p", "text": "2.1.4. Пользователь сайта (далее – Пользователь) – лицо, имеющее доступ к Сайту, посредством сети Интернет и использующее Сайт." },
-        { "type": "p", "text": "2.1.5. Содержание сайта (далее – Содержание) – охраняемые результаты интеллектуальной деятельности, включая 3D-модели, чертежи, схемы, эскизы, тексты литературных произведений, их названия, предисловия, аннотации, статьи, иллюстрации, обложки, музыкальные произведения с текстом или без текста, графические, текстовые, фотографические, производные, составные и иные произведения, пользовательские интерфейсы, визуальные интерфейсы, названия товарных знаков, логотипы, программы для ЭВМ, базы данных, а также дизайн, структура, выбор, координация, внешний вид, общий стиль и расположение данного Содержания, входящего в состав Сайта и другие объекты интеллектуальной собственности все вместе и/или по отдельности, содержащиеся на сайте {{SITE_URL}}." },
+        { "type": "p", "text": "2.1.5. Содержание сайта (далее – Содержание) – охраняемые результаты интеллектуальной деятельности, включая 3D-модели, чертежи, схемы, эскизы, тексты литературных произведений, их названия, предисловия, аннотации, статьи, иллюстрации, обложки, музыкальные произведения с текстом или без текста, графические, текстовые, фотографические, производные, составные и иные произведения, пользовательские интерфейсы, визуальные интерфейсы, названия товарных знаков, логотипы, программы для ЭВМ, базы данных, а также дизайн, структура, выбор, координация, внешний вид, общий стиль и расположение данного Содержания, входящего в состав Сайта и другие объекты интеллектуальной собственности все вместе и/или по отдельности, содержащиеся на сайте <a href='{{HOME_HREF}}'>{{SITE_URL}}</a>." },
 
         { "type": "h2", "text": "3. ПРЕДМЕТ СОГЛАШЕНИЯ" },
         { "type": "p", "text": "3.1. Предметом настоящего Соглашения является предоставление Пользователю доступа к содержащимся на Сайте Товарам и/или оказываемым услугам." },
@@ -39,7 +39,7 @@
         { "type": "p", "text": "4.1.3 Раскрыть любую собранную о Пользователе данного Сайта информацию: в связи с расследованием или жалобой в отношении неправомерного использования Сайта, либо для установления (идентификации) Пользователя, который может нарушать пользовательское соглашение; для выполнения положений действующего законодательства или судебных решений, обеспечения выполнения условий настоящего Соглашения, защиты прав или безопасности администрации сайта, Пользователей." },
         { "type": "p", "text": "4.2. Пользователь вправе:" },
         { "type": "p", "text": "4.2.1. Пользоваться всеми имеющимися на Сайте услугами, а также приобретать любые Товары и/или Услуги, предлагаемые на Сайте." },
-        { "type": "p", "text": "4.2.2. Задавать любые вопросы, относящиеся к услугам сайта: По электронной почте: {{EMAIL}}" },
+        { "type": "p", "text": "4.2.2. Задавать любые вопросы, относящиеся к услугам сайта по электронной почте: <a href=\"mailto:{{EMAIL}}\">{{EMAIL}}</a>" },
         { "type": "p", "text": "4.2.3. Пользоваться Сайтом исключительно в целях и порядке, предусмотренных Соглашением и не запрещенных законодательством Российской Федерации." },
         { "type": "p", "text": "4.2.4. Копировать информацию с Сайта разрешается с указанием источника и с документально подтвержденного согласия администрации сайта, при условии наличия возможности однозначно идентифицировать подпись или другое средство верификации личности администратора на документе." },
         { "type": "p", "text": "4.2.5. Требовать от администрации скрытия любой информации о пользователе." },
@@ -75,7 +75,7 @@
         { "type": "p", "text": "5.4. Информация, размещаемая на Сайте не должна истолковываться как изменение настоящего Соглашения." },
         { "type": "p", "text": "5.5. Администрация сайта имеет право в любое время без уведомления Пользователя вносить изменения в перечень Товаров и услуг, предлагаемых на Сайте, и (или) их цен." },
         { "type": "p", "text": "5.6. Документ указанный в пункте 5.7 настоящего Соглашения регулирует в соответствующей части и распространяют свое действие на использование Пользователем Сайта:" },
-        { "type": "p", "text": "5.7. Политика конфиденциальности: {{SITE_URL}}/politika-konfidencialnosti" },
+        { "type": "p", "text": "5.7. Политика конфиденциальности: <a href=\"/politika-konfidencialnosti\">{{SITE_URL}}/politika-konfidencialnosti</a>" },
         { "type": "p", "text": "5.8. Любой из документов, перечисленных в пункте 5.7 настоящего Соглашения может подлежать обновлению. Изменения вступают в силу с момента их опубликования на Сайте." },
 
         { "type": "h2", "text": "6. ОТВЕТСТВЕННОСТЬ" },
@@ -99,7 +99,12 @@
         { "type": "h2", "text": "9. ДОПОЛНИТЕЛЬНЫЕ УСЛОВИЯ" },
         { "type": "p", "text": "9.1. Администрация сайта не принимает встречные предложения от Пользователя относительно изменений настоящего Пользовательского соглашения." },
         { "type": "p", "text": "9.2. Отзывы Пользователя, размещенные на Сайте, не являются конфиденциальной информацией и могут быть использованы Администрацией сайта без ограничений." }
-      ]
+      ],
+      "info_banner": {
+        "title": "Не нашли ответа на вопрос, что вы ищите?",
+        "description": "Свяжитесь со мной удобным для вас способом, и мы найдём решение.",
+        "icon": "assets/icons/question.svg"
+      }
     },
     "en": {
       "title": "User Agreement",
@@ -108,20 +113,20 @@
         { "type": "h1", "text": "User Agreement" },
 
         { "type": "h2", "text": "1. GENERAL PROVISIONS" },
-        { "type": "p", "text": "1.1. This User Agreement (hereinafter the \"Agreement\") applies to the website \"Andrey Korenyuk • Engineering project support\", located at {{SITE_URL}}." },
-        { "type": "p", "text": "1.2. The website \"Andrey Korenyuk • Engineering project support\" (hereinafter the \"Website\") is owned by Andrey Nikolayevich Korenyuk (INN {{INN}}): {{ADDRESS_EN}} (hereinafter the \"Website Administration\")." },
-        { "type": "p", "text": "1.3. This Agreement governs the relationship between the Website Administration of \"Andrey Korenyuk • Engineering project support\" (hereinafter the \"Website Administration\") and the User of this Website." },
+        { "type": "p", "text": "1.1. This User Agreement (hereinafter the \"Agreement\") applies to the website \"<a href='{{HOME_HREF}}'>{{SITE_NAME_EN}}</a>\", located at <a href='{{HOME_HREF}}'>{{SITE_URL}}</a>." },
+        { "type": "p", "text": "1.2. The website \"<a href='{{HOME_HREF}}'>{{SITE_NAME_EN}}</a>\" (hereinafter the \"Website\") is owned by Andrey Nikolayevich Korenyuk (INN {{INN}}): {{ADDRESS_EN}} (hereinafter the \"Website Administration\")." },
+        { "type": "p", "text": "1.3. This Agreement governs the relationship between the Website Administration of \"<a href='{{HOME_HREF}}'>{{SITE_NAME_EN}}</a>\" (hereinafter the \"Website Administration\") and the User of this Website." },
         { "type": "p", "text": "1.4. The Website Administration reserves the right at any time to change, add, or remove points of this Agreement without notifying the User." },
         { "type": "p", "text": "1.5. The User’s use of the Website means acceptance of the Agreement and changes made to this Agreement." },
         { "type": "p", "text": "1.6. The User is personally responsible for checking this Agreement for any changes." },
 
         { "type": "h2", "text": "2. DEFINITIONS OF TERMS" },
         { "type": "p", "text": "2.1. The terms listed below have the following meaning for the purposes of this Agreement:" },
-        { "type": "p", "text": "2.1.1. \"Andrey Korenyuk • Engineering project support\" — an Internet resource located at the domain name {{SITE_URL}}, operating through the Internet resource and related services (hereinafter the \"Site\")." },
+        { "type": "p", "text": "2.1.1. \"Andrey Korenyuk • Engineering project support\" — an Internet resource located at the domain name <a href='{{HOME_HREF}}'>{{SITE_URL}}</a>, operating through the Internet resource and related services (hereinafter the \"Site\")." },
         { "type": "p", "text": "2.1.2. \"Andrey Korenyuk • Engineering project support\" — a website containing information about Goods and/or Services and/or Other Values for the user, the Seller and/or the service provider, enabling the user to make a selection, place an order and (or) purchase the Goods and/or receive a service; includes reference information about services intended for users, provided by third parties not affiliated with the website administration, limited by a database of articles and Site pages." },
         { "type": "p", "text": "2.1.3. The website administration — authorized employees managing the Website acting on behalf of the website." },
         { "type": "p", "text": "2.1.4. The User of the website (hereinafter the \"User\") — a person who has access to the Website via the Internet and uses the Website." },
-        { "type": "p", "text": "2.1.5. Site content (hereinafter the \"Content\") — protected results of intellectual activity, including 3D models, drawings, diagrams, sketches, texts of literary works, their titles, forewords, abstracts, articles, illustrations, covers, musical works with or without text, graphical, textual, photographic, derivative, composite and other works, user interfaces, visual interfaces, names of trademarks, logos, computer programs, databases, as well as the design, structure, selection, coordination, appearance, overall style and arrangement of this Content, which forms part of the Site and other objects of intellectual property, both as a whole and separately, contained on the website {{SITE_URL}}." },
+        { "type": "p", "text": "2.1.5. Site content (hereinafter the \"Content\") — protected results of intellectual activity, including 3D models, drawings, diagrams, sketches, texts of literary works, their titles, forewords, abstracts, articles, illustrations, covers, musical works with or without text, graphical, textual, photographic, derivative, composite and other works, user interfaces, visual interfaces, names of trademarks, logos, computer programs, databases, as well as the design, structure, selection, coordination, appearance, overall style and arrangement of this Content, which forms part of the Site and other objects of intellectual property, both as a whole and separately, contained on the website <a href='{{HOME_HREF}}'>{{SITE_URL}}</a>." },
 
         { "type": "h2", "text": "3. SUBJECT MATTER OF THE AGREEMENT" },
         { "type": "p", "text": "3.1. The subject matter of this Agreement is to provide the User with access to the Goods and/or services available on the Site." },
@@ -138,7 +143,7 @@
         { "type": "p", "text": "4.1.3. Disclose any information collected about the User of this Website: in connection with an investigation or a complaint regarding improper use of the Website, or to establish (identify) the User who may violate the user agreement; to fulfill the provisions of applicable legislation or court decisions, to ensure compliance with the terms of this Agreement, to protect the rights or security of the website administration, Users." },
         { "type": "p", "text": "4.2. The User is entitled to:" },
         { "type": "p", "text": "4.2.1. Use all services available on the Website, as well as purchase any Goods and/or Services offered on the Website." },
-        { "type": "p", "text": "4.2.2. Ask any questions related to the website services via email: {{EMAIL}}" },
+        { "type": "p", "text": "4.2.2. Ask any questions related to the website services via email: <a href=\"mailto:{{EMAIL}}\">{{EMAIL}}</a>" },
         { "type": "p", "text": "4.2.3. Use the Website exclusively for the purposes and in the manner provided for by the Agreement and not prohibited by the legislation of the Russian Federation." },
         { "type": "p", "text": "4.2.4. Copying information from the Website is allowed with indication of the source and documented consent of the website administration, provided that it is possible to clearly identify the administrator’s signature or other means of identity verification on the document." },
         { "type": "p", "text": "4.2.5. Require the administration to conceal any information about the user." },
@@ -174,7 +179,7 @@
         { "type": "p", "text": "5.4. The information posted on the Website should not be interpreted as a change to this Agreement." },
         { "type": "p", "text": "5.5. The Website Administration has the right at any time, without notifying the User, to make changes to the list of Goods and services offered on the Website and/or their prices." },
         { "type": "p", "text": "5.6. The document specified in clause 5.7 of this Agreement regulates, in the relevant part, and extends its effect to the use of the Site by the User:" },
-        { "type": "p", "text": "5.7. Privacy Policy: {{SITE_URL}}/politika-konfidencialnosti" },
+        { "type": "p", "text": "5.7. <a href=\"/politika-konfidencialnosti\">Privacy Policy</a>" },
         { "type": "p", "text": "5.8. Any of the documents listed in clause 5.7 of this Agreement may be updated. Changes enter into force from the moment they are published on the Website." },
 
         { "type": "h2", "text": "6. LIABILITY" },
@@ -198,7 +203,12 @@
         { "type": "h2", "text": "9. ADDITIONAL TERMS" },
         { "type": "p", "text": "9.1. The Website Administration does not accept counteroffers from the User regarding amendments to this User Agreement." },
         { "type": "p", "text": "9.2. User reviews posted on the Website are not confidential information and may be used by the Website Administration without any restrictions." }
-      ]
+      ],
+      "info_banner": {
+        "title": "Didn't find the answer you were looking for?",
+        "description": "Contact me using any convenient method, and we will find a solution.",
+        "icon": "assets/icons/question.svg"
+      }
     }
   }
 }

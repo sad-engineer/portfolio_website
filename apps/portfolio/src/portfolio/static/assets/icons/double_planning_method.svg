@@ -1,0 +1,46 @@
+<svg
+  width="800"
+  height="800"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    x="3.9"
+    y="6.75"
+    width="5.25"
+    height="10.5"
+    stroke="#fff"
+    rx="1.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <rect
+    x="14.9"
+    y="6.75"
+    width="5.25"
+    height="10.5"
+    stroke="#fff"
+    rx="1.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="m5.35 9.2h2.35m-2.35 2.8h2.35m-2.35 2.8h2.35m8.65-5.6h2.35m-2.35 2.8h2.35m-2.35 2.8h2.35"
+    stroke="#fff"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="m10.15 10.25q1.85-1.8 3.7 0"
+    stroke="#fff"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="m13.85 13.75q-1.85 1.8-3.7 0"
+    stroke="#fff"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

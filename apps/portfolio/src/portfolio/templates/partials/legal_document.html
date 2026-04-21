@@ -1,0 +1,22 @@
+{% set legal_i18n = legal_doc.get('i18n', {}) %}
+{% set legal_locale = legal_i18n.get(current_lang, legal_i18n.get('ru', {})) %}
+
+<section class="section-head">
+    <h1>{{ legal_locale.get('title', '') }}</h1>
+    <p class="muted">{{ legal_locale.get('updatedAtText', '') }}</p>
+</section>
+
+<section class="card legal legal-document">
+    {% for block in legal_locale.get('blocks', []) %}
+        {% if block.type == "h1" %}
+        {% set heading = block.text | replace('{{HOME_HREF}}', home_href) %}
+        <h1>{{ heading | safe }}</h1>
+        {% elif block.type == "h2" %}
+        {% set heading = block.text | replace('{{HOME_HREF}}', home_href) %}
+        <h2>{{ heading | safe }}</h2>
+        {% else %}
+        {% set paragraph = block.text | replace('{{HOME_HREF}}', home_href) %}
+        <p>{{ paragraph | safe }}</p>
+        {% endif %}
+    {% endfor %}
+</section>

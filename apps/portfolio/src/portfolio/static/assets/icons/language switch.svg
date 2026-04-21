@@ -1,11 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
-  <rect width="60" height="60" rx="8" fill="none" />
-  <g fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 20h30" />
-    <path d="M18 12h2" />
-    <path d="M18 20l14 14" />
-    <path d="M16 34l14-14 4-6" />
-    <path d="M48 48L37 26 26 48" />
-    <path d="M30 40h14" />
+<svg
+  width="60"
+  height="60"
+  viewBox="0 0 60 60"
+  fill="#ffffff"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    width="60"
+    height="60"
+    fill="none"
+    rx="8"
+  />
+  <g
+    fill="none"
+    stroke="#fff"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="m12 20h30"
+    />
+    <path
+      d="m18 12h2"
+    />
+    <path
+      d="m18 20 14 14"
+    />
+    <path
+      d="m16 34 14-14 4-6"
+    />
+    <path
+      d="m48 48-11-22-11 22"
+    />
+    <path
+      d="m30 40h14"
+    />
   </g>
 </svg>

@@ -1,14 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
-  <rect width="60" height="60" rx="8" fill="none" />
+<svg
+  width="60"
+  height="60"
+  viewBox="0 0 60 60"
+  fill="#ffffff"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    width="60"
+    height="60"
+    fill="none"
+    rx="8"
+  />
   <text
     x="30"
     y="40"
-    text-anchor="middle"
-    font-family="Georgia, 'Times New Roman', 'Palatino Linotype', Palatino, 'Book Antiqua', Garamond, serif"
-    font-style="italic"
-    font-size="36"
-    font-weight="400"
     fill="#ffffff"
+    font-family="Georgia, &#x27;Times New Roman&#x27;, &#x27;Palatino Linotype&#x27;, Palatino, &#x27;Book Antiqua&#x27;, Garamond, serif"
+    font-size="45"
+    font-weight="400"
+    text-anchor="middle"
+    font-style="italic"
   >
     a
   </text>
