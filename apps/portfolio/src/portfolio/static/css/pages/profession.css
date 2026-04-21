@@ -2,6 +2,9 @@
 :root {
   --profession-photo-width: 600px; /* Фиксированная ширина блока фото/заглушки. */
   --profession-photo-aspect-ratio: 3 / 4; /* Базовое соотношение сторон фото/заглушки на мобильных. */
+  --profession-inline-padding: 0px; /* Базовый внутренний отступ контейнера профессии. */
+  --profession-mobile-inline-padding: 12px; /* Горизонтальный отступ контента на экранах <= 1200px. */
+
 }
 
 /*
@@ -12,11 +15,19 @@
 .page-content.page-profession {
   position: relative;
   z-index: 2;
+  padding: 0 var(--profession-inline-padding); /* Задает боковые отступы основного контента страницы профессии. */
 }
 
 /* Единая страница профессий: отступы у заголовочного блока. */
 .page-content.page-profession .section-head {
   margin: 20px 0 12px;
+}
+
+/* Отступы страницы профессии как на главной для узких экранов. */
+@media (max-width: 1200px) {
+  .page-content.page-profession {
+    padding-inline: var(--profession-mobile-inline-padding); /* Добавляет одинаковые боковые поля как у main. */
+  }
 }
 
 /* Верхняя зона: две колонки одинаковой высоты; слой выше .document-types, иначе панели из навыков/технологий уходят под следующую секцию. */
@@ -120,13 +131,18 @@
   z-index: 3;
 }
 
+/* На странице профессии боковые поля уже заданы контейнером, у баннера убираем дополнительный сдвиг. */
 .page-content.page-profession .info-banner {
-  z-index: 0;
+  margin-left: 0; /* Исключает двойной левый отступ баннера. */
+  margin-right: 0; /* Исключает двойной правый отступ баннера. */
+  width: 100%; /* Растягивает баннер по ширине контентной области страницы. */
 }
 
 /* Фон секции "Языки": градиент под прозрачные зоны изображения. */
 .page-content.page-profession .languages-full {
   position: relative;
+  display: flex; /* Позволяет явно прижимать контентную колонку языков к правому краю. */
+  justify-content: flex-end; /* Закрепляет блок языков справа независимо от перерасчета auto-отступов. */
   overflow: visible; /* Разрешает dropdown-описаниям иконок выходить поверх соседних секций. */
   min-height: 100px;
   background: var(--languages-overlay-gradient);
@@ -153,8 +169,9 @@
 .page-content.page-profession .languages-content {
   position: relative;
   z-index: 1;
-  width: 25%;
-  margin-left: auto;
+  width: 25%; /* Базовая ширина правой колонки с языками. */
+  flex: 0 0 25%; /* Фиксирует колонку языков справа и предотвращает «уезд» влево. */
+  margin-left: 0; /* Отступ слева не нужен, позицию задает justify-content у родителя. */
 }
 
 /* Выравнивает верхний внутренний отступ языкового блока с соседними секциями. */
@@ -163,42 +180,42 @@
 }
 
 /* На мобильных отключаем выравнивание по общей высоте, оставляем по содержимому. */
-@media (max-width: 920px) {
+@media (max-width: 900px) {
   .page-content.page-profession .tech-layout {
-    grid-template-columns: 1fr;
-    align-items: start;
+    grid-template-columns: 1fr; /* Делает карточки одноколоночными. */  
+    align-items: start; /* Выравнивает карточки по верхнему краю. */
   }
 
   .page-content.page-profession .tech-layout > .profession-photo-column {
-    order: -1;
-    margin-bottom: 3px;
-    align-self: start;
-    align-items: flex-start;
+    order: -1; /* Перемещает фото на верх колонки. */
+    margin-bottom: 3px; /* Добавляет отступ снизу фото для лучшей визуальной связи с карточками. */
+    align-self: start; /* Выравнивает фото по верхнему краю. */
+    align-items: flex-start; /* Выравнивает фото по верхнему краю. */
   }
 
   .page-content.page-profession .tech-layout > .profession-side-column {
-    gap: 3px;
-    align-self: start;
+    gap: 3px; /* Добавляет отступ между карточками. */
+    align-self: start; /* Выравнивает карточки по верхнему краю. */
   }
 
   .page-content.page-profession .profession-side-column > .technologies-main {
-    flex: 0 0 auto;
+    flex: 0 0 auto; /* Делает карточки одноколоночными. */
   }
 
   .page-content.page-profession .hero-photo,
   .page-content.page-profession .hero-photo-placeholder {
-    width: min(100%, var(--profession-photo-width));
-    max-width: var(--profession-photo-width);
-    height: auto;
-    aspect-ratio: var(--profession-photo-aspect-ratio);
+    width: min(100%, var(--profession-photo-width)); /* Делает фото/placeholder равной ширине контейнера. */
+    max-width: var(--profession-photo-width); /* Не дает расширяться шире фиксированного размера. */
+    height: auto; /* Высота берется из высоты grid-строки, без дополнительного форсирования. */
+    aspect-ratio: var(--profession-photo-aspect-ratio); /* Сохраняет пропорции фото/placeholder. */
   }
 
   .page-content.page-profession .languages-content {
-    width: 100%;
-    margin-left: 0;
+    width: 100%; /* Делает текст языкового блока равной ширине контейнера. */   
+    margin-left: 0; /* Убирает отступ слева текста языкового блока. */  
   }
 
   .page-content.page-profession .document-types > * {
-    width: 100%;
+    width: 100%; /* Делает текст типов документов равной ширине контейнера. */
   }
 }

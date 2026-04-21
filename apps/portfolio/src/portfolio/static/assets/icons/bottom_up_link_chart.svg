@@ -1,20 +1,72 @@
-<svg width="24.999999999999996" height="24.999999999999996" xmlns="http://www.w3.org/2000/svg">
- <g>
-  <title>background</title>
-  <rect x="-1" y="-1" width="27" height="27" id="canvas_background" fill="none"/>
- </g>
-
- <g>
-  <title>Layer 1</title>
-  <g id="svg_1"/>
-  <ellipse fill="#000000" cx="4.31381" cy="16.14414" id="svg_4" rx="2.73273" ry="2.73273" stroke="#000"/>
-  <ellipse fill="#000000" cx="20.11246" cy="16.14414" id="svg_7" rx="2.73273" ry="2.73273" stroke="#000"/>
-  <ellipse fill="#000000" cx="12.18168" cy="19.68769" id="svg_8" rx="2.73273" ry="2.73273" stroke="#000"/>
-  <ellipse fill="none" cx="12.24174" cy="3.95195" id="svg_10" rx="2.73273" ry="2.73273" stroke="#0f0f00"/>
-  <line fill="none" stroke-opacity="null" fill-opacity="null" x1="10.52853" y1="6.08127" x2="5.42342" y2="13.76896" id="svg_11" stroke-linejoin="null" stroke-linecap="null" stroke="#000"/>
-  <line fill="none" stroke-width="null" stroke-opacity="null" fill-opacity="null" x1="13.59159" y1="6.14133" x2="18.57658" y2="13.88908" id="svg_12" stroke-linejoin="null" stroke-linecap="null" stroke="#000"/>
-  <line fill="none" stroke="#000" stroke-width="null" stroke-opacity="null" fill-opacity="null" x1="12.09009" y1="6.92211" x2="12.09009" y2="16.77196" id="svg_13" stroke-linejoin="null" stroke-linecap="null"/>
-  <line stroke="#000" fill="none" stroke-opacity="null" fill-opacity="null" x1="12.06318" y1="10.23285" x2="14.82405" y2="13.70576" id="svg_18" stroke-linejoin="null" stroke-linecap="null"/>
-  <line stroke="#000" fill="none" stroke-opacity="null" fill-opacity="null" x1="12.08344" y1="10.32562" x2="9.32258" y2="13.53034" id="svg_19" stroke-linejoin="null" stroke-linecap="null"/>
- </g>
+<svg
+  width="25"
+  height="25"
+  viewBox="0 0 25 25"
+  fill="#ffffff"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <ellipse
+    cx="4.3138"
+    cy="16.144"
+    stroke="#fff"
+    rx="2.7327"
+    ry="2.7327"
+  />
+  <ellipse
+    cx="20.112"
+    cy="16.144"
+    stroke="#fff"
+    rx="2.7327"
+    ry="2.7327"
+  />
+  <ellipse
+    cx="12.182"
+    cy="19.688"
+    stroke="#fff"
+    rx="2.7327"
+    ry="2.7327"
+  />
+  <ellipse
+    cx="12.242"
+    cy="3.952"
+    fill="none"
+    stroke="#fff"
+    rx="2.7327"
+    ry="2.7327"
+  />
+  <line
+    stroke="#fff"
+    x1="10.529"
+    x2="5.4234"
+    y1="6.0813"
+    y2="13.769"
+  />
+  <line
+    stroke="#fff"
+    x1="13.592"
+    x2="18.577"
+    y1="6.1413"
+    y2="13.889"
+  />
+  <line
+    stroke="#fff"
+    x1="12.09"
+    x2="12.09"
+    y1="6.9221"
+    y2="16.772"
+  />
+  <line
+    stroke="#fff"
+    x1="12.063"
+    x2="14.824"
+    y1="10.233"
+    y2="13.706"
+  />
+  <line
+    stroke="#fff"
+    x1="12.083"
+    x2="9.3226"
+    y1="10.326"
+    y2="13.53"
+  />
 </svg>

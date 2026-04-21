@@ -2,7 +2,13 @@
 :root {
   --dropdown-text-color: var(--text); /* Цвет текста пунктов выпадающего списка. */
   --dropdown-border-color: var(--line); /* Цвет границы поля выпадающего списка. */
-  --dropdown-hover-bg-color: rgba(255, 255, 255, 0.2); /* Подложка пункта при наведении. */
+  --dropdown-hover-bg-color-base: var(--overlay-light); /* Базовый светлый цвет подложки пункта при наведении. */
+  --dropdown-hover-bg-color-alpha: 0.2; /* Прозрачность подложки пункта при наведении (без rgba). */
+  --dropdown-hover-bg-color: color-mix(
+    in srgb,
+    var(--dropdown-hover-bg-color-base) calc(var(--dropdown-hover-bg-color-alpha) * 100%),
+    transparent
+  ); /* Подложка пункта при наведении, собранная из базового цвета и отдельной прозрачности. */
   --dropdown-menu-bg-color: var(--bg); /* Фон поля выпадающего списка в цвет фона сайта. */
   --dropdown-item-padding-block: 8px; /* Вертикальный отступ текста в строках списка. */
   --dropdown-item-padding-inline: 10px; /* Горизонтальный отступ текста в строках списка. */

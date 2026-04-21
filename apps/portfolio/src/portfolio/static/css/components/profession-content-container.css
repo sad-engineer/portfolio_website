@@ -43,6 +43,12 @@
   color: inherit;
 }
 
+/* На страницах профессий убирает общий отступ заголовков из cards.css. */
+.page-content.page-profession .profession-content-container .card h2{
+  margin-top: 0;
+}
+
+
 /* Возвращает исходное затемнение угла только для блока languages. */
 .page-content.page-profession .profession-content-container .card.languages-full {
   background: var(--languages-overlay-gradient);
