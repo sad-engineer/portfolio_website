@@ -1,4 +1,4 @@
-<section class="info-banner" aria-label="{{ info_banner_locale.get('title', '') }}">
+<section class="info-banner" id="info-banner-section" aria-label="{{ info_banner_locale.get('title', '') }}">
     {% set info_icon = info_banner_locale.get('icon', '') %}
     {% if info_icon %}
     {% set is_external_icon = info_icon.startswith('http://') or info_icon.startswith('https://') %}

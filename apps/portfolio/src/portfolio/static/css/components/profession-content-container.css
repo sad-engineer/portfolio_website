@@ -4,7 +4,7 @@
   --profession-content-container-border: none; /* Рамка контейнера (при необходимости можно задать). */
   --profession-content-container-radius: 0; /* Скругление внешнего контейнера. */
   --profession-content-container-padding: 0; /* Внутренние отступы контейнера. */
-  --profession-content-container-gap: 0; /* Вертикальный интервал между строками контента контейнера. */
+  --profession-content-container-gap: 0px; /* Вертикальный интервал между строками контента контейнера. */
   --profession-content-container-text-color: var(--text); /* Цвет текста внутри контейнера профессии. */
   --profession-content-container-opacity-bg: 0.3; /* Прозрачность только фонового слоя контейнера. */
   --profession-content-card-bg-color: var(--surface); /* Базовый цвет карточек контента профессии. */
@@ -36,6 +36,7 @@
   opacity: 1;
 }
 
+/* На страницах профессий убирает общий цвет текста из cards.css. */
 .page-content.page-profession .profession-content-container .card h2,
 .page-content.page-profession .profession-content-container .card h3,
 .page-content.page-profession .profession-content-container .card p,

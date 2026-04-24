@@ -1,6 +1,7 @@
 """Обработчики основных страниц сайта."""
 
 from copy import deepcopy
+import re
 
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
@@ -122,6 +123,46 @@ def _localized_profession_block(block: dict, current_lang: str) -> dict:
 
 
 _PROFESSION_KEYS = ("constructor", "planner", "developer", "technologist")
+PERIOD_END_RE = re.compile(r"(\d{2})\.(\d{4})\s*$")
+
+
+def _period_end_sort_key(item: dict) -> tuple[int, int]:
+    """Возвращает ключ сортировки по дате окончания периода (месяц, год)."""
+    period = str(item.get("period", ""))
+    period_parts = period.split("-", 1)
+    period_end = period_parts[1].strip() if len(period_parts) > 1 else period.strip()
+    match = PERIOD_END_RE.search(period_end)
+    if not match:
+        return (0, 0)
+
+    month = int(match.group(1))
+    year = int(match.group(2))
+    if month < 1 or month > 12:
+        return (0, 0)
+    return (year, month)
+
+
+def _profession_work_experience_items(
+    work_places_locale: dict, profession_key: str
+) -> list[dict]:
+    """Возвращает места работы, относящиеся к выбранной профессии."""
+    source_items = work_places_locale.get("items", [])
+    if not isinstance(source_items, list):
+        return []
+
+    scoped_items: list[dict] = []
+    for item in source_items:
+        if not isinstance(item, dict):
+            continue
+        role_tags = item.get("roleTags", [])
+        if not isinstance(role_tags, list):
+            continue
+        if profession_key not in role_tags:
+            continue
+        scoped_items.append(item)
+
+    scoped_items.sort(key=_period_end_sort_key, reverse=True)
+    return scoped_items
 
 
 def _append_lang_query(href: str, lang: str) -> str:
@@ -213,6 +254,13 @@ def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict
         key: _localized_profession_block(site_content.get(key, {}), current_lang)
         for key in _PROFESSION_KEYS
     }
+    work_places_locale = _localized_content_block(
+        site_content.get("work_places", {}), current_lang
+    )
+    profession_work_experience = {
+        key: _profession_work_experience_items(work_places_locale, key)
+        for key in _PROFESSION_KEYS
+    }
 
     links = basic_locale.get("links", {})
     agreement_path = str(
@@ -232,6 +280,8 @@ def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict
         "main_nav_locale": main_nav_locale,
         "social_links": social_links,
         "profession_locale": profession_locale,
+        "work_places_locale": work_places_locale,
+        "profession_work_experience": profession_work_experience,
         "home_href": _append_lang_query("/main", current_lang),
         "user_agreement_href": _append_lang_query(agreement_path, current_lang),
         "privacy_policy_href": _append_lang_query(privacy_path, current_lang),

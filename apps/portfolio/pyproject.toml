@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "portfolio"
-version = "0.0.013"
+version = "0.0.014"
 description = "Персональный сайт-визитка с демонстрацией PET-проектов"
 authors = ["Andrey Korenyk <korenyuk.a.n@mail.ru>"]
 readme = "README.md"

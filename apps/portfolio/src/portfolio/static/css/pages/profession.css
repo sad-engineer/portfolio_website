@@ -4,6 +4,9 @@
   --profession-photo-aspect-ratio: 3 / 4; /* Базовое соотношение сторон фото/заглушки на мобильных. */
   --profession-inline-padding: 0px; /* Базовый внутренний отступ контейнера профессии. */
   --profession-mobile-inline-padding: 12px; /* Горизонтальный отступ контента на экранах <= 1200px. */
+  --profession-gap-after-tech-layout: 3px; /* Отступ между верхней зоной (фото + карточки) и блоком типов документов. */
+  --profession-gap-after-document-types: 3px; /* Отступ между блоком типов документов и блоком языков. */
+  --profession-gap-before-work-experience: 3px; /* Отступ между блоком языков и блоком опыта работы. */
 
 }
 
@@ -74,7 +77,22 @@
 
 /* Вне верхней зоны technologies-контейнеры не должны давать увеличенный зазор. */
 .page-content.page-profession .profession-content-container > .technologies {
-  margin-bottom: 3px;
+  margin-bottom: 0;
+}
+
+/* Отступ между верхней зоной и блоком "Типы документов". */
+.page-content.page-profession .tech-layout + .document-types {
+  margin-top: var(--profession-gap-after-tech-layout);
+}
+
+/* Отступ между блоками "Типы документов" и "Языки". */
+.page-content.page-profession .document-types + .languages-full {
+  margin-top: var(--profession-gap-after-document-types);
+}
+
+/* Отступ перед блоком "Опыт работы". */
+.page-content.page-profession .languages-full + .profession-work-experience {
+  margin-top: var(--profession-gap-before-work-experience);
 }
 
 /* Фото/заглушка заполняет высоту левой колонки верхней зоны. */
@@ -93,6 +111,7 @@
   z-index: 1;
 }
 
+/* Фон секции "Типы документов": изображение по правому краю в зоне 66%. */
 .page-content.page-profession .document-types::before {
   content: "";
   position: absolute;
