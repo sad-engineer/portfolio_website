@@ -1,0 +1,54 @@
+{% set work_experience_items = profession_work_experience.get(profession_key, []) %}
+{% if work_experience_items %}
+<section class="card profession-work-experience" data-work-experience>
+    <h2>{{ work_places_locale.sectionTitle }}</h2>
+    <div class="profession-work-experience__slides">
+        {% for item in work_experience_items %}
+        <article class="profession-work-experience__slide{% if loop.index0 == 0 %} is-active{% endif %}" data-work-slide data-slide-index="{{ loop.index0 }}">
+            <div class="profession-work-experience__grid">
+                <div class="profession-work-experience__left">
+                    <h3 class="profession-work-experience__company">{{ item.company }}</h3>
+                    <p class="profession-work-experience__period">{{ item.period }}</p>
+                    <h4 class="profession-work-experience__subtitle">{{ work_places_locale.whatDoingTitle }}</h4>
+                    <ul class="profession-work-experience__list">
+                        {% for task in item.get("what_doing", []) %}
+                        <li>{{ task }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="profession-work-experience__right">
+                    <h4 class="profession-work-experience__subtitle">{{ work_places_locale.achievementsTitle }}</h4>
+                    <ul class="profession-work-experience__list">
+                        {% for achievement in item.get("achievements", []) %}
+                        <li>{{ achievement }}</li>
+                        {% endfor %}
+                    </ul>
+                    <button class="profession-work-experience__cta" type="button" data-scroll-banner>
+                        {{ work_places_locale.scrollToBannerButtonText }}
+                    </button>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    <div class="profession-work-experience__controls">
+        <button
+            class="profession-work-experience__arrow profession-work-experience__arrow--prev"
+            type="button"
+            data-work-prev
+            aria-label="{{ work_places_locale.previousSlideLabel }}"
+        >
+            <span aria-hidden="true">&lsaquo;</span>
+        </button>
+        <span class="profession-work-experience__counter" data-work-counter>01 &mdash; {{ "%02d"|format(work_experience_items|length) }}</span>
+        <button
+            class="profession-work-experience__arrow profession-work-experience__arrow--next"
+            type="button"
+            data-work-next
+            aria-label="{{ work_places_locale.nextSlideLabel }}"
+        >
+            <span aria-hidden="true">&rsaquo;</span>
+        </button>
+    </div>
+</section>
+{% endif %}

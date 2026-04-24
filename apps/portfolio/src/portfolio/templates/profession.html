@@ -142,11 +142,13 @@
             </div>
         </div>
     </section>
+    {% include "partials/profession_work_experience.html" %}
 </div>
 {% set info_banner_locale = profession.get('info_banner', {}) %}
 {% if info_banner_locale %}
 {% include "partials/info_banner.html" %}
 <script src="{{ url_for('static', path='js/info-banner.js') }}"></script>
 {% endif %}
+<script src="{{ url_for('static', path='js/profession-work-experience.js') }}"></script>
 <script src="{{ url_for('static', path='js/tech-tile-dropdown.js') }}"></script>
 {% endblock %}
