@@ -1,16 +1,16 @@
 /* Базовые секции контента страниц профессий (без визуала иконок). */
-:root {
-  --profession-technologies-margin-bottom: 14px; /* Базовый отступ секции technologies до следующего блока. */
-  --profession-tech-layout-gap: 3px; /* Универсальный gap верхней зоны (межколоночный и межстрочный). */
-  --profession-tech-layout-margin-bottom: 3px; /* Отступ верхней зоны до следующей секции. */
-  --profession-tech-group-gap: 3px; /* Вертикальный отступ между соседними tech-group. */
-  --profession-tech-group-title-margin-bottom: 10px; /* Отступ заголовка группы до содержимого. */
-  --profession-legal-paragraph-margin-bottom: 10px; /* Нижний отступ абзаца в legal-блоке. */
+.page-content.page-profession {
+  --technologies-margin-bottom: 14px; /* Базовый отступ секции technologies до следующего блока. */
+  --tech-layout-gap: 3px; /* Универсальный gap верхней зоны (межколоночный и межстрочный). */
+  --tech-layout-margin-bottom: 3px; /* Отступ верхней зоны до следующей секции. */
+  --tech-group-gap: 3px; /* Вертикальный отступ между соседними tech-group. */
+  --tech-group-title-margin-bottom: 10px; /* Отступ заголовка группы до содержимого. */
+  --legal-paragraph-margin-bottom: 10px; /* Нижний отступ абзаца в legal-блоке. */
 }
 
 /* Блок секции технологий внутри профессиональных страниц. */
 .technologies {
-  margin-bottom: var(--profession-technologies-margin-bottom); /* Отступ снизу до следующего блока. */
+  margin-bottom: var(--technologies-margin-bottom); /* Отступ снизу до следующего блока. */
   width: 100%; /* Растягивает секцию на всю доступную ширину. */
 }
 
@@ -18,8 +18,8 @@
 .tech-layout {
   display: grid; /* Включает grid-раскладку колонок. */
   grid-template-columns: 1fr 1fr; /* Две равные колонки. */
-  gap: var(--profession-tech-layout-gap); /* Межколоночный и межстрочный отступ. */
-  margin-bottom: var(--profession-tech-layout-margin-bottom); /* Отступ снизу от следующей секции. */
+  gap: var(--tech-layout-gap); /* Межколоночный и межстрочный отступ. */
+  margin-bottom: var(--tech-layout-margin-bottom); /* Отступ снизу от следующей секции. */
 }
 
 /* Карточка внутри верхней зоны. */
@@ -36,12 +36,12 @@
 
 /* Отступ между соседними группами контента. */
 .tech-group + .tech-group {
-  margin-top: var(--profession-tech-group-gap); /* Добавляет вертикальный интервал между группами. */
+  margin-top: var(--tech-group-gap); /* Добавляет вертикальный интервал между группами. */
 }
 
 /* Заголовок группы контента. */
 .tech-group h3 {
-  margin-bottom: var(--profession-tech-group-title-margin-bottom); /* Отделяет заголовок от сетки иконок. */
+  margin-bottom: var(--tech-group-title-margin-bottom); /* Отделяет заголовок от сетки иконок. */
 }
 
 /* Утилитарный класс приглушенного текста. */
@@ -51,5 +51,5 @@
 
 /* Абзац в юридических/служебных текстах. */
 .legal p {
-  margin: 0 0 var(--profession-legal-paragraph-margin-bottom); /* Отступ только снизу, без верхнего. */
+  margin: 0 0 var(--legal-paragraph-margin-bottom); /* Отступ только снизу, без верхнего. */
 }

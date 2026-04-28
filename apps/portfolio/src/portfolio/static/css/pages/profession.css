@@ -1,12 +1,12 @@
 /* Токены страниц профессий: размеры фото/заглушки. Градиент языков и фоновые картинки — в base.css и inline body (шаблон). */
-:root {
-  --profession-photo-width: 600px; /* Фиксированная ширина блока фото/заглушки. */
-  --profession-photo-aspect-ratio: 3 / 4; /* Базовое соотношение сторон фото/заглушки на мобильных. */
-  --profession-inline-padding: 0px; /* Базовый внутренний отступ контейнера профессии. */
-  --profession-mobile-inline-padding: 12px; /* Горизонтальный отступ контента на экранах <= 1200px. */
-  --profession-gap-after-tech-layout: 3px; /* Отступ между верхней зоной (фото + карточки) и блоком типов документов. */
-  --profession-gap-after-document-types: 3px; /* Отступ между блоком типов документов и блоком языков. */
-  --profession-gap-before-work-experience: 3px; /* Отступ между блоком языков и блоком опыта работы. */
+.page-content.page-profession {
+  --photo-width: 600px; /* Фиксированная ширина блока фото/заглушки. */
+  --photo-aspect-ratio: 3 / 4; /* Базовое соотношение сторон фото/заглушки на мобильных. */
+  --inline-padding: 0px; /* Базовый внутренний отступ контейнера профессии. */
+  --mobile-inline-padding: 12px; /* Горизонтальный отступ контента на экранах <= 1200px. */
+  --gap-after-tech-layout: 3px; /* Отступ между верхней зоной (фото + карточки) и блоком типов документов. */
+  --gap-after-document-types: 3px; /* Отступ между блоком типов документов и блоком языков. */
+  --gap-before-work-experience: 3px; /* Отступ между блоком языков и блоком опыта работы. */
 
 }
 
@@ -18,7 +18,7 @@
 .page-content.page-profession {
   position: relative;
   z-index: 2;
-  padding: 0 var(--profession-inline-padding); /* Задает боковые отступы основного контента страницы профессии. */
+  padding: 0 var(--inline-padding); /* Задает боковые отступы основного контента страницы профессии. */
 }
 
 /* Единая страница профессий: отступы у заголовочного блока. */
@@ -29,7 +29,7 @@
 /* Отступы страницы профессии как на главной для узких экранов. */
 @media (max-width: 1200px) {
   .page-content.page-profession {
-    padding-inline: var(--profession-mobile-inline-padding); /* Добавляет одинаковые боковые поля как у main. */
+    padding-inline: var(--mobile-inline-padding); /* Добавляет одинаковые боковые поля как у main. */
   }
 }
 
@@ -82,24 +82,24 @@
 
 /* Отступ между верхней зоной и блоком "Типы документов". */
 .page-content.page-profession .tech-layout + .document-types {
-  margin-top: var(--profession-gap-after-tech-layout);
+  margin-top: var(--gap-after-tech-layout);
 }
 
 /* Отступ между блоками "Типы документов" и "Языки". */
 .page-content.page-profession .document-types + .languages-full {
-  margin-top: var(--profession-gap-after-document-types);
+  margin-top: var(--gap-after-document-types);
 }
 
 /* Отступ перед блоком "Опыт работы". */
 .page-content.page-profession .languages-full + .profession-work-experience {
-  margin-top: var(--profession-gap-before-work-experience);
+  margin-top: var(--gap-before-work-experience);
 }
 
 /* Фото/заглушка заполняет высоту левой колонки верхней зоны. */
 .page-content.page-profession .hero-photo,
 .page-content.page-profession .hero-photo-placeholder {
   width: 100%;
-  max-width: var(--profession-photo-width);
+  max-width: var(--photo-width);
   height: 100%;
   aspect-ratio: auto;
 }
@@ -223,10 +223,10 @@
 
   .page-content.page-profession .hero-photo,
   .page-content.page-profession .hero-photo-placeholder {
-    width: min(100%, var(--profession-photo-width)); /* Делает фото/placeholder равной ширине контейнера. */
-    max-width: var(--profession-photo-width); /* Не дает расширяться шире фиксированного размера. */
+    width: min(100%, var(--photo-width)); /* Делает фото/placeholder равной ширине контейнера. */
+    max-width: var(--photo-width); /* Не дает расширяться шире фиксированного размера. */
     height: auto; /* Высота берется из высоты grid-строки, без дополнительного форсирования. */
-    aspect-ratio: var(--profession-photo-aspect-ratio); /* Сохраняет пропорции фото/placeholder. */
+    aspect-ratio: var(--photo-aspect-ratio); /* Сохраняет пропорции фото/placeholder. */
   }
 
   .page-content.page-profession .languages-content {

@@ -1,5 +1,5 @@
 /* Токены компонента cards: централизуют внешний вид карточек. */
-:root {
+.page-content {
   --card-title-color: var(--text-lead-dark); /* Цвет заголовка карточки. */
   --card-title-size: 1.1rem; /* Размер заголовка карточки. */
   --card-title-font-weight: bold; /* Насыщенность заголовка карточки. */
