@@ -3,15 +3,48 @@
   if (!workBlocks.length) {
     return;
   }
+  const achievementHighlightPattern = /\/akch\/\*([\s\S]*?)\/\*akch/g;
+
+  const escapeHtml = (value) =>
+    value
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+
+  const highlightMetricsInAchievements = (block) => {
+    const achievementItems = block.querySelectorAll(".profession-work-experience__right .profession-work-experience__list li");
+    achievementItems.forEach((item) => {
+      const rawText = item.textContent || "";
+      if (!rawText.trim()) {
+        return;
+      }
+      let lastIndex = 0;
+      let html = "";
+
+      rawText.replace(achievementHighlightPattern, (match, highlightedPart, offset) => {
+        html += escapeHtml(rawText.slice(lastIndex, offset));
+        html += `<span class="profession-work-experience__metric">${escapeHtml(highlightedPart)}</span>`;
+        lastIndex = offset + match.length;
+        return match;
+      });
+
+      html += escapeHtml(rawText.slice(lastIndex));
+      item.innerHTML = html;
+    });
+  };
 
   workBlocks.forEach((block) => {
+    highlightMetricsInAchievements(block);
+
     const slides = Array.from(block.querySelectorAll("[data-work-slide]"));
     const prevButton = block.querySelector("[data-work-prev]");
     const nextButton = block.querySelector("[data-work-next]");
     const counter = block.querySelector("[data-work-counter]");
     const bannerButtons = Array.from(block.querySelectorAll("[data-scroll-banner]"));
 
-    if (!slides.length || !prevButton || !nextButton || !counter) {
+    if (!slides.length || !counter) {
       return;
     }
 
@@ -24,25 +57,33 @@
         slide.classList.toggle("is-active", idx === activeIndex);
       });
       counter.textContent = `${formatCounterPart(activeIndex + 1)} — ${formatCounterPart(total)}`;
-      prevButton.disabled = activeIndex === 0;
-      nextButton.disabled = activeIndex === total - 1;
+      if (prevButton) {
+        prevButton.disabled = activeIndex === 0;
+      }
+      if (nextButton) {
+        nextButton.disabled = activeIndex === total - 1;
+      }
     };
 
-    prevButton.addEventListener("click", () => {
-      if (activeIndex === 0) {
-        return;
-      }
-      activeIndex -= 1;
-      render();
-    });
+    if (prevButton) {
+      prevButton.addEventListener("click", () => {
+        if (activeIndex === 0) {
+          return;
+        }
+        activeIndex -= 1;
+        render();
+      });
+    }
 
-    nextButton.addEventListener("click", () => {
-      if (activeIndex >= total - 1) {
-        return;
-      }
-      activeIndex += 1;
-      render();
-    });
+    if (nextButton) {
+      nextButton.addEventListener("click", () => {
+        if (activeIndex >= total - 1) {
+          return;
+        }
+        activeIndex += 1;
+        render();
+      });
+    }
 
     counter.addEventListener(
       "wheel",

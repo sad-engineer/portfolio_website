@@ -1,5 +1,5 @@
 /* Визуал иконок/плиток на страницах профессий: локальные алиасы только на глобальную палитру (base.css). */
-:root {
+.page-content.page-profession {
   --tech-tile-bg: var(--surface-tile); /* Фон плитки: токен --surface-tile в base.css. */
   --tech-tile-bg-hover: var(--surface-dark); /* Hover: светлая подложка из палитры. */
   --tech-icon-color: var(--text-dark); /* Иконки на светлой плитке. */

@@ -1,30 +1,31 @@
 /* Токены блока фото главной страницы: базовые нерастягивающие стили для переиспользования. */
-:root {
-  --hero-photo-border-color: var(--main-hero-image-border-color); /* Цвет рамки фото в hero-блоке. */
-  --hero-photo-placeholder-border-color: var(--main-photo-placeholder-border-color); /* Цвет рамки placeholder фото. */
-  --hero-photo-placeholder-text-color: var(--main-photo-placeholder-text-color); /* Цвет текста placeholder фото. */
-  --hero-photo-placeholder-bg-color: var(--main-photo-placeholder-bg-color); /* Фон placeholder фото. */
-  --hero-photo-placeholder-radius: 6px; /* Скругление углов placeholder фото. */
-  --hero-photo-placeholder-padding: 6px; /* Внутренний отступ placeholder фото. */
-  --hero-photo-placeholder-opacity: 0.3; /* Прозрачность placeholder фото. */
+.hero-photo,
+.hero-photo-placeholder {
+  --border-color: var(--main-hero-image-border-color); /* Цвет рамки фото в hero-блоке. */
+  --placeholder-border-color: var(--main-photo-placeholder-border-color); /* Цвет рамки placeholder фото. */
+  --placeholder-text-color: var(--main-photo-placeholder-text-color); /* Цвет текста placeholder фото. */
+  --placeholder-bg-color: var(--main-photo-placeholder-bg-color); /* Фон placeholder фото. */
+  --placeholder-radius: 6px; /* Скругление углов placeholder фото. */
+  --placeholder-padding: 6px; /* Внутренний отступ placeholder фото. */
+  --placeholder-opacity: 0.3; /* Прозрачность placeholder фото. */
 }
 
 /* Фото в hero-блоке: базовые стили отображения без page-растягивания. */
 .hero-photo {
-  border: 1px solid var(--hero-photo-border-color); /* Тонкая рамка вокруг фото. */
+  border: 1px solid var(--border-color); /* Тонкая рамка вокруг фото. */
   object-fit: cover; /* Кадрирует фото без искажения пропорций. */
 }
 
 /* Placeholder вместо фото: базовые стили без page-растягивания. */
 .hero-photo-placeholder {
-  border: 1px dashed var(--hero-photo-placeholder-border-color); /* Пунктирная рамка как визуальный маркер заглушки. */
-  border-radius: var(--hero-photo-placeholder-radius); /* Скругляет углы placeholder. */
+  border: 1px dashed var(--placeholder-border-color); /* Пунктирная рамка как визуальный маркер заглушки. */
+  border-radius: var(--placeholder-radius); /* Скругляет углы placeholder. */
   display: flex; /* Включает flex-центрирование текста. */
   align-items: center; /* Центрирует текст по вертикали. */
   justify-content: center; /* Центрирует текст по горизонтали. */
   text-align: center; /* Центрирует многострочный текст внутри блока. */
-  color: var(--hero-photo-placeholder-text-color); /* Приглушенный цвет текста заглушки. */
-  background: var(--hero-photo-placeholder-bg-color); /* Подложка заглушки. */
-  padding: var(--hero-photo-placeholder-padding); /* Внутренний отступ от рамки до текста. */
-  opacity: var(--hero-photo-placeholder-opacity); /* Единая прозрачность заглушки для всех страниц. */
+  color: var(--placeholder-text-color); /* Приглушенный цвет текста заглушки. */
+  background: var(--placeholder-bg-color); /* Подложка заглушки. */
+  padding: var(--placeholder-padding); /* Внутренний отступ от рамки до текста. */
+  opacity: var(--placeholder-opacity); /* Единая прозрачность заглушки для всех страниц. */
 }

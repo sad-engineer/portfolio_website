@@ -1,45 +1,45 @@
 /* Токены шапки: визуальная схема header и hover-состояния. */
-:root {
-  --header-bg-image: var(--site-bg-image); /* Фон шапки (обычно общий фон сайта). */
-  --header-bg-color: var(--bg); /* Базовая подложка шапки в цвет фона сайта. */
-  --header-bg-size: cover; /* Масштаб фона шапки. */
-  --header-bg-position: center; /* Позиция фона шапки. */
-  --header-bg-repeat: no-repeat; /* Повтор фоновой картинки. */
-  --header-bg-attachment: fixed; /* Поведение фона шапки: держит ту же привязку фона, что и у основного сайта. */
-  --header-border-color: var(--line); /* Цвет нижней границы шапки. */
-  --header-text-color: var(--text); /* Цвет текста и ссылок в шапке. */
-  --header-link-hover-border-color: var(--line); /* Цвет рамки ссылки при hover. */
-  --header-link-hover-base: var(--overlay-light); /* Базовый светлый цвет подложки ссылки при hover. */
-  --header-link-hover-alpha: 0.2; /* Прозрачность подложки ссылки при hover (без rgba). */
-  --header-link-hover-color: color-mix(
+.site-header {
+  --bg-image: var(--site-bg-image); /* Фон шапки (обычно общий фон сайта). */
+  --bg-color: var(--bg); /* Базовая подложка шапки в цвет фона сайта. */
+  --bg-size: cover; /* Масштаб фона шапки. */
+  --bg-position: center; /* Позиция фона шапки. */
+  --bg-repeat: no-repeat; /* Повтор фоновой картинки. */
+  --bg-attachment: fixed; /* Поведение фона шапки: держит ту же привязку фона, что и у основного сайта. */
+  --border-color: var(--line); /* Цвет нижней границы шапки. */
+  --text-color: var(--text); /* Цвет текста и ссылок в шапке. */
+  --link-hover-border-color: var(--line); /* Цвет рамки ссылки при hover. */
+  --link-hover-base: var(--overlay-light); /* Базовый светлый цвет подложки ссылки при hover. */
+  --link-hover-alpha: 0.2; /* Прозрачность подложки ссылки при hover (без rgba). */
+  --link-hover-color: color-mix(
     in srgb,
-    var(--header-link-hover-base) calc(var(--header-link-hover-alpha) * 100%),
+    var(--link-hover-base) calc(var(--link-hover-alpha) * 100%),
     transparent
   ); /* Фон ссылки при hover, собранный из базового цвета и отдельной прозрачности. */
-  --lang-dropdown-icon-color: var(--header-text-color); /* Цвет иконки выбора языка и стрелки. */
-  --lang-dropdown-text-color: var(--text-head); /* Цвет текста в строках меню выбора языка. */
-  --lang-dropdown-hover-base: var(--overlay-light); /* Базовый светлый цвет hover-подложки меню выбора языка. */
-  --lang-dropdown-hover-alpha: 0.25; /* Прозрачность hover-подложки меню выбора языка (без rgba). */
-  --lang-dropdown-hover-bg-color: color-mix(
+  --lang-icon-color: var(--text-color); /* Цвет иконки выбора языка и стрелки. */
+  --lang-text-color: var(--text-head); /* Цвет текста в строках меню выбора языка. */
+  --lang-hover-base: var(--overlay-light); /* Базовый светлый цвет hover-подложки меню выбора языка. */
+  --lang-hover-alpha: 0.25; /* Прозрачность hover-подложки меню выбора языка (без rgba). */
+  --lang-hover-bg-color: color-mix(
     in srgb,
-    var(--lang-dropdown-hover-base) calc(var(--lang-dropdown-hover-alpha) * 100%),
+    var(--lang-hover-base) calc(var(--lang-hover-alpha) * 100%),
     transparent
   ); /* Подложка hover для меню выбора языка, собранная из базового цвета и отдельной прозрачности. */
-  --lang-dropdown-item-padding-block: 20px; /* Вертикальный отступ текста в строках меню выбора языка. */
-  --lang-dropdown-item-padding-inline: 8px; /* Горизонтальный отступ текста в строках меню выбора языка. */
+  --lang-item-padding-block: 20px; /* Вертикальный отступ текста в строках меню выбора языка. */
+  --lang-item-padding-inline: 8px; /* Горизонтальный отступ текста в строках меню выбора языка. */
 }
 
 /* Корневой контейнер шапки, закрепленный сверху. */
 .site-header {
   position: sticky; /* Закрепляет шапку в верхней части окна. */
   top: 0; /* Точка прилипания к верхней границе viewport. */
-  background-color: var(--header-bg-color); /* Делает шапку непрозрачной, чтобы контент визуально уходил под нее при скролле. */
-  background-image: var(--header-bg-image); /* Подключает фоновую картинку. */
-  background-size: var(--header-bg-size); /* Управляет масштабом фоновой картинки. */
-  background-position: var(--header-bg-position); /* Управляет позицией фона. */
-  background-repeat: var(--header-bg-repeat); /* Управляет повторением фона. */
-  background-attachment: var(--header-bg-attachment); /* Управляет фиксацией фона. */
-  border-bottom: 1px solid var(--header-border-color); /* Нижний разделитель шапки. */
+  background-color: var(--bg-color); /* Делает шапку непрозрачной, чтобы контент визуально уходил под нее при скролле. */
+  background-image: var(--bg-image); /* Подключает фоновую картинку. */
+  background-size: var(--bg-size); /* Управляет масштабом фоновой картинки. */
+  background-position: var(--bg-position); /* Управляет позицией фона. */
+  background-repeat: var(--bg-repeat); /* Управляет повторением фона. */
+  background-attachment: var(--bg-attachment); /* Управляет фиксацией фона. */
+  border-bottom: 1px solid var(--border-color); /* Нижний разделитель шапки. */
   z-index: 5; /* Держит шапку выше основного контента. */
 }
 
@@ -66,7 +66,7 @@
 /* Ссылка-бренд в шапке. */
 .brand {
   font-weight: 700; /* Делает бренд визуально акцентным. */
-  color: var(--header-text-color); /* Синхронизирует цвет с темой шапки. */
+  color: var(--text-color); /* Синхронизирует цвет с темой шапки. */
   text-decoration: none; /* Убирает стандартное подчеркивание ссылки. */
 }
 
@@ -93,7 +93,7 @@
 /* Hover-состояние триггера dropdown. */
 .dropdown-switcher__trigger:hover {
   border: 1px solid var(--line); /* Добавляет рамку при наведении. */
-  background-color: var(--header-link-hover-color); /* Подсвечивает фон триггера. */
+  background-color: var(--link-hover-color); /* Подсвечивает фон триггера. */
 }
 
 /* Скрывает встроенный маркер details в WebKit-браузерах. */
@@ -107,7 +107,7 @@
   width: 26px; /* Ширина иконки языка. */
   height: 26px; /* Высота иконки языка. */
   display: inline-block; /* Делает span блочным инлайн-элементом. */
-  background-color: var(--lang-dropdown-icon-color); /* Цвет силуэта иконки языка. */
+  background-color: var(--lang-icon-color); /* Цвет силуэта иконки языка. */
   -webkit-mask-image: var(--lang-switch-icon); /* Маска иконки языка для WebKit. */
   -webkit-mask-size: contain; /* Вписывает маску без обрезки. */
   -webkit-mask-repeat: no-repeat; /* Не повторяет маску. */
@@ -129,8 +129,8 @@
 .lang-dropdown .dropdown-switcher__arrow {
   width: 8px; /* Ширина стрелки. */
   height: 8px; /* Высота стрелки. */
-  border-right: 2px solid var(--lang-dropdown-icon-color); /* Правая грань стрелки. */
-  border-bottom: 2px solid var(--lang-dropdown-icon-color); /* Нижняя грань стрелки. */
+  border-right: 2px solid var(--lang-icon-color); /* Правая грань стрелки. */
+  border-bottom: 2px solid var(--lang-icon-color); /* Нижняя грань стрелки. */
   transform: rotate(45deg) translateY(-1px); /* Вид закрытого состояния dropdown. */
   transition: transform 0.2s ease; /* Плавный поворот стрелки. */
 }
@@ -142,11 +142,11 @@
 /* Настройки dropdown для меню выбора языка. */
 .dropdown-switcher.lang-dropdown {
   display: block; /* Всегда показывает переключатель языка в шапке. */
-  --dropdown-text-color: var(--lang-dropdown-text-color); /* Цвет текста пунктов выбора языка. */
-  --dropdown-menu-bg-color: var(--bg); /* Фон языкового dropdown в цвет фона сайта. */
-  --dropdown-hover-bg-color: var(--lang-dropdown-hover-bg-color); /* Подложка hover пунктов выбора языка. */
-  --dropdown-item-padding-block: var(--lang-dropdown-item-padding-block); /* Вертикальный отступ строк выбора языка. */
-  --dropdown-item-padding-inline: var(--lang-dropdown-item-padding-inline); /* Горизонтальный отступ строк выбора языка. */
+  --text-color: var(--lang-text-color); /* Цвет текста пунктов выбора языка. */
+  --menu-bg-color: var(--bg); /* Фон языкового dropdown в цвет фона сайта. */
+  --hover-bg-color: var(--lang-hover-bg-color); /* Подложка hover пунктов выбора языка. */
+  --item-padding-block: var(--lang-item-padding-block); /* Вертикальный отступ строк выбора языка. */
+  --item-padding-inline: var(--lang-item-padding-inline); /* Горизонтальный отступ строк выбора языка. */
 }
 
 .lang-dropdown .dropdown-switcher__menu {

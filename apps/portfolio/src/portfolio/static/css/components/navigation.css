@@ -1,11 +1,11 @@
 /* Токены навигации: цвета, иконка и настройки dropdown для nav. */
-:root {
-  --nav-text-color: var(--header-text-color); /* Цвет текста пунктов навигации. */
-  --nav-hover-border-color: var(--header-link-hover-border-color); /* Цвет рамки пункта при наведении. */
-  --nav-hover-bg-color: var(--header-link-hover-color); /* Цвет подложки пункта при наведении. */
-  --nav-dropdown-icon-color: var(--text); /* Цвет иконки мобильного меню навигации. */
-  --nav-dropdown-item-padding-block: 20px; /* Вертикальный отступ текста в строке выпадающего меню навигации. */
-  --nav-dropdown-item-padding-inline: 8px; /* Горизонтальный отступ текста в строке выпадающего меню навигации. */
+.main-nav {
+  --text-color: var(--text); /* Цвет текста пунктов навигации. */
+  --hover-border-color: var(--link-hover-border-color); /* Цвет рамки пункта при наведении. */
+  --hover-bg-color: var(--link-hover-color); /* Цвет подложки пункта при наведении. */
+  --dropdown-icon-color: var(--text); /* Цвет иконки мобильного меню навигации. */
+  --dropdown-item-padding-block: 20px; /* Вертикальный отступ текста в строке выпадающего меню навигации. */
+  --dropdown-item-padding-inline: 8px; /* Горизонтальный отступ текста в строке выпадающего меню навигации. */
 }
 
 /* Контейнер основных пунктов навигации. */
@@ -18,15 +18,15 @@
 /* Ссылка основного меню в шапке. */
 .main-nav a {
   text-decoration: none; /* Убирает underline в обычном состоянии. */
-  color: var(--nav-text-color); /* Цвет текста ссылки. */
+  color: var(--text-color); /* Цвет текста ссылки. */
   padding: 20px 10px; /* Увеличивает кликабельную область ссылки. */
   border: 1px solid transparent; /* Резервирует место под рамку hover. */
 }
 
 /* Hover-состояние ссылок меню. */
 .main-nav a:hover {
-  border-color: var(--nav-hover-border-color); /* Подсвечивает границу при наведении. */
-  background-color: var(--nav-hover-bg-color); /* Добавляет легкую подложку при наведении. */
+  border-color: var(--hover-border-color); /* Подсвечивает границу при наведении. */
+  background-color: var(--hover-bg-color); /* Добавляет легкую подложку при наведении. */
 }
 
 /* Базовый триггер dropdown для nav в шапке. */
@@ -45,7 +45,7 @@
 /* Hover-состояние триггера dropdown. */
 .dropdown-switcher__trigger:hover {
   border: 1px solid var(--line); /* Добавляет рамку при наведении. */
-  background-color: var(--nav-hover-bg-color); /* Подсвечивает фон триггера. */
+  background-color: var(--hover-bg-color); /* Подсвечивает фон триггера. */
 }
 
 /* Скрывает встроенный маркер details в WebKit-браузерах. */
@@ -62,7 +62,7 @@
 .nav-dropdown .dropdown-switcher__icon {
   width: 22px; /* Ширина центральной линии гамбургера. */
   height: 2px; /* Толщина центральной линии гамбургера. */
-  background-color: var(--nav-dropdown-icon-color); /* Цвет линий иконки навигации. */
+  background-color: var(--dropdown-icon-color); /* Цвет линий иконки навигации. */
 }
 
 .nav-dropdown .dropdown-switcher__icon::before,
@@ -72,7 +72,7 @@
   left: 0; /* Выравнивает по левому краю центральной линии. */
   width: 22px; /* Ширина верхней и нижней линий. */
   height: 2px; /* Толщина верхней и нижней линий. */
-  background-color: var(--nav-dropdown-icon-color); /* Цвет верхней и нижней линий. */
+  background-color: var(--dropdown-icon-color); /* Цвет верхней и нижней линий. */
 }
 
 .nav-dropdown .dropdown-switcher__icon::before {
@@ -85,10 +85,10 @@
 
 /* Настройки dropdown для мобильного меню навигации. */
 .nav-dropdown {
-  --dropdown-text-color: var(--text); /* Цвет текста пунктов навигационного dropdown. */
-  --dropdown-menu-bg-color: var(--bg); /* Фон nav-dropdown в цвет фона сайта. */
-  --dropdown-item-padding-block: var(--nav-dropdown-item-padding-block); /* Вертикальный отступ строк nav-dropdown. */
-  --dropdown-item-padding-inline: var(--nav-dropdown-item-padding-inline); /* Горизонтальный отступ строк nav-dropdown. */
+  --text-color: var(--text); /* Цвет текста пунктов навигационного dropdown. */
+  --menu-bg-color: var(--bg); /* Фон nav-dropdown в цвет фона сайта. */
+  --item-padding-block: var(--dropdown-item-padding-block); /* Вертикальный отступ строк nav-dropdown. */
+  --item-padding-inline: var(--dropdown-item-padding-inline); /* Горизонтальный отступ строк nav-dropdown. */
 }
 
 /* Адаптация шапки для узких экранов: вместо пунктов меню показывается dropdown. */

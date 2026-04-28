@@ -1,0 +1,43 @@
+/* Настройка скроллбара. */
+.scrollbar {
+  --size: 12px; /* Ширина скроллбара. */
+  --width-firefox: thin; /* Ширина скроллбара для Firefox: auto | thin | none. */
+  --track-color: var(--overlay-dark-alpha-0); /* Цвет трека скроллбара. */
+  --thumb-color-idle: var(--overlay-light-alpha-20); /* Цвет thumb в обычном состоянии. */
+  --thumb-color-hover: var(--overlay-light-alpha-40); /* Цвет thumb при наведении. */
+  --thumb-radius: 0px; /* Скругление thumb. */
+}
+
+/* Универсальный preset скроллбара (Firefox). */
+.scrollbar {
+  scrollbar-width: var(--width-firefox); /* Firefox: ширина полосы прокрутки. */
+  scrollbar-color: var(--thumb-color-idle) var(--track-color); /* Firefox: цвет thumb и трека. */
+}
+
+/* Универсальный preset скроллбара (Chrome/Edge/Safari): ширина. */
+.scrollbar::-webkit-scrollbar{
+  width: var(--size); /* Управляет шириной вертикального скроллбара. */
+}
+
+/* Универсальный preset скроллбара (Chrome/Edge/Safari): цвет трека. */
+.scrollbar::-webkit-scrollbar-track {
+  background: var(--track-color); /* Применяет цвет трека скроллбара. */
+}
+
+/* Универсальный preset скроллбара (Chrome/Edge/Safari): цвет и скругление thumb. */
+.scrollbar::-webkit-scrollbar-thumb {
+  background: var(--thumb-color-idle); /* Применяет цвет thumb в обычном состоянии. */
+  border-radius: var(--thumb-radius); /* Применяет скругление thumb. */
+}
+
+/* Универсальный preset скроллбара (Chrome/Edge/Safari): hover-состояние thumb. */
+.scrollbar:hover::-webkit-scrollbar-thumb {
+  background: var(--thumb-color-hover); /* Применяет цвет thumb при наведении. */
+}
+
+/* Универсальный preset скроллбара (Chrome/Edge/Safari): отключает стрелки. */
+.scrollbar::-webkit-scrollbar-button {
+  display: none; /* Скрывает стрелки в начале и конце скроллбара. */
+  width: 0; /* Обнуляет ширину кнопок для стабильного скрытия. */
+  height: 0; /* Обнуляет высоту кнопок для стабильного скрытия. */
+}

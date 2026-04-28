@@ -1,7 +1,7 @@
 /* Токены компонента footer: локальные переменные на базе глобальной палитры. */
-:root {
-  --footer-social-link-opacity: 0.75; /* Базовая прозрачность кнопок соцсетей. */
-  --footer-social-link-opacity-hover: 0.9; /* Прозрачность кнопок соцсетей при наведении. */
+.site-bottom-strip {
+  --social-link-opacity: 0.75; /* Базовая прозрачность кнопок соцсетей. */
+  --social-link-opacity-hover: 0.9; /* Прозрачность кнопок соцсетей при наведении. */
 }
 
 /* Нижняя полоса под основным контентом: отступы вокруг блока соцсетей и legal. */
@@ -41,12 +41,12 @@
   border: 1px solid var(--line); /* Рамка кнопки. */
   color: var(--text-dark); /* Цвет иконки/текста, если нет изображения. */
   text-decoration: none; /* Убирает underline у ссылки. */
-  opacity: var(--footer-social-link-opacity); /* Базовая прозрачность кнопки. */
+  opacity: var(--social-link-opacity); /* Базовая прозрачность кнопки. */
 }
 
 /* Hover-состояние социальной кнопки. */
 .site-social-link:hover {
-  opacity: var(--footer-social-link-opacity-hover); /* Повышает контраст кнопки при наведении. */
+  opacity: var(--social-link-opacity-hover); /* Повышает контраст кнопки при наведении. */
 }
 
 /* Встроенное изображение иконки внутри социальной кнопки. */

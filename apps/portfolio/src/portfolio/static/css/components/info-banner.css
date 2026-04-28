@@ -1,40 +1,40 @@
 /* Токены info-banner: переиспользуемый текстовый баннер под основной контент. */
-:root {
-  --info-banner-bg-color: var(--banner); /* Базовый цвет фона баннера из глобальной палитры. */
-  --info-banner-bg-alpha: 0.85; /* Прозрачность фона баннера (0-1). */
-  --info-banner-text-color: var(--text-head); /* Цвет текста баннера на акцентном фоне. */
-  --info-banner-padding-block: 20px; /* Вертикальные внутренние отступы баннера. */
-  --info-banner-padding-inline: 16px; /* Горизонтальные внутренние отступы баннера. */
-  --info-banner-gap: 20px; /* Расстояние между заголовком и описанием в баннере. */
-  --info-banner-icon-column-width: 25%; /* Базовая ширина колонки иконки внутри баннера. */
-  --info-banner-icon-size: 175px; /* Базовый размер иконки баннера. */
-  --info-banner-icon-opacity: 0.10; /* Базовая полупрозрачность иконки баннера. */
-  --info-banner-border-radius: 6px; /* Скругление углов баннера. */
-  --info-banner-margin-top: 6px; /* Отступ баннера от hero-блока. */
-  --info-banner-glint-color: var(--surface); /* Цвет полосы блика баннера (как у карточек). */
-  --info-banner-glint-opacity: 1; /* Непрозрачность полосы блика баннера (как у карточек). */
-  --info-banner-glint-angle: -18deg; /* Угол наклона полосы блика баннера (как у карточек). */
-  --info-banner-glint-width: 36%; /* Ширина полосы блика баннера (как у карточек). */
-  --info-banner-glint-duration: 1250ms; /* Длительность блика баннера (как у карточек). */
-  --info-banner-glint-delay-on-visible: 80ms; /* Задержка старта блика, когда баннер появился полностью в viewport. */
-  --info-banner-glint-delay-after-cards: calc(150ms + 700ms + 40ms + (180ms * 3) + var(--info-banner-glint-delay-on-visible)); /* Момент старта блика баннера после завершения блика последней карточки. */
+.info-banner {
+  --bg-color: var(--banner); /* Базовый цвет фона баннера из глобальной палитры. */
+  --bg-alpha: 0.85; /* Прозрачность фона баннера (0-1). */
+  --text-color: var(--text-head); /* Цвет текста баннера на акцентном фоне. */
+  --padding-block: 20px; /* Вертикальные внутренние отступы баннера. */
+  --padding-inline: 16px; /* Горизонтальные внутренние отступы баннера. */
+  --gap: 20px; /* Расстояние между заголовком и описанием в баннере. */
+  --icon-column-width: 25%; /* Базовая ширина колонки иконки внутри баннера. */
+  --icon-size: 175px; /* Базовый размер иконки баннера. */
+  --icon-opacity: 0.10; /* Базовая полупрозрачность иконки баннера. */
+  --border-radius: 6px; /* Скругление углов баннера. */
+  --margin-top: 6px; /* Отступ баннера от hero-блока. */
+  --glint-color: var(--surface); /* Цвет полосы блика баннера (как у карточек). */
+  --glint-opacity: 1; /* Непрозрачность полосы блика баннера (как у карточек). */
+  --glint-angle: -18deg; /* Угол наклона полосы блика баннера (как у карточек). */
+  --glint-width: 36%; /* Ширина полосы блика баннера (как у карточек). */
+  --glint-duration: 1250ms; /* Длительность блика баннера (как у карточек). */
+  --glint-delay-on-visible: 80ms; /* Задержка старта блика, когда баннер появился полностью в viewport. */
+  --glint-delay-after-cards: calc(150ms + 700ms + 40ms + (180ms * 3) + var(--glint-delay-on-visible)); /* Момент старта блика баннера после завершения блика последней карточки. */
 }
 
 /* Контейнер информационного баннера на всю ширину контентной области. */
 .info-banner {
   width: 100%; /* Растягивает баннер на всю доступную ширину контейнера. */
-  margin-top: var(--info-banner-margin-top); /* Добавляет отступ от верхнего блока контента. */
-  padding: var(--info-banner-padding-block) var(--info-banner-padding-inline); /* Формирует внутренние отступы баннера. */
-  border-radius: var(--info-banner-border-radius); /* Скругляет углы баннера. */
-  background: color-mix(in srgb, var(--info-banner-bg-color) calc(var(--info-banner-bg-alpha) * 100%), transparent); /* Формирует полупрозрачный фон баннера на базе акцентного цвета. */
-  color: var(--info-banner-text-color); /* Устанавливает цвет текста внутри баннера. */
+  margin-top: var(--margin-top); /* Добавляет отступ от верхнего блока контента. */
+  padding: var(--padding-block) var(--padding-inline); /* Формирует внутренние отступы баннера. */
+  border-radius: var(--border-radius); /* Скругляет углы баннера. */
+  background: color-mix(in srgb, var(--bg-color) calc(var(--bg-alpha) * 100%), transparent); /* Формирует полупрозрачный фон баннера на базе акцентного цвета. */
+  color: var(--text-color); /* Устанавливает цвет текста внутри баннера. */
   position: relative; /* Создает контекст для псевдоэлемента блика баннера. */
   overflow: hidden; /* Обрезает полосу блика по границам баннера. */
 }
 
 /* Заголовок информационного баннера. */
 .info-banner__title {
-  margin: 0 0 var(--info-banner-gap) 0; /* Добавляет отступ до описания и убирает лишние внешние поля. */
+  margin: 0 0 var(--gap) 0; /* Добавляет отступ до описания и убирает лишние внешние поля. */
   font-size: 1.25rem; /* Размер заголовка баннера. */
 }
 
@@ -49,7 +49,7 @@
   position: absolute; /* Исключает иконку из потока, чтобы высота баннера считалась по тексту. */
   right: 0; /* Базово размещает иконку в правой части баннера. */
   top: 50%; /* Вертикально центрирует декоративную иконку. */
-  width: var(--info-banner-icon-column-width); /* Ограничивает ширину области иконки. */
+  width: var(--icon-column-width); /* Ограничивает ширину области иконки. */
   transform: translateY(-50%); /* Дотягивает центрирование по оси Y. */
   display: flex; /* Центрирует иконку внутри собственной области. */
   justify-content: center; /* Центрирование иконки по горизонтали. */
@@ -59,10 +59,10 @@
 
 /* Базовый стиль иконки баннера. */
 .info-banner__icon {
-  width: var(--info-banner-icon-size); /* Размер иконки баннера по ширине. */
-  height: var(--info-banner-icon-size); /* Размер иконки баннера по высоте. */
+  width: var(--icon-size); /* Размер иконки баннера по ширине. */
+  height: var(--icon-size); /* Размер иконки баннера по высоте. */
   object-fit: contain; /* Сохраняет пропорции иконки без обрезки. */
-  opacity: var(--info-banner-icon-opacity); /* Делает иконку полупрозрачной. */
+  opacity: var(--icon-opacity); /* Делает иконку полупрозрачной. */
 }
 
 /* Базовый контент баннера: текст остается на полной ширине. */
@@ -77,23 +77,23 @@
   position: absolute; /* Выводит блик поверх баннера без влияния на layout. */
   top: -15%; /* Геометрия старта полосы блика идентична карточкам. */
   left: -25%; /* Стартовая позиция блика баннера идентична карточкам. */
-  width: var(--info-banner-glint-width); /* Ширина полосы блика баннера. */
+  width: var(--glint-width); /* Ширина полосы блика баннера. */
   height: 500%; /* Высота полосы для полного перекрытия при наклоне. */
-  background: linear-gradient(to right, transparent 0%, var(--info-banner-glint-color) 50%, transparent 100%); /* Градиент полосы с мягкими краями. */
-  opacity: var(--info-banner-glint-opacity); /* Непрозрачность блика задается тем же токеном, что у карточек. */
-  transform: rotate(var(--info-banner-glint-angle)) translateX(-220%); /* Начальная позиция блика вне баннера слева. */
+  background: linear-gradient(to right, transparent 0%, var(--glint-color) 50%, transparent 100%); /* Градиент полосы с мягкими краями. */
+  opacity: var(--glint-opacity); /* Непрозрачность блика задается тем же токеном, что у карточек. */
+  transform: rotate(var(--glint-angle)) translateX(-220%); /* Начальная позиция блика вне баннера слева. */
   pointer-events: none; /* Не перехватывает клики по баннеру. */
   will-change: transform, opacity; /* Оптимизирует анимируемые свойства блика. */
 }
 
 /* Запуск блика, если баннер полностью виден сразу на первом экране. */
 .info-banner.info-banner--glint-after-cards::after {
-  animation: main-card-glint-sweep var(--info-banner-glint-duration) linear var(--info-banner-glint-delay-after-cards) 1 both; /* Старт блика после завершения бликов карточек и дополнительной задержки с постоянной скоростью. */
+  animation: main-card-glint-sweep var(--glint-duration) linear var(--glint-delay-after-cards) 1 both; /* Старт блика после завершения бликов карточек и дополнительной задержки с постоянной скоростью. */
 }
 
 /* Запуск блика, когда баннер полностью вошел в viewport. */
 .info-banner.info-banner--glint-on-visible::after {
-  animation: main-card-glint-sweep var(--info-banner-glint-duration) linear var(--info-banner-glint-delay-on-visible) 1 both; /* Старт блика после полной видимости баннера с постоянной скоростью. */
+  animation: main-card-glint-sweep var(--glint-duration) linear var(--glint-delay-on-visible) 1 both; /* Старт блика после полной видимости баннера с постоянной скоростью. */
 }
 
 /* Адаптация info-banner для экранов уже 1200px: отступы как у полосы соцсетей. */

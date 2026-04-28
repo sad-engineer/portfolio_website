@@ -1,56 +1,53 @@
 /* Единый контейнер контента для страниц профессий. */
-:root {
-  --profession-content-container-bg: transparent; /* Фон контейнера по умолчанию без белой подложки. */
-  --profession-content-container-border: none; /* Рамка контейнера (при необходимости можно задать). */
-  --profession-content-container-radius: 0; /* Скругление внешнего контейнера. */
-  --profession-content-container-padding: 0; /* Внутренние отступы контейнера. */
-  --profession-content-container-gap: 0px; /* Вертикальный интервал между строками контента контейнера. */
-  --profession-content-container-text-color: var(--text); /* Цвет текста внутри контейнера профессии. */
-  --profession-content-container-opacity-bg: 0.3; /* Прозрачность только фонового слоя контейнера. */
-  --profession-content-card-bg-color: var(--surface); /* Базовый цвет карточек контента профессии. */
-  --profession-content-card-bg-alpha: 0; /* Прозрачность фона карточек контента профессии. */
-  --profession-content-card-border-color: var(--line); /* Цвет границы карточек контента профессии. */
+.profession-content-container {
+  --radius: 0; /* Скругление внешнего контейнера. */
+  --padding: 0; /* Внутренние отступы контейнера. */
+  --gap: 3px; /* Вертикальный интервал между строками контента контейнера. */
+  --text-color: var(--text); /* Цвет текста внутри контейнера профессии. */
+  --opacity-bg: 1; /* Прозрачность только фонового слоя контейнера. */
+  --card-border-color: var(--line); /* Цвет границы карточек контента профессии. */
 }
 
 .profession-content-container {
-  position: relative;
-  color: var(--profession-content-container-text-color);
-  border-radius: var(--profession-content-container-radius);
-  padding: var(--profession-content-container-padding);
-  display: grid;
-  gap: var(--profession-content-container-gap);
-  min-height: 0;
-  isolation: isolate;
+  position: relative; /* Позиционирование контейнера. */
+  color: var(--text-color); /* Цвет текста контейнера. */
+  border-radius: var(--radius); /* Скругление внешнего контейнера. */
+  padding: var(--padding); /* Внутренние отступы контейнера. */
+  display: grid; /* Дисплей контейнера. */
+  gap: var(--gap); /* Вертикальный интервал между строками контента контейнера. */
+  min-height: 0; /* Минимальная высота контейнера. */
+  isolation: isolate; /* Изоляция контейнера. */  
 }
-
 
 /* Карточки внутри контейнера профессий: прозрачный фон, непрозрачный контент. */
 .page-content.page-profession .profession-content-container .card {
-  background: color-mix(
+  background: color-mix( /* Фон карточки. */
     in srgb,
     var(--profession-content-card-bg-color) calc(var(--profession-content-card-bg-alpha) * 100%),
     transparent
   );
-  border-color: var(--profession-content-card-border-color);
-  color: var(--profession-content-container-text-color);
-  opacity: 1;
+  border-color: var(--card-border-color); /* Цвет границы карточки. */
+  color: var(--text-color); /* Цвет текста карточки. */
+  opacity: 1; /* Прозрачность карточки. */
 }
 
-/* На страницах профессий убирает общий цвет текста из cards.css. */
-.page-content.page-profession .profession-content-container .card h2,
-.page-content.page-profession .profession-content-container .card h3,
-.page-content.page-profession .profession-content-container .card p,
+/* Цвет заголовков карточки. */
+.page-content.page-profession .profession-content-container .card h2 {
+  color: inherit;
+}
+
+/* Цвет заголовков карточки. */
+.page-content.page-profession .profession-content-container .card h3 {
+  color: inherit;
+}
+
+/* Цвет текста карточки. */
+.page-content.page-profession .profession-content-container .card p {
+  color: inherit;
+}
+
+/* Цвет текста карточки. */
 .page-content.page-profession .profession-content-container .card li {
   color: inherit;
 }
 
-/* На страницах профессий убирает общий отступ заголовков из cards.css. */
-.page-content.page-profession .profession-content-container .card h2{
-  margin-top: 0;
-}
-
-
-/* Возвращает исходное затемнение угла только для блока languages. */
-.page-content.page-profession .profession-content-container .card.languages-full {
-  background: var(--languages-overlay-gradient);
-}

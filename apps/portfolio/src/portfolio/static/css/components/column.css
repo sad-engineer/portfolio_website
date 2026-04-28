@@ -1,0 +1,23 @@
+/* Настройка списка в колонке. */
+.column {
+  --list-margin: 0px 0px 0px 0px; /* Внешние отступы списка (top right bottom left). */
+  --list-padding: 0px 80px 0px 18px; /* Внутренние отступы списка (top right bottom left). */
+  --list-gap: 12px; /* Шаг между пунктами списка. */
+  --list-flex-grow: 1; /* Доля высоты колонки, которую занимает список. */
+  --list-border-color: var(--line); /* Цвет рамки списка из глобальной палитры. */
+  --list-border-width: 1px; /* Толщина рамки списка. */
+}
+
+/* Универсальный preset списка внутри колонки. */
+.column {
+  margin: var(--list-margin); /* Применяет внешние отступы списка. */
+  padding: var(--list-padding); /* Применяет внутренние отступы списка. */
+  display: grid; /* Использует grid для равномерных интервалов между пунктами. */
+  align-content: start; /* Прижимает элементы списка к верху контейнера. */
+  gap: var(--list-gap); /* Применяет вертикальный шаг между пунктами. */
+  overflow-y: auto; /* Включает вертикальную прокрутку списка. */
+  scrollbar-gutter: stable; /* Резервирует место под скроллбар, чтобы Edge не схлопывал его в overlay-режиме. */
+  min-height: 0; /* Предотвращает переполнение в flex-колонке. */
+  flex: var(--list-flex-grow) 1 auto; /* Занимает доступную высоту в колонке. */
+   /*border: var(--list-border-width) solid var(--list-border-color); /* Применяет рамку списка. */
+}
