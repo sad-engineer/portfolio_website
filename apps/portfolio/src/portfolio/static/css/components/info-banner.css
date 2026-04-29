@@ -9,8 +9,8 @@
   --icon-column-width: 25%; /* Базовая ширина колонки иконки внутри баннера. */
   --icon-size: 175px; /* Базовый размер иконки баннера. */
   --icon-opacity: 0.10; /* Базовая полупрозрачность иконки баннера. */
-  --border-radius: 6px; /* Скругление углов баннера. */
-  --margin-top: 6px; /* Отступ баннера от hero-блока. */
+  --border-radius: 4px; /* Скругление углов баннера. */
+  --margin-top: 3px; /* Отступ баннера от hero-блока. */
   --glint-color: var(--surface); /* Цвет полосы блика баннера (как у карточек). */
   --glint-opacity: 1; /* Непрозрачность полосы блика баннера (как у карточек). */
   --glint-angle: -18deg; /* Угол наклона полосы блика баннера (как у карточек). */
@@ -88,12 +88,30 @@
 
 /* Запуск блика, если баннер полностью виден сразу на первом экране. */
 .info-banner.info-banner--glint-after-cards::after {
-  animation: main-card-glint-sweep var(--glint-duration) linear var(--glint-delay-after-cards) 1 both; /* Старт блика после завершения бликов карточек и дополнительной задержки с постоянной скоростью. */
+  animation: info-banner-glint-sweep var(--glint-duration) linear var(--glint-delay-after-cards) 1 both; /* Старт блика после завершения бликов карточек и дополнительной задержки с постоянной скоростью. */
 }
 
 /* Запуск блика, когда баннер полностью вошел в viewport. */
 .info-banner.info-banner--glint-on-visible::after {
-  animation: main-card-glint-sweep var(--glint-duration) linear var(--glint-delay-on-visible) 1 both; /* Старт блика после полной видимости баннера с постоянной скоростью. */
+  animation: info-banner-glint-sweep var(--glint-duration) linear var(--glint-delay-on-visible) 1 both; /* Старт блика после полной видимости баннера с постоянной скоростью. */
+}
+
+/* Локальная анимация блика баннера: не зависит от токенов страницы main. */
+@keyframes info-banner-glint-sweep {
+  0% {
+    transform: rotate(var(--glint-angle)) translateX(-220%); /* Старт блика вне баннера слева. */
+    opacity: 0; /* Плавное появление полосы. */
+  }
+  14% {
+    opacity: var(--glint-opacity); /* Выводит блик на рабочую видимость. */
+  }
+  86% {
+    opacity: var(--glint-opacity); /* Держит блик видимым во время пробега. */
+  }
+  100% {
+    transform: rotate(var(--glint-angle)) translateX(330%); /* Уводит блик за правую границу баннера. */
+    opacity: 0; /* Плавно скрывает блик в конце анимации. */
+  }
 }
 
 /* Адаптация info-banner для экранов уже 1200px: отступы как у полосы соцсетей. */

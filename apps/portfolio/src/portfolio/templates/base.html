@@ -36,10 +36,23 @@
 
     {% if show_feedback is not defined or show_feedback %}
     <section class="feedback">
-        <div class="container">
-            <h2>{{ basic_locale.feedback.form.title }}</h2>
-            <p>{{ basic_locale.feedback.bannerText }}</p>
-            <form class="feedback-form" action="#" method="post">
+        <div class="container feedback__layout">
+            <div class="feedback__left">
+                <p>{{ basic_locale.feedback.bannerText }}</p>
+                <div class="feedback__social" aria-label="{{ basic_locale.ui.socialLinksAriaLabel }}">
+                    {% for item in social_links %}
+                    <a class="site-social-link" href="{{ item.url }}" {% if item.url.startswith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                        {% if item.is_asset_icon %}
+                        <img class="site-social-link__img" src="{{ url_for('static', path=item.icon) }}" alt="" width="22" height="22" decoding="async" />
+                        {% else %}
+                        <i class="{{ item.icon }}" aria-hidden="true"></i>
+                        {% endif %}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <form class="feedback-form feedback__right" id="feedback-form" action="#" method="post">
+                <h2>{{ basic_locale.feedback.form.title }}</h2>
                 <label for="phone">{{ basic_locale.feedback.form.phoneInputLabel }}</label>
                 <input id="phone" name="phone" type="text" placeholder="{{ basic_locale.feedback.form.phoneInputPlaceholder }}" />
 
@@ -54,7 +67,7 @@
                     <input type="checkbox" name="consent" />
                     {{ basic_locale.feedback.form.consentText }}
                 </label>
-                <button type="submit">{{ basic_locale.feedback.form.submitButtonText }}</button>
+                <button class="feedback__submit" type="submit">{{ basic_locale.feedback.form.submitButtonText }}</button>
             </form>
         </div>
     </section>
@@ -62,6 +75,7 @@
 
     <div class="site-bottom-strip">
         <div class="container site-bottom-strip__inner">
+            {% if page_id != "page-profession" %}
             <div class="site-bottom-social" aria-label="{{ basic_locale.ui.socialLinksAriaLabel }}">
                 {% for item in social_links %}
                 <a class="site-social-link" href="{{ item.url }}" {% if item.url.startswith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}>
@@ -73,6 +87,7 @@
                 </a>
                 {% endfor %}
             </div>
+            {% endif %}
             {% set legal_text = basic_locale.hero_bottom_legal %}
             {% set full_name = basic_locale.firstName ~ ' ' ~ basic_locale.lastName %}
             {% set home_link_html = '<a href="' ~ home_href ~ '">' ~ full_name ~ '</a>' %}

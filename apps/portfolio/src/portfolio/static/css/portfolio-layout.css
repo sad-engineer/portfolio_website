@@ -13,6 +13,10 @@
 @import url("./components/profession-icons.css"); /* Визуал иконок/плиток страниц профессий. */
 @import url("./components/profession-content-container.css"); /* Общий контейнер контента страниц профессий. */
 @import url("./components/profession-work-experience.css"); /* Компонент слайдера опыта работы на страницах профессий. */
+@import url("./components/slider-controls.css"); /* Универсальный блок стрелок и счетчика для слайдеров. */
+@import url("./components/portfolio-container.css"); /* Контейнер портфолио на страницах профессий. */
+@import url("./components/portfolio-cards.css"); /* Парад карточек портфолио. */
+@import url("./components/portfolio-counter.css"); /* Отдельный компонент счетчика портфолио. */
 @import url("./pages/main.css");                /* Страничные стили главной страницы. */
 @import url("./pages/profession.css");          /* Страничные стили страниц профессий. */
 @import url("./pages/legal.css");               /* Страничный layout юридических документов. */

@@ -1,0 +1,11 @@
+/* Настройки стандартного slider-controls внутри контейнера портфолио. */
+.profession-portfolio .portfolio-counter {
+  --controls-gap: 26px; /* Интервал между стрелками и счетчиком. */
+  --counter-min-width: 90px; /* Стабильная ширина поля счетчика. */
+  --counter-color: var(--muted); /* Цвет текста счетчика. */
+  --arrow-color: var(--text); /* Цвет стрелок. */
+  --arrow-disabled-color: var(--muted); /* Цвет disabled-состояния стрелок. */
+  --arrow-size: 52px; /* Размер символа стрелки. */
+  --arrow-hit-size: 28px; /* Размер кликабельной области стрелки. */
+  margin-top: auto; /* Прижимает блок управления к низу контейнера. */
+}

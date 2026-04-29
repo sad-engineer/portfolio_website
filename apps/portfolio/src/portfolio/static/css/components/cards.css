@@ -1,18 +1,18 @@
 /* Токены компонента cards: централизуют внешний вид карточек. */
 .page-content {
-  --card-title-color: var(--text-lead-dark); /* Цвет заголовка карточки. */
-  --card-title-size: 1.1rem; /* Размер заголовка карточки. */
-  --card-title-font-weight: bold; /* Насыщенность заголовка карточки. */
-  --card-text-color: var(--text-dark); /* Цвет текста карточки. */
-  --card-text-size: 1rem; /* Размер текста карточки. */
-  --card-text-font-weight: normal; /* Насыщенность текста карточки. */
-  --card-bg-color: var(--surface); /* Фон карточки. */
-  --card-bg-opacity: 0.5; /* Прозрачность карточки (0-1). */
-  --card-border-color: var(--line); /* Цвет рамки карточки. */
-  --card-border-radius: 4px; /* Скругление углов карточки. */
-  --card-padding: 15px; /* Внутренние отступы карточки. */
-  --card-bg-image-opacity: 0.1; /* Прозрачность фонового рисунка карточки (делает линии еле заметными). */
-  --card-bg-image-filter: grayscale(1) brightness(1.9) contrast(0.25); /* Фильтр для приглушения линий фонового рисунка. */
+  --panel-title-color: var(--text-lead-dark); /* Цвет заголовка карточки. */
+  --panel-title-size: 1.1rem; /* Размер заголовка карточки. */
+  --panel-title-font-weight: bold; /* Насыщенность заголовка карточки. */
+  --panel-text-color: var(--text-dark); /* Цвет текста карточки. */
+  --panel-text-size: 1rem; /* Размер текста карточки. */
+  --panel-text-font-weight: normal; /* Насыщенность текста карточки. */
+  --panel-bg-color: var(--surface); /* Фон карточки. */
+  --panel-bg-opacity: 0.5; /* Прозрачность карточки (0-1). */
+  --panel-border-color: var(--line); /* Цвет рамки карточки. */
+  --panel-border-radius: 4px; /* Скругление углов карточки. */
+  --panel-padding: 15px; /* Внутренние отступы карточки. */
+  --panel-bg-image-opacity: 0.1; /* Прозрачность фонового рисунка карточки (делает линии еле заметными). */
+  --panel-bg-image-filter: grayscale(1) brightness(1.9) contrast(0.25); /* Фильтр для приглушения линий фонового рисунка. */
 }
 
 /* Размер и выравнивание карточек в стандартной сетке. */
@@ -26,13 +26,13 @@
 
 /* Общий визуальный стиль карточек и карточек-ссылок. */
 .card {
-  background: var(--card-bg-color); /* Подложка карточки. */
-  border: 1px solid var(--card-border-color); /* Граница карточки. */
-  padding: var(--card-padding); /* Внутренние поля карточки. */
-  border-radius: var(--card-border-radius); /* Скругление карточки. */
-  color: var(--card-text-color); /* Цвет текста внутри карточки. */
+  background: var(--panel-bg-color); /* Подложка карточки. */
+  border: 1px solid var(--panel-border-color); /* Граница карточки. */
+  padding: var(--panel-padding); /* Внутренние поля карточки. */
+  border-radius: var(--panel-border-radius); /* Скругление карточки. */
+  color: var(--panel-text-color); /* Цвет текста внутри карточки. */
   text-decoration: none; /* Убирает underline у карточки-ссылки. */
-  opacity: var(--card-bg-opacity); /* Прозрачность карточки. */
+  opacity: var(--panel-bg-opacity); /* Прозрачность карточки. */
 }
 
 /* Карточка с фоном из контента (через inline CSS-переменную). */
@@ -40,8 +40,8 @@
   position: relative; /* Создает контекст для псевдо-слоя с рисунком. */
   overflow: hidden; /* Обрезает рисунок по границам карточки. */
   isolation: isolate; /* Изолирует слои карточки для предсказуемого рендера. */
-  background-color: var(--card-bg-color); /* Базовая подложка карточки. */
-  opacity: var(--card-bg-opacity); /* Прозрачность карточки по токену страницы/компонента. */
+  background-color: var(--panel-bg-color); /* Базовая подложка карточки. */
+  opacity: var(--panel-bg-opacity); /* Прозрачность карточки по токену страницы/компонента. */
 }
 
 /* Псевдо-слой фонового рисунка карточки: делает линии мягкими и малоконтрастными. */
@@ -49,12 +49,12 @@
   content: ""; /* Создает декоративный слой с рисунком. */
   position: absolute; /* Растягивает слой на всю карточку. */
   inset: 0; /* Привязывает слой к краям карточки. */
-  background-image: var(--card-bg-image); /* Подставляет картинку из контента. */
+  background-image: var(--panel-bg-image); /* Подставляет картинку из контента. */
   background-position: 110% -5%; /* Центрирует рисунок внутри карточки. */
   background-repeat: no-repeat; /* Отключает повтор изображения. */
   background-size: 200px 200px; /* Управляет размером рисунка в карточке. */
-  filter: var(--card-bg-image-filter); /* Осветляет и приглушает основные линии изображения. */
-  opacity: var(--card-bg-image-opacity); /* Делает рисунок еле заметным на фоне. */
+  filter: var(--panel-bg-image-filter); /* Осветляет и приглушает основные линии изображения. */
+  opacity: var(--panel-bg-image-opacity); /* Делает рисунок еле заметным на фоне. */
   pointer-events: none; /* Не перехватывает клики по карточке-ссылке. */
   z-index: 0; /* Размещает рисунок под текстовым контентом. */
 }
@@ -68,5 +68,5 @@
 /* Вертикальный отступ заголовков в карточках. */
 .card h2,
 .card h3 {
-  margin-top: 20px; /* Отступ сверху для заголовка карточки. */
+  margin-top: 8px; /* Отступ сверху для заголовка карточки. */
 }

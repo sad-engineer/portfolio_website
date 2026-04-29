@@ -1,0 +1,19 @@
+{
+  "sectionTitle": "Портфолио",
+  "items": [
+    { "id": "portfolio-001", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 111111111111111111", "cardNumber": 111111111111111111 },
+    { "id": "portfolio-002", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 222222222222222222", "cardNumber": 222222222222222222 },
+    { "id": "portfolio-003", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 333333333333333333", "cardNumber": 333333333333333333 },
+    { "id": "portfolio-004", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 444444444444444444", "cardNumber": 444444444444444444 },
+    { "id": "portfolio-005", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 555555555555555555", "cardNumber": 555555555555555555 },
+    { "id": "portfolio-006", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 666666666666666666", "cardNumber": 666666666666666666 },
+    { "id": "portfolio-007", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 777777777777777777", "cardNumber": 777777777777777777 },
+    { "id": "portfolio-008", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 888888888888888888", "cardNumber": 888888888888888888 },
+    { "id": "portfolio-009", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 999999999999999999", "cardNumber": 999999999999999999 }
+  ],
+  "i18n": {
+    "en": {
+      "sectionTitle": "Portfolio"
+    }
+  }
+}

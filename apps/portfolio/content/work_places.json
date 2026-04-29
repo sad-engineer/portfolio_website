@@ -1,7 +1,11 @@
 {
-
   "title": "Места работы",
-  "rolesCatalog": ["constructor", "planner", "developer", "technologist"],
+  "rolesCatalog": [
+    "constructor",
+    "planner",
+    "developer",
+    "technologist"
+  ],
   "sectionTitle": "Опыт работы",
   "achievementsTitle": "Достижения",
   "whatDoingTitle": "Что делал",
@@ -13,8 +17,10 @@
       "id": "work-constructor-001",
       "type": "full-time",
       "company": "ООО \"Технопром\"",
-      "roleTags": ["constructor"],
-      "what_doing": [ 
+      "roleTags": [
+        "constructor"
+      ],
+      "what_doing": [
         "Проектировал узлы и детали для нефтяных месторождений, сепараторов и сосудов (НГС/НГСВ, наливных, насосных блоков), работающих под давлением, трубопроводных конструкций в условиях ограниченной площади/объема.",
         "Внедрял параметрические модели, управляющие переменные, принцыпы заимствования и группировки в проекты.",
         "Разработывал комплекты конструкторской документации для изделий по ЕСКД.",
@@ -31,15 +37,15 @@
         "Программировал CAD KOMPAS для выполнения рабочих задач.",
         "Настраивал ИИ-ассистента для автоматизации процессов оформления документации.",
         "Анализировал производственные процессы и разрабатывал предложения по их оптимизации.",
-        "Анализировал бизнес-процессы предприятия и их влияние на продуктивность и качество разработки конструкторской документации.",   
-        "Вел множество проектов одновременно, работая в режиме многозадачности.", 
+        "Анализировал бизнес-процессы предприятия и их влияние на продуктивность и качество разработки конструкторской документации.",
+        "Вел множество проектов одновременно, работая в режиме многозадачности.",
         "Разбирался с приоритезацией задач и управлениям временем."
       ],
-      "achievements":[
-        "Разработал /akch/*3 полных комплекта РКД/*akch разных емкостей общим количеством /akch/*83/*akch штук за /akch/*10 рабочих дней/*akch",
+      "achievements": [
+        "Разработал /akch/*3 полных комплекта РКД/*akch разных емкостей (с общим количеством чертежей /akch/*836/*akch штук) менее чем за /akch/*10 рабочих дней/*akch",
         "Методом обратного инжиниринга, разработал 3D-модель горелки, улучшил конструкцию, ввел /akch/*+2/*akch исполнения на различные климатические зоны (наиболее распространеные исходя из анализа заказов), чем снизил время на проектирование /akch/*в 3 раза/*akch - при заказе изделия для какой либо климатической зоны (т.к. РКД уже будет готово к производству на момент заказа).",
         "Стандартизировал конструкцию площадок обслуживания в рамках нескольких проектов, сократив время на их проектирование на /akch/*8-9%/*akch, время на согласование - на /akch/*40-55%/*akch",
-        "Разработал групповые чертежи штуцеров, чем снизил время на проектирование новых штуцеров на /akch/*87%/*akch (в рамках одного проекта).",
+        "Разработал групповые чертежи штуцеров, чем снизил время на проектирование новых штуцеров на /akch/*76%/*akch (в рамках одного проекта).",
         "Автоматизировал процесс обработки коммерческого предложения с /akch/*1-3 суток/*akch до /akch/*2-4 часов/*akch. Потенциалльная экономия фонда оплаты труда - /akch/*3-6 млн р. / год. / на 1 сотрудника/*akch.",
         "Автоматизировал процесс формирования узкоспециализированного документа (чертежа изделия) с /akch/*5-8 часов/*akch до /akch/*15 минут/*akch. Расчетный потенциал экономической эффективности - /akch/*20 млн р. / год./*akch",
         "Участвовал в разработке программного решения для автоматизированного проектирования инженерных изделий. На момент остановки проекта - программа в атоматическом режиме выпускала 3d-модели и РКД на детали и несложние сборки по правилам ЕСКД и нормам, принятым у предприятия."
@@ -50,11 +56,13 @@
       "id": "work-technologist-001",
       "type": "full-time",
       "company": "ООО \"Технопром\"",
-      "roleTags": ["technologist"],
-      "what_doing": [ 
+      "roleTags": [
+        "technologist"
+      ],
+      "what_doing": [
         "Отрабатывал конструкцию изделий на технологичность, добиваясь минимальных затрат на производство и монтаж.",
         "Анализировал причины брака при изготовлении изделий на  различных станках, в т.ч. с ЧПУ, и разрабатывал предложения по их устранению.",
-        "Разрабатывал технологические документы.", 
+        "Разрабатывал технологические документы.",
         "Согласовывал технологические документы с заказчиком, структурными подразделениями предприятия, службами контроля качества.",
         "Отрабатывал замечания заказчика по технологической документации.",
         "Занимался авторским надзором изготовленных изделий",
@@ -62,25 +70,27 @@
         "Сопровождал новых сотрудников в работе с программным обеспечением и передовал опыт работы.",
         "Настраивал ИИ-ассистента для автоматизации процессов оформления документации.",
         "Анализировал производственные процессы и разрабатывал предложения по их оптимизации.",
-        "Анализировал бизнес-процессы предприятия и их влияние на продуктивность и качество разработки конструкторской документации.",   
-        "Вел множество проектов одновременно, работая в режиме многозадачности.", 
+        "Анализировал бизнес-процессы предприятия и их влияние на продуктивность и качество разработки конструкторской документации.",
+        "Вел множество проектов одновременно, работая в режиме многозадачности.",
         "Разбирался с приоритезацией задач и управлениям временем."
       ],
-      "achievements":[
+      "achievements": [
         "Наладил изготовление технологических документов к /akch/*каждому/*akch новому заказу.",
         "Стандартизировал технологические документы, сократив время на их изготовление на /akch/*30-40%/*akch.",
         "Наметил пути внедрения автоматизации изготовления технологических документов, что потенциально позволит сократить время на их изготовление на /akch/*91%/*akch."
       ],
       "period": "03.2023-04.2026"
-    },    
+    },
     {
       "id": "work-planner-001",
       "type": "full-time",
       "company": "ООО \"Технопром\"",
-      "roleTags": ["planner"],
-      "what_doing": [ 
+      "roleTags": [
+        "planner"
+      ],
+      "what_doing": [
         "Разрабатывал схемы компоновки оборудования блочно-модульных установок",
-        "Разрабатывал теплотехнические и гидравлические схемы блочно-модульных установок", 
+        "Разрабатывал теплотехнические и гидравлические схемы блочно-модульных установок",
         "Разрабатывал управляющюю геометрию для параллельного проектирования несколькими исполнителями",
         "Отрабатывал замечания заказчика по схемам компоновки оборудования и теплотехнических и гидравлических схем."
       ],
@@ -90,8 +100,10 @@
       "id": "work-developer-001",
       "type": "full-time",
       "company": "ООО \"Технопром\"",
-      "roleTags": ["developer"],
-      "what_doing": [ 
+      "roleTags": [
+        "developer"
+      ],
+      "what_doing": [
         "Внедрял ИИ-ассистента для автоматизации обработки больших объемов данных с использованием библиотек OpenAI",
         "Проектировал решения по автоматизации процесс проктирования 3D-моделей и документов с использованием API KOMPAS-3D, VBA и Python",
         "Разрабатывал юзерфренд интерфейсы для работы с разработанным программным обеспечением с использованием библиотек PyQT5 и Kivy",
@@ -103,11 +115,11 @@
         "Развертывал разработанное программное обеспечение на тестовых и рабочих станциях",
         "Документировал разработанное программное обеспечение",
         "Участвовал в обсуждении бизнес-процессов компании для разработки предложений по автоматизации и внедрению новых фич",
-        "Вел множество проектов одновременно, работая в режиме многозадачности.", 
+        "Вел множество проектов одновременно, работая в режиме многозадачности.",
         "Разбирался с приоритезацией задач и управлениям временем.",
         "Анализировал производственные процессы и разрабатывал предложения по их автоматизации."
       ],
-      "achievements":[
+      "achievements": [
         "Автоматизировал процесс обработки коммерческого предложения /*akchс 1-3 суток до 2-4 часов/*akch. Потенциалльная экономия фонда оплаты труда - /akch/*3-6 млн р. / год. / на 1 сотрудника/*akch.",
         "Автоматизировал процесс формирования узкоспециализированного документа (чертежа изделия) с /akch/*5-8 часов/*akch до /akch/*15 минут/*akch. Расчетный потенциал экономической эффективности - /akch/*20 млн р. / год./*akch",
         "Участвовал в разработке программного решения для автоматизированного проектирования инженерных изделий. На момент остановки проекта - программа в атоматическом режиме выпускала 3d-модели и РКД на детали и несложние сборки по правилам ЕСКД и нормам, принятым у предприятия."
@@ -118,7 +130,9 @@
       "id": "work-constructor-002",
       "type": "full-time",
       "company": "ООО \"Самара Лей\"",
-      "roleTags": ["constructor"],
+      "roleTags": [
+        "constructor"
+      ],
       "what_doing": [
         "Вел проекты по проектированию сложных и особо сложных трубопроводных конструкций в условиях ограниченной площади/объема.",
         "Формировал базу 3D-моделей, пригодных для использования в библиотеках программы КОМПАС-3D.",
@@ -129,19 +143,21 @@
         "Анализировал производственные процессы и разрабатывал предложения по их оптимизации.",
         "Вел множество проектов одновременно, работая в режиме многозадачности."
       ],
-      "achievements":[
+      "achievements": [
         "Разработал альбом типовых сепараторов пара на разный размер и давление. Это позволило заранее изготовить эти изделия и применять в каждом новом заказе, сокращая время производства установки на /akch/*7-15%/*akch.",
         "Разработал конструктивное решение трудопроводов из нержавеющей стали в установке, которая, в последствии, стала /akch/*массовой/*akch.",
         "Наладил применение библиотеки атоматизированного проектирования узлов установки, сократив время на проектирование узлов установки до /akch/*65%/*akch.",
         "Адаптировал базу 3D-моделей для использования в библиотеке автоматизированного проектирования узлов установки, что позволило /akch/*исключить/*akch ручное копирование и вставку моделей."
-         ],
+      ],
       "period": "05.2020-03.2023"
     },
     {
       "id": "work-technologist-002",
       "type": "full-time",
       "company": "ООО \"Самара Лей\"",
-      "roleTags": ["technologist"],
+      "roleTags": [
+        "technologist"
+      ],
       "what_doing": [
         "Наладил применение листопрокатного станка (вальцов) с ЧПУ для изготовления деталей из листового металла.",
         "Разрабатывал технологическую документацию для узлов установки.",
@@ -149,15 +165,15 @@
         "Составлял теплотехнические схемы.",
         "Отрабатывал замечания заказчика по технологической документации.",
         "Вел проекты от ТЗ до сдачи Заказчику.",
-        "Анализировал бизнес-процессы предприятия и их влияние на продуктивность и качество разработки конструкторской документации.",   
+        "Анализировал бизнес-процессы предприятия и их влияние на продуктивность и качество разработки конструкторской документации.",
         "Занимался авторским надзором изготовленных изделий",
         "Анализировал производственные процессы и разрабатывал предложения по их оптимизации.",
-        "Вел множество проектов одновременно, работая в режиме многозадачности.", 
+        "Вел множество проектов одновременно, работая в режиме многозадачности.",
         "Разбирался с приоритезацией задач и управлениям временем.",
         "Настраивал ИИ-ассистента для автоматизации процессов оформления документации.",
         "Сопровождал новых сотрудников в работе с программным обеспечением и передовал опыт работы."
       ],
-      "achievements":[
+      "achievements": [
         "Внедрил применение листопрокатного станка (вальцов) с ЧПУ, повысив точность изготовления деталей и снизив объем доработок на /akch/*12%/*akch.",
         "Систематизировал карты сварных швов по каждому узлу, /akch/*улучшив/*akch повторяемость качества и /akch/*упростив/*akch контроль на производстве.",
         "Подготовил теплотехнические схемы для ключевых проектов и /akch/*обеспечил/*akch корректную увязку технологической и конструкторской частей.",
@@ -170,7 +186,9 @@
       "id": "work-constructor-003",
       "type": "full-time",
       "company": "Орский завод электромонтажных изделий",
-      "roleTags": ["constructor"],
+      "roleTags": [
+        "constructor"
+      ],
       "what_doing": [
         "Разрабатывал конструкторскую документацию комплектных/столбовых трансформаторных подстанций (КТПН, КТПНУ, КТПНС, КТП), камер КСО200, КСО300, КРУ, НКУ, ВРУ, щитков и шкафов обслуживания.",
         "Проектировал детали из листового металла.",
@@ -187,7 +205,7 @@
         "Анализировал производственные процессы и разрабатывал предложения по их оптимизации.",
         "Сопровождал новых сотрудников в работе с программным обеспечением и передовал опыт работы."
       ],
-      "achievements":[
+      "achievements": [
         "Снизил металлоемкость узлов поточных трансформаторных подстанций, что позволило сократить затраты на материалы на /akch/*8,7%/*akch.",
         "Улучшил качество конструкторской документации, что позволило сократить время на ее согласование на /akch/*10-15%/*akch.",
         "Сформировал особый принцип построения конструкторской документации для большего удобства чтения в цехах, что /akch/*обеспечило/*akch качество изготовления изделий.",
@@ -199,7 +217,9 @@
       "id": "work-technologist-004",
       "type": "full-time",
       "company": "ПАО «Трубная металлургическая компания»",
-      "roleTags": ["technologist"],
+      "roleTags": [
+        "technologist"
+      ],
       "what_doing": [
         "Разрабатывал и внедрял перспективные технологические проекты обработки специальных резьбовых соединений нефтегазового оборудования.",
         "Улучшал существующие технологические проекты.",
@@ -211,12 +231,12 @@
         "Производил технический контроль изделий.",
         "Отрабатывал замечания заказчика по технологической документации.",
         "Отрабатывал на технологичность конструкторскую документацию.",
-        "Вел множество проектов одновременно, работая в режиме многозадачности.", 
+        "Вел множество проектов одновременно, работая в режиме многозадачности.",
         "Разбирался с приоритезацией задач и управлениям временем.",
         "Анализировал производственные процессы и разрабатывал предложения по их оптимизации.",
         "Сопровождал новых сотрудников в работе с программным обеспечением и передовал опыт работы."
       ],
-      "achievements":[
+      "achievements": [
         "Внедрил на предприятии новый технологический процесс обработки специальных резьбовых соединений нефтегазового оборудования, что увеличило прибыль предприятия до /akch/*500 млд./мес./*akch.",
         "Внедрил принцип типовых технологических процессов, что позволило охватывать разом /akch/*все типоразмеры/*akch конкретного резьбового соединения.",
         "Наладил проектирования технологических процессов, что позволило охватывать всю номенклатуру резьбовых соединений затрачивая на проектирование технологического процесса не более /akch/*2 недели/*akch",
@@ -230,7 +250,9 @@
       "id": "work-free-001",
       "type": "Freelance  / проектная занятость",
       "company": "Самозанятый",
-      "roleTags": ["developer"],
+      "roleTags": [
+        "developer"
+      ],
       "what_doing": [
         "Разработка решений под задачи заказчиков.",
         "Проектирование SQL БД.",
@@ -242,7 +264,7 @@
         "Исправление багов.",
         "Документирование внутренних технических решений."
       ],
-      "achievements":[
+      "achievements": [
         "Разработал модуль расчета режимов резания, сокративший расчеты с /akch/*4-5 дней/*akch до /akch/*8 часов/*akch.",
         "Разработал парсер с агрегацией информации о станках в PostgreSQL БД. Охватил /akch/*1000+/*akch позиций оборудования.",
         "Разработал парсер с агрегацией информации об инструментах и приспособлениях в PostgreSQL БД. Охватил /akch/*27000+/*akch позиций инструментов и приспособлений.",
@@ -256,7 +278,9 @@
       "type": "Freelance  / проектная занятость",
       "company": "Mattias Industry LP",
       "address": "Castle House, 1 Baker Street, Suite 4, Stirling, FK8 1AL, Scotland, UK",
-      "roleTags": ["technologist"],
+      "roleTags": [
+        "technologist"
+      ],
       "what_doing": [
         "Разработка расчетно-аналитических и отчетных материалов по ТЗ",
         "Сбор и структурирование материалов",
@@ -267,10 +291,10 @@
         "Проектировал технологические процессы изготовления изделий.",
         "Консультировал заказчика по технологическим процессам изготовления изделий.",
         "Анализировал производственные процессы и разрабатывал предложения по их оптимизации.",
-        "Вел множество проектов одновременно, работая в режиме многозадачности.", 
+        "Вел множество проектов одновременно, работая в режиме многозадачности.",
         "Разбирался с приоритезацией задач и управлениям временем."
       ],
-      "achievements":[
+      "achievements": [
         "Разработал расчетно-аналитические, технологические и отчетные материалы по ТЗ, что позволило Заказчику /akch/*пройти приемку надзорных органов/*akch.",
         "Разработал технологический процесс изготовления пупырчатой пленки, что позволило нарастить производство на /akch/*68 млн./*akch за первый месяц работы.",
         "Сроектировал технологическую оснастку с пневмоприводом, что позволило сократить время изготовления детали на /akch/*6%/*akch.",
@@ -283,7 +307,9 @@
       "type": "Freelance  / проектная занятость",
       "company": "ООО Платформа Микротьюторинга",
       "address": "197022, Санкт-Петербург, наб. реки Карповки, д. 13, лит. А, пом. 4-Н, оф. 4",
-      "roleTags": ["technologist"],
+      "roleTags": [
+        "technologist"
+      ],
       "what_doing": [
         "Разработка расчетно-аналитических и отчетных материалов по ТЗ",
         "Сбор и структурирование материалов",
@@ -294,10 +320,10 @@
         "Проектировал технологические процессы изготовления изделий.",
         "Консультировал заказчика по технологическим процессам изготовления изделий.",
         "Анализировал производственные процессы и разрабатывал предложения по их оптимизации.",
-        "Вел множество проектов одновременно, работая в режиме многозадачности.", 
+        "Вел множество проектов одновременно, работая в режиме многозадачности.",
         "Разбирался с приоритезацией задач и управлениям временем."
       ],
-      "achievements":[
+      "achievements": [
         "Сроектировал технологическую оснастку для контроля геометрических размеров деталей с автоматическим зажимом, что позволило сократить время контроля геометрических размеров деталей на /akch/*7,9%/*akch.",
         "Разработал технологический процесс изготовления зубчатого колеса с применением  перспективного оборудования и специальной оснастки, что позволило снизить трудоемкость изготовления на /akch/*12%/*akch.",
         "Провел аналитическую работу по внедрению штампованных заготовок для производства деталей со снижением общей себестоимости на /akch/*13,7%/*akch.",
@@ -306,7 +332,6 @@
       "period": "09.2022-03.2024"
     }
   ],
-
   "i18n": {
     "en": {
       "title": "Work Experience",
@@ -320,7 +345,327 @@
         "full-time": "Full-time",
         "work_place": "Project Work",
         "freelance": "Freelance / Project-based"
-      }
+      },
+      "items": [
+        {
+          "id": "work-constructor-001",
+          "type": "full-time",
+          "company": "ООО \"Технопром\"",
+          "roleTags": [
+            "constructor"
+          ],
+          "what_doing": [
+            "Designed assemblies and parts for oilfield equipment, separators and vessels (NGS/NGSV, loading and pumping units) operating under pressure, as well as pipeline structures in constrained spaces.",
+            "Introduced parametric models, driving variables, and reuse/grouping principles into projects.",
+            "Prepared complete sets of design documentation in accordance with ESKD standards.",
+            "Prepared operational documentation for products in accordance with ESKD standards.",
+            "Managed projects from technical specification to customer handover.",
+            "Built a 3D model base suitable for use in KOMPAS-3D libraries.",
+            "Defined optimal product designs considering installation convenience, usability, and cost efficiency.",
+            "Performed strength calculations using specialized software, including Passat and Shuster-MKE.",
+            "Participated in defect analysis and developed corrective actions.",
+            "Coordinated design documentation with customers, internal departments, and quality control teams.",
+            "Processed and resolved customer comments on design documentation.",
+            "Performed designer's supervision for manufactured products.",
+            "Mentored new employees in software usage and shared practical expertise.",
+            "Programmed KOMPAS CAD to solve production tasks.",
+            "Configured an AI assistant to automate documentation workflows.",
+            "Analyzed production processes and proposed optimization improvements.",
+            "Analyzed enterprise business processes and their impact on productivity and design quality.",
+            "Managed multiple projects simultaneously in a multitasking environment.",
+            "Handled task prioritization and time management."
+          ],
+          "achievements": [
+            "Delivered /akch/*3 complete sets of design documentation/*akch for different vessel types (with /akch/*836/*akch drawings in total) in less than /akch/*10 working days/*akch.",
+            "Using reverse engineering, developed a 3D burner model, improved the design, and introduced /akch/*+2/*akch variants for different climate zones, reducing design time /akch/*by 3x/*akch for those orders.",
+            "Standardized service platform designs across several projects, reducing design time by /akch/*8-9%/*akch and approval time by /akch/*40-55%/*akch.",
+            "Developed group drawings for nozzles, reducing new nozzle design time by /akch/*76%/*akch within a project.",
+            "Automated commercial proposal processing from /akch/*1-3 days/*akch to /akch/*2-4 hours/*akch. Potential payroll savings: /akch/*3-6 million RUB per year per employee/*akch.",
+            "Automated generation of a highly specialized document (product drawing) from /akch/*5-8 hours/*akch to /akch/*15 minutes/*akch. Estimated economic effect: /akch/*20 million RUB/year/*akch.",
+            "Participated in developing software for automated engineering design. At project suspension, the program automatically generated 3D models and design documentation for parts and simple assemblies under ESKD rules and company standards."
+          ],
+          "period": "03.2023-04.2026"
+        },
+        {
+          "id": "work-technologist-001",
+          "type": "full-time",
+          "company": "ООО \"Технопром\"",
+          "roleTags": [
+            "technologist"
+          ],
+          "what_doing": [
+            "Refined product designs for manufacturability to minimize production and installation costs.",
+            "Analyzed defect root causes in manufacturing on various machines, including CNC, and proposed corrective actions.",
+            "Developed technological documentation.",
+            "Coordinated technological documents with customers, internal departments, and quality control services.",
+            "Processed customer comments on technological documentation.",
+            "Performed designer's supervision for manufactured products.",
+            "Managed projects from technical specification to customer handover.",
+            "Mentored new employees in software usage and transferred practical experience.",
+            "Configured an AI assistant to automate documentation workflows.",
+            "Analyzed production processes and proposed optimization initiatives.",
+            "Analyzed enterprise business processes and their impact on productivity and design quality.",
+            "Handled multiple projects simultaneously in multitasking mode.",
+            "Worked on task prioritization and time management."
+          ],
+          "achievements": [
+            "Established preparation of technological documentation for /akch/*every/*akch new order.",
+            "Standardized technological documents, reducing preparation time by /akch/*30-40%/*akch.",
+            "Outlined automation opportunities for technological documentation, with potential reduction up to /akch/*91%/*akch."
+          ],
+          "period": "03.2023-04.2026"
+        },
+        {
+          "id": "work-planner-001",
+          "type": "full-time",
+          "company": "ООО \"Технопром\"",
+          "roleTags": [
+            "planner"
+          ],
+          "what_doing": [
+            "Developed equipment layout diagrams for modular block units.",
+            "Developed thermal engineering and hydraulic schemes for modular block units.",
+            "Created master geometry for parallel design by multiple engineers.",
+            "Processed customer comments on equipment layout, thermal, and hydraulic schemes."
+          ],
+          "period": "03.2023-04.2026"
+        },
+        {
+          "id": "work-developer-001",
+          "type": "full-time",
+          "company": "ООО \"Технопром\"",
+          "roleTags": [
+            "developer"
+          ],
+          "what_doing": [
+            "Implemented an AI assistant to automate large-scale data processing using OpenAI libraries.",
+            "Designed automation solutions for 3D model and document design workflows using KOMPAS-3D API, VBA, and Python.",
+            "Developed user-friendly interfaces for the software using PyQt5 and Kivy.",
+            "Designed data storage databases using PostgreSQL and MySQL.",
+            "Developed web services for the software using FastAPI, Jinja2, and JavaScript.",
+            "Analyzed software architecture and modules using architectural patterns, OOP, and SOLID principles.",
+            "Developed tests for the software using pytest and unittest.",
+            "Fixed bugs in the developed software.",
+            "Deployed the software to test and production workstations.",
+            "Documented the developed software.",
+            "Participated in company business process discussions to propose automation and new features.",
+            "Managed multiple projects simultaneously in multitasking mode.",
+            "Handled task prioritization and time management.",
+            "Analyzed production processes and proposed automation improvements."
+          ],
+          "achievements": [
+            "Automated commercial proposal processing /akch/*from 1-3 days to 2-4 hours/*akch. Potential payroll savings: /akch/*3-6 million RUB/year per employee/*akch.",
+            "Automated generation of a specialized document (product drawing) from /akch/*5-8 hours/*akch to /akch/*15 minutes/*akch. Estimated economic effect: /akch/*20 million RUB/year/*akch.",
+            "Participated in developing software for automated engineering design. At project suspension, the system automatically generated 3D models and design documentation for parts and simple assemblies under ESKD rules and company standards."
+          ],
+          "period": "03.2023-04.2026"
+        },
+        {
+          "id": "work-constructor-002",
+          "type": "full-time",
+          "company": "ООО \"Самара Лей\"",
+          "roleTags": [
+            "constructor"
+          ],
+          "what_doing": [
+            "Led design projects for complex and highly complex pipeline structures in constrained spaces.",
+            "Built a 3D model base suitable for KOMPAS-3D libraries.",
+            "Defined optimal product designs considering installation convenience, usability, and cost efficiency.",
+            "Performed strength calculations using specialized software.",
+            "Processed customer comments on design documentation.",
+            "Mentored new employees in software usage and shared practical know-how.",
+            "Analyzed production processes and proposed optimization improvements.",
+            "Managed multiple projects simultaneously in multitasking mode."
+          ],
+          "achievements": [
+            "Developed a catalog of standard steam separators for different sizes and pressures, enabling pre-production and reducing unit manufacturing time by /akch/*7-15%/*akch.",
+            "Developed a design solution for stainless steel pipelines in an installation that later became /akch/*mass-produced/*akch.",
+            "Implemented use of an automated design library for unit assemblies, reducing assembly design time by up to /akch/*65%/*akch.",
+            "Adapted the 3D model base for the automated assembly design library, /akch/*eliminating/*akch manual model copy-paste."
+          ],
+          "period": "05.2020-03.2023"
+        },
+        {
+          "id": "work-technologist-002",
+          "type": "full-time",
+          "company": "ООО \"Самара Лей\"",
+          "roleTags": [
+            "technologist"
+          ],
+          "what_doing": [
+            "Implemented CNC plate rolling machine usage for manufacturing sheet metal parts.",
+            "Developed technological documentation for installation assemblies.",
+            "Prepared welding maps for each installation assembly.",
+            "Prepared thermal engineering schemes.",
+            "Processed customer comments on technological documentation.",
+            "Managed projects from technical specification to customer handover.",
+            "Analyzed enterprise business processes and their impact on productivity and design quality.",
+            "Performed designer's supervision for manufactured products.",
+            "Analyzed production processes and proposed optimization improvements.",
+            "Managed multiple projects simultaneously in multitasking mode.",
+            "Handled task prioritization and time management.",
+            "Configured an AI assistant to automate documentation workflows.",
+            "Mentored new employees in software usage and transferred practical expertise."
+          ],
+          "achievements": [
+            "Implemented CNC plate rolling machine usage, improving manufacturing accuracy and reducing rework by /akch/*12%/*akch.",
+            "Systematized welding maps per assembly, /akch/*improving/*akch quality repeatability and /akch/*simplifying/*akch production control.",
+            "Prepared thermal engineering schemes for key projects and /akch/*ensured/*akch proper alignment between process and design parts.",
+            "Analyzed business processes and initiated improvements, /akch/*increasing/*akch design documentation productivity.",
+            "Identified bottlenecks in production and proposed optimization actions, accelerating task execution by /akch/*6.5%/*akch."
+          ],
+          "period": "05.2020-03.2023"
+        },
+        {
+          "id": "work-constructor-003",
+          "type": "full-time",
+          "company": "Орский завод электромонтажных изделий",
+          "roleTags": [
+            "constructor"
+          ],
+          "what_doing": [
+            "Developed design documentation for package/pole-mounted transformer substations (KTPN, KTPNU, KTPNS, KTP), KSO200, KSO300, switchgear, low-voltage systems, input distribution boards, and service cabinets.",
+            "Designed sheet metal parts.",
+            "Calculated flat patterns for sheet metal products.",
+            "Developed insulated modular substations.",
+            "Reduced metal consumption through design optimization.",
+            "Performed engineering calculations, product checks, and implemented design improvement proposals.",
+            "Built a 3D model base suitable for KOMPAS-3D libraries.",
+            "Defined optimal product designs considering installation convenience, usability, and cost efficiency.",
+            "Performed strength calculations with specialized software, including Passat and Shuster-MKE.",
+            "Participated in defect analysis and developed corrective actions.",
+            "Coordinated design documentation with customers, internal departments, and quality control teams.",
+            "Processed customer comments on design documentation.",
+            "Analyzed production processes and proposed optimization improvements.",
+            "Mentored new employees in software usage and shared practical expertise."
+          ],
+          "achievements": [
+            "Reduced metal consumption of flow-type transformer substation assemblies, cutting material costs by /akch/*8.7%/*akch.",
+            "Improved design documentation quality, reducing approval time by /akch/*10-15%/*akch.",
+            "Introduced a special design documentation structure for easier shop-floor reading, which /akch/*ensured/*akch manufacturing quality.",
+            "Reduced design documentation development time by /akch/*18%/*akch through process automation."
+          ],
+          "period": "06.2018-05.2020"
+        },
+        {
+          "id": "work-technologist-004",
+          "type": "full-time",
+          "company": "ПАО «Трубная металлургическая компания»",
+          "roleTags": [
+            "technologist"
+          ],
+          "what_doing": [
+            "Developed and implemented advanced process projects for machining premium threaded connections of oil and gas equipment.",
+            "Improved existing process projects.",
+            "Selected and designed process tooling.",
+            "Calculated cutting parameters.",
+            "Reduced product cost through process optimization.",
+            "Worked with information containing trade secrets.",
+            "Prepared manufacturing and inspection instructions for premium thread types.",
+            "Performed technical quality control of products.",
+            "Processed customer comments on process documentation.",
+            "Reviewed design documentation for manufacturability.",
+            "Handled multiple projects simultaneously in multitasking mode.",
+            "Managed task prioritization and time management.",
+            "Analyzed production processes and proposed optimization improvements.",
+            "Mentored new employees in software usage and shared practical expertise."
+          ],
+          "achievements": [
+            "Implemented a new process for machining premium threaded connections for oil and gas equipment, increasing company profit up to /akch/*500 million/month/*akch.",
+            "Implemented the standard process principle, enabling coverage of /akch/*all sizes/*akch of a specific threaded connection at once.",
+            "Established process design practices that covered the full thread connection range with no more than /akch/*2 weeks/*akch per process.",
+            "Performed analytical work on implementing the /akch/*\"Vertical\"/*akch automated process design system and provided an implementation /akch/*recommendation/*akch.",
+            "Received the company's /akch/*\"Best Young Specialist\"/*akch award.",
+            "Reduced product cost by a total of /akch/*2.9 billion RUB/*akch during /akch/*2012-2018/*akch."
+          ],
+          "period": "08.2012-05.2018"
+        },
+        {
+          "id": "work-free-001",
+          "type": "Freelance / Project-based",
+          "company": "Self-employed",
+          "roleTags": [
+            "developer"
+          ],
+          "what_doing": [
+            "Developed solutions tailored to client tasks.",
+            "Designed SQL databases.",
+            "Designed computational modules.",
+            "Analyzed user output schemes.",
+            "Communicated with clients and estimated projects.",
+            "Developed and implemented prototypes of software solutions for client needs.",
+            "Covered code with unit tests.",
+            "Fixed bugs.",
+            "Documented internal technical solutions."
+          ],
+          "achievements": [
+            "Developed a cutting parameter calculation module, reducing calculations from /akch/*4-5 days/*akch to /akch/*8 hours/*akch.",
+            "Developed a parser with machine data aggregation into PostgreSQL, covering /akch/*1000+/*akch equipment items.",
+            "Developed a parser with tool and fixture data aggregation into PostgreSQL, covering /akch/*27000+/*akch items.",
+            "Developed a parser with material data aggregation into MySQL, covering /akch/*1100+/*akch material items.",
+            "The website you are viewing right now was also built by me =)"
+          ],
+          "period": "06.2024-12.2024"
+        },
+        {
+          "id": "work-free-002",
+          "type": "Freelance / Project-based",
+          "company": "Mattias Industry LP",
+          "address": "Castle House, 1 Baker Street, Suite 4, Stirling, FK8 1AL, Scotland, UK",
+          "roleTags": [
+            "technologist"
+          ],
+          "what_doing": [
+            "Developed analytical calculations and reporting materials based on technical requirements.",
+            "Collected and structured source materials.",
+            "Prepared reports and presentations.",
+            "Selected and designed process tooling.",
+            "Calculated cutting parameters.",
+            "Delivered tasks within established deadlines and requirements.",
+            "Designed technological manufacturing processes.",
+            "Consulted clients on manufacturing process implementation.",
+            "Analyzed production processes and proposed optimization improvements.",
+            "Managed multiple projects simultaneously in multitasking mode.",
+            "Handled task prioritization and time management."
+          ],
+          "achievements": [
+            "Developed analytical, technological, and reporting materials per technical requirements, enabling the client to /akch/*pass regulatory acceptance/*akch.",
+            "Developed a manufacturing process for bubble wrap production, enabling production growth by /akch/*68 million/*akch in the first month.",
+            "Designed pneumatic process tooling, reducing part manufacturing time by /akch/*6%/*akch.",
+            "Optimized a manufacturing process, reducing labor intensity by /akch/*34.7 minutes/*akch. Economic effect reached /akch/*1.4 million RUB/*akch per year."
+          ],
+          "period": "09.2016-06.2021"
+        },
+        {
+          "id": "work-free-003",
+          "type": "Freelance / Project-based",
+          "company": "Microtutoring Platform LLC",
+          "address": "197022, Saint Petersburg, Karpovka River Embankment, 13, lit. A, room 4-N, office 4",
+          "roleTags": [
+            "technologist"
+          ],
+          "what_doing": [
+            "Developed analytical calculations and reporting materials based on technical requirements.",
+            "Collected and structured source materials.",
+            "Prepared reports and presentations.",
+            "Selected and designed process tooling.",
+            "Calculated cutting parameters.",
+            "Delivered tasks within established deadlines and requirements.",
+            "Designed technological manufacturing processes.",
+            "Consulted clients on manufacturing process implementation.",
+            "Analyzed production processes and proposed optimization improvements.",
+            "Managed multiple projects simultaneously in multitasking mode.",
+            "Handled task prioritization and time management."
+          ],
+          "achievements": [
+            "Designed process tooling for dimensional inspection with automatic clamping, reducing inspection time by /akch/*7.9%/*akch.",
+            "Developed a gear manufacturing process using advanced equipment and special tooling, reducing labor intensity by /akch/*12%/*akch.",
+            "Conducted analytical work on implementing stamped blanks for part production, reducing total cost by /akch/*13.7%/*akch.",
+            "Developed a plastic part manufacturing process using modern methods and equipment, increasing souvenir product output by /akch/*122 million RUB/*akch per year."
+          ],
+          "period": "09.2022-03.2024"
+        }
+      ]
     }
   }
 }

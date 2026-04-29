@@ -12,11 +12,12 @@
     "photoPlaceholderAriaLabel": "Фото профиля отсутствует"
   },
   "social": [
-    { "icon": "assets/icons/github.svg", "url": "{{GITHUB_URL}}" },
+    { "icon": "assets/icons/phone-number.svg", "url": "tel:{{PHONE_E164}}" },
+    { "icon": "assets/icons/hh.svg", "url": "{{HH_RU_URL}}" },
     { "icon": "assets/icons/telegram.svg", "url": "{{TELEGRAM_URL}}" },
     { "icon": "assets/icons/profi.ru.png", "url": "{{PROFI_RU_URL}}" },
-    { "icon": "assets/icons/hh.svg", "url": "{{HH_RU_URL}}" },
     { "icon": "assets/icons/fl.svg", "url": "{{FREELANCE_RU_URL}}" },
+    { "icon": "assets/icons/github.svg", "url": "{{GITHUB_URL}}" },
     { "icon": "assets/icons/email.svg", "url": "mailto:{{EMAIL}}" }
   ],
   "direction": {

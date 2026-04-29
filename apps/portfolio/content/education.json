@@ -98,10 +98,10 @@
             "developer",
             "technologist"
           ],
-          "institution": "АНО ДПО \"Академия АйТи\"",
-          "program": "Разработчик \"Python\"",
+          "institution": "ANO DPO \"Academy IT\"",
+          "program": "Python Developer",
           "year": "2022",
-          "level": "Высшее"
+          "level": "Higher education"
         },
         {
           "id": "diploma-002",
@@ -112,10 +112,10 @@
             "developer",
             "technologist"
           ],
-          "institution": "Орский гуманитарно-технологический институт (филиал) Оренбургского государственного университета, Орск",
-          "program": "Конструкторско-технологическое обеспечение автоматизированных машиностроительных производств",
+          "institution": "Orsk Humanitarian and Technological Institute (branch) of Orenburg State University, Orsk",
+          "program": "Design and Technological Support of Automated Machine-Building Production",
           "year": "2016",
-          "level": "Высшее"
+          "level": "Higher education"
         },
         {
           "id": "course-001",
@@ -126,8 +126,8 @@
             "developer",
             "technologist"
           ],
-          "institution": "НОЧУ ДПО «Национальный открытый университет ИНТУИТ»",
-          "program": "Самостоятельно",
+          "institution": "NOU DPO \"National Open University INTUIT\"",
+          "program": "Self-paced",
           "year": "2017"
         },
         {
@@ -138,8 +138,8 @@
             "planner",
             "technologist"
           ],
-          "institution": "НОУ «УЦ АСКОН-Урал»",
-          "program": "НОУ «УЦ АСКОН-Урал»",
+          "institution": "NOU \"ASCON-Ural Training Center\"",
+          "program": "NOU \"ASCON-Ural Training Center\"",
           "year": "2014"
         },
         {
@@ -148,7 +148,7 @@
           "roleTags": [
             "developer"
           ],
-          "title": "Тренировки. ML-забег",
+          "title": "ML Training Run",
           "year": "2025"
         },
         {
@@ -157,7 +157,7 @@
           "roleTags": [
             "developer"
           ],
-          "title": "Тренировки. Забег по алгоритмам",
+          "title": "Algorithms Training Run",
           "year": "2025"
         }
       ],
