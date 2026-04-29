@@ -7,9 +7,9 @@
   --main-photo-placeholder-border-color: var(--line); /* Цвет рамки placeholder фото. */
   --main-photo-placeholder-text-color: var(--muted); /* Цвет текста placeholder фото. */
   --main-card-glint-color: var(--surface); /* Базовый цвет полосы блика на карточке. */
-  --card-text-color: var(--text-dark); /* Цвет основных линий/контента карточек на главной. */
-  --card-bg-opacity: 1; /* Непрозрачность карточки на главной, чтобы блик не приглушался родительским opacity. */
-  --card-bg-color: var(--surface); /* Базовый цвет карточек главной (без прозрачности). */
+  --panel-text-color: var(--text-dark); /* Цвет основных линий/контента карточек на главной. */
+  --panel-bg-opacity: 1; /* Непрозрачность карточки на главной, чтобы блик не приглушался родительским opacity. */
+  --panel-bg-color: var(--surface); /* Базовый цвет карточек главной (без прозрачности). */
   --card-bg-alpha: 0.75; /* Прозрачность фона карточек главной (0-1). */
   --lead-to-cards-gap: 26px; /* Отступ между lead-подзаголовком и сеткой карточек. */
   --header-reserve-height: 74px; /* Резерв высоты под шапку сайта. */

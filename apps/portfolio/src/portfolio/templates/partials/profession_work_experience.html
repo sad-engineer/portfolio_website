@@ -33,18 +33,18 @@
         </article>
         {% endfor %}
     </div>
-    <div class="profession-work-experience__controls">
+    <div class="profession-work-experience__controls slider-controls">
         <button
-            class="profession-work-experience__arrow profession-work-experience__arrow--prev"
+            class="profession-work-experience__arrow profession-work-experience__arrow--prev slider-controls__arrow"
             type="button"
             data-work-prev
             aria-label="{{ work_places_locale.previousSlideLabel }}"
         >
             <span aria-hidden="true">&lsaquo;</span>
         </button>
-        <span class="profession-work-experience__counter" data-work-counter>01 &mdash; {{ "%02d"|format(work_experience_items|length) }}</span>
+        <span class="profession-work-experience__counter slider-controls__counter" data-work-counter>01 &mdash; {{ "%02d"|format(work_experience_items|length) }}</span>
         <button
-            class="profession-work-experience__arrow profession-work-experience__arrow--next"
+            class="profession-work-experience__arrow profession-work-experience__arrow--next slider-controls__arrow"
             type="button"
             data-work-next
             aria-label="{{ work_places_locale.nextSlideLabel }}"

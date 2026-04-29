@@ -18,7 +18,6 @@ class Settings(BaseSettings):
     static_dir: Path = app_dir / "static"
     templates_dir: Path = app_dir / "templates"
     content_dir: Path = base_dir / "content"
-    i18n_dir: Path = base_dir / "i18n"
 
     default_locale: str = "ru"
 

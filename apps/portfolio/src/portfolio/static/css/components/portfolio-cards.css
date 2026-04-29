@@ -1,0 +1,49 @@
+/* Карточки парада портфолио: геометрия, уровни и анимация. */
+.profession-portfolio-card {
+  --width: 400px; /* Ширина карточки. */
+  --height: 400px; /* Высота карточки. */
+  --bg-color: var(--surface-dark); /* Фон карточки. */
+  --text-color: var(--text-dark); /* Цвет текста карточки. */
+  --border-color: var(--line); /* Цвет рамки карточки. */
+  --step-x: 15%; /* Шаг разъезда карточек по горизонтали. */
+  --scale-step: 0.08; /* Шаг масштабирования карточек. */
+  --y-active: 8%; /* Активная позиция карточки по вертикали. */
+  --y-depth-step: 2.5%; /* Шаг глубины карточек по вертикали. */
+}
+
+/* Карточка парада портфолио. */
+.profession-portfolio-card {
+  position: absolute; /* Позволяет свободно выстраивать стек карточек. */
+  left: 50%; /* Базовая точка позиционирования по центру сцены. */
+  top: 50%; /* Базовая точка позиционирования по центру сцены. */
+  width: var(--width); /* Ширина карточки. */
+  height: var(--height); /* Высота карточки. */
+  display: flex; /* Центрирует номер внутри карточки. */
+  align-items: center; /* Центрирование по вертикали. */
+  justify-content: center; /* Центрирование по горизонтали. */
+  background: var(--bg-color); /* Непрозрачный фон карточки. */
+  color: var(--text-color); /* Цвет номера карточки. */
+  border: 1px solid var(--border-color); /* Рамка карточки. */
+  border-radius: 6px; /* Легкое скругление карточки. */
+  overflow: hidden; /* Обрезает любое содержимое, выходящее за пределы карточки. */
+  box-shadow: 0 8px 24px var(--overlay-dark-alpha-20); /* Подчеркивает глубину парада. */
+  backface-visibility: hidden; /* Скрывает обратную сторону карточки при 3D-повороте. */
+  transform-style: preserve-3d; /* Позволяет корректно применять 3D-трансформации карточки. */
+  transition:
+    transform var(--motion-duration, 320ms) var(--motion-easing, ease),
+    opacity var(--motion-duration, 320ms) var(--motion-easing, ease),
+    z-index 0ms linear; /* Плавное смещение и смена слоя карточки с управляемой скоростью. */
+  transform: translate(-50%, -50%); /* Старт в центре до первого рендера JS. */
+}
+
+/* Номер карточки. */
+.profession-portfolio-card__number {
+  font-size: 3rem; /* Размер номера карточки. */
+  font-weight: 700; /* Визуальный акцент номера. */
+}
+
+/* Скрытая карточка. */
+.profession-portfolio-card.is-hidden {
+  opacity: 0; /* Скрывает карточки вне диапазона видимости. */
+  pointer-events: none; /* Выключает интерактивность скрытых карточек. */
+}

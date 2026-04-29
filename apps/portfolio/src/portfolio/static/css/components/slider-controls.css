@@ -1,0 +1,44 @@
+/* Универсальный блок управления слайдером: стрелки + счетчик. */
+.slider-controls {
+  --controls-gap: 26px; /* Интервал между стрелками и счетчиком. */
+  --counter-min-width: 78px; /* Минимальная ширина поля счетчика. */
+  --counter-color: var(--muted); /* Цвет текста счетчика. */
+  --arrow-color: var(--text); /* Цвет стрелок. */
+  --arrow-disabled-color: var(--muted); /* Цвет неактивных стрелок. */
+  --arrow-size: 52px; /* Размер символа стрелки. */
+  --arrow-hit-size: 28px; /* Размер кликабельной области стрелки. */
+}
+
+.slider-controls { 
+  display: flex; /* Выстраивает счетчик и кнопки в одну строку. */
+  align-items: center; /* Выравнивает элементы по центру по вертикали. */
+  justify-content: center; /* Центрирует элементы по горизонтали. */
+  gap: var(--controls-gap); /* Добавляет интервал между элементами управления. */
+}
+
+.slider-controls__counter {
+  min-width: var(--counter-min-width); /* Фиксирует ширину счетчика, чтобы блок не "прыгал". */
+  text-align: center; /* Центрирует цифры счетчика. */
+  color: var(--counter-color); /* Использует цвет счетчика из токенов контейнера. */
+  user-select: none; /* Не выделяет текст при прокрутке колесом. */
+}
+
+.slider-controls__arrow {
+  width: var(--arrow-hit-size);
+  height: var(--arrow-hit-size);
+  border: none; /* Убирает рамку стрелки. */
+  background: transparent; /* Убирает подложку кнопки. */
+  color: var(--arrow-color);
+  cursor: pointer; /* Показывает интерактивность кнопки. */
+  font-size: var(--arrow-size); /* Делает символ стрелки визуально читаемым. */
+  line-height: 1; /* Центрирует символ по высоте. */
+  display: inline-flex; /* Включает центрирование символа. */
+  align-items: center; /* Центрирует символ по вертикали. */
+  justify-content: center; /* Центрирует символ по горизонтали. */
+}
+
+.slider-controls__arrow:disabled {
+  color: var(--arrow-disabled-color); /* Ослабляет цвет недоступной стрелки. */
+  opacity: 0.55; /* Снижает визуальный акцент disabled-кнопки. */
+  cursor: default; /* Показывает отсутствие действия. */
+}

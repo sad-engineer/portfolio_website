@@ -1,12 +1,16 @@
 """Обработчики основных страниц сайта."""
 
 from copy import deepcopy
+from datetime import datetime, timedelta, timezone
+import json
 import re
+from typing import Optional
+from zoneinfo import ZoneInfo
 
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from portfolio.dependencies import get_site_content, get_templates, get_ui_texts
+from portfolio.dependencies import get_settings, get_site_content, get_templates, get_ui_texts
 
 router = APIRouter(tags=["pages"])
 
@@ -165,6 +169,28 @@ def _profession_work_experience_items(
     return scoped_items
 
 
+def _profession_portfolio_items(
+    portfolio_locale: dict, profession_key: str
+) -> list[dict]:
+    """Возвращает проекты портфолио, относящиеся к выбранной профессии."""
+    source_items = portfolio_locale.get("items", [])
+    if not isinstance(source_items, list):
+        return []
+
+    scoped_items: list[dict] = []
+    for item in source_items:
+        if not isinstance(item, dict):
+            continue
+        role_tags = item.get("roleTags", [])
+        if not isinstance(role_tags, list):
+            continue
+        if profession_key not in role_tags:
+            continue
+        scoped_items.append(item)
+
+    return scoped_items
+
+
 def _append_lang_query(href: str, lang: str) -> str:
     """Добавляет lang= к внутренним путям, чтобы навигация не сбрасывала локаль."""
     if not isinstance(href, str) or not href.startswith("/") or href.startswith("//"):
@@ -197,6 +223,108 @@ def _main_locale_with_direction_lang(main_locale: dict, lang: str) -> dict:
     return out
 
 
+def _load_values_locale(current_lang: str) -> dict:
+    """Читает values.json и возвращает словарь значений для текущей локали."""
+    settings = get_settings()
+    values_path = settings.content_dir / "values.json"
+    with values_path.open("r", encoding="utf-8-sig") as file:
+        values_payload = json.load(file)
+
+    if not isinstance(values_payload, dict):
+        return {}
+
+    # Базовые значения + локализованный overlay в i18n.<lang>
+    base_values = {
+        key: deepcopy(value) for key, value in values_payload.items() if key != "i18n"
+    }
+    i18n_values = values_payload.get("i18n", {})
+    if not isinstance(i18n_values, dict):
+        return base_values
+
+    locale_values = i18n_values.get(current_lang)
+    if isinstance(locale_values, dict):
+        return _deep_merge_dicts(base_values, locale_values)
+
+    fallback_values = i18n_values.get("ru")
+    if isinstance(fallback_values, dict):
+        return _deep_merge_dicts(base_values, fallback_values)
+
+    return base_values
+
+
+def _parse_hhmm_to_minutes(value: object) -> Optional[int]:
+    if not isinstance(value, str):
+        return None
+    parts = value.split(":", 1)
+    if len(parts) != 2:
+        return None
+    try:
+        hour = int(parts[0])
+        minute = int(parts[1])
+    except ValueError:
+        return None
+    if hour < 0 or hour > 23 or minute < 0 or minute > 59:
+        return None
+    return hour * 60 + minute
+
+
+def _is_within_working_hours(values_locale: dict) -> bool:
+    """Проверяет, попадает ли текущее время в рабочий график для показа телефонной иконки."""
+    timezone_name = str(values_locale.get("WORK_TIMEZONE", "UTC"))
+    work_schedule = values_locale.get("WORK_SCHEDULE")
+
+    try:
+        tz = ZoneInfo(timezone_name)
+        now = datetime.now(tz)
+    except Exception:
+        # На Windows без tzdata ZoneInfo может быть недоступен.
+        # В этом случае используем фиксированный offset для известных рабочих зон.
+        known_offsets_hours = {
+            "UTC": 0,
+            "Asia/Yekaterinburg": 5,
+        }
+        offset_hours = known_offsets_hours.get(timezone_name)
+        if offset_hours is None:
+            now = datetime.now()
+        else:
+            now = (datetime.now(timezone.utc) + timedelta(hours=offset_hours)).replace(
+                tzinfo=None
+            )
+    current_minutes = now.hour * 60 + now.minute
+    weekday_key = str(now.isoweekday())
+
+    # Новый формат: WORK_SCHEDULE = {"1":[{"start":"09:00","end":"18:00"}], ..., "7":[]}
+    if isinstance(work_schedule, dict):
+        day_ranges = work_schedule.get(weekday_key, [])
+        if not isinstance(day_ranges, list):
+            return True
+        for day_range in day_ranges:
+            if not isinstance(day_range, dict):
+                continue
+            start_minutes = _parse_hhmm_to_minutes(day_range.get("start"))
+            end_minutes = _parse_hhmm_to_minutes(day_range.get("end"))
+            if start_minutes is None or end_minutes is None:
+                continue
+            if start_minutes <= current_minutes < end_minutes:
+                return True
+        return False
+
+    # Legacy-формат (для обратной совместимости).
+    raw_days = str(values_locale.get("WORK_DAYS", "1,2,3,4,5"))
+    day_items = [item.strip() for item in raw_days.split(",") if item.strip()]
+    try:
+        allowed_weekdays = {int(day) for day in day_items}
+    except ValueError:
+        return True
+    if now.isoweekday() not in allowed_weekdays:
+        return False
+    start_minutes = _parse_hhmm_to_minutes(values_locale.get("WORK_HOURS_START", "09:00"))
+    end_minutes = _parse_hhmm_to_minutes(values_locale.get("WORK_HOURS_END", "18:00"))
+    if start_minutes is None or end_minutes is None:
+        return True
+    return start_minutes <= current_minutes < end_minutes
+
+
 def _resolve_current_lang(request: Request, site_content: dict) -> str:
     supported_locales = tuple(
         site_content.get("basic", {}).get("site", {}).get("locales", ["ru", "en"])
@@ -218,6 +346,7 @@ def _resolve_current_lang(request: Request, site_content: dict) -> str:
 
 def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict:
     current_lang = _resolve_current_lang(request, site_content)
+    values_locale = _load_values_locale(current_lang)
 
     basic_locale = _localized_content_block(site_content.get("basic", {}), current_lang)
     main_locale = _main_locale_with_direction_lang(
@@ -230,9 +359,14 @@ def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict
     )
 
     social_links: list[dict] = []
+    show_phone_link = _is_within_working_hours(values_locale)
     for item in main_locale.get("social", []):
+        link_url = str(item.get("url", ""))
         icon = str(item.get("icon", ""))
         icon_lc = icon.lower()
+        is_phone_entry = link_url.startswith("tel:") or "phone" in icon_lc
+        if is_phone_entry and not show_phone_link:
+            continue
         is_asset_icon = (
             "/" in icon
             or icon_lc.endswith(".svg")
@@ -245,7 +379,7 @@ def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict
         social_links.append(
             {
                 "icon": icon,
-                "url": item.get("url", ""),
+                "url": link_url,
                 "is_asset_icon": is_asset_icon,
             }
         )
@@ -259,6 +393,13 @@ def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict
     )
     profession_work_experience = {
         key: _profession_work_experience_items(work_places_locale, key)
+        for key in _PROFESSION_KEYS
+    }
+    portfolio_projects_locale = _localized_content_block(
+        site_content.get("portfolio_projects", {}), current_lang
+    )
+    profession_portfolio_projects = {
+        key: _profession_portfolio_items(portfolio_projects_locale, key)
         for key in _PROFESSION_KEYS
     }
 
@@ -282,6 +423,8 @@ def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict
         "profession_locale": profession_locale,
         "work_places_locale": work_places_locale,
         "profession_work_experience": profession_work_experience,
+        "portfolio_projects_locale": portfolio_projects_locale,
+        "profession_portfolio_projects": profession_portfolio_projects,
         "home_href": _append_lang_query("/main", current_lang),
         "user_agreement_href": _append_lang_query(agreement_path, current_lang),
         "privacy_policy_href": _append_lang_query(privacy_path, current_lang),

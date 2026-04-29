@@ -1,0 +1,39 @@
+{% set portfolio_items = profession_portfolio_projects.get(profession_key, []) %}
+{% if portfolio_items %}
+<section class="card profession-portfolio" data-portfolio>
+    <h2 class="profession-portfolio__title">{{ portfolio_projects_locale.sectionTitle }}</h2>
+    <div class="profession-portfolio__stage" data-portfolio-stage>
+        {% for item in portfolio_items %}
+        <article
+            class="profession-portfolio-card"
+            data-portfolio-card
+            data-card-index="{{ loop.index0 }}"
+            aria-label="{{ item.title }}"
+        >
+            <span class="profession-portfolio-card__number">{{ item.cardNumber }}</span>
+        </article>
+        {% endfor %}
+    </div>
+    <div class="portfolio-counter slider-controls">
+        <button
+            class="slider-controls__arrow"
+            type="button"
+            data-portfolio-prev
+            aria-label="Предыдущая карточка портфолио"
+        >
+            <span aria-hidden="true">&lsaquo;</span>
+        </button>
+        <span class="slider-controls__counter" data-portfolio-counter aria-label="portfolio counter">
+            01 &mdash; {{ "%02d"|format(portfolio_items|length) }}
+        </span>
+        <button
+            class="slider-controls__arrow"
+            type="button"
+            data-portfolio-next
+            aria-label="Следующая карточка портфолио"
+        >
+            <span aria-hidden="true">&rsaquo;</span>
+        </button>
+    </div>
+</section>
+{% endif %}

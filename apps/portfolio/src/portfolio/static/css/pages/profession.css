@@ -2,11 +2,23 @@
 .page-content.page-profession {
   --photo-width: 600px; /* Фиксированная ширина блока фото/заглушки. */
   --photo-aspect-ratio: 3 / 4; /* Базовое соотношение сторон фото/заглушки на мобильных. */
+  --main-hero-image-border-color: var(--line); /* На страницах профессий рамка фото совпадает с главной. */
+  --main-photo-placeholder-border-color: var(--line); /* Рамка placeholder как на главной. */
+  --main-photo-placeholder-text-color: var(--muted); /* Цвет текста placeholder как на главной. */
+  --main-photo-placeholder-bg-color: var(--surface-dark); /* Фон placeholder как на главной. */
+  --languages-bg-opacity: 0.9; /* Непрозрачность фоновой картинки блока языков. */
+  --languages-bg-corner-mask: radial-gradient(circle at 0% 0%, #00000000 0%, #000000 62%); /* Плавная прозрачность в верхнем левом углу фоновой картинки. */
   --inline-padding: 0px; /* Базовый внутренний отступ контейнера профессии. */
   --mobile-inline-padding: 12px; /* Горизонтальный отступ контента на экранах <= 1200px. */
-  --gap-after-tech-layout: 3px; /* Отступ между верхней зоной (фото + карточки) и блоком типов документов. */
-  --gap-after-document-types: 3px; /* Отступ между блоком типов документов и блоком языков. */
-  --gap-before-work-experience: 3px; /* Отступ между блоком языков и блоком опыта работы. */
+  --tech-layout-margin-bottom: 0px; /* Убирает дополнительный нижний отступ верхней зоны перед блоком "Типы документов". */
+  --gap-after-tech-layout: 0px; /* Отступ между верхней зоной (фото + карточки) и блоком типов документов. */
+  --gap-after-document-types: 0px; /* Отступ между блоком типов документов и блоком языков. */
+  --gap-before-work-experience: 0px; /* Отступ между блоком языков и блоком опыта работы. */
+  --section-head-enter-duration: 700ms; /* Длительность анимации выезда заголовка на странице профессии. */
+  --section-head-enter-delay: 150ms; /* Задержка перед стартом анимации заголовка. */
+  --section-head-enter-distance: 42px; /* Стартовое смещение заголовка по Y. */
+  --section-head-enter-easing: cubic-bezier(0.22, 1, 0.36, 1); /* Плавная кривая движения заголовка. */
+  --lead-enter-delay: calc(var(--section-head-enter-delay) + var(--section-head-enter-duration) - 500ms); /* Старт анимации подзаголовка после завершения заголовка. */
 
 }
 
@@ -24,6 +36,25 @@
 /* Единая страница профессий: отступы у заголовочного блока. */
 .page-content.page-profession .section-head {
   margin: 20px 0 12px;
+}
+
+/* На страницах профессий сначала появляется h1, затем lead-подзаголовок. */
+.page-content.page-profession .section-head h1 {
+  will-change: transform, opacity; /* Оптимизирует рендер для анимируемых свойств заголовка. */
+  animation-name: main-section-head-enter-up; /* Использует ту же анимацию, что и на главной странице. */
+  animation-duration: var(--section-head-enter-duration); /* Длительность анимации заголовка. */
+  animation-delay: var(--section-head-enter-delay); /* Задержка запуска анимации заголовка. */
+  animation-timing-function: var(--section-head-enter-easing); /* Плавность движения заголовка. */
+  animation-fill-mode: both; /* Сохраняет начальное и конечное состояние анимации. */
+}
+
+.page-content.page-profession .section-head .lead {
+  will-change: transform, opacity; /* Оптимизирует рендер для анимируемых свойств подзаголовка. */
+  animation-name: main-section-head-enter-up; /* Использует ту же анимацию для единообразного появления. */
+  animation-duration: var(--section-head-enter-duration); /* Длительность анимации подзаголовка. */
+  animation-delay: var(--lead-enter-delay); /* Запускает подзаголовок после заголовка. */
+  animation-timing-function: var(--section-head-enter-easing); /* Плавность движения подзаголовка. */
+  animation-fill-mode: both; /* Сохраняет начальное и конечное состояние анимации. */
 }
 
 /* Отступы страницы профессии как на главной для узких экранов. */
@@ -158,7 +189,7 @@
 }
 
 /* Фон секции "Языки": градиент под прозрачные зоны изображения. */
-.page-content.page-profession .languages-full {
+.page-content.page-profession .profession-content-container .languages-full {
   position: relative;
   display: flex; /* Позволяет явно прижимать контентную колонку языков к правому краю. */
   justify-content: flex-end; /* Закрепляет блок языков справа независимо от перерасчета auto-отступов. */
@@ -181,6 +212,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center 10%;
+  opacity: var(--languages-bg-opacity);
+  -webkit-mask-image: var(--languages-bg-corner-mask);
+  mask-image: var(--languages-bg-corner-mask);
   pointer-events: none;
 }
 

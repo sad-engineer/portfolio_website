@@ -35,8 +35,35 @@ def _build_template_values(settings: Settings) -> dict[str, str]:
     with values_path.open("r", encoding="utf-8-sig") as file:
         values_payload = json.load(file)
 
-    locale_values = values_payload.get("i18n", {}).get(settings.default_locale, {})
-    values: dict[str, str] = {key: str(value) for key, value in locale_values.items()}
+    if not isinstance(values_payload, dict):
+        values_payload = {}
+    base_values = {
+        key: value for key, value in values_payload.items() if key != "i18n"
+    }
+    i18n_values = values_payload.get("i18n", {})
+    locale_overlay: dict = {}
+    if isinstance(i18n_values, dict):
+        raw_overlay = i18n_values.get(settings.default_locale, {})
+        if isinstance(raw_overlay, dict):
+            locale_overlay = raw_overlay
+    merged_values = {**base_values, **locale_overlay}
+    values: dict[str, str] = {key: str(value) for key, value in merged_values.items()}
+
+    # Дополнительно экспортируем значения локалей как KEY_<LOCALE>, например ADDRESS_EN.
+    # Это нужно для плейсхолдеров в переводах юридических документов.
+    if isinstance(i18n_values, dict):
+        for locale, overlay in i18n_values.items():
+            if not isinstance(locale, str) or not isinstance(overlay, dict):
+                continue
+            locale_suffix = locale.upper()
+            for key, value in overlay.items():
+                if not isinstance(key, str):
+                    continue
+                values[f"{key}_{locale_suffix}"] = str(value)
+
+    # Обратная совместимость для шаблонов с суффиксами RU/EN.
+    if "ADDRESS" in values and "ADDRESS_RU" not in values:
+        values["ADDRESS_RU"] = values["ADDRESS"]
 
     work_places_path = settings.content_dir / "work_places.json"
     with work_places_path.open("r", encoding="utf-8-sig") as file:
@@ -98,6 +125,7 @@ def get_site_content() -> dict:
         "developer": "developer.json",
         "technologist": "technologist.json",
         "work_places": "work_places.json",
+        "portfolio_projects": "portfolio_projects.json",
         "education": "education.json",
         "agreement": "polzovatelskoe_soglashenie.json",
         "privacy": "politika_konfidencialnosti.json",
@@ -115,12 +143,5 @@ def get_site_content() -> dict:
 
 @lru_cache
 def get_ui_texts() -> dict:
-    """Загружает текст интерфейса в соответствии с локалью."""
-
-    settings = get_settings()
-    locale_file = settings.i18n_dir / f"ui_{settings.default_locale}.json"
-    if not locale_file.exists():
-        locale_file = settings.i18n_dir / "ui_en.json"
-
-    with locale_file.open("r", encoding="utf-8") as file:
-        return json.load(file)
+    """UI-тексты вынесены в content/*.json, отдельный i18n-каталог больше не используется."""
+    return {}
