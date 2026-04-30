@@ -1,0 +1,31 @@
+{% set education_items = profession_education.get(profession_key, []) %}
+{% if education_items %}
+<section
+    class="card profession-education"
+    style="--profession-education-bg-image: url('{{ url_for('static', path='assets/img/backgrounds/education.svg') }}');"
+>
+    <h2 class="profession-education__title">{{ education_locale.title }}</h2>
+    <ul class="profession-education__list">
+        {% for item in education_items %}
+        <li class="profession-education__item">
+            <p class="profession-education__head">
+                <span class="profession-education__type">{{ item.type|capitalize }}</span>
+                <span class="profession-education__year">{{ item.year }}</span>
+            </p>
+            {% if item.institution %}
+            <p class="profession-education__institution">{{ item.institution }}</p>
+            {% endif %}
+            {% if item.program %}
+            <p class="profession-education__program">{{ item.program }}</p>
+            {% endif %}
+            {% if item.level %}
+            <p class="profession-education__level">{{ item.level }}</p>
+            {% endif %}
+            {% if item.title %}
+            <p class="profession-education__program">{{ item.title }}</p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}

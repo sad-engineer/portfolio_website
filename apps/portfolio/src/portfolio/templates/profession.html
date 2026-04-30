@@ -144,6 +144,7 @@
     </section>
     {% include "partials/profession_work_experience.html" %}
     {% include "partials/profession_portfolio.html" %}
+    {% include "partials/profession_education.html" %}
 </div>
 {% set info_banner_locale = profession.get('info_banner', {}) %}
 {% if info_banner_locale %}
@@ -159,6 +160,6 @@
 </script>
 <script src="{{ url_for('static', path='js/tech-tile-dropdown.js') }}"></script>
 <script src="{{ url_for('static', path='js/tech-tile-glint.js') }}"></script>
-{# Debug: блики на первых трех икеонках для отладки. #}
+{# Debug: блики на первых трех иконках для отладки. #}
 {# <script src="{{ url_for('static', path='js/tech-tile-glint-debug.js') }}"></script> #}
 {% endblock %}

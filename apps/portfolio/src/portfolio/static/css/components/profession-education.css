@@ -1,0 +1,112 @@
+/* Блок образования на страницах профессий: список релевантных дипломов/курсов/сертификатов. */
+.page-content.page-profession {
+  --profession-education-item-gap: 10px; /* Вертикальный отступ между элементами списка образования. */
+  --profession-education-title-gap: 12px; /* Отступ от заголовка блока до списка. */
+  --profession-education-row-gap: 6px; /* Внутренний отступ между строками одного элемента. */
+  --profession-education-type-bg: color-mix(in srgb, var(--surface) 60%, transparent); /* Подложка типа записи в строке заголовка. */
+  --profession-education-type-color: var(--text-dark); /* Цвет текста бейджа типа (diploma/course/certificate). */
+  --profession-education-muted: var(--muted-dark); /* Приглушенный цвет вторичной строки (год/уровень). */
+  --profession-education-bg-image: none; /* Фоновое изображение блока образования (задается в шаблоне). */
+  --profession-education-bg-color: var(--tech-tile-bg, var(--surface-tile)); /* Цвет фоновой иконки блока образования: совпадает с фоном плиток иконок. */
+  --profession-education-bg-width: 42%; /* Ширина правой фоновой зоны с изображением. */
+  --profession-education-bg-opacity: 0.92; /* Непрозрачность декоративного фонового изображения. */
+  --profession-education-icon-fade: linear-gradient( /* Градиент прозрачности самой иконки слева направо. */
+    to right,
+    color-mix(in srgb, var(--profession-education-bg-color) 0%, transparent) 20%,
+    color-mix(in srgb, var(--profession-education-bg-color) 100%, transparent) 80%
+  );
+}
+
+/* Карточка секции образования в общем потоке секций профессии. */
+.profession-education {
+  display: block; /* Секция рендерится блочным контейнером внутри карточки. */
+  position: relative; /* Создает контекст позиционирования для декоративного фонового слоя. */
+  overflow: hidden; /* Обрезает фоновый слой по границам карточки образования. */
+}
+
+/* Правый декоративный фон блока образования с маской прозрачности слева направо. */
+.profession-education::before {
+  content: ""; /* Создает псевдоэлемент для фонового изображения секции. */
+  position: absolute; /* Размещает фон независимо от контентного потока. */
+  top: 0; /* Прижимает слой к верхней границе карточки. */
+  right: 0; /* Фиксирует слой у правого края карточки. */
+  bottom: 0; /* Растягивает слой на всю высоту карточки. */
+  width: var(--profession-education-bg-width); /* Ограничивает фоновый слой правой частью карточки. */
+  background: var(--profession-education-icon-fade); /* Градиент применяется к цвету самой иконки, а не к фону карточки. */
+  -webkit-mask-image: var(--profession-education-bg-image); /* Использует SVG как форму иконки в WebKit. */
+  -webkit-mask-repeat: no-repeat; /* Отключает повтор SVG-маски. */
+  -webkit-mask-size: contain; /* Сохраняет пропорции SVG внутри правой зоны блока. */
+  -webkit-mask-position: right center; /* Прижимает SVG-иконку к правому краю карточки. */
+  mask-image: var(--profession-education-bg-image); /* Использует SVG как форму иконки. */
+  mask-repeat: no-repeat; /* Отключает повтор SVG-маски. */
+  mask-size: contain; /* Сохраняет пропорции SVG внутри правой зоны блока. */
+  mask-position: right center; /* Прижимает SVG-иконку к правому краю карточки. */
+  opacity: var(--profession-education-bg-opacity); /* Задает прозрачность декоративного слоя. */
+  pointer-events: none; /* Не дает декоративному слою перехватывать взаимодействия. */
+}
+
+/* Контент блока образования всегда выше декоративного слоя. */
+.profession-education > * {
+  position: relative; /* Поднимает контент над фоновым псевдослоем. */
+  z-index: 1; /* Фиксирует приоритет рендера текста и списка над фоном. */
+}
+
+/* Заголовок секции образования и курсов. */
+.profession-education__title {
+  margin: 0 0 var(--profession-education-title-gap); /* Убирает верхний отступ и задает зазор до списка. */
+}
+
+/* Список записей образования без маркеров. */
+.profession-education__list {
+  margin: 0; /* Сбрасывает внешние отступы списка для ровного встраивания в карточку. */
+  padding: 0; /* Убирает стандартный левый отступ списка. */
+  list-style: none; /* Скрывает стандартные буллиты у списка. */
+  display: grid; /* Использует сетку для управления вертикальными интервалами элементов. */
+  gap: var(--profession-education-item-gap); /* Устанавливает одинаковый интервал между записями. */
+}
+
+/* Один элемент списка образования (диплом/курс/сертификат). */
+.profession-education__item {
+  display: grid; /* Выстраивает внутренние строки записи по вертикали. */
+  gap: var(--profession-education-row-gap); /* Добавляет равномерный отступ между строками записи. */
+}
+
+/* Первая строка записи: тип и год обучения. */
+.profession-education__head {
+  margin: 0; /* Сбрасывает внешние отступы абзаца заголовочной строки. */
+  display: flex; /* Размещает тип и год в одну строку. */
+  flex-wrap: wrap; /* Разрешает перенос, если строка не помещается по ширине. */
+  align-items: center; /* Выравнивает элементы строки по вертикальному центру. */
+  gap: 8px; /* Задает расстояние между типом и годом. */
+}
+
+/* Бейдж типа записи (diploma/course/certificate). */
+.profession-education__type {
+  padding: 2px 7px; /* Формирует компактные внутренние поля бейджа. */
+  border-radius: 999px; /* Делает полностью скругленную форму бейджа. */
+  background: var(--profession-education-type-bg); /* Использует мягкую подложку из палитры карточек. */
+  color: var(--profession-education-type-color); /* Обеспечивает контрастный цвет текста в бейдже. */
+  font-size: 0.82rem; /* Делает подпись типа визуально вторичной относительно названия. */
+}
+
+/* Год окончания/прохождения записи. */
+.profession-education__year {
+  color: var(--profession-education-muted); /* Делает год менее акцентным, как мета-информацию. */
+}
+
+/* Учебная организация в записи образования. */
+.profession-education__institution {
+  margin: 0; /* Сбрасывает стандартный внешний отступ абзаца. */
+  font-weight: 600; /* Выделяет организацию как основной идентификатор записи. */
+}
+
+/* Название программы/сертификата в записи. */
+.profession-education__program {
+  margin: 0; /* Сбрасывает стандартный внешний отступ абзаца. */
+}
+
+/* Уровень образования в записи. */
+.profession-education__level {
+  margin: 0; /* Сбрасывает стандартный внешний отступ абзаца. */
+  color: var(--profession-education-muted); /* Делает уровень образования вторичной строкой. */
+}

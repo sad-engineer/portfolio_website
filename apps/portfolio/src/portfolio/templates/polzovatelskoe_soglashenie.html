@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 {% set page_id = "page-legal" %}
+{% set agreement_locale = content.agreement %}
 {% set agreement_i18n = content.agreement.get('i18n', {}) %}
-{% set agreement_locale = agreement_i18n.get(current_lang, agreement_i18n.get('ru', {})) %}
+{% if current_lang == 'en' %}
+    {% set agreement_en = agreement_i18n.get('en', {}) %}
+    {% if agreement_en %}
+        {% set agreement_locale = agreement_en %}
+    {% endif %}
+{% endif %}
 {% set page_title = agreement_locale.get('title', 'User Agreement') %}
 
 {% block content %}
