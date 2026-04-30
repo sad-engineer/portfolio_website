@@ -10,6 +10,7 @@
     dropdowns.forEach(function (dropdown) {
       if (dropdown !== activeDropdown) {
         dropdown.open = false;
+        dropdown.classList.remove("tech-tile-dropdown--ready");
       }
     });
   };
@@ -125,11 +126,16 @@
 
   dropdowns.forEach(function (dropdown) {
     dropdown.addEventListener("toggle", function () {
-      if (!dropdown.open) return;
+      if (!dropdown.open) {
+        dropdown.classList.remove("tech-tile-dropdown--ready");
+        return;
+      }
+      dropdown.classList.remove("tech-tile-dropdown--ready");
       closeOthers(dropdown);
       // После открытия details дождемся рендера и точно вычислим размеры панели.
       requestAnimationFrame(function () {
         positionMenu(dropdown);
+        dropdown.classList.add("tech-tile-dropdown--ready");
       });
     });
   });
@@ -139,6 +145,7 @@
     if (clickedInside) return;
     dropdowns.forEach(function (dropdown) {
       dropdown.open = false;
+      dropdown.classList.remove("tech-tile-dropdown--ready");
     });
   });
 
@@ -149,4 +156,66 @@
       }
     });
   });
+
+  // Подсказка о кликабельности: только у первой иконки и только при первой загрузке.
+  (function showClickHint() {
+    var firstTrigger = document.querySelector(".tech-tile-dropdown .tech-tile-dropdown__trigger");
+    if (!firstTrigger) return;
+    var professionUi = window.__PROFESSION_UI__ || {};
+    var hintText = typeof professionUi.techTileClickHint === "string" ? professionUi.techTileClickHint.trim() : "";
+    if (!hintText) return;
+
+    var storage = null;
+    try {
+      storage = window.localStorage;
+    } catch (_error) {
+      storage = null;
+    }
+
+    var STORAGE_KEY = "portfolio.techTileHintState.v1";
+    var today = new Date().toISOString().slice(0, 10);
+    var pageKey = String(window.location.pathname || "/");
+    var state = { date: today, pages: {} };
+
+    if (storage) {
+      try {
+        var rawState = storage.getItem(STORAGE_KEY);
+        if (rawState) {
+          var parsedState = JSON.parse(rawState);
+          if (parsedState && typeof parsedState === "object") {
+            state = parsedState;
+          }
+        }
+      } catch (_error) {
+        state = { date: today, pages: {} };
+      }
+
+      if (state.date !== today) {
+        state = { date: today, pages: {} };
+      }
+      if (!state.pages || typeof state.pages !== "object") {
+        state.pages = {};
+      }
+
+      if (state.pages[pageKey]) {
+        return;
+      }
+    }
+
+    firstTrigger.setAttribute("data-tech-click-hint", hintText);
+    firstTrigger.classList.add("tech-tile-dropdown__trigger--click-hint");
+    window.setTimeout(function () {
+      firstTrigger.classList.remove("tech-tile-dropdown__trigger--click-hint");
+      firstTrigger.removeAttribute("data-tech-click-hint");
+    }, 1500);
+
+    if (storage) {
+      state.pages[pageKey] = true;
+      try {
+        storage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (_error) {
+        // no-op: если хранилище недоступно, подсказка просто будет показываться как раньше.
+      }
+    }
+  })();
 })();

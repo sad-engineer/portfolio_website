@@ -65,7 +65,8 @@
   "ui": {
     "langSwitcherAriaLabel": "Переключатель языка",
     "socialLinksAriaLabel": "Социальные сети",
-    "mobileMenuAriaLabel": "Главное меню"
+    "mobileMenuAriaLabel": "Главное меню",
+    "techTileClickHint": "Хотите знать больше?\nНажмите на иконку."
   },
   "hero_bottom_legal": "{{shortFIO}} (ИИН — {{INN}}) Россия © 2026. Разработка и дизайн сайта — {{firstName}} {{lastName}}. Частная собственность, защищенная правообладателем. Копирование запрещено. Соглашение.",
   "i18n": {
@@ -115,7 +116,8 @@
       "ui": {
         "langSwitcherAriaLabel": "Language switcher",
         "socialLinksAriaLabel": "Social links",
-        "mobileMenuAriaLabel": "Main menu"
+        "mobileMenuAriaLabel": "Main menu",
+        "techTileClickHint": "Want to know more?\nClick on the icon."
       },
       "hero_bottom_legal": "{{shortFIO}} (TIN — {{INN}}) Russia © 2026. Website design and development — {{firstName}} {{lastName}}. Private property protected by copyright holder. Copying is prohibited."
     }
