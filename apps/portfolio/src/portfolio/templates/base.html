@@ -53,8 +53,13 @@
             </div>
             <form class="feedback-form feedback__right" id="feedback-form" action="#" method="post">
                 <h2>{{ basic_locale.feedback.form.title }}</h2>
-                <label for="phone">{{ basic_locale.feedback.form.phoneInputLabel }}</label>
-                <input id="phone" name="phone" type="text" placeholder="{{ basic_locale.feedback.form.phoneInputPlaceholder }}" />
+                <div class="feedback-form__phone-row">
+                    <div class="feedback-form__phone-field">
+                        <label for="phone">{{ basic_locale.feedback.form.phoneInputLabel }}</label>
+                        <input id="phone" name="phone" type="text" placeholder="{{ basic_locale.feedback.form.phoneInputPlaceholder }}" />
+                    </div>
+                    <button class="feedback__submit" type="submit">{{ basic_locale.feedback.form.submitButtonText }}</button>
+                </div>
 
                 <p class="small-title">{{ basic_locale.feedback.form.subtitle }}</p>
                 <div class="channels">
@@ -65,9 +70,16 @@
 
                 <label class="consent">
                     <input type="checkbox" name="consent" />
-                    {{ basic_locale.feedback.form.consentText }}
+                    {% set consent_text = basic_locale.feedback.form.consentText %}
+                    {% set privacy_link_html = '<a class="consent__link" href="' ~ privacy_policy_href ~ '">политикой конфиденциальности</a>' %}
+                    {% set consent_with_link = consent_text %}
+                    {% if 'политикой конфиденциальности' in consent_with_link %}
+                        {% set consent_with_link = consent_with_link | replace('политикой конфиденциальности', privacy_link_html) %}
+                    {% elif 'privacy policy' in consent_with_link | lower %}
+                        {% set consent_with_link = consent_with_link | replace('privacy policy', '<a class="consent__link" href="' ~ privacy_policy_href ~ '">privacy policy</a>') %}
+                    {% endif %}
+                    {{ consent_with_link | safe }}
                 </label>
-                <button class="feedback__submit" type="submit">{{ basic_locale.feedback.form.submitButtonText }}</button>
             </form>
         </div>
     </section>

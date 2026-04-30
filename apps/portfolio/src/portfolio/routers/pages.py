@@ -191,6 +191,37 @@ def _profession_portfolio_items(
     return scoped_items
 
 
+def _education_year_sort_key(item: dict) -> int:
+    """Возвращает числовой год для сортировки элементов образования (по убыванию)."""
+    year_raw = str(item.get("year", "")).strip()
+    if not year_raw.isdigit():
+        return 0
+    return int(year_raw)
+
+
+def _profession_education_items(
+    education_locale: dict, profession_key: str
+) -> list[dict]:
+    """Возвращает элементы образования, относящиеся к выбранной профессии."""
+    source_items = education_locale.get("items", [])
+    if not isinstance(source_items, list):
+        return []
+
+    scoped_items: list[dict] = []
+    for item in source_items:
+        if not isinstance(item, dict):
+            continue
+        role_tags = item.get("roleTags", [])
+        if not isinstance(role_tags, list):
+            continue
+        if profession_key not in role_tags:
+            continue
+        scoped_items.append(item)
+
+    scoped_items.sort(key=_education_year_sort_key, reverse=True)
+    return scoped_items
+
+
 def _append_lang_query(href: str, lang: str) -> str:
     """Добавляет lang= к внутренним путям, чтобы навигация не сбрасывала локаль."""
     if not isinstance(href, str) or not href.startswith("/") or href.startswith("//"):
@@ -402,6 +433,13 @@ def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict
         key: _profession_portfolio_items(portfolio_projects_locale, key)
         for key in _PROFESSION_KEYS
     }
+    education_locale = _localized_content_block(
+        site_content.get("education", {}), current_lang
+    )
+    profession_education = {
+        key: _profession_education_items(education_locale, key)
+        for key in _PROFESSION_KEYS
+    }
 
     links = basic_locale.get("links", {})
     agreement_path = str(
@@ -433,6 +471,8 @@ def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict
         "profession_work_experience": profession_work_experience,
         "portfolio_projects_locale": portfolio_projects_locale,
         "profession_portfolio_projects": profession_portfolio_projects,
+        "education_locale": education_locale,
+        "profession_education": profession_education,
         "home_href": _append_lang_query("/main", current_lang),
         "user_agreement_href": _append_lang_query(agreement_path, current_lang),
         "privacy_policy_href": _append_lang_query(privacy_path, current_lang),

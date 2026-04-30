@@ -1,5 +1,11 @@
 {% set legal_i18n = legal_doc.get('i18n', {}) %}
-{% set legal_locale = legal_i18n.get(current_lang, legal_i18n.get('ru', {})) %}
+{% set legal_locale = legal_doc %}
+{% if current_lang == 'en' %}
+    {% set legal_en = legal_i18n.get('en', {}) %}
+    {% if legal_en %}
+        {% set legal_locale = legal_en %}
+    {% endif %}
+{% endif %}
 
 <section class="section-head">
     <h1>{{ legal_locale.get('title', '') }}</h1>

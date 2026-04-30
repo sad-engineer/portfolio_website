@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 {% set page_id = "page-legal" %}
+{% set privacy_locale = content.privacy %}
 {% set privacy_i18n = content.privacy.get('i18n', {}) %}
-{% set privacy_locale = privacy_i18n.get(current_lang, privacy_i18n.get('ru', {})) %}
+{% if current_lang == 'en' %}
+    {% set privacy_en = privacy_i18n.get('en', {}) %}
+    {% if privacy_en %}
+        {% set privacy_locale = privacy_en %}
+    {% endif %}
+{% endif %}
 {% set page_title = privacy_locale.get('title', 'Privacy Policy') %}
 
 {% block content %}
