@@ -152,5 +152,13 @@
 {% endif %}
 <script src="{{ url_for('static', path='js/profession-work-experience.js') }}"></script>
 <script src="{{ url_for('static', path='js/profession-portfolio.js') }}"></script>
+<script>
+  window.__PROFESSION_UI__ = {
+    techTileClickHint: {{ basic_locale.ui.get('techTileClickHint', '') | tojson }}
+  };
+</script>
 <script src="{{ url_for('static', path='js/tech-tile-dropdown.js') }}"></script>
+<script src="{{ url_for('static', path='js/tech-tile-glint.js') }}"></script>
+{# Debug: блики на первых трех икеонках для отладки. #}
+{# <script src="{{ url_for('static', path='js/tech-tile-glint-debug.js') }}"></script> #}
 {% endblock %}

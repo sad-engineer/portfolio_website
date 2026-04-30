@@ -3,6 +3,12 @@
   --tech-tile-bg: var(--surface-tile); /* Фон плитки: токен --surface-tile в base.css. */
   --tech-tile-bg-hover: var(--surface-dark); /* Hover: светлая подложка из палитры. */
   --tech-icon-color: var(--text-dark); /* Иконки на светлой плитке. */
+  --tech-glint-color: color-mix(in srgb, var(--surface) 100%, transparent); /* Более яркий цвет блика. */
+  --tech-glint-opacity: 1; /* Непрозрачность блика по аналогии с баннером. */
+  --tech-glint-duration: 900ms; /* Длительность пролета блика по иконке. */
+  --tech-glint-first-delay: 0ms; /* Задержка первой иконки в группе. */
+  --tech-glint-second-delay: 140ms; /* Задержка второй иконки в группе. */
+  --tech-glint-third-delay: 280ms; /* Задержка третьей иконки в группе. */
 }
 
 /* Сетка плиток-иконок фиксированного размера. */
@@ -32,6 +38,53 @@
   cursor: help; /* Показывает курсор в виде вопроса при наведении. */
   transition: background 0.15s ease, transform 0.15s ease; /* Плавный переход для эффектов hover. */
   overflow: hidden; /* Скрывает контент, выходящий за границы плитки. */
+}
+
+/* Световой блик иконки: сложная траектория по контуру квадрата с дугой через центр. */
+.tech-tile::after {
+  content: ""; /* Декоративный слой блика. */
+  position: absolute; /* Отдельный слой внутри плитки. */
+  top: 0;
+  left: 0;
+  width: 100px; /* Диаметр светового круга. */
+  height: 100px; /* Диаметр светового круга. */
+  border-radius: 50%; /* Гарантирует круговую форму блика. */
+  background: radial-gradient(circle, color-mix(in srgb, var(--tech-glint-color) 100%, transparent) 0%, color-mix(in srgb, var(--tech-glint-color) 96%, transparent) 30%, color-mix(in srgb, var(--tech-glint-color) 72%, transparent) 55%, color-mix(in srgb, var(--tech-glint-color) 36%, transparent) 74%, transparent 100%); /* Более контрастный круглый блик с мягкими краями. */
+  opacity: 0; /* Скрыт до старта анимации. */
+  filter: blur(2.5px); /* Легкое свечение, как у яркого блика баннера. */
+  pointer-events: none; /* Не перехватывает клики по иконке. */
+  z-index: 3; /* Выше иконки/картинки и фоновой маски плитки. */
+  offset-path: path("M -20 5 L 30 5 A 30 30 0 0 1 30 55 L -20 55 "); /* Старт/финиш вне иконки: верхняя грань -> дуга -> нижняя грань. */
+  offset-distance: 0%;
+  offset-rotate: auto; /* Поворачивает блик по касательной траектории. */
+  transform: translate(-5%, -5%);
+}
+
+/* Триггер анимации блика, класс ставится скриптом для выбранных иконок. */
+.tech-tile.is-glinting::after {
+  animation-name: tech-tile-glint-path;
+  animation-duration: var(--tech-glint-duration);
+  animation-delay: var(--tech-glint-delay, 0ms);
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+/* Движение блика по заданному пути с плавным появлением/исчезновением. */
+@keyframes tech-tile-glint-path {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  14% {
+    opacity: var(--tech-glint-opacity);
+  }
+  86% {
+    opacity: var(--tech-glint-opacity);
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
 }
 
 /* Вариант плитки для SVG-маски: фон рисуется через псевдо-элемент. */
@@ -153,6 +206,48 @@
   display: none; /* Скрывает встроенный маркер details в WebKit-браузерах. */
 }
 
+/* Подсказка о кликабельности: показывается у первой иконки при загрузке страницы. */
+.tech-tile-dropdown__trigger.tech-tile-dropdown__trigger--click-hint::after {
+  content: attr(data-tech-click-hint); /* Берет текст подсказки из атрибута, который задается JS из i18n JSON. */
+  position: absolute; /* Позиционирует подсказку относительно summary-триггера. */
+  left: 0; /* Прижимает подсказку к левому краю триггера. */
+  top: calc(100% + 8px); /* Размещает подсказку под иконкой с небольшим вертикальным зазором. */
+  padding: 6px 8px; /* Добавляет внутренние отступы для читаемости текста подсказки. */
+  border-radius: 6px; /* Скругляет углы подсказки для мягкого визуального вида. */
+  background: color-mix(in srgb, var(--surface) 96%, transparent); /* Дает светлый полупрозрачный фон подсказки на базе палитры. */
+  border: 1px solid var(--line); /* Добавляет контрастную рамку подсказки. */
+  color: var(--text-dark); /* Устанавливает цвет текста подсказки из глобальной палитры. */
+  font-size: 1.1rem; /* Задает компактный размер шрифта для короткой служебной подсказки. */
+  line-height: 1.5; /* Удерживает плотную высоту строки без лишней вертикали. */
+  white-space: pre; /* Сохраняет переносы по \n и не переносит строки по пробелам. */
+  width: max-content; /* Растягивает подсказку по содержимому без искусственного сжатия. */
+  max-width: 260px; /* Ограничивает ширину подсказки для безопасного вьюпорта. */
+  z-index: 60; /* Поднимает подсказку выше иконок/плиток внутри текущей сетки. */
+  pointer-events: none; /* Отключает перехват кликов и ховера подсказкой. */
+  opacity: 0; /* Стартовая прозрачность до анимационного появления. */
+  transform: translateY(-2px); /* Легко смещает подсказку вверх в стартовой фазе анимации. */
+  animation: tech-tile-click-hint 1500ms ease-out 1 both; /* 1с видно + 0.5с затухание. */
+}
+
+@keyframes tech-tile-click-hint {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  66.666% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+}
+
 /* Панель описания иконки: выпадает вниз и не перекрывает иконку. */
 .tech-tile-dropdown__menu {
   --tech-dropdown-max-width: 320px; /* Верхняя граница до переопределения скриптом от ширины контента. */
@@ -190,6 +285,13 @@
   transform: translateY(0); /* Возвращает панель в исходную позицию при открытии. */
   pointer-events: auto; /* Включает интерактивность панели описания иконки. */
   transition: opacity 140ms ease, transform 140ms ease, visibility 0ms; /* Мгновенно включает visibility при открытии. */
+}
+
+/* До завершения позиционирования (JS) держим панель скрытой, чтобы не мигала в точке top/left=0. */
+.tech-tile-dropdown[open]:not(.tech-tile-dropdown--ready) .tech-tile-dropdown__menu {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Заголовок и описание внутри выпадающей панели. */

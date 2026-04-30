@@ -112,5 +112,10 @@
         </div>
     </div>
 
+    <script>
+        window.__WORK_HOURS_REFRESH__ = {{ work_hours_refresh | tojson }};
+    </script>
+    <script src="{{ url_for('static', path='js/work-hours-refresh.js') }}"></script>
+
 </body>
 </html>
