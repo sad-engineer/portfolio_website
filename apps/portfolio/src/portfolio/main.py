@@ -3,11 +3,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from portfolio.dependencies import get_settings
-from portfolio.routers import pages_router
-from portfolio.routers.pages import LANG_COOKIE_NAME
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
+
+from portfolio.dependencies import get_settings
+from portfolio.routers import feedback_router, pages_router
+from portfolio.routers.pages import LANG_COOKIE_NAME
 
 
 def create_app() -> FastAPI:
@@ -57,6 +58,7 @@ def create_app() -> FastAPI:
     )
 
     my_app.include_router(pages_router)
+    my_app.include_router(feedback_router)
 
     return my_app
 

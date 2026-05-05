@@ -38,7 +38,8 @@
     <section class="feedback">
         <div class="container feedback__layout">
             <div class="feedback__left">
-                <p>{{ basic_locale.feedback.bannerText }}</p>
+                <p class="feedback__intro">{{ basic_locale.feedback.bannerText }}</p>
+                <p class="small-title feedback__social-title">{{ basic_locale.feedback.socialTitle }}</p>
                 <div class="feedback__social" aria-label="{{ basic_locale.ui.socialLinksAriaLabel }}">
                     {% for item in social_links %}
                     <a class="site-social-link" href="{{ item.url }}" {% if item.url.startswith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}>
@@ -51,7 +52,30 @@
                     {% endfor %}
                 </div>
             </div>
-            <form class="feedback-form feedback__right" id="feedback-form" action="#" method="post">
+            <form
+                class="feedback-form feedback__right"
+                id="feedback-form"
+                action="/api/feedback"
+                method="post"
+                novalidate
+                data-feedback-endpoint="/api/feedback"
+                data-feedback-lang="{{ current_lang }}"
+                data-feedback-page="{{ request.url.path }}"
+                data-msg-submit-default="{{ basic_locale.feedback.form.submitButtonText }}"
+                data-msg-submit-call="{{ basic_locale.feedback.form.submitButtonText }}"
+                data-msg-submit-message="{{ basic_locale.feedback.form.messageModeSubmitButtonText }}"
+                data-form-title-call="{{ basic_locale.feedback.form.title }}"
+                data-form-title-message="{{ basic_locale.feedback.form.messageModeTitle }}"
+                data-input-label-phone="{{ basic_locale.feedback.form.phoneInputLabel }}"
+                data-input-placeholder-phone="{{ basic_locale.feedback.form.phoneInputPlaceholder }}"
+                data-input-label-email="{{ basic_locale.feedback.form.emailInputLabel }}"
+                data-input-placeholder-email="{{ basic_locale.feedback.form.emailInputPlaceholder }}"
+                data-msg-submit-sending="{{ basic_locale.feedback.form.sendingText }}"
+                data-msg-validation-error="{{ basic_locale.feedback.form.validationErrorText }}"
+                data-msg-request-error="{{ basic_locale.feedback.form.requestErrorText }}"
+                data-msg-success-working-hours="{{ basic_locale.feedback.form.successWorkingHoursText }}"
+                data-msg-success-off-hours="{{ basic_locale.feedback.form.successOffHoursText }}"
+            >
                 <h2>{{ basic_locale.feedback.form.title }}</h2>
                 <div class="feedback-form__phone-row">
                     <div class="feedback-form__phone-field">
@@ -64,7 +88,7 @@
                 <p class="small-title">{{ basic_locale.feedback.form.subtitle }}</p>
                 <div class="channels">
                     {% for option in basic_locale.feedback.form.channelOptions %}
-                    <label><input type="checkbox" name="channel" value="{{ option.value }}" /> {{ option.label }}</label>
+                    <label><input type="checkbox" name="channel" value="{{ option.value }}" {% if option.value == 'call' %}checked{% endif %} /> {{ option.label }}</label>
                     {% endfor %}
                 </div>
 
@@ -80,6 +104,7 @@
                     {% endif %}
                     {{ consent_with_link | safe }}
                 </label>
+                <p class="feedback-form__status" id="feedback-form-status" role="status" aria-live="polite"></p>
             </form>
         </div>
     </section>
@@ -124,9 +149,8 @@
         </div>
     </div>
 
-    <script>
-        window.__WORK_HOURS_REFRESH__ = {{ work_hours_refresh | tojson }};
-    </script>
+    <script id="work-hours-refresh-config" type="application/json">{{ work_hours_refresh | tojson }}</script>
+    <script src="{{ url_for('static', path='js/feedback-form.js') }}"></script>
     <script src="{{ url_for('static', path='js/work-hours-refresh.js') }}"></script>
 
 </body>

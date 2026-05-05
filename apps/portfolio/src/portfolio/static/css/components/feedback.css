@@ -8,6 +8,7 @@
   --text-color: var(--text-head-dark); /* Цвет текста внутри контейнера профессии. */
   --opacity-bg: 0.92; /* Прозрачность фонового слоя контейнера. */
   --phone-input-width: 200px; /* Базовая ширина поля ввода телефона в правой колонке формы. */
+  --height: 350px; /* Высота формы обратной связи. */
 }
 
 /* Секция формы обратной связи между основным контентом и нижней полосой. */
@@ -19,11 +20,12 @@
   padding: 16px 16px; /* Внутренние отступы секции по вертикали. */
   margin: var(--margin-top) auto 0; /* Центрирует блок и задает верхний отступ от контента. */
   color: var(--text-color); /* Цвет текста секции обратной связи. */
+  min-height: var(--height); /* Минимальная высота секции обратной связи. */
 }
 
 .feedback h2 {
   font-size: 2.1rem; /* Размер шрифта заголовка секции обратной связи. */
-  margin: 16px 0 16px 0; /* Отступ сверху и снизу заголовка секции обратной связи. */
+  margin: 8px 0 8px 0; /* Отступ сверху и снизу заголовка секции обратной связи. */
   text-align: center; /* Центрирует текст заголовка секции обратной связи. */
 }
 
@@ -32,8 +34,6 @@
   line-height: 1.5; /* Межстрочный интервал текста секции обратной связи. */
   margin: 8px 0 8px 0; /* Отступ сверху и снизу заголовка секции обратной связи. */
   white-space: pre-line; /* Сохраняет переносы строк в тексте. */
-
-
 }
 
 /* Двухколоночная раскладка блока обратной связи. */
@@ -47,27 +47,38 @@
 /* Левая колонка: подзаголовок и плитка соцсетей. */
 .feedback__left {
   display: grid; /* Упорядочивает контент левой колонки по вертикальным зонам. */
-  grid-template-rows: 1fr auto 1fr auto 1fr; /* Делает одинаковые отступы до/после подзаголовка и после блока иконок. */
+  grid-template-rows: 1fr auto auto 1fr auto 1fr; /* Текст, подпись над иконками, иконки. */
   align-content: stretch; /* Растягивает контент левой колонки по высоте. */
   align-self: stretch; /* Гарантирует растяжение левой колонки на высоту правой. */
   min-height: 100%; /* Занимает всю доступную высоту левого столбца. */
 }
 
-/* Подзаголовок в левой колонке формы обратной связи. */
-.feedback__left p {
+/* Основной текст в левой колонке формы обратной связи. */
+.feedback__left .feedback__intro {
   grid-row: 2; /* Ставит текст в фиксированную центральную зону между равными отступами. */
   margin: 0; /* Убирает внешние отступы, чтобы работала геометрия равных зон. */
+}
+
+/* Заголовок над социальными иконками. */
+.feedback__left .feedback__social-title {
+  grid-row: 3;
+  margin: 8px 0 0;
+  font-size: 2.1rem; /* Размер как у заголовка "Заказать звонок". */
+  line-height: 1.2;
+  font-weight: 700; /* Жирность заголовка как у h2. */
+  text-align: center; /* Выравнивание по центру. */
+  white-space: normal; /* Отключает переносы pre-line от общего правила .feedback p. */
 }
 
 /* Правая колонка: форма обратной связи. */
 .feedback__right {
   justify-self: stretch; /* Растягивает форму на ширину правой колонки. */
-  gap: 16px; /* Добавляет отступ между элементами правой колонки. */
+  gap: 8px; /* Добавляет отступ между элементами правой колонки. */
 }
 
 /* Плитка социальных иконок в левой колонке формы. */
 .feedback__social {
-  grid-row: 4; /* Ставит плитку иконок после равного промежутка под подзаголовком. */
+  grid-row: 5; /* Ставит плитку иконок под заголовком над ними. */
   display: grid; /* Раскладывает иконки в сетку. */
   grid-template-rows: repeat(1, 60px); /* Формирует ровно два ряда иконок. */
   grid-auto-flow: column; /* Добавляет новые элементы по колонкам, сохраняя 2 ряда. */
@@ -94,7 +105,7 @@
 /* Сетка полей формы обратной связи. */
 .feedback-form {
   display: grid; /* Раскладывает элементы формы по grid. */
-  gap: 10px; /* Интервал между элементами формы. */
+  gap: 8px; /* Интервал между элементами формы. */
   max-width: 100%; /* Заполняет правую колонку без искусственного ограничения. */
 }
 
@@ -138,6 +149,29 @@
 .consent {
   font-size: 0.95rem; /* Уменьшенный размер текста для служебной информации. */
   line-height: 1.5; /* Межстрочный интервал текста для служебной информации. */
+  transition: color 0.2s ease;
+}
+
+/* Визуальный акцент на согласии при попытке отправки без галочки. */
+.consent.consent--attention input[type="checkbox"] {
+  border-radius: 3px;
+  outline-offset: 1px;
+  box-shadow:
+    0 0 0 5px color-mix(in srgb, var(--banner) 25%, transparent),
+    0 0 18px 6px color-mix(in srgb, var(--banner) 52%, transparent),
+    0 0 26px 14px color-mix(in srgb, var(--banner) 38%, transparent);
+  transition: box-shadow 0.2s ease, outline-color 0.2s ease;
+}
+
+/* Такой же визуальный акцент для поля ввода при ошибке. */
+.feedback-form input[type="text"].feedback-form__input--attention {
+  border-radius: 3px;
+  outline-offset: 1px;
+  box-shadow:
+    0 0 0 5px color-mix(in srgb, var(--banner) 25%, transparent),
+    0 0 18px 6px color-mix(in srgb, var(--banner) 52%, transparent),
+    0 0 26px 14px color-mix(in srgb, var(--banner) 38%, transparent);
+  transition: box-shadow 0.2s ease, outline-color 0.2s ease;
 }
 
 /* Ссылка в тексте согласия: стиль как в нижнем legal-блоке. */
@@ -179,6 +213,27 @@
 /* Ховер-состояние кнопки формы обратной связи. */
 .feedback__submit:hover {
   background: color-mix(in srgb, var(--button-bg) 85%, var(--overlay-light)); /* Легкое осветление кнопки при наведении. */
+}
+
+.feedback__submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.feedback-form__status {
+  min-height: 1.4em;
+  margin: 2px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.feedback-form__status--success {
+  color: var(--banner);
+}
+
+.feedback-form__status--error {
+  color: var(--banner);
 }
 
 /* На узких экранах колонки складываются в вертикальный поток. */

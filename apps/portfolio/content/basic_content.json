@@ -42,20 +42,30 @@
   },
   "feedback": {
     "bannerText": "Есть интересная задача или сложный проект?\nНе знаете специалиста для комплексного решения проблемы?\nСвяжитесь со мной любым способом или закажите звонок ниже. Я постараюсь помочь вам советом, идеей или предложу путь решения проблемы.",
+    "socialTitle": "Хочу написать сам",
     "form": {
       "title": "Заказать звонок",
+      "messageModeTitle": "Заказать feedback",
       "phoneInputLabel": "Ваш номер",
       "phoneInputPlaceholder": "+7 (___) ___-__-__",
+      "emailInputLabel": "Ваш email",
+      "emailInputPlaceholder": "ivan.petrov@example.com",
       "subtitle": "Куда звонить / писать?",
       "channelOptions": [
+        { "value": "call", "label": "Звонок" },
         { "value": "telegram", "label": "Telegram" },
         { "value": "whatsapp", "label": "WhatsApp" },
         { "value": "viber", "label": "Viber" },
-        { "value": "email", "label": "Почта" },
-        { "value": "call", "label": "Звонок" }
+        { "value": "email", "label": "Почта" }
       ],
       "consentText": "Ставя галочку, даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности",
-      "submitButtonText": "Хочу звонок!"
+      "submitButtonText": "Хочу звонок!",
+      "messageModeSubmitButtonText": "Хочу сообщение!",
+      "requestErrorText": "Не удалось отправить запрос. Попробуйте еще раз.",
+      "validationErrorText": "Проверьте заполнение формы.",
+      "sendingText": "Отправка...",
+      "successWorkingHoursText": "Ваш запрос отправлен. Специалист свяжется с Вами в ближайшее время.",
+      "successOffHoursText": "Ваш запрос отправлен. Специалист свяжется с Вами в рабочее время."
     }
   },
   "links": {
@@ -93,20 +103,30 @@
       },
       "feedback": {
         "bannerText": "Have an interesting task or a complex project? Need someone who can deliver an end-to-end solution? Contact me in any convenient way or request a call below. I will try to help with advice, ideas, or suggest a way to solve the problem.",
+        "socialTitle": "I want to write myself",
         "form": {
           "title": "Call me",
+          "messageModeTitle": "Request feedback",
           "phoneInputLabel": "Your phone number",
           "phoneInputPlaceholder": "+7 (___) ___-__-__",
+          "emailInputLabel": "Your email",
+          "emailInputPlaceholder": "name@example.com",
           "subtitle": "Where to call / write?",
           "channelOptions": [
+            { "value": "call", "label": "Call" },
             { "value": "telegram", "label": "Telegram" },
             { "value": "whatsapp", "label": "WhatsApp" },
             { "value": "viber", "label": "Viber" },
-            { "value": "email", "label": "Email" },
-            { "value": "call", "label": "Call" }
+            { "value": "email", "label": "Email" }
           ],
           "consentText": "By checking the box, I consent to the processing of personal data and agree to the privacy policy.",
-          "submitButtonText": "Call me!"
+          "submitButtonText": "Call me!",
+          "messageModeSubmitButtonText": "Send message!",
+          "requestErrorText": "Failed to send your request. Please try again.",
+          "validationErrorText": "Please check the form fields.",
+          "sendingText": "Sending...",
+          "successWorkingHoursText": "Your request has been sent. A specialist will contact you shortly.",
+          "successOffHoursText": "Your request has been sent. A specialist will contact you during working hours."
         }
       },
       "links": {

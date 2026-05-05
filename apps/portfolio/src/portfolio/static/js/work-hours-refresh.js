@@ -1,5 +1,16 @@
 (function () {
-  var config = window.__WORK_HOURS_REFRESH__;
+  var configNode = document.getElementById("work-hours-refresh-config");
+  var config = null;
+  if (configNode && typeof configNode.textContent === "string") {
+    try {
+      config = JSON.parse(configNode.textContent);
+    } catch (_error) {
+      config = null;
+    }
+  }
+  if (!config) {
+    config = window.__WORK_HOURS_REFRESH__;
+  }
   if (!config || typeof config !== "object") {
     return;
   }
