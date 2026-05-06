@@ -10,7 +10,6 @@ from zoneinfo import ZoneInfo
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-
 from portfolio.dependencies import (
     get_settings,
     get_site_content,
@@ -27,11 +26,7 @@ LANG_COOKIE_NAME = "portfolio_lang"
 def _deep_merge_dicts(base: dict, overlay: dict) -> dict:
     merged = deepcopy(base)
     for key, value in overlay.items():
-        if (
-            key in merged
-            and isinstance(merged[key], dict)
-            and isinstance(value, dict)
-        ):
+        if key in merged and isinstance(merged[key], dict) and isinstance(value, dict):
             merged[key] = _deep_merge_dicts(merged[key], value)
         else:
             merged[key] = deepcopy(value)
@@ -144,9 +139,7 @@ def _period_end_sort_key(item: dict) -> tuple[int, int]:
     """Возвращает ключ сортировки по дате окончания периода (месяц, год)."""
     period = str(item.get("period", ""))
     period_parts = period.split("-", 1)
-    period_end = (
-        period_parts[1].strip() if len(period_parts) > 1 else period.strip()
-    )
+    period_end = period_parts[1].strip() if len(period_parts) > 1 else period.strip()
     match = PERIOD_END_RE.search(period_end)
     if not match:
         return (0, 0)
@@ -236,11 +229,7 @@ def _profession_education_items(
 
 def _append_lang_query(href: str, lang: str) -> str:
     """Добавляет lang= к внутренним путям, чтобы навигация не сбрасывала локаль."""
-    if (
-        not isinstance(href, str)
-        or not href.startswith("/")
-        or href.startswith("//")
-    ):
+    if not isinstance(href, str) or not href.startswith("/") or href.startswith("//"):
         return href
     if "lang=" in href:
         return href
@@ -282,9 +271,7 @@ def _load_values_locale(current_lang: str) -> dict:
 
     # Базовые значения + локализованный overlay в i18n.<lang>
     base_values = {
-        key: deepcopy(value)
-        for key, value in values_payload.items()
-        if key != "i18n"
+        key: deepcopy(value) for key, value in values_payload.items() if key != "i18n"
     }
     i18n_values = values_payload.get("i18n", {})
     if not isinstance(i18n_values, dict):
@@ -336,9 +323,9 @@ def _is_within_working_hours(values_locale: dict) -> bool:
         if offset_hours is None:
             now = datetime.now()
         else:
-            now = (
-                datetime.now(timezone.utc) + timedelta(hours=offset_hours)
-            ).replace(tzinfo=None)
+            now = (datetime.now(timezone.utc) + timedelta(hours=offset_hours)).replace(
+                tzinfo=None
+            )
     current_minutes = now.hour * 60 + now.minute
     weekday_key = str(now.isoweekday())
 
@@ -370,9 +357,7 @@ def _is_within_working_hours(values_locale: dict) -> bool:
     start_minutes = _parse_hhmm_to_minutes(
         values_locale.get("WORK_HOURS_START", "09:00")
     )
-    end_minutes = _parse_hhmm_to_minutes(
-        values_locale.get("WORK_HOURS_END", "18:00")
-    )
+    end_minutes = _parse_hhmm_to_minutes(values_locale.get("WORK_HOURS_END", "18:00"))
     if start_minutes is None or end_minutes is None:
         return True
     return start_minutes <= current_minutes < end_minutes
@@ -380,13 +365,9 @@ def _is_within_working_hours(values_locale: dict) -> bool:
 
 def _resolve_current_lang(request: Request, site_content: dict) -> str:
     supported_locales = tuple(
-        site_content.get("basic", {})
-        .get("site", {})
-        .get("locales", ["ru", "en"])
+        site_content.get("basic", {}).get("site", {}).get("locales", ["ru", "en"])
     )
-    default_locale = (
-        site_content.get("basic", {}).get("site", {}).get("language", "ru")
-    )
+    default_locale = site_content.get("basic", {}).get("site", {}).get("language", "ru")
 
     query_lang = request.query_params.get("lang")
     if query_lang in supported_locales:
@@ -401,15 +382,12 @@ def _resolve_current_lang(request: Request, site_content: dict) -> str:
     return supported_locales[0] if supported_locales else "ru"
 
 
-def _build_context(
-    request: Request, site_content: dict, ui_texts: dict
-) -> dict:
+def _build_context(request: Request, site_content: dict, ui_texts: dict) -> dict:
+    settings = get_settings()
     current_lang = _resolve_current_lang(request, site_content)
     values_locale = _load_values_locale(current_lang)
 
-    basic_locale = _localized_content_block(
-        site_content.get("basic", {}), current_lang
-    )
+    basic_locale = _localized_content_block(site_content.get("basic", {}), current_lang)
     main_locale = _main_locale_with_direction_lang(
         _localized_content_block(site_content.get("main", {}), current_lang),
         current_lang,
@@ -446,9 +424,7 @@ def _build_context(
         )
 
     profession_locale = {
-        key: _localized_profession_block(
-            site_content.get(key, {}), current_lang
-        )
+        key: _localized_profession_block(site_content.get(key, {}), current_lang)
         for key in _PROFESSION_KEYS
     }
     work_places_locale = _localized_content_block(
@@ -475,14 +451,10 @@ def _build_context(
 
     links = basic_locale.get("links", {})
     agreement_path = str(
-        links.get("userAgreement", {}).get(
-            "href", "/polzovatelskoe-soglashenie"
-        )
+        links.get("userAgreement", {}).get("href", "/polzovatelskoe-soglashenie")
     )
     privacy_path = str(
-        links.get("privacyPolicy", {}).get(
-            "href", "/politika-konfidencialnosti"
-        )
+        links.get("privacyPolicy", {}).get("href", "/politika-konfidencialnosti")
     )
 
     return {
@@ -498,14 +470,11 @@ def _build_context(
             "timezone": str(values_locale.get("WORK_TIMEZONE", "UTC")),
             "schedule": values_locale.get("WORK_SCHEDULE"),
             "work_days": str(values_locale.get("WORK_DAYS", "1,2,3,4,5")),
-            "work_hours_start": str(
-                values_locale.get("WORK_HOURS_START", "09:00")
-            ),
-            "work_hours_end": str(
-                values_locale.get("WORK_HOURS_END", "18:00")
-            ),
+            "work_hours_start": str(values_locale.get("WORK_HOURS_START", "09:00")),
+            "work_hours_end": str(values_locale.get("WORK_HOURS_END", "18:00")),
             "is_within_working_hours": show_phone_link,
         },
+        "turnstile_site_key": settings.feedback_turnstile_site_key,
         "profession_locale": profession_locale,
         "work_places_locale": work_places_locale,
         "profession_work_experience": profession_work_experience,
@@ -514,9 +483,7 @@ def _build_context(
         "education_locale": education_locale,
         "profession_education": profession_education,
         "home_href": _append_lang_query("/main", current_lang),
-        "user_agreement_href": _append_lang_query(
-            agreement_path, current_lang
-        ),
+        "user_agreement_href": _append_lang_query(agreement_path, current_lang),
         "privacy_policy_href": _append_lang_query(privacy_path, current_lang),
     }
 

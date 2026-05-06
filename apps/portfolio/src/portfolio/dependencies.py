@@ -6,7 +6,6 @@ from datetime import date
 from functools import lru_cache
 
 from fastapi.templating import Jinja2Templates
-
 from portfolio.config import Settings
 
 PLACEHOLDER_RE = re.compile(r"\{\{([A-Za-z0-9_]+)\}\}")
@@ -25,8 +24,7 @@ def _replace_placeholders(data: object, values: dict[str, str]) -> object:
 
     if isinstance(data, dict):
         return {
-            key: _replace_placeholders(value, values)
-            for key, value in data.items()
+            key: _replace_placeholders(value, values) for key, value in data.items()
         }
 
     return data
@@ -39,9 +37,7 @@ def _build_template_values(settings: Settings) -> dict[str, str]:
 
     if not isinstance(values_payload, dict):
         values_payload = {}
-    base_values = {
-        key: value for key, value in values_payload.items() if key != "i18n"
-    }
+    base_values = {key: value for key, value in values_payload.items() if key != "i18n"}
     i18n_values = values_payload.get("i18n", {})
     locale_overlay: dict = {}
     if isinstance(i18n_values, dict):
@@ -49,9 +45,19 @@ def _build_template_values(settings: Settings) -> dict[str, str]:
         if isinstance(raw_overlay, dict):
             locale_overlay = raw_overlay
     merged_values = {**base_values, **locale_overlay}
-    values: dict[str, str] = {
-        key: str(value) for key, value in merged_values.items()
+    values: dict[str, str] = {key: str(value) for key, value in merged_values.items()}
+
+    env_overrides = {
+        "PHONE_E164": settings.phone_e164,
+        "GITHUB_URL": settings.github_url,
+        "TELEGRAM_URL": settings.telegram_url,
+        "PROFI_RU_URL": settings.profi_ru_url,
+        "HH_RU_URL": settings.hh_ru_url,
+        "FREELANCE_RU_URL": settings.freelance_ru_url,
     }
+    for key, value in env_overrides.items():
+        if value:
+            values[key] = str(value)
 
     # Дополнительно экспортируем значения локалей как KEY_<LOCALE>, например ADDRESS_EN.
     # Это нужно для плейсхолдеров в переводах юридических документов.
@@ -90,9 +96,7 @@ def _build_template_values(settings: Settings) -> dict[str, str]:
 
     if start_dates:
         earliest_start_date = min(start_dates)
-        values["EXPERIENCE_DAYS"] = str(
-            (date.today() - earliest_start_date).days
-        )
+        values["EXPERIENCE_DAYS"] = str((date.today() - earliest_start_date).days)
     else:
         start_date_str = values.get("EXPERIENCE_START_DATE")
         if start_date_str:
@@ -142,9 +146,7 @@ def get_site_content() -> dict:
         content_path = settings.content_dir / filename
         with content_path.open("r", encoding="utf-8-sig") as file:
             raw_content = json.load(file)
-            content[section_name] = _replace_placeholders(
-                raw_content, template_values
-            )
+            content[section_name] = _replace_placeholders(raw_content, template_values)
 
     return content
 

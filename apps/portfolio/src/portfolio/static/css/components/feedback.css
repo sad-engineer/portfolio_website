@@ -138,6 +138,30 @@
   min-width: 220px; /* Не дает полю схлопываться до нечитабельной ширины. */
 }
 
+/* Honeypot-поле: скрыто визуально и недоступно обычному пользователю. */
+.feedback-form__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.feedback-form__verification {
+  margin: 4px 0 2px;
+  min-height: 72px;
+}
+
+.feedback-form__turnstile {
+  display: none;
+}
+
+.feedback-form__turnstile--active {
+  display: block;
+}
+
 /* Контейнер чекбоксов каналов связи. */
 .channels {
   display: flex; /* Раскладывает чекбоксы в строку. */
@@ -221,11 +245,16 @@
 }
 
 .feedback-form__status {
+  display: none;
   min-height: 1.4em;
   margin: 2px 0 0;
   font-size: 0.95rem;
   line-height: 1.45;
   font-weight: 700;
+}
+
+.feedback-form__status--visible {
+  display: block;
 }
 
 .feedback-form__status--success {

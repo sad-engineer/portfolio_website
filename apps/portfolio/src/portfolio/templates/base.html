@@ -61,6 +61,7 @@
                 data-feedback-endpoint="/api/feedback"
                 data-feedback-lang="{{ current_lang }}"
                 data-feedback-page="{{ request.url.path }}"
+                data-turnstile-site-key="{{ turnstile_site_key }}"
                 data-msg-submit-default="{{ basic_locale.feedback.form.submitButtonText }}"
                 data-msg-submit-call="{{ basic_locale.feedback.form.submitButtonText }}"
                 data-msg-submit-message="{{ basic_locale.feedback.form.messageModeSubmitButtonText }}"
@@ -84,6 +85,10 @@
                     </div>
                     <button class="feedback__submit" type="submit">{{ basic_locale.feedback.form.submitButtonText }}</button>
                 </div>
+                <div class="feedback-form__hp" aria-hidden="true">
+                    <label for="fullname">Ваше имя</label>
+                    <input id="fullname" name="fullname" type="text" autocomplete="off" tabindex="-1" />
+                </div>
 
                 <p class="small-title">{{ basic_locale.feedback.form.subtitle }}</p>
                 <div class="channels">
@@ -104,7 +109,12 @@
                     {% endif %}
                     {{ consent_with_link | safe }}
                 </label>
-                <p class="feedback-form__status" id="feedback-form-status" role="status" aria-live="polite"></p>
+                <div class="feedback-form__verification" id="feedback-form-verification">
+                    {% if turnstile_site_key %}
+                    <div class="feedback-form__turnstile" id="feedback-turnstile"></div>
+                    {% endif %}
+                    <p class="feedback-form__status" id="feedback-form-status" role="status" aria-live="polite"></p>
+                </div>
             </form>
         </div>
     </section>
@@ -150,6 +160,9 @@
     </div>
 
     <script id="work-hours-refresh-config" type="application/json">{{ work_hours_refresh | tojson }}</script>
+    {% if turnstile_site_key %}
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    {% endif %}
     <script src="{{ url_for('static', path='js/feedback-form.js') }}"></script>
     <script src="{{ url_for('static', path='js/work-hours-refresh.js') }}"></script>
 
