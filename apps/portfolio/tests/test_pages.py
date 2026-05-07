@@ -16,6 +16,7 @@ def isolate_feedback_delivery_env(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("FEEDBACK_TURNSTILE_SECRET_KEY", "")
     monkeypatch.setenv("FEEDBACK_RATE_LIMIT_MAX_REQUESTS", "1000")
     monkeypatch.setenv("FEEDBACK_RATE_LIMIT_MIN_INTERVAL_SECONDS", "0")
+    monkeypatch.setenv("FEEDBACK_DATABASE_URL", "")
     get_settings.cache_clear()
     yield
     get_settings.cache_clear()
@@ -102,6 +103,40 @@ async def test_feedback_email_required_if_channel_email_selected() -> None:
         )
 
     assert response.status_code == 422
+
+
+@pytest.mark.asyncio
+async def test_feedback_rejects_monotonic_phone_pattern() -> None:
+    async with AsyncClient(app=app, base_url="http://testserver") as client:
+        response = await client.post(
+            "/api/feedback",
+            json={
+                "phone": "12345678",
+                "channels": ["call"],
+                "consent": True,
+                "page": "/main",
+                "lang": "ru",
+            },
+        )
+
+    assert response.status_code == 422
+
+
+@pytest.mark.asyncio
+async def test_feedback_accepts_local_ru_phone_and_normalizes() -> None:
+    async with AsyncClient(app=app, base_url="http://testserver") as client:
+        response = await client.post(
+            "/api/feedback",
+            json={
+                "phone": "8 (912) 345-67-89",
+                "channels": ["call"],
+                "consent": True,
+                "page": "/main",
+                "lang": "ru",
+            },
+        )
+
+    assert response.status_code == 200
 
 
 @pytest.mark.asyncio

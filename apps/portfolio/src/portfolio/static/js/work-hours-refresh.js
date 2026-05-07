@@ -141,7 +141,7 @@
 
   var initialState = Boolean(config.is_within_working_hours);
   var isReloading = false;
-  var checkIntervalMs = 15000;
+  var checkIntervalMs = 60000;
 
   function checkAndReload() {
     if (isReloading) {

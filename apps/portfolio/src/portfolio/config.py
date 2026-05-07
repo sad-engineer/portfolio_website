@@ -52,6 +52,12 @@ class Settings(BaseSettings):
     feedback_telegram_chat_id: str = Field(
         default="", alias="FEEDBACK_TELEGRAM_CHAT_ID"
     )
+    feedback_telegram_timeout_seconds: int = Field(
+        default=30, alias="FEEDBACK_TELEGRAM_TIMEOUT_SECONDS"
+    )
+    feedback_telegram_proxy_url: str = Field(
+        default="", alias="FEEDBACK_TELEGRAM_PROXY_URL"
+    )
     feedback_delivery_retries: int = Field(default=2, alias="FEEDBACK_DELIVERY_RETRIES")
     feedback_delivery_retry_delay_ms: int = Field(
         default=400, alias="FEEDBACK_DELIVERY_RETRY_DELAY_MS"
@@ -65,5 +71,6 @@ class Settings(BaseSettings):
     feedback_rate_limit_min_interval_seconds: int = Field(
         default=120, alias="FEEDBACK_RATE_LIMIT_MIN_INTERVAL_SECONDS"
     )
+    feedback_database_url: str = Field(default="", alias="FEEDBACK_DATABASE_URL")
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
