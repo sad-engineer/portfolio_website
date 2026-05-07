@@ -33,6 +33,17 @@ async def test_index_returns_ok() -> None:
 
 
 @pytest.mark.asyncio
+async def test_robots_txt_returns_plain_text() -> None:
+    async with AsyncClient(app=app, base_url="http://testserver") as client:
+        response = await client.get("/robots.txt")
+
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/plain")
+    assert "User-agent: *" in response.text
+    assert "Disallow: /api/" in response.text
+
+
+@pytest.mark.asyncio
 async def test_feedback_post_success() -> None:
     async with AsyncClient(app=app, base_url="http://testserver") as client:
         response = await client.post(

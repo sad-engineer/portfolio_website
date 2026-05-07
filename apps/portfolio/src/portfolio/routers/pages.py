@@ -8,7 +8,7 @@ from typing import Optional
 from zoneinfo import ZoneInfo
 
 from fastapi import APIRouter, Depends, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, PlainTextResponse
 from fastapi.templating import Jinja2Templates
 from portfolio.dependencies import (
     get_settings,
@@ -31,6 +31,14 @@ def _deep_merge_dicts(base: dict, overlay: dict) -> dict:
         else:
             merged[key] = deepcopy(value)
     return merged
+
+
+def _load_robots_txt() -> str:
+    settings = get_settings()
+    robots_path = settings.content_dir / "robots.txt"
+    if robots_path.exists():
+        return robots_path.read_text(encoding="utf-8-sig")
+    return "User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /*?lang=\n"
 
 
 def _localized_content_block(block: dict, current_lang: str) -> dict:
@@ -499,6 +507,12 @@ async def index(
     return templates.TemplateResponse(
         "main.html", _build_context(request, site_content, ui_texts)
     )
+
+
+@router.get("/robots.txt", response_class=PlainTextResponse)
+async def robots_txt() -> PlainTextResponse:
+    """Файл robots.txt для поисковых роботов."""
+    return PlainTextResponse(_load_robots_txt(), media_type="text/plain")
 
 
 @router.get("/main", response_class=HTMLResponse)
