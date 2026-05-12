@@ -88,7 +88,30 @@
 /* Период работы под названием компании. */
 .profession-work-experience__period {
   margin: 0 0 16px; /* Отделяет период от заголовка списка достижений. */
-  color: var(--profession-work-muted-color); /* Выводит служебную информацию более спокойным тоном. */
+  color: var(--profession-work-muted-color); /* Служебная строка дат; тип в .employment-type перекрывает цвет. */
+  max-width: 100%;
+  line-height: 1.45; /* Запас под высоту строки и акцентный фрагмент в скобках. */
+}
+
+/*
+ * Горизонтальный скролл только здесь: overflow на самом <p> внутри flex-колонки
+ * давал min-height:auto → 0 и обрезал строку по вертикали (спец. правило Flexbox).
+ */
+.profession-work-experience__period-scroll {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Период и тип занятости (если не full-time) остаются на одной логической строке. */
+.profession-work-experience__period-line {
+  white-space: nowrap;
+}
+
+/* Подпись типа занятости для неполной занятости — акцентный цвет палитры блока. */
+.profession-work-experience__employment-type {
+  color: var(--profession-work-metric-color);
 }
 
 /* Подзаголовки "Достижения" / "Что делал". */
@@ -142,6 +165,15 @@
   flex-direction: column; /* Складывает заголовки и список сверху вниз в единую колонку. */
   min-height: var(--profession-work-column-min-height); /* Разрешает дочернему списку с overflow занимать доступную высоту без переполнения. */
   overflow: hidden; /* Фиксирует заголовки в колонке и прокручивает только список. */
+}
+
+/* Заголовки колонок и период не сжимаются — высота строк сохраняется (flex). */
+.profession-work-experience__left > .profession-work-experience__title,
+.profession-work-experience__left > .profession-work-experience__company,
+.profession-work-experience__left > .profession-work-experience__period,
+.profession-work-experience__left > .profession-work-experience__subtitle,
+.profession-work-experience__right > .profession-work-experience__subtitle {
+  flex-shrink: 0;
 }
 
 /* Списки в колонках — единственные прокручиваемые области контента. */

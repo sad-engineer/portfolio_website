@@ -8,7 +8,13 @@
                 <div class="profession-work-experience__left">
                     <h2 class="profession-work-experience__title">{{ work_places_locale.sectionTitle }}</h2>
                     <h3 class="profession-work-experience__company">{{ item.company }}</h3>
-                    <p class="profession-work-experience__period">{{ item.period }}</p>
+                    <p class="profession-work-experience__period">
+                        <span class="profession-work-experience__period-scroll">
+                            <span class="profession-work-experience__period-line">
+                                {{ item.period }}{% if item.get("type", "full-time") != "full-time" %}<span class="profession-work-experience__employment-type"> ({{ item.type }})</span>{% endif %}
+                            </span>
+                        </span>
+                    </p>
                     <h4 class="profession-work-experience__subtitle">{{ work_places_locale.whatDoingTitle }}</h4>
                     <ul class="profession-work-experience__list column scrollbar">
                         {% for task in item.get("what_doing", []) %}

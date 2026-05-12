@@ -217,9 +217,7 @@ def _send_feedback_telegram_sync(
         raise RuntimeError(f"Telegram API HTTPError: {exc.code}") from exc
     except error.URLError as exc:
         reason = getattr(exc, "reason", exc)
-        raise RuntimeError(
-            f"Не удалось подключиться к Telegram API: {reason}"
-        ) from exc
+        raise RuntimeError(f"Не удалось подключиться к Telegram API: {reason}") from exc
 
 
 async def _run_with_retry(coro_factory, retries: int, delay_ms: int) -> None:

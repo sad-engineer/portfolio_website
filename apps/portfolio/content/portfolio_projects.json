@@ -1,7 +1,7 @@
 {
   "sectionTitle": "Портфолио",
   "items": [
-    { "id": "portfolio-001", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 111111111111111111", "cardNumber": 111111111111111111 },
+    { "id": "001", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "МВГУ - мобильная водогрейная установка", "preview": "1.png" },
     { "id": "portfolio-002", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 222222222222222222", "cardNumber": 222222222222222222 },
     { "id": "portfolio-003", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 333333333333333333", "cardNumber": 333333333333333333 },
     { "id": "portfolio-004", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 444444444444444444", "cardNumber": 444444444444444444 },

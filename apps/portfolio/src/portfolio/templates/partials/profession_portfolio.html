@@ -10,7 +10,16 @@
             data-card-index="{{ loop.index0 }}"
             aria-label="{{ item.title }}"
         >
+            {% if item.preview %}
+            <img
+                class="profession-portfolio-card__preview"
+                src="{{ url_for('static', path='assets/projects/' ~ item.id ~ '/preview/' ~ item.preview) }}"
+                alt="{{ item.title }}"
+                loading="lazy"
+            />
+            {% else %}
             <span class="profession-portfolio-card__number">{{ item.cardNumber }}</span>
+            {% endif %}
         </article>
         {% endfor %}
     </div>
