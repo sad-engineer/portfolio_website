@@ -2,14 +2,31 @@
   "sectionTitle": "Портфолио",
   "items": [
     { "id": "001", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "МВГУ - мобильная водогрейная установка", "preview": "1.png" },
-    { "id": "portfolio-002", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 222222222222222222", "cardNumber": 222222222222222222 },
-    { "id": "portfolio-003", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 333333333333333333", "cardNumber": 333333333333333333 },
-    { "id": "portfolio-004", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 444444444444444444", "cardNumber": 444444444444444444 },
-    { "id": "portfolio-005", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 555555555555555555", "cardNumber": 555555555555555555 },
-    { "id": "portfolio-006", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 666666666666666666", "cardNumber": 666666666666666666 },
-    { "id": "portfolio-007", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 777777777777777777", "cardNumber": 777777777777777777 },
-    { "id": "portfolio-008", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 888888888888888888", "cardNumber": 888888888888888888 },
-    { "id": "portfolio-009", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Проект 999999999999999999", "cardNumber": 999999999999999999 }
+    { "id": "002", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Сепаратор нефтегазовый", "preview": "1.png" },
+    { "id": "003", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Емкость под налив V = 20м3, PN 0,07 МПа", "preview": "1.png" },
+    { "id": "004", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "КТПНП - Комплектная трансформаторная подстанция наружной установки проходная", "preview": "1.png" },
+    { "id": "005", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Приспособление для сверления нескольких отверстий", "preview": "1.png" },
+    { "id": "006", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Сепаратор V = 2 м3, PN 4 МПа", "preview": "1.png" },
+    { "id": "007", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "ГФУ - Горизонтальная факельная установка", "preview": "1.png" },
+    { "id": "008", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Приспособление для контроля", "preview": "1.png" },
+    { "id": "009", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "ВФУ - Вертикальная факельная установка", "preview": "1.png" },
+    { "id": "010", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Сепаратор пара", "preview": "1.png" },
+    { "id": "011", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "СРТ DN150/DN80 - Арматурный узел", "preview": "1.png" },
+    { "id": "012", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Приспособление для фрезеровки", "preview": "1.png" },
+    { "id": "013", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Шахта воздушного ввода - вывода", "preview": "1.png" },
+    { "id": "014", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Сувенир", "preview": "1.png" },
+    { "id": "015", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Приспособление станочное для сверления отверстий", "preview": "1.png" },
+    { "id": "016", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "АСН - Автоматическая система налива", "preview": "1.png" },
+    { "id": "017", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Приспособление для контроля", "preview": "1.png" },
+    { "id": "018", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Наладка на стандартный консольный кондуктор для сверления нескольких отверстий", "preview": "1.png" },
+    { "id": "019", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Емкость для храненеия азотной кислоты", "preview": "1.png" },
+    { "id": "020", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Приспособление для фрезеровки", "preview": "1.png" },
+
+    { "id": "022", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Приспособление", "preview": "1.png" },
+
+    { "id": "024", "roleTags": ["constructor", "planner", "developer", "technologist"], "title": "Приспособление двухместное для фрезеровки", "preview": "1.png" }
+
+
   ],
   "i18n": {
     "en": {
