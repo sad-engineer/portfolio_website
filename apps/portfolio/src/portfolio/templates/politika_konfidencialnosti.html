@@ -1,19 +1,9 @@
 {% extends "base.html" %}
 {% set page_id = "page-legal" %}
-{% set privacy_locale = content.privacy %}
-{% set privacy_i18n = content.privacy.get('i18n', {}) %}
-{% if current_lang == 'en' %}
-    {% set privacy_en = privacy_i18n.get('en', {}) %}
-    {% if privacy_en %}
-        {% set privacy_locale = privacy_en %}
-    {% endif %}
-{% endif %}
-{% set page_title = privacy_locale.get('title', 'Privacy Policy') %}
 
 {% block content %}
-{% set legal_doc = content.privacy %}
 {% include "partials/legal_document.html" %}
-{% set info_banner_locale = privacy_locale.get('info_banner', {}) %}
+{% set info_banner_locale = legal_document.info_banner %}
 {% if info_banner_locale %}
 {% include "partials/info_banner.html" %}
 <script src="{{ url_for('static', path='js/info-banner.js') }}"></script>

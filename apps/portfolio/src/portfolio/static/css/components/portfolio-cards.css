@@ -36,6 +36,14 @@
   transform: translate(-50%, -50%); /* Старт в центре до первого рендера JS. */
 }
 
+/* Чертежные карточки (PDF): формат ~400×282 на всех страницах профессий. */
+.profession-portfolio--planner .profession-portfolio-card,
+.profession-portfolio--technologist .profession-portfolio-card,
+.profession-portfolio-card--drawing {
+  --width: 400px; /* Ширина карточки чертежа. */
+  --height: 282px; /* Высота карточки чертежа. */
+}
+
 /* Номер карточки. */
 .profession-portfolio-card__number {
   font-size: 3rem; /* Размер номера карточки. */
@@ -48,9 +56,14 @@
   background: transparent; /* У img не задаём подложку — только альфа PNG. */
   width: auto; /* Натуральная ширина — без растягивания. */
   height: auto; /* Натуральная высота — без растягивания. */
-  max-width: 100%; /* Не шире карточки (400px); только уменьшение. */
+  max-width: 100%; /* Не шире карточки; только уменьшение. */
   max-height: 100%; /* Не выше карточки; только уменьшение. */
   object-fit: contain; /* Вписывает в рамку без обрезки и без увеличения. */
+}
+
+/* Карточка с PDF: клик открывает документ в новой вкладке. */
+.profession-portfolio-card--document {
+  cursor: pointer; /* Показывает, что карточка кликабельна. */
 }
 
 /* Скрытая карточка. */

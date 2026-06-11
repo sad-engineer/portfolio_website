@@ -18,7 +18,12 @@ from fastapi import APIRouter, HTTPException, Request, status
 from phonenumbers import NumberParseException, PhoneNumberFormat
 from portfolio.dependencies import get_settings
 from portfolio.feedback_db import is_feedback_db_enabled, save_feedback_request
-from pydantic import BaseModel, Field, field_validator, model_validator
+from portfolio.i18n import (
+    build_feedback_staff_message,
+    feedback_api_message,
+    feedback_staff_notification,
+)
+from pydantic import BaseModel, Field, ValidationInfo, field_validator, model_validator
 
 router = APIRouter(prefix="/api", tags=["feedback"])
 
@@ -54,7 +59,7 @@ def _extract_client_ip(request_obj: Request) -> str:
     return "unknown"
 
 
-async def _enforce_feedback_rate_limit(request_obj: Request) -> None:
+async def _enforce_feedback_rate_limit(request_obj: Request, lang: str = "ru") -> None:
     settings = get_settings()
     max_requests = max(1, settings.feedback_rate_limit_max_requests)
     window_seconds = max(1, settings.feedback_rate_limit_window_seconds)
@@ -71,7 +76,7 @@ async def _enforce_feedback_rate_limit(request_obj: Request) -> None:
         if last_ts is not None and now_ts - last_ts < min_interval:
             raise HTTPException(
                 status_code=status.HTTP_429_TOO_MANY_REQUESTS,
-                detail="Слишком частые запросы. Повторите позже.",
+                detail=feedback_api_message("rateLimitInterval", lang),
             )
 
         events = _feedback_rate_limit_events.get(client_ip)
@@ -86,7 +91,7 @@ async def _enforce_feedback_rate_limit(request_obj: Request) -> None:
         if len(events) >= max_requests:
             raise HTTPException(
                 status_code=status.HTTP_429_TOO_MANY_REQUESTS,
-                detail="Превышен лимит запросов. Повторите позже.",
+                detail=feedback_api_message("rateLimitExceeded", lang),
             )
 
         events.append(now_ts)
@@ -121,16 +126,13 @@ def _verify_turnstile_token_sync(
 
 def _build_feedback_message(payload: "FeedbackRequest") -> str:
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
-    channels_line = ", ".join(payload.channels)
-    user_email = payload.email or "не указан"
-    return (
-        "Запрос обратной связи:\n"
-        f"Дата/время: {now_utc}\n"
-        f"Телефон: {payload.phone}\n"
-        f"Email пользователя: {user_email}\n"
-        f"Мессенджер/тип связи: {channels_line}\n"
-        f"Страница отправки: {payload.page}\n"
-        f"Локаль: {payload.lang}\n"
+    return build_feedback_staff_message(
+        lang=payload.lang or "ru",
+        datetime_utc=now_utc,
+        phone=payload.phone,
+        email=payload.email,
+        channels=payload.channels,
+        page=payload.page,
     )
 
 
@@ -143,11 +145,12 @@ def _send_feedback_email_sync(
     from_email: str,
     to_email: str,
     body: str,
+    subject: str,
     timeout_seconds: int,
     security_mode: str,
 ) -> None:
     message = EmailMessage()
-    message["Subject"] = "Новая заявка с формы обратной связи"
+    message["Subject"] = subject
     message["From"] = from_email
     message["To"] = to_email
     message.set_content(body)
@@ -189,6 +192,7 @@ def _send_feedback_telegram_sync(
     text: str,
     timeout_seconds: int,
     proxy_url: str,
+    lang: str = "ru",
 ) -> None:
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
     payload = {
@@ -212,12 +216,30 @@ def _send_feedback_telegram_sync(
         open_fn = opener.open if opener is not None else request.urlopen
         with open_fn(req, timeout=timeout) as response:
             if response.status >= 400:
-                raise RuntimeError(f"Telegram API вернул статус {response.status}")
+                raise RuntimeError(
+                    feedback_staff_notification(
+                        "telegramApiStatusError",
+                        lang,
+                        status=response.status,
+                    )
+                )
     except error.HTTPError as exc:
-        raise RuntimeError(f"Telegram API HTTPError: {exc.code}") from exc
+        raise RuntimeError(
+            feedback_staff_notification(
+                "telegramApiHttpError",
+                lang,
+                code=exc.code,
+            )
+        ) from exc
     except error.URLError as exc:
         reason = getattr(exc, "reason", exc)
-        raise RuntimeError(f"Не удалось подключиться к Telegram API: {reason}") from exc
+        raise RuntimeError(
+            feedback_staff_notification(
+                "telegramApiConnectionError",
+                lang,
+                reason=reason,
+            )
+        ) from exc
 
 
 async def _run_with_retry(coro_factory, retries: int, delay_ms: int) -> None:
@@ -265,40 +287,41 @@ def _is_repeating_pattern(digits: str) -> bool:
     return False
 
 
-def _normalize_and_validate_phone(value: str) -> tuple[str, str]:
+def _normalize_and_validate_phone(value: str, lang: str = "ru") -> tuple[str, str]:
     phone_raw = value.strip()
     if not phone_raw:
-        raise ValueError("Телефон обязателен.")
+        raise ValueError(feedback_api_message("phoneRequired", lang))
 
     cleaned = re.sub(r"[\s().-]", "", phone_raw)
+    invalid_phone = feedback_api_message("phoneInvalid", lang)
     if cleaned.count("+") > 1 or "+" in cleaned[1:]:
-        raise ValueError("Телефон имеет некорректный формат.")
+        raise ValueError(invalid_phone)
 
     has_plus = cleaned.startswith("+")
     digits = cleaned[1:] if has_plus else cleaned
     if not digits or not digits.isdigit():
-        raise ValueError("Телефон имеет некорректный формат.")
+        raise ValueError(invalid_phone)
     if len(digits) < 8 or len(digits) > 15:
-        raise ValueError("Телефон имеет некорректный формат.")
+        raise ValueError(invalid_phone)
     if len(set(digits)) == 1:
-        raise ValueError("Телефон имеет некорректный формат.")
+        raise ValueError(invalid_phone)
     if _is_monotonic_sequence(digits):
-        raise ValueError("Телефон имеет некорректный формат.")
+        raise ValueError(invalid_phone)
     if _is_repeating_pattern(digits):
-        raise ValueError("Телефон имеет некорректный формат.")
+        raise ValueError(invalid_phone)
     if digits in _PHONE_BLACKLIST:
-        raise ValueError("Телефон имеет некорректный формат.")
+        raise ValueError(invalid_phone)
 
     parse_region = None if has_plus else "RU"
     try:
         parsed = phonenumbers.parse(cleaned, parse_region)
     except NumberParseException as exc:
-        raise ValueError("Телефон имеет некорректный формат.") from exc
+        raise ValueError(invalid_phone) from exc
 
     if not phonenumbers.is_possible_number(parsed):
-        raise ValueError("Телефон имеет некорректный формат.")
+        raise ValueError(invalid_phone)
     if not phonenumbers.is_valid_number(parsed):
-        raise ValueError("Телефон имеет некорректный формат.")
+        raise ValueError(invalid_phone)
 
     phone_e164 = phonenumbers.format_number(parsed, PhoneNumberFormat.E164)
     return phone_raw, phone_e164
@@ -325,9 +348,12 @@ class FeedbackRequest(BaseModel):
 
     @field_validator("channels")
     @classmethod
-    def validate_channels(cls, value: List[ChannelType]) -> List[ChannelType]:
+    def validate_channels(
+        cls, value: List[ChannelType], info: ValidationInfo
+    ) -> List[ChannelType]:
         if not value:
-            raise ValueError("Выберите хотя бы один канал связи.")
+            lang = str(info.data.get("lang", "ru")).strip().lower() or "ru"
+            raise ValueError(feedback_api_message("channelsRequired", lang))
         # Убираем дубли, сохраняя порядок.
         unique_channels: List[ChannelType] = []
         for channel in value:
@@ -343,19 +369,19 @@ class FeedbackRequest(BaseModel):
 
     @model_validator(mode="after")
     def validate_cross_fields(self) -> "FeedbackRequest":
-        phone_raw, phone_e164 = _normalize_and_validate_phone(self.phone)
+        phone_raw, phone_e164 = _normalize_and_validate_phone(self.phone, self.lang)
         self.phone_raw = phone_raw
         self.phone_e164 = phone_e164
         self.phone = phone_e164
 
         if not self.consent:
-            raise ValueError("Необходимо согласие на обработку данных.")
+            raise ValueError(feedback_api_message("consentRequired", self.lang))
 
         if "email" in self.channels:
             if not self.email or not self.email.strip():
-                raise ValueError("Email обязателен, если выбран канал email.")
+                raise ValueError(feedback_api_message("emailRequired", self.lang))
             if not _EMAIL_RE.match(self.email.strip()):
-                raise ValueError("Email имеет некорректный формат.")
+                raise ValueError(feedback_api_message("emailInvalid", self.lang))
             self.email = self.email.strip()
         elif self.email:
             self.email = self.email.strip()
@@ -377,16 +403,16 @@ async def post_feedback(
     if not payload.page:
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail="Поле page обязательно.",
+            detail=feedback_api_message("pageRequired", payload.lang),
         )
 
-    await _enforce_feedback_rate_limit(request_obj)
+    await _enforce_feedback_rate_limit(request_obj, payload.lang)
 
     # Honeypot: если скрытое поле заполнено, считаем запрос ботом и ничего не доставляем.
     if payload.fullname:
         return {
             "status": "accepted",
-            "message": "Заявка принята.",
+            "message": feedback_api_message("accepted", payload.lang),
             "delivery_channels": "",
             "skipped_channels": "",
         }
@@ -396,7 +422,7 @@ async def post_feedback(
         if not payload.turnstile_token:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
-                detail="Проверка anti-bot не пройдена. Обновите страницу и повторите.",
+                detail=feedback_api_message("turnstileFailed", payload.lang),
             )
         try:
             is_valid_turnstile = await asyncio.to_thread(
@@ -409,12 +435,14 @@ async def post_feedback(
         except Exception as exc:  # noqa: BLE001
             raise HTTPException(
                 status_code=status.HTTP_502_BAD_GATEWAY,
-                detail=f"Ошибка проверки anti-bot: {exc}",
+                detail=feedback_api_message(
+                    "turnstileError", payload.lang, error=exc
+                ),
             ) from exc
         if not is_valid_turnstile:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
-                detail="Проверка anti-bot не пройдена. Обновите страницу и повторите.",
+                detail=feedback_api_message("turnstileFailed", payload.lang),
             )
 
     client_ip = _extract_client_ip(request_obj)
@@ -433,10 +461,13 @@ async def post_feedback(
         except Exception as exc:  # noqa: BLE001
             raise HTTPException(
                 status_code=status.HTTP_502_BAD_GATEWAY,
-                detail=f"Не удалось сохранить заявку в БД: {exc}",
+                detail=feedback_api_message(
+                    "dbSaveFailed", payload.lang, error=exc
+                ),
             ) from exc
 
     message = _build_feedback_message(payload)
+    email_subject = feedback_staff_notification("emailSubject", payload.lang or "ru")
     delivered: List[str] = []
     skipped: List[str] = []
 
@@ -463,6 +494,7 @@ async def post_feedback(
                 from_email=from_email,
                 to_email=to_email,
                 body=message,
+                subject=email_subject,
                 timeout_seconds=settings.feedback_smtp_timeout_seconds,
                 security_mode=settings.feedback_smtp_security,
             )
@@ -477,7 +509,9 @@ async def post_feedback(
         except Exception as exc:  # noqa: BLE001
             raise HTTPException(
                 status_code=status.HTTP_502_BAD_GATEWAY,
-                detail=f"Не удалось отправить заявку в email: {exc}",
+                detail=feedback_api_message(
+                    "emailSendFailed", payload.lang, error=exc
+                ),
             ) from exc
 
     telegram_ready = bool(settings.feedback_telegram_bot_token) and bool(
@@ -495,6 +529,7 @@ async def post_feedback(
                 text=message,
                 timeout_seconds=settings.feedback_telegram_timeout_seconds,
                 proxy_url=settings.feedback_telegram_proxy_url.strip(),
+                lang=payload.lang or "ru",
             )
 
         try:
@@ -507,7 +542,9 @@ async def post_feedback(
         except Exception as exc:  # noqa: BLE001
             raise HTTPException(
                 status_code=status.HTTP_502_BAD_GATEWAY,
-                detail=f"Не удалось отправить заявку в telegram: {exc}",
+                detail=feedback_api_message(
+                    "telegramSendFailed", payload.lang, error=exc
+                ),
             ) from exc
 
     delivery_state = "delivered" if delivered else "accepted"
@@ -516,7 +553,7 @@ async def post_feedback(
 
     return {
         "status": delivery_state,
-        "message": "Заявка принята.",
+        "message": feedback_api_message("accepted", payload.lang),
         "delivery_channels": ", ".join(delivered) if delivered else "",
         "skipped_channels": ", ".join(skipped) if skipped else "",
     }

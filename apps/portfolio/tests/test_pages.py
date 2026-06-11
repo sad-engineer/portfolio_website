@@ -33,6 +33,38 @@ async def test_index_returns_ok() -> None:
 
 
 @pytest.mark.asyncio
+async def test_index_english_locale() -> None:
+    async with AsyncClient(app=app, base_url="http://testserver") as client:
+        response = await client.get("/?lang=en")
+
+    assert response.status_code == 200
+    assert "Choose the direction you are interested in" in response.text
+    assert "Design Engineer" in response.text
+    assert "Выберите направление" not in response.text
+
+
+@pytest.mark.asyncio
+async def test_constructor_page_english_locale() -> None:
+    async with AsyncClient(app=app, base_url="http://testserver") as client:
+        response = await client.get("/constructor?lang=en")
+
+    assert response.status_code == 200
+    assert 'data-feedback-lang="en"' in response.text
+    assert "Call me" in response.text
+    assert "Хочу звонок" not in response.text
+
+
+@pytest.mark.asyncio
+async def test_privacy_policy_english_locale() -> None:
+    async with AsyncClient(app=app, base_url="http://testserver") as client:
+        response = await client.get("/politika-konfidencialnosti?lang=en")
+
+    assert response.status_code == 200
+    assert "Privacy Policy" in response.text
+    assert "Политика конфиденциальности" not in response.text
+
+
+@pytest.mark.asyncio
 async def test_robots_txt_returns_plain_text() -> None:
     async with AsyncClient(app=app, base_url="http://testserver") as client:
         response = await client.get("/robots.txt")

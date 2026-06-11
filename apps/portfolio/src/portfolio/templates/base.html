@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.15.1/devicon.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', path='css/portfolio-layout.css') }}" />
 </head>
-<body style="--site-bg-image: url('{{ url_for('static', path=main_locale.assets.siteBackgroundImage) }}'); --lang-switch-icon: url('{{ url_for('static', path=main_locale.assets.languageSwitcherIcon) }}'); --languages-bg-image: url('{{ url_for('static', path=main_locale.assets.languagesBackgroundImage) }}'); --document-types-bg-image: url('{{ url_for('static', path=main_locale.assets.documentTypesSectionBackgroundImage) }}');">
+<body style="--site-bg-image: url('{{ url_for('static', path=main_locale.assets.siteBackgroundImage) }}'); --lang-switch-icon: url('{{ url_for('static', path=main_locale.assets.languageSwitcherIcon) }}'); --languages-bg-image: url('{{ url_for('static', path=main_locale.assets.languagesBackgroundImage) }}'); --document-types-bg-image: url('{{ url_for('static', path=main_locale.assets.documentTypesSectionBackgroundImage) }}'); --profession-education-bg-image: url('{{ url_for('static', path=main_locale.assets.educationBackgroundImage) }}');">
     <header class="site-header {{ page_id | default('page-default') }}" style="--header-bg-image: url('{{ url_for('static', path=main_locale.assets.siteBackgroundImage) }}');">
         <div class="container">
             <a class="brand" href="{{ home_href }}">{{ basic_locale.firstName }} {{ basic_locale.lastName }}</a>
@@ -76,6 +76,10 @@
                 data-msg-request-error="{{ basic_locale.feedback.form.requestErrorText }}"
                 data-msg-success-working-hours="{{ basic_locale.feedback.form.successWorkingHoursText }}"
                 data-msg-success-off-hours="{{ basic_locale.feedback.form.successOffHoursText }}"
+                data-msg-antibot-error="{{ basic_locale.feedback.form.antiBotErrorText }}"
+                data-msg-turnstile-timeout="{{ basic_locale.feedback.form.turnstileTimeoutErrorText }}"
+                data-msg-turnstile-error="{{ basic_locale.feedback.form.turnstileErrorText }}"
+                data-msg-turnstile-expired="{{ basic_locale.feedback.form.turnstileExpiredErrorText }}"
             >
                 <h2>{{ basic_locale.feedback.form.title }}</h2>
                 <div class="feedback-form__phone-row">
@@ -86,7 +90,7 @@
                     <button class="feedback__submit" type="submit">{{ basic_locale.feedback.form.submitButtonText }}</button>
                 </div>
                 <div class="feedback-form__hp" aria-hidden="true">
-                    <label for="fullname">Ваше имя</label>
+                    <label for="fullname">{{ basic_locale.feedback.form.honeypotLabel }}</label>
                     <input id="fullname" name="fullname" type="text" autocomplete="off" tabindex="-1" />
                 </div>
 
@@ -99,15 +103,7 @@
 
                 <label class="consent">
                     <input type="checkbox" name="consent" />
-                    {% set consent_text = basic_locale.feedback.form.consentText %}
-                    {% set privacy_link_html = '<a class="consent__link" href="' ~ privacy_policy_href ~ '">политикой конфиденциальности</a>' %}
-                    {% set consent_with_link = consent_text %}
-                    {% if 'политикой конфиденциальности' in consent_with_link %}
-                        {% set consent_with_link = consent_with_link | replace('политикой конфиденциальности', privacy_link_html) %}
-                    {% elif 'privacy policy' in consent_with_link | lower %}
-                        {% set consent_with_link = consent_with_link | replace('privacy policy', '<a class="consent__link" href="' ~ privacy_policy_href ~ '">privacy policy</a>') %}
-                    {% endif %}
-                    {{ consent_with_link | safe }}
+                    {{ feedback_consent_html | safe }}
                 </label>
                 <div class="feedback-form__verification" id="feedback-form-verification">
                     {% if turnstile_site_key %}
@@ -135,27 +131,7 @@
                 {% endfor %}
             </div>
             {% endif %}
-            {% set legal_text = basic_locale.hero_bottom_legal %}
-            {% set full_name = basic_locale.firstName ~ ' ' ~ basic_locale.lastName %}
-            {% set home_link_html = '<a href="' ~ home_href ~ '">' ~ full_name ~ '</a>' %}
-            {% set agreement_href = user_agreement_href %}
-            {% set agreement_link_html = '<a href="' ~ agreement_href ~ '">Соглашение</a>' %}
-            {% set legal_with_name_link = legal_text | replace(full_name, home_link_html) %}
-            {% set has_ru_agreement = 'Соглашение' in legal_with_name_link %}
-            {% set has_en_agreement = 'User Agreement' in legal_with_name_link %}
-            {% set legal_with_links = legal_with_name_link %}
-            {% if has_ru_agreement %}
-                {% set legal_with_links = legal_with_links | replace('Соглашение', agreement_link_html) %}
-            {% elif has_en_agreement %}
-                {% set legal_with_links = legal_with_links | replace('User Agreement', '<a href="' ~ agreement_href ~ '">User Agreement</a>') %}
-            {% else %}
-                {% if current_lang == 'en' %}
-                    {% set legal_with_links = legal_with_links ~ ' <a href="' ~ agreement_href ~ '">User Agreement</a>.' %}
-                {% else %}
-                    {% set legal_with_links = legal_with_links ~ ' <a href="' ~ agreement_href ~ '">Соглашение</a>.' %}
-                {% endif %}
-            {% endif %}
-            <div class="site-bottom-legal">{{ legal_with_links | safe }}</div>
+            <div class="site-bottom-legal">{{ hero_bottom_legal_html | safe }}</div>
         </div>
     </div>
 

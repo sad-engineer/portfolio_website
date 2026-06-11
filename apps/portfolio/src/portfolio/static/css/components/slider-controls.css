@@ -24,11 +24,11 @@
 }
 
 .slider-controls__arrow {
-  width: var(--arrow-hit-size);
-  height: var(--arrow-hit-size);
+  width: var(--arrow-hit-size); /* Ширина элемента. */
+  height: var(--arrow-hit-size); /* Высота элемента. */
   border: none; /* Убирает рамку стрелки. */
   background: transparent; /* Убирает подложку кнопки. */
-  color: var(--arrow-color);
+  color: var(--arrow-color); /* Цвет текста элемента. */
   cursor: pointer; /* Показывает интерактивность кнопки. */
   font-size: var(--arrow-size); /* Делает символ стрелки визуально читаемым. */
   line-height: 1; /* Центрирует символ по высоте. */

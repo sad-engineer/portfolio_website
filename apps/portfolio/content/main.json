@@ -4,7 +4,8 @@
     "siteBackgroundImage": "assets/img/backgrounds/6.jpg",
     "languageSwitcherIcon": "assets/icons/language switch.svg",
     "languagesBackgroundImage": "assets/img/backgrounds/languages.png",
-    "documentTypesSectionBackgroundImage": "assets/img/backgrounds/document_types.jpg"
+    "documentTypesSectionBackgroundImage": "assets/img/backgrounds/document_types.jpg",
+    "educationBackgroundImage": "assets/img/backgrounds/education.svg"
   },
   "hero": {
     "lead": "{{EXPERIENCE_DAYS}} дней в инженерии, проектировании и IT-разработке",

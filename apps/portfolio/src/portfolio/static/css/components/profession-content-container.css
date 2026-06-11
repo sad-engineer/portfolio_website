@@ -33,21 +33,21 @@
 
 /* Цвет заголовков карточки. */
 .page-content.page-profession .profession-content-container .card h2 {
-  color: inherit;
+  color: inherit; /* Цвет текста элемента. */
 }
 
 /* Цвет заголовков карточки. */
 .page-content.page-profession .profession-content-container .card h3 {
-  color: inherit;
+  color: inherit; /* Цвет текста элемента. */
 }
 
 /* Цвет текста карточки. */
 .page-content.page-profession .profession-content-container .card p {
-  color: inherit;
+  color: inherit; /* Цвет текста элемента. */
 }
 
 /* Цвет текста карточки. */
 .page-content.page-profession .profession-content-container .card li {
-  color: inherit;
+  color: inherit; /* Цвет текста элемента. */
 }
 

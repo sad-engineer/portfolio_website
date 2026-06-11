@@ -12,7 +12,7 @@
         <h2>{{ edu.type|capitalize }} / {{ edu.year }}</h2>
         {% if edu.institution %}<p><strong>{{ edu.institution }}</strong></p>{% endif %}
         {% if edu.program %}<p>{{ edu.program }}</p>{% endif %}
-        {% if edu.level %}<p class="muted">Уровень: {{ edu.level }}</p>{% endif %}
+        {% if edu.level %}<p class="muted">{{ content.education.levelLabel }} {{ edu.level }}</p>{% endif %}
         {% if edu.title %}<p>{{ edu.title }}</p>{% endif %}
     </article>
     {% endfor %}

@@ -137,6 +137,17 @@
       });
     }
 
+    cards.forEach((card) => {
+      const documentUrl = card.getAttribute("data-portfolio-document");
+      if (!documentUrl) {
+        return;
+      }
+      card.addEventListener("click", () => {
+        window.open(documentUrl, "_blank", "noopener,noreferrer");
+        scheduleAutoplayResume();
+      });
+    });
+
     counter.addEventListener("wheel", handleWheelNavigation, { passive: false });
     stage.addEventListener("wheel", handleWheelNavigation, { passive: false });
 

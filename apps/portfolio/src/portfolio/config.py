@@ -72,5 +72,6 @@ class Settings(BaseSettings):
         default=120, alias="FEEDBACK_RATE_LIMIT_MIN_INTERVAL_SECONDS"
     )
     feedback_database_url: str = Field(default="", alias="FEEDBACK_DATABASE_URL")
+    feedback_database_ssl: str = Field(default="", alias="FEEDBACK_DATABASE_SSL")
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")

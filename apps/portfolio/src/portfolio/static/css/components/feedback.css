@@ -61,10 +61,10 @@
 
 /* Заголовок над социальными иконками. */
 .feedback__left .feedback__social-title {
-  grid-row: 3;
-  margin: 8px 0 0;
+  grid-row: 3; /* Позиция элемента по строкам grid. */
+  margin: 8px 0 0; /* Внешний отступ элемента. */
   font-size: 2.1rem; /* Размер как у заголовка "Заказать звонок". */
-  line-height: 1.2;
+  line-height: 1.2; /* Межстрочный интервал текста. */
   font-weight: 700; /* Жирность заголовка как у h2. */
   text-align: center; /* Выравнивание по центру. */
   white-space: normal; /* Отключает переносы pre-line от общего правила .feedback p. */
@@ -140,26 +140,26 @@
 
 /* Honeypot-поле: скрыто визуально и недоступно обычному пользователю. */
 .feedback-form__hp {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  opacity: 0;
-  pointer-events: none;
+  position: absolute; /* Способ позиционирования элемента. */
+  left: -9999px; /* Смещение левого края позиционированного элемента. */
+  width: 1px; /* Ширина элемента. */
+  height: 1px; /* Высота элемента. */
+  overflow: hidden; /* Поведение переполнения содержимого. */
+  opacity: 0; /* Непрозрачность элемента. */
+  pointer-events: none; /* Управление реакцией на события указателя. */
 }
 
 .feedback-form__verification {
-  margin: 4px 0 2px;
-  min-height: 72px;
+  margin: 4px 0 2px; /* Внешний отступ элемента. */
+  min-height: 72px; /* Минимальная высота элемента. */
 }
 
 .feedback-form__turnstile {
-  display: none;
+  display: none; /* Режим отображения элемента. */
 }
 
 .feedback-form__turnstile--active {
-  display: block;
+  display: block; /* Режим отображения элемента. */
 }
 
 /* Контейнер чекбоксов каналов связи. */
@@ -173,29 +173,29 @@
 .consent {
   font-size: 0.95rem; /* Уменьшенный размер текста для служебной информации. */
   line-height: 1.5; /* Межстрочный интервал текста для служебной информации. */
-  transition: color 0.2s ease;
+  transition: color 0.2s ease; /* Плавность изменения визуальных свойств. */
 }
 
 /* Визуальный акцент на согласии при попытке отправки без галочки. */
 .consent.consent--attention input[type="checkbox"] {
-  border-radius: 3px;
-  outline-offset: 1px;
+  border-radius: 3px; /* Скругление углов элемента. */
+  outline-offset: 1px; /* Отступ контура фокуса/акцента от границы. */
   box-shadow:
     0 0 0 5px color-mix(in srgb, var(--banner) 25%, transparent),
     0 0 18px 6px color-mix(in srgb, var(--banner) 52%, transparent),
     0 0 26px 14px color-mix(in srgb, var(--banner) 38%, transparent);
-  transition: box-shadow 0.2s ease, outline-color 0.2s ease;
+  transition: box-shadow 0.2s ease, outline-color 0.2s ease; /* Плавность изменения визуальных свойств. */
 }
 
 /* Такой же визуальный акцент для поля ввода при ошибке. */
 .feedback-form input[type="text"].feedback-form__input--attention {
-  border-radius: 3px;
-  outline-offset: 1px;
+  border-radius: 3px; /* Скругление углов элемента. */
+  outline-offset: 1px; /* Отступ контура фокуса/акцента от границы. */
   box-shadow:
     0 0 0 5px color-mix(in srgb, var(--banner) 25%, transparent),
     0 0 18px 6px color-mix(in srgb, var(--banner) 52%, transparent),
     0 0 26px 14px color-mix(in srgb, var(--banner) 38%, transparent);
-  transition: box-shadow 0.2s ease, outline-color 0.2s ease;
+  transition: box-shadow 0.2s ease, outline-color 0.2s ease; /* Плавность изменения визуальных свойств. */
 }
 
 /* Ссылка в тексте согласия: стиль как в нижнем legal-блоке. */
@@ -240,29 +240,29 @@
 }
 
 .feedback__submit:disabled {
-  opacity: 0.65;
-  cursor: wait;
+  opacity: 0.65; /* Непрозрачность элемента. */
+  cursor: wait; /* Вид курсора при наведении. */
 }
 
 .feedback-form__status {
-  display: none;
-  min-height: 1.4em;
-  margin: 2px 0 0;
-  font-size: 0.95rem;
-  line-height: 1.45;
-  font-weight: 700;
+  display: none; /* Режим отображения элемента. */
+  min-height: 1.4em; /* Минимальная высота элемента. */
+  margin: 2px 0 0; /* Внешний отступ элемента. */
+  font-size: 0.95rem; /* Размер шрифта текста. */
+  line-height: 1.45; /* Межстрочный интервал текста. */
+  font-weight: 700; /* Начертание шрифта. */
 }
 
 .feedback-form__status--visible {
-  display: block;
+  display: block; /* Режим отображения элемента. */
 }
 
 .feedback-form__status--success {
-  color: var(--banner);
+  color: var(--banner); /* Цвет текста элемента. */
 }
 
 .feedback-form__status--error {
-  color: var(--banner);
+  color: var(--banner); /* Цвет текста элемента. */
 }
 
 /* На узких экранах колонки складываются в вертикальный поток. */

@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from portfolio.dependencies import get_settings
 from portfolio.feedback_db import init_feedback_db
 from portfolio.routers import feedback_router, pages_router
-from portfolio.routers.pages import LANG_COOKIE_NAME
+from portfolio.services.page_context import LANG_COOKIE_NAME
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 

@@ -7,7 +7,9 @@
   --main-photo-placeholder-text-color: var(--muted); /* Цвет текста placeholder как на главной. */
   --main-photo-placeholder-bg-color: var(--surface-dark); /* Фон placeholder как на главной. */
   --languages-bg-opacity: 0.9; /* Непрозрачность фоновой картинки блока языков. */
-  --languages-bg-corner-mask: radial-gradient(circle at 0% 0%, #00000000 0%, #000000 62%); /* Плавная прозрачность в верхнем левом углу фоновой картинки. */
+  --mask-transparent: var(--overlay-dark-alpha-0); /* Прозрачная часть CSS-маски (из глобальной палитры). */
+  --mask-opaque: var(--overlay-dark); /* Непрозрачная часть CSS-маски (из глобальной палитры). */
+  --languages-bg-corner-mask: radial-gradient(circle at 0% 0%, var(--mask-transparent) 0%, var(--mask-opaque) 62%); /* Плавная прозрачность в верхнем левом углу фоновой картинки. */
   --inline-padding: 0px; /* Базовый внутренний отступ контейнера профессии. */
   --mobile-inline-padding: 12px; /* Горизонтальный отступ контента на экранах <= 1200px. */
   --tech-layout-margin-bottom: 0px; /* Убирает дополнительный нижний отступ верхней зоны перед блоком "Типы документов". */
@@ -28,14 +30,14 @@
  * во вьюпорте иначе панель оказывается под формой.
  */
 .page-content.page-profession {
-  position: relative;
-  z-index: 2;
+  position: relative; /* Способ позиционирования элемента. */
+  z-index: 2; /* Порядок наложения относительно соседних элементов. */
   padding: 0 var(--inline-padding); /* Задает боковые отступы основного контента страницы профессии. */
 }
 
 /* Единая страница профессий: отступы у заголовочного блока. */
 .page-content.page-profession .section-head {
-  margin: 20px 0 12px;
+  margin: 20px 0 12px; /* Внешний отступ элемента. */
 }
 
 /* На страницах профессий сначала появляется h1, затем lead-подзаголовок. */
@@ -66,105 +68,105 @@
 
 /* Верхняя зона: две колонки одинаковой высоты; слой выше .document-types, иначе панели из навыков/технологий уходят под следующую секцию. */
 .page-content.page-profession .tech-layout {
-  position: relative;
-  z-index: 2;
-  align-items: stretch;
+  position: relative; /* Способ позиционирования элемента. */
+  z-index: 2; /* Порядок наложения относительно соседних элементов. */
+  align-items: stretch; /* Выравнивание элементов по поперечной оси. */
 }
 
 /* Колонка с фото: растягивается на высоту всей верхней зоны. */
 .page-content.page-profession .tech-layout > .profession-photo-column {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  align-self: stretch;
-  min-height: 0;
+  display: flex; /* Режим отображения элемента. */
+  justify-content: center; /* Выравнивание по главной оси. */
+  align-items: stretch; /* Выравнивание элементов по поперечной оси. */
+  align-self: stretch; /* Индивидуальное выравнивание элемента в сетке. */
+  min-height: 0; /* Минимальная высота элемента. */
 }
 
 /* Правая колонка: technologies/work_methods/skills один под другим. */
 .page-content.page-profession .tech-layout > .profession-side-column {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  align-self: stretch;
-  min-height: 0;
+  display: flex; /* Режим отображения элемента. */
+  flex-direction: column; /* Направление главной оси flex-контейнера. */
+  gap: 3px; /* Интервал между элементами сетки или flex. */
+  align-self: stretch; /* Индивидуальное выравнивание элемента в сетке. */
+  min-height: 0; /* Минимальная высота элемента. */
 }
 
 /* В верхней зоне базово карточки идут по содержимому. */
 .page-content.page-profession .tech-layout > .profession-side-column > .card {
-  align-self: start;
-  min-height: auto;
+  align-self: start; /* Индивидуальное выравнивание элемента в сетке. */
+  min-height: auto; /* Минимальная высота элемента. */
 }
 
 /* Когда фото выше, technologies добирает недостающую высоту. */
 .page-content.page-profession .profession-side-column > .technologies-main {
-  flex: 1 1 auto;
+  flex: 1 1 auto; /* Гибкое распределение свободного пространства. */
 }
 
 /* work_methods и skills остаются по содержимому. */
 .page-content.page-profession .profession-side-column > .work-methods,
 .page-content.page-profession .profession-side-column > .skills {
-  flex: 0 0 auto;
+  flex: 0 0 auto; /* Гибкое распределение свободного пространства. */
 }
 
 /* Вне верхней зоны technologies-контейнеры не должны давать увеличенный зазор. */
 .page-content.page-profession .profession-content-container > .technologies {
-  margin-bottom: 0;
+  margin-bottom: 0; /* Нижний внешний отступ элемента. */
 }
 
 /* Отступ между верхней зоной и блоком "Типы документов". */
 .page-content.page-profession .tech-layout + .document-types {
-  margin-top: var(--gap-after-tech-layout);
+  margin-top: var(--gap-after-tech-layout); /* Верхний внешний отступ элемента. */
 }
 
 /* Отступ между блоками "Типы документов" и "Языки". */
 .page-content.page-profession .document-types + .languages-full {
-  margin-top: var(--gap-after-document-types);
+  margin-top: var(--gap-after-document-types); /* Верхний внешний отступ элемента. */
 }
 
 /* Отступ перед блоком "Опыт работы". */
 .page-content.page-profession .languages-full + .profession-work-experience {
-  margin-top: var(--gap-before-work-experience);
+  margin-top: var(--gap-before-work-experience); /* Верхний внешний отступ элемента. */
 }
 
 /* Фото/заглушка заполняет высоту левой колонки верхней зоны. */
 .page-content.page-profession .hero-photo,
 .page-content.page-profession .hero-photo-placeholder {
-  width: 100%;
-  max-width: var(--photo-width);
-  height: 100%;
-  aspect-ratio: auto;
+  width: 100%; /* Ширина элемента. */
+  max-width: var(--photo-width); /* Максимальная ширина элемента. */
+  height: 100%; /* Высота элемента. */
+  aspect-ratio: auto; /* Соотношение сторон блока. */
 }
 
 /* Фон секции "Типы документов": изображение по правому краю в зоне 66%. */
 .page-content.page-profession .document-types {
-  position: relative;
+  position: relative; /* Способ позиционирования элемента. */
   overflow: visible; /* Разрешает dropdown-описаниям иконок выходить поверх соседних секций. */
-  z-index: 1;
+  z-index: 1; /* Порядок наложения относительно соседних элементов. */
 }
 
 /* Фон секции "Типы документов": изображение по правому краю в зоне 66%. */
 .page-content.page-profession .document-types::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 66%;
-  background-image: var(--document-types-bg-image);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right center;
+  content: ""; /* Содержимое псевдо-элемента. */
+  position: absolute; /* Способ позиционирования элемента. */
+  top: 0; /* Смещение верхнего края позиционированного элемента. */
+  right: 0; /* Смещение правого края позиционированного элемента. */
+  bottom: 0; /* Смещение нижнего края позиционированного элемента. */
+  width: 66%; /* Ширина элемента. */
+  background-image: var(--document-types-bg-image); /* Значение свойства background-image. */
+  background-repeat: no-repeat; /* Значение свойства background-repeat. */
+  background-size: cover; /* Значение свойства background-size. */
+  background-position: right center; /* Значение свойства background-position. */
   opacity: 0.9; /* Правая часть изображения до 90% видимости. */
-  -webkit-mask-image: linear-gradient(to right, #00000000 0%, #000000 100%); /* Плавное проявление картинки справа; альфа через 8-значный HEX. */
-  mask-image: linear-gradient(to right, #00000000 0%, #000000 100%); /* Стандартная маска без rgba(). */
-  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, var(--mask-transparent) 0%, var(--mask-opaque) 100%); /* Плавное проявление картинки справа через токены маски страницы. */
+  mask-image: linear-gradient(to right, var(--mask-transparent) 0%, var(--mask-opaque) 100%); /* Стандартная маска без прямых литералов цвета. */
+  pointer-events: none; /* Управление реакцией на события указателя. */
 }
 
 /* Наполнение контента document-types. */
 .page-content.page-profession .document-types > * {
-  position: relative;
-  z-index: 1;
-  width: 66%;
+  position: relative; /* Способ позиционирования элемента. */
+  z-index: 1; /* Порядок наложения относительно соседних элементов. */
+  width: 66%; /* Ширина элемента. */
 }
 
 /*
@@ -172,13 +174,13 @@
  * следующие иконки оказываются поверх fixed-панели. Поднимаем группу с открытым описанием.
  */
 .page-content.page-profession .tech-group:has(.tech-tile-dropdown[open]) {
-  position: relative;
-  z-index: 40;
+  position: relative; /* Способ позиционирования элемента. */
+  z-index: 40; /* Порядок наложения относительно соседних элементов. */
 }
 
 /* Контейнер выше .info-banner (в шаблоне баннер идёт после контейнера), чтобы панели не прятались под оранжевый блок. */
 .page-content.page-profession .profession-content-container {
-  z-index: 3;
+  z-index: 3; /* Порядок наложения относительно соседних элементов. */
 }
 
 /* На странице профессии боковые поля уже заданы контейнером, у баннера убираем дополнительный сдвиг. */
@@ -190,38 +192,38 @@
 
 /* Фон секции "Языки": градиент под прозрачные зоны изображения. */
 .page-content.page-profession .profession-content-container .languages-full {
-  position: relative;
+  position: relative; /* Способ позиционирования элемента. */
   display: flex; /* Позволяет явно прижимать контентную колонку языков к правому краю. */
   justify-content: flex-end; /* Закрепляет блок языков справа независимо от перерасчета auto-отступов. */
   overflow: visible; /* Разрешает dropdown-описаниям иконок выходить поверх соседних секций. */
-  min-height: 100px;
-  background: var(--languages-overlay-gradient);
+  min-height: 100px; /* Минимальная высота элемента. */
+  background: var(--languages-overlay-gradient); /* Фон элемента. */
   /* Ниже .document-types (z-index: 1), иначе при равном слое следующая в DOM секция перекрывает выпадающие панели «типов документов». */
-  z-index: 0;
+  z-index: 0; /* Порядок наложения относительно соседних элементов. */
 }
 
 /* Фоновая картинка секции "Языки" в левой половине блока. */
 .page-content.page-profession .languages-full::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 70%;
-  background-image: var(--languages-bg-image);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 10%;
-  opacity: var(--languages-bg-opacity);
-  -webkit-mask-image: var(--languages-bg-corner-mask);
-  mask-image: var(--languages-bg-corner-mask);
-  pointer-events: none;
+  content: ""; /* Содержимое псевдо-элемента. */
+  position: absolute; /* Способ позиционирования элемента. */
+  top: 0; /* Смещение верхнего края позиционированного элемента. */
+  left: 0; /* Смещение левого края позиционированного элемента. */
+  bottom: 0; /* Смещение нижнего края позиционированного элемента. */
+  width: 70%; /* Ширина элемента. */
+  background-image: var(--languages-bg-image); /* Значение свойства background-image. */
+  background-repeat: no-repeat; /* Значение свойства background-repeat. */
+  background-size: cover; /* Значение свойства background-size. */
+  background-position: center 10%; /* Значение свойства background-position. */
+  opacity: var(--languages-bg-opacity); /* Непрозрачность элемента. */
+  -webkit-mask-image: var(--languages-bg-corner-mask); /* Маска отображения для WebKit-браузеров. */
+  mask-image: var(--languages-bg-corner-mask); /* Маска отображения элемента. */
+  pointer-events: none; /* Управление реакцией на события указателя. */
 }
 
 /* Контентная область секции "Языки" справа. */
 .page-content.page-profession .languages-content {
-  position: relative;
-  z-index: 1;
+  position: relative; /* Способ позиционирования элемента. */
+  z-index: 1; /* Порядок наложения относительно соседних элементов. */
   width: 25%; /* Базовая ширина правой колонки с языками. */
   flex: 0 0 25%; /* Фиксирует колонку языков справа и предотвращает «уезд» влево. */
   margin-left: 0; /* Отступ слева не нужен, позицию задает justify-content у родителя. */
@@ -229,7 +231,7 @@
 
 /* Выравнивает верхний внутренний отступ языкового блока с соседними секциями. */
 .page-content.page-profession .languages-full .languages-content > h2 {
-  margin-top: 0;
+  margin-top: 0; /* Верхний внешний отступ элемента. */
 }
 
 /* На мобильных отключаем выравнивание по общей высоте, оставляем по содержимому. */

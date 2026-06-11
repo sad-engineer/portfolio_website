@@ -89,7 +89,7 @@
 .profession-work-experience__period {
   margin: 0 0 16px; /* Отделяет период от заголовка списка достижений. */
   color: var(--profession-work-muted-color); /* Служебная строка дат; тип в .employment-type перекрывает цвет. */
-  max-width: 100%;
+  max-width: 100%; /* Максимальная ширина элемента. */
   line-height: 1.45; /* Запас под высоту строки и акцентный фрагмент в скобках. */
 }
 
@@ -98,20 +98,20 @@
  * давал min-height:auto → 0 и обрезал строку по вертикали (спец. правило Flexbox).
  */
 .profession-work-experience__period-scroll {
-  display: block;
-  overflow-x: auto;
-  max-width: 100%;
-  min-width: 0;
+  display: block; /* Режим отображения элемента. */
+  overflow-x: auto; /* Значение свойства overflow-x. */
+  max-width: 100%; /* Максимальная ширина элемента. */
+  min-width: 0; /* Минимальная ширина элемента. */
 }
 
 /* Период и тип занятости (если не full-time) остаются на одной логической строке. */
 .profession-work-experience__period-line {
-  white-space: nowrap;
+  white-space: nowrap; /* Правила переноса и сохранения пробелов в тексте. */
 }
 
 /* Подпись типа занятости для неполной занятости — акцентный цвет палитры блока. */
 .profession-work-experience__employment-type {
-  color: var(--profession-work-metric-color);
+  color: var(--profession-work-metric-color); /* Цвет текста элемента. */
 }
 
 /* Подзаголовки "Достижения" / "Что делал". */
@@ -173,7 +173,7 @@
 .profession-work-experience__left > .profession-work-experience__period,
 .profession-work-experience__left > .profession-work-experience__subtitle,
 .profession-work-experience__right > .profession-work-experience__subtitle {
-  flex-shrink: 0;
+  flex-shrink: 0; /* Допустимое сжатие flex-элемента. */
 }
 
 /* Списки в колонках — единственные прокручиваемые области контента. */

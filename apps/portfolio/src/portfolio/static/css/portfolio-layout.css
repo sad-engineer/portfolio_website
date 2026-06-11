@@ -17,6 +17,7 @@
 @import url("./components/slider-controls.css"); /* Универсальный блок стрелок и счетчика для слайдеров. */
 @import url("./components/portfolio-container.css"); /* Контейнер портфолио на страницах профессий. */
 @import url("./components/portfolio-cards.css"); /* Парад карточек портфолио. */
+@import url("./components/portfolio-bubbles.css"); /* Пузырьковое портфолио IT-проектов. */
 @import url("./components/portfolio-counter.css"); /* Отдельный компонент счетчика портфолио. */
 @import url("./pages/main.css");                /* Страничные стили главной страницы. */
 @import url("./pages/profession.css");          /* Страничные стили страниц профессий. */

@@ -6,8 +6,8 @@
   --profession-education-type-bg: color-mix(in srgb, var(--surface) 60%, transparent); /* Подложка типа записи в строке заголовка. */
   --profession-education-type-color: var(--text-dark); /* Цвет текста бейджа типа (diploma/course/certificate). */
   --profession-education-muted: var(--muted-dark); /* Приглушенный цвет вторичной строки (год/уровень). */
-  --profession-education-bg-image: none; /* Фоновое изображение блока образования (задается в шаблоне). */
-  --profession-education-bg-color: var(--tech-tile-bg, var(--surface-tile)); /* Цвет фоновой иконки блока образования: совпадает с фоном плиток иконок. */
+  /* --profession-education-bg-image наследуется с body (main.json → base.html, education.svg). */
+  --profession-education-bg-color: var(--tech-tile-bg, var(--surface-tile)); /* Цвет заливки SVG-иконки через маску: совпадает с фоном плиток. */
   --profession-education-bg-width: 42%; /* Ширина правой фоновой зоны с изображением. */
   --profession-education-bg-opacity: 0.92; /* Непрозрачность декоративного фонового изображения. */
   --profession-education-icon-fade: linear-gradient( /* Градиент прозрачности самой иконки слева направо. */

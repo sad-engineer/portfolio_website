@@ -59,18 +59,59 @@
         { "value": "email", "label": "Почта" }
       ],
       "consentText": "Ставя галочку, даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности",
+      "consentPrivacyLinkText": "политикой конфиденциальности",
+      "honeypotLabel": "Ваше имя",
       "submitButtonText": "Хочу звонок!",
       "messageModeSubmitButtonText": "Хочу сообщение!",
       "requestErrorText": "Не удалось отправить запрос. Попробуйте еще раз.",
       "validationErrorText": "Проверьте заполнение формы.",
       "sendingText": "Отправка...",
       "successWorkingHoursText": "Ваш запрос отправлен. Специалист свяжется с Вами в ближайшее время.",
-      "successOffHoursText": "Ваш запрос отправлен. Специалист свяжется с Вами в рабочее время."
+      "successOffHoursText": "Ваш запрос отправлен. Специалист свяжется с Вами в рабочее время.",
+      "antiBotErrorText": "Подтвердите, что вы не робот.",
+      "turnstileTimeoutErrorText": "Таймаут проверки anti-bot",
+      "turnstileErrorText": "Ошибка Turnstile",
+      "turnstileExpiredErrorText": "Срок проверки истек"
+    },
+    "staffNotifications": {
+      "emailSubject": "Новая заявка с формы обратной связи",
+      "emailNotProvided": "не указан",
+      "bodyHeader": "Запрос обратной связи:",
+      "datetimeLine": "Дата/время: {datetime}",
+      "phoneLine": "Телефон: {phone}",
+      "emailLine": "Email пользователя: {email}",
+      "channelsLine": "Мессенджер/тип связи: {channels}",
+      "pageLine": "Страница отправки: {page}",
+      "langLine": "Локаль: {locale}",
+      "telegramApiStatusError": "Telegram API вернул статус {status}",
+      "telegramApiHttpError": "Telegram API HTTPError: {code}",
+      "telegramApiConnectionError": "Не удалось подключиться к Telegram API: {reason}"
+    },
+    "apiMessages": {
+      "accepted": "Заявка принята.",
+      "pageRequired": "Поле page обязательно.",
+      "rateLimitInterval": "Слишком частые запросы. Повторите позже.",
+      "rateLimitExceeded": "Превышен лимит запросов. Повторите позже.",
+      "turnstileFailed": "Проверка anti-bot не пройдена. Обновите страницу и повторите.",
+      "turnstileError": "Ошибка проверки anti-bot: {error}",
+      "dbSaveFailed": "Не удалось сохранить заявку в БД: {error}",
+      "emailSendFailed": "Не удалось отправить заявку в email: {error}",
+      "telegramSendFailed": "Не удалось отправить заявку в telegram: {error}",
+      "phoneRequired": "Телефон обязателен.",
+      "phoneInvalid": "Телефон имеет некорректный формат.",
+      "channelsRequired": "Выберите хотя бы один канал связи.",
+      "consentRequired": "Необходимо согласие на обработку данных.",
+      "emailRequired": "Email обязателен, если выбран канал email.",
+      "emailInvalid": "Email имеет некорректный формат."
     }
   },
   "links": {
     "privacyPolicy": {"href": "/politika-konfidencialnosti", "label": "Политика конфиденциальности" },
-    "userAgreement": { "href": "/polzovatelskoe-soglashenie", "label": "Пользовательское соглашение" }
+    "userAgreement": {
+      "href": "/polzovatelskoe-soglashenie",
+      "label": "Пользовательское соглашение",
+      "footerLabel": "Соглашение"
+    }
   },
   "ui": {
     "langSwitcherAriaLabel": "Переключатель языка",
@@ -120,18 +161,59 @@
             { "value": "email", "label": "Email" }
           ],
           "consentText": "By checking the box, I consent to the processing of personal data and agree to the privacy policy.",
+          "consentPrivacyLinkText": "privacy policy",
+          "honeypotLabel": "Your name",
           "submitButtonText": "Call me!",
           "messageModeSubmitButtonText": "Send message!",
           "requestErrorText": "Failed to send your request. Please try again.",
           "validationErrorText": "Please check the form fields.",
           "sendingText": "Sending...",
           "successWorkingHoursText": "Your request has been sent. A specialist will contact you shortly.",
-          "successOffHoursText": "Your request has been sent. A specialist will contact you during working hours."
+          "successOffHoursText": "Your request has been sent. A specialist will contact you during working hours.",
+          "antiBotErrorText": "Please confirm that you are not a robot.",
+          "turnstileTimeoutErrorText": "Anti-bot verification timed out",
+          "turnstileErrorText": "Turnstile verification error",
+          "turnstileExpiredErrorText": "Verification expired"
+        },
+        "staffNotifications": {
+          "emailSubject": "New feedback form request",
+          "emailNotProvided": "not provided",
+          "bodyHeader": "Feedback request:",
+          "datetimeLine": "Date/time: {datetime}",
+          "phoneLine": "Phone: {phone}",
+          "emailLine": "User email: {email}",
+          "channelsLine": "Messenger/contact type: {channels}",
+          "pageLine": "Submitted from page: {page}",
+          "langLine": "Locale: {locale}",
+          "telegramApiStatusError": "Telegram API returned status {status}",
+          "telegramApiHttpError": "Telegram API HTTPError: {code}",
+          "telegramApiConnectionError": "Failed to connect to Telegram API: {reason}"
+        },
+        "apiMessages": {
+          "accepted": "Request accepted.",
+          "pageRequired": "The page field is required.",
+          "rateLimitInterval": "Too many requests. Please try again later.",
+          "rateLimitExceeded": "Request limit exceeded. Please try again later.",
+          "turnstileFailed": "Anti-bot verification failed. Refresh the page and try again.",
+          "turnstileError": "Anti-bot verification error: {error}",
+          "dbSaveFailed": "Failed to save the request to the database: {error}",
+          "emailSendFailed": "Failed to send the request via email: {error}",
+          "telegramSendFailed": "Failed to send the request via Telegram: {error}",
+          "phoneRequired": "Phone number is required.",
+          "phoneInvalid": "Phone number format is invalid.",
+          "channelsRequired": "Select at least one contact channel.",
+          "consentRequired": "Consent to data processing is required.",
+          "emailRequired": "Email is required when the email channel is selected.",
+          "emailInvalid": "Email format is invalid."
         }
       },
       "links": {
         "privacyPolicy": { "href": "/politika-konfidencialnosti", "label": "Privacy Policy" },
-        "userAgreement": { "href": "/polzovatelskoe-soglashenie", "label": "User Agreement" }
+        "userAgreement": {
+          "href": "/polzovatelskoe-soglashenie",
+          "label": "User Agreement",
+          "footerLabel": "User Agreement"
+        }
       },
       "ui": {
         "langSwitcherAriaLabel": "Language switcher",
@@ -139,7 +221,7 @@
         "mobileMenuAriaLabel": "Main menu",
         "techTileClickHint": "Want to know more?\nClick on the icon."
       },
-      "hero_bottom_legal": "{{shortFIO}} (TIN — {{INN}}) Russia © 2026. Website design and development — {{firstName}} {{lastName}}. Private property protected by copyright holder. Copying is prohibited."
+      "hero_bottom_legal": "{{shortFIO}} (TIN — {{INN}}) Russia © 2026. Website design and development — {{firstName}} {{lastName}}. Private property protected by copyright holder. Copying is prohibited. User Agreement."
     }
   }
 }

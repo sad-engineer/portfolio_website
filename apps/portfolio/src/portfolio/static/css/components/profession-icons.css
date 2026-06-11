@@ -9,6 +9,7 @@
   --tech-glint-first-delay: 0ms; /* Задержка первой иконки в группе. */
   --tech-glint-second-delay: 140ms; /* Задержка второй иконки в группе. */
   --tech-glint-third-delay: 280ms; /* Задержка третьей иконки в группе. */
+  --tech-mask-solid: var(--overlay-light); /* Сплошной цвет для SVG-маски плитки (из глобальной палитры). */
 }
 
 /* Сетка плиток-иконок фиксированного размера. */
@@ -44,8 +45,8 @@
 .tech-tile::after {
   content: ""; /* Декоративный слой блика. */
   position: absolute; /* Отдельный слой внутри плитки. */
-  top: 0;
-  left: 0;
+  top: 0; /* Смещение верхнего края позиционированного элемента. */
+  left: 0; /* Смещение левого края позиционированного элемента. */
   width: 100px; /* Диаметр светового круга. */
   height: 100px; /* Диаметр светового круга. */
   border-radius: 50%; /* Гарантирует круговую форму блика. */
@@ -55,35 +56,35 @@
   pointer-events: none; /* Не перехватывает клики по иконке. */
   z-index: 3; /* Выше иконки/картинки и фоновой маски плитки. */
   offset-path: path("M -20 5 L 30 5 A 30 30 0 0 1 30 55 L -20 55 "); /* Старт/финиш вне иконки: верхняя грань -> дуга -> нижняя грань. */
-  offset-distance: 0%;
+  offset-distance: 0%; /* Значение свойства offset-distance. */
   offset-rotate: auto; /* Поворачивает блик по касательной траектории. */
-  transform: translate(-5%, -5%);
+  transform: translate(-5%, -5%); /* Геометрическое преобразование элемента. */
 }
 
 /* Триггер анимации блика, класс ставится скриптом для выбранных иконок. */
 .tech-tile.is-glinting::after {
-  animation-name: tech-tile-glint-path;
-  animation-duration: var(--tech-glint-duration);
-  animation-delay: var(--tech-glint-delay, 0ms);
-  animation-timing-function: linear;
-  animation-fill-mode: both;
+  animation-name: tech-tile-glint-path; /* Имя подключаемой keyframes-анимации. */
+  animation-duration: var(--tech-glint-duration); /* Длительность анимации. */
+  animation-delay: var(--tech-glint-delay, 0ms); /* Задержка старта анимации. */
+  animation-timing-function: linear; /* Кривая ускорения анимации. */
+  animation-fill-mode: both; /* Состояние элемента до/после анимации. */
 }
 
 /* Движение блика по заданному пути с плавным появлением/исчезновением. */
 @keyframes tech-tile-glint-path {
   0% {
-    offset-distance: 0%;
-    opacity: 0;
+    offset-distance: 0%; /* Значение свойства offset-distance. */
+    opacity: 0; /* Непрозрачность элемента. */
   }
   14% {
-    opacity: var(--tech-glint-opacity);
+    opacity: var(--tech-glint-opacity); /* Непрозрачность элемента. */
   }
   86% {
-    opacity: var(--tech-glint-opacity);
+    opacity: var(--tech-glint-opacity); /* Непрозрачность элемента. */
   }
   100% {
-    offset-distance: 100%;
-    opacity: 0;
+    offset-distance: 100%; /* Значение свойства offset-distance. */
+    opacity: 0; /* Непрозрачность элемента. */
   }
 }
 
@@ -101,12 +102,12 @@
   border-radius: 4px; /* Скругление углов псевдо-элемента. */
   background: var(--tech-tile-bg); /* Фон псевдо-элемента. */
   pointer-events: none; /* Отключает интерактивность псевдо-элемента. */
-  -webkit-mask-image: linear-gradient(#fff, #fff), var(--tech-icon); /* Маска SVG-иконки. */
+  -webkit-mask-image: linear-gradient(var(--tech-mask-solid), var(--tech-mask-solid)), var(--tech-icon); /* Маска SVG-иконки. */
   -webkit-mask-size: 100% 100%, var(--tech-icon-size) var(--tech-icon-size); /* Размер маски SVG-иконки. */
   -webkit-mask-repeat: no-repeat, no-repeat; /* Повторение маски SVG-иконки. */
   -webkit-mask-position: center, center; /* Положение маски SVG-иконки. */
   -webkit-mask-composite: destination-out; /* Комбинация маски SVG-иконки. */
-  mask-image: linear-gradient(#fff, #fff), var(--tech-icon); /* Маска SVG-иконки. */
+  mask-image: linear-gradient(var(--tech-mask-solid), var(--tech-mask-solid)), var(--tech-icon); /* Маска SVG-иконки. */
   mask-size: 100% 100%, var(--tech-icon-size) var(--tech-icon-size); /* Размер маски SVG-иконки. */
   mask-repeat: no-repeat, no-repeat; /* Повторение маски SVG-иконки. */
   mask-position: center, center; /* Положение маски SVG-иконки. */
@@ -231,20 +232,20 @@
 
 @keyframes tech-tile-click-hint {
   0% {
-    opacity: 0;
-    transform: translateY(-2px);
+    opacity: 0; /* Непрозрачность элемента. */
+    transform: translateY(-2px); /* Геометрическое преобразование элемента. */
   }
   10% {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1; /* Непрозрачность элемента. */
+    transform: translateY(0); /* Геометрическое преобразование элемента. */
   }
   66.666% {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1; /* Непрозрачность элемента. */
+    transform: translateY(0); /* Геометрическое преобразование элемента. */
   }
   100% {
-    opacity: 0;
-    transform: translateY(-2px);
+    opacity: 0; /* Непрозрачность элемента. */
+    transform: translateY(-2px); /* Геометрическое преобразование элемента. */
   }
 }
 
@@ -289,9 +290,9 @@
 
 /* До завершения позиционирования (JS) держим панель скрытой, чтобы не мигала в точке top/left=0. */
 .tech-tile-dropdown[open]:not(.tech-tile-dropdown--ready) .tech-tile-dropdown__menu {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
+  visibility: hidden; /* Видимость элемента без удаления из потока. */
+  opacity: 0; /* Непрозрачность элемента. */
+  pointer-events: none; /* Управление реакцией на события указателя. */
 }
 
 /* Заголовок и описание внутри выпадающей панели. */

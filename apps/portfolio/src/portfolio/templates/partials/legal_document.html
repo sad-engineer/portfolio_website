@@ -1,28 +1,16 @@
-{% set legal_i18n = legal_doc.get('i18n', {}) %}
-{% set legal_locale = legal_doc %}
-{% if current_lang == 'en' %}
-    {% set legal_en = legal_i18n.get('en', {}) %}
-    {% if legal_en %}
-        {% set legal_locale = legal_en %}
-    {% endif %}
-{% endif %}
-
 <section class="section-head">
-    <h1>{{ legal_locale.get('title', '') }}</h1>
-    <p class="muted">{{ legal_locale.get('updatedAtText', '') }}</p>
+    <h1>{{ legal_document.title }}</h1>
+    <p class="muted">{{ legal_document.updatedAtText }}</p>
 </section>
 
 <section class="card legal legal-document">
-    {% for block in legal_locale.get('blocks', []) %}
-        {% if block.type == "h1" %}
-        {% set heading = block.text | replace('{{HOME_HREF}}', home_href) %}
-        <h1>{{ heading | safe }}</h1>
-        {% elif block.type == "h2" %}
-        {% set heading = block.text | replace('{{HOME_HREF}}', home_href) %}
-        <h2>{{ heading | safe }}</h2>
+    {% for block in legal_document.blocks %}
+        {% if block.tag == "h1" %}
+        <h1>{{ block.html | safe }}</h1>
+        {% elif block.tag == "h2" %}
+        <h2>{{ block.html | safe }}</h2>
         {% else %}
-        {% set paragraph = block.text | replace('{{HOME_HREF}}', home_href) %}
-        <p>{{ paragraph | safe }}</p>
+        <p>{{ block.html | safe }}</p>
         {% endif %}
     {% endfor %}
 </section>

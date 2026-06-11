@@ -18,27 +18,24 @@
   const turnstileSiteKey = String(form.dataset.turnstileSiteKey || "").trim();
 
   const defaultSubmitText =
-    form.dataset.msgSubmitDefault || submitButton?.textContent?.trim() || "Отправить";
+    form.dataset.msgSubmitDefault || submitButton?.textContent?.trim() || "";
   const callSubmitText = form.dataset.msgSubmitCall || defaultSubmitText;
   const messageSubmitText = form.dataset.msgSubmitMessage || defaultSubmitText;
   const callFormTitle = form.dataset.formTitleCall || formTitleEl?.textContent?.trim() || "";
   const messageFormTitle = form.dataset.formTitleMessage || callFormTitle;
-  const phoneInputLabel = form.dataset.inputLabelPhone || "Ваш номер";
-  const phoneInputPlaceholder = form.dataset.inputPlaceholderPhone || "+7 (___) ___-__-__";
-  const emailInputLabel = form.dataset.inputLabelEmail || "Ваш email";
-  const emailInputPlaceholder = form.dataset.inputPlaceholderEmail || "пример емейла";
-  const sendingText = form.dataset.msgSubmitSending || "Отправка...";
-  const validationErrorText =
-    form.dataset.msgValidationError || "Проверьте заполнение формы.";
-  const requestErrorText =
-    form.dataset.msgRequestError || "Не удалось отправить запрос.";
-  const antiBotErrorText = "Подтвердите, что вы не робот.";
-  const successWorkingText =
-    form.dataset.msgSuccessWorkingHours ||
-    "Ваш запрос отправлен. Специалист свяжется с Вами в ближайшее время.";
-  const successOffHoursText =
-    form.dataset.msgSuccessOffHours ||
-    "Ваш запрос отправлен. Специалист свяжется с Вами в рабочее время.";
+  const phoneInputLabel = form.dataset.inputLabelPhone || "";
+  const phoneInputPlaceholder = form.dataset.inputPlaceholderPhone || "";
+  const emailInputLabel = form.dataset.inputLabelEmail || "";
+  const emailInputPlaceholder = form.dataset.inputPlaceholderEmail || "";
+  const sendingText = form.dataset.msgSubmitSending || "";
+  const validationErrorText = form.dataset.msgValidationError || "";
+  const requestErrorText = form.dataset.msgRequestError || "";
+  const antiBotErrorText = form.dataset.msgAntibotError || "";
+  const turnstileTimeoutErrorText = form.dataset.msgTurnstileTimeout || "";
+  const turnstileErrorText = form.dataset.msgTurnstileError || "";
+  const turnstileExpiredErrorText = form.dataset.msgTurnstileExpired || "";
+  const successWorkingText = form.dataset.msgSuccessWorkingHours || "";
+  const successOffHoursText = form.dataset.msgSuccessOffHours || "";
 
   const clearStatus = function () {
     if (!statusEl) {
@@ -203,7 +200,7 @@
       };
 
       const timerId = window.setTimeout(function () {
-        finishOnce(reject, new Error("Таймаут проверки anti-bot"));
+        finishOnce(reject, new Error(turnstileTimeoutErrorText));
       }, 30000);
 
       const onSuccess = function (token) {
@@ -212,11 +209,11 @@
       };
       const onError = function () {
         window.clearTimeout(timerId);
-        finishOnce(reject, new Error("Ошибка Turnstile"));
+        finishOnce(reject, new Error(turnstileErrorText));
       };
       const onExpired = function () {
         window.clearTimeout(timerId);
-        finishOnce(reject, new Error("Срок проверки истек"));
+        finishOnce(reject, new Error(turnstileExpiredErrorText));
       };
 
       if (turnstileWidgetId === null) {
