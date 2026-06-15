@@ -118,6 +118,7 @@ def is_feedback_db_enabled() -> bool:
 
 
 async def init_feedback_db() -> None:
+    global _feedback_engine
     engine = _get_engine()
     if engine is None:
         return
@@ -125,15 +126,15 @@ async def init_feedback_db() -> None:
         async with engine.begin() as conn:
             await conn.run_sync(metadata.create_all)
     except Exception as exc:
-        if get_settings().debug:
-            _logger.warning(
-                "Feedback DB init skipped (%s). "
-                "For cloud PostgreSQL set FEEDBACK_DATABASE_SSL=require "
-                "or add ?sslmode=require to FEEDBACK_DATABASE_URL.",
-                exc,
-            )
-            return
-        raise
+        _logger.warning(
+            "Feedback DB init skipped (%s). "
+            "Check FEEDBACK_DATABASE_URL on the host or leave it empty to disable DB. "
+            "For cloud PostgreSQL set FEEDBACK_DATABASE_SSL=require "
+            "or add ?sslmode=require to FEEDBACK_DATABASE_URL.",
+            exc,
+        )
+        await engine.dispose()
+        _feedback_engine = None
 
 
 async def save_feedback_request(
