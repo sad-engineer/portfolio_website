@@ -1,0 +1,187 @@
+/* Компонент пузырькового портфолио IT-проектов (страница /developer). */
+
+/* Токены компонента: меняют только секцию .profession-portfolio--bubbles на странице профессии. */
+.page-content.page-profession .profession-portfolio--bubbles {
+  --bubbles-card-padding: 0; /* Внутренний отступ обёртки секции; 0 — арена вплотную к рамке сетки. */
+  --bubbles-card-border-width: 0; /* Толщина рамки обёртки; 0 отключает дублирование границы карточки. */
+  --bubbles-card-bg: transparent; /* Фон обёртки; transparent — виден общий фон страницы профессии. */
+  --bubbles-card-opacity: 1; /* Непрозрачность обёртки; диапазон 0–1. */
+  --bubbles-arena-width: 100%; /* Ширина поля арены относительно колонки; 100% — на всю ширину контейнера. */
+  --bubbles-arena-max-width: none; /* Ограничение ширины поля; например 900px для более узкой арены. */
+  --bubbles-arena-height: 680px; /* Фиксированная высота поля; auto — высота из --bubbles-arena-aspect. */
+  --bubbles-arena-aspect: 100%; /* padding-top арены; 100% = квадрат, если --bubbles-arena-height: auto. */
+  --bubbles-arena-radius: 4px; /* Скругление углов рамки арены; 0–8px. */
+  --bubbles-arena-border-width: 1px; /* Толщина рамки поля «Портфолио». */
+  --bubbles-arena-border-color: var(--line); /* Цвет рамки арены из глобальной палитры. */
+  --bubbles-arena-bg: color-mix(in srgb, var(--surface) 0%, transparent); /* Подложка арены; 0% surface = прозрачная. */
+  --bubbles-title-offset: 12px; /* Отступ заголовка от верхнего и левого края арены; 8–20px. */
+  --bubbles-title-color: var(--text-head); /* Цвет заголовка «Портфолио» на тёмном фоне страницы. */
+  --bubbles-label-color: var(--text); /* Цвет подписей пузырьков в SVG. */
+  --bubbles-label-font-family: "Segoe UI", Arial, sans-serif; /* Стек подписей; совпадает с body в base.css. */
+  --bubbles-label-font-size: 16px; /* Размер подписи в пузырьке; 9–13px на десктопе. */
+  --bubbles-label-line-height: 24px; /* Межстрочный интервал многострочной подписи; 11–18px. */
+  --bubbles-label-font-weight: 600; /* Насыщенность подписи; 500–700. */
+  --bubbles-layer-hover-opacity: 0.92; /* Непрозрачность слоя пузырька при hover/focus ссылки; 0.85–1. */
+  --bubbles-layer-fade-duration: 160ms; /* Длительность затухания слоя при наведении; не физика JS-анимации. */
+  --bubbles-font-family: var(--bubbles-label-font-family); /* Алиас для подписей в SVG. */
+  --bubbles-footer-inset-bottom: 16px; /* Отступ подписи от нижней рамки внутри арены; 12–24px. */
+  --bubbles-footer-inset-inline: 16px; /* Боковые отступы подписи внутри арены; 12–24px. */
+  --bubbles-footer-reserve: 72px; /* Высота зоны внизу арены под подпись (не перекрывать пузырьки); 60–90px. */
+  --bubbles-footer-line-gap: 6px; /* Интервал между двумя строками подписи; 4–12px. */
+  --bubbles-footer-font-size: 1rem; /* Размер текста подписи; 0.9–1.1rem. */
+  --bubbles-footer-accent-color: var(--banner); /* Акцентная строка «скоро» (#fa842b из палитры). */
+  --bubbles-footer-text-color: var(--text); /* Обычная строка со ссылкой на GitHub. */
+  --bubbles-footer-link-color: var(--bubbles-footer-accent-color); /* Ссылка GitHab — акцент, как первая строка. */
+}
+
+/* Обёртка секции в сетке profession-content-container: без карточной подложки. */
+.page-content.page-profession .profession-content-container .profession-portfolio--bubbles.card {
+  padding: var(--bubbles-card-padding); /* Убирает внутренние поля стандартной .card. */
+  border: var(--bubbles-card-border-width) solid transparent; /* Сбрасывает видимую рамку карточки. */
+  background: var(--bubbles-card-bg); /* Не перекрывает фон страницы белой плиткой .card. */
+  opacity: var(--bubbles-card-opacity); /* Секция всегда непрозрачна поверх общего layout. */
+  overflow: visible; /* Не обрезает SVG и тени пузырьков по краям арены. */
+  align-self: start; /* В grid не растягивает строку по высоте соседних секций. */
+}
+
+/* Поле арены: высота — --bubbles-arena-height или aspect через ::before. */
+.profession-portfolio-bubbles__arena {
+  position: relative; /* Контекст для абсолютного заголовка и SVG-диаграммы. */
+  width: var(--bubbles-arena-width); /* Растягивает арену на ширину родительской колонки. */
+  height: var(--bubbles-arena-height, auto); /* Фиксированная высота поля (например 480px). */
+  max-width: var(--bubbles-arena-max-width); /* Опционально ограничивает ширину поля. */
+  margin-inline: auto; /* Центрирует арену при max-width меньше 100%. */
+  border: var(--bubbles-arena-border-width) solid var(--bubbles-arena-border-color); /* Видимая рамка блока на скриншоте. */
+  border-radius: var(--bubbles-arena-radius); /* Слегка скругляет углы поля. */
+  background: var(--bubbles-arena-bg); /* Прозрачная или лёгкая подложка под сетку/пузырьки. */
+  overflow: hidden; /* Обрезает SVG и пузырьки по границе рамки арены. */
+  touch-action: none; /* Отдаёт жесты прокрутки странице, не арене (клики по пузырькам сохраняются). */
+  isolation: isolate; /* Отдельный stacking context для z-index заголовка и диаграммы. */
+}
+
+/* Резерв высоты по aspect-ratio; скрыт, пока задана фиксированная --bubbles-arena-height. */
+.profession-portfolio-bubbles__arena::before {
+  content: ""; /* Создаёт блочный якорь для расчёта высоты по aspect-ratio. */
+  display: none; /* Включите block и уберите --bubbles-arena-height для режима квадрата. */
+  padding-top: var(--bubbles-arena-aspect); /* 100% = квадрат; меньше — более низкое поле. */
+}
+
+/* Заголовок секции поверх левого верхнего угла арены (не в потоке SVG). */
+.profession-portfolio-bubbles__title {
+  position: absolute; /* Накладывает заголовок на арену, не сдвигая диаграмму. */
+  top: var(--bubbles-title-offset); /* Отступ от верхнего края рамки. */
+  left: var(--bubbles-title-offset); /* Отступ от левого края рамки. */
+  z-index: 2; /* Заголовок выше SVG-слоя с пузырьками. */
+  margin: 0; /* Убирает браузерный отступ h2. */
+  color: var(--bubbles-title-color); /* Контрастный заголовок на тёмном фоне страницы. */
+  pointer-events: none; /* Клики проходят к пузырькам под заголовком. */
+  line-height: 2; /* Межстрочный интервал. */
+}
+
+/* SVG-холст: вставляется скриптом profession-portfolio-bubbles.js; снизу оставляет место под подпись. */
+.profession-portfolio-bubbles__chart {
+  position: absolute; /* Заполняет прямоугольник арены поверх ::before. */
+  inset: 0 0 var(--bubbles-footer-reserve) 0; /* Нижняя полоса арены — для текста bubbleFooter. */
+  z-index: 1; /* Диаграмма под заголовком и подписью, над фоном арены. */
+  display: block; /* Убирает лишний зазор под inline-SVG. */
+  width: 100%; /* Масштабирует viewBox по ширине поля. */
+  height: 100%; /* Масштабирует viewBox по высоте поля. */
+  overflow: hidden; /* Не показывает элементы за пределами clip-path арены. */
+  user-select: none; /* Запрещает выделение подписей пузырьков как текста страницы. */
+}
+
+/* Группа градиентов/масок одного пузырька: визуальный слой без hit-area. */
+.profession-portfolio-bubbles__bubble-layer {
+  pointer-events: none; /* События мыши обрабатывает круг-ссылка ниже по DOM. */
+  transition: opacity var(--bubbles-layer-fade-duration) ease; /* Плавное затемнение при hover карточки проекта. */
+}
+
+/* Круговая hit-area пузырька без документа (не кликабелен). */
+.profession-portfolio-bubbles__circle {
+  cursor: default; /* Обычный курсор: проект без PDF не открывается. */
+  pointer-events: auto; /* Принимает hover для подсветки слоя пузырька. */
+}
+
+/* Кликабельный пузырёк с привязанным PDF проекта. */
+.profession-portfolio-bubbles__circle--link {
+  cursor: pointer; /* Показывает, что пузырёк открывает документ. */
+}
+
+/* Убирает стандартный outline браузера; фокус виден через opacity слоя родителя. */
+.profession-portfolio-bubbles__circle--link:focus-visible {
+  outline: none; /* Не рисует системную рамку поверх SVG-круга. */
+}
+
+/* Лёгкое затемнение стеклянного слоя при наведении или фокусе с клавиатуры. */
+.profession-portfolio-bubbles__node:has(.profession-portfolio-bubbles__circle--link:hover)
+  .profession-portfolio-bubbles__bubble-layer,
+.profession-portfolio-bubbles__node:has(.profession-portfolio-bubbles__circle--link:focus-visible)
+  .profession-portfolio-bubbles__bubble-layer {
+  opacity: var(--bubbles-layer-hover-opacity); /* Визуальная обратная связь без изменения layout. */
+}
+
+/* Подпись внутри арены (в рамке): две строки из portfolio_projects.json → bubbleFooter. */
+.profession-portfolio-bubbles__footer {
+  --bubbles-footer-accent-color: var(--banner); /* Дублирует токен секции для надёжного scope у <p>. */
+  --bubbles-footer-text-color: var(--text); /* Дублирует токен секции для второй строки. */
+  position: absolute; /* Фиксирует подпись у нижнего края внутри рамки арены. */
+  right: var(--bubbles-footer-inset-inline); /* Боковой отступ от правой рамки. */
+  bottom: var(--bubbles-footer-inset-bottom); /* Отступ от нижней рамки блока портфолио. */
+  left: var(--bubbles-footer-inset-inline); /* Боковой отступ от левой рамки. */
+  z-index: 3; /* Подпись поверх SVG с пузырьками. */
+  margin: 0; /* Позиционирование через inset, без внешних отступов. */
+  padding: 0; /* Без внутренних полей — ширина задаётся left/right. */
+  text-align: center; /* Центрирует обе строки внутри арены. */
+  pointer-events: none; /* Клики вне ссылки проходят к пузырькам. */
+}
+
+/* Общая типографика строк подписи (цвет задаётся отдельно для accent / plain). */
+.page-content.page-profession .profession-content-container .profession-portfolio--bubbles.card .profession-portfolio-bubbles__footer-line {
+  margin: 0; /* Убирает браузерный отступ между абзацами. */
+  font-size: var(--bubbles-footer-font-size); /* Единый размер обеих строк. */
+  line-height: 1.4; /* Читаемый межстрочный интервал внутри многострочного абзаца. */
+}
+
+.page-content.page-profession .profession-content-container .profession-portfolio--bubbles.card .profession-portfolio-bubbles__footer-line + .profession-portfolio-bubbles__footer-line {
+  margin-top: var(--bubbles-footer-line-gap); /* Зазор между первой и второй строкой. */
+}
+
+/* Вторая строка: обычный цвет текста на тёмном фоне. */
+.page-content.page-profession .profession-content-container .profession-portfolio--bubbles.card .profession-portfolio-bubbles__footer-line:not(.profession-portfolio-bubbles__footer-line--accent) {
+  color: var(--bubbles-footer-text-color); /* Перебивает .card p { color: inherit }. */
+}
+
+/* Первая строка: акцентный оранжевый (--banner / #fa842b). */
+.page-content.page-profession .profession-content-container .profession-portfolio--bubbles.card .profession-portfolio-bubbles__footer-line--accent {
+  color: var(--bubbles-footer-accent-color); /* Оранжевый акцент из палитры base.css. */
+  font-weight: 600; /* Чуть сильнее обычного текста без смены размера. */
+}
+
+/* Ссылка GitHab во второй строке: как consent__link в фидбеке, но всегда акцентная. */
+.page-content.page-profession .profession-content-container .profession-portfolio--bubbles.card .profession-portfolio-bubbles__footer-link {
+  color: var(--bubbles-footer-link-color); /* Оранжевый акцент (--banner). */
+  text-decoration: underline; /* Подчёркивание в покое, как у .consent__link. */
+  pointer-events: auto; /* Ссылка кликабельна, хотя footer — pointer-events: none. */
+}
+
+.page-content.page-profession .profession-content-container .profession-portfolio--bubbles.card .profession-portfolio-bubbles__footer-link:hover {
+  color: var(--bubbles-footer-link-color); /* Сохраняет акцент при наведении. */
+  text-decoration: none; /* Как hover у .consent__link и site-bottom-legal a. */
+}
+
+/* Текстовая подпись внутри SVG-пузырька (fill, не color). */
+.profession-portfolio-bubbles__label {
+  font-family: var(--bubbles-font-family); /* Единый стек с интерфейсом сайта. */
+  font-size: var(--bubbles-label-font-size); /* Читаемость на мелких пузырьках. */
+  line-height: var(--bubbles-label-line-height); /* Базовый межстрочный интервал; шаг строк в JS читает тот же токен. */
+  font-weight: var(--bubbles-label-font-weight); /* Выделяет название проекта в круге. */
+  pointer-events: none; /* Клик попадает в circle, а не в текст. */
+  fill: var(--bubbles-label-color); /* Цвет глифов подписи из токена компонента. */
+}
+
+/* Доступность: отключает CSS-переходы слоя, если пользователь просил меньше движения. */
+@media (prefers-reduced-motion: reduce) {
+  .profession-portfolio-bubbles__bubble-layer {
+    transition: none; /* Мгновенное переключение opacity без анимации затухания. */
+  }
+}

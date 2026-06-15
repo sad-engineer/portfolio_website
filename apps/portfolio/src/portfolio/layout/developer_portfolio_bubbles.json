@@ -1,0 +1,27 @@
+{
+  "animation": {
+    "settleDurationMs": 3000,
+    "growDurationMs": 2000,
+    "spawnFactor": 0.85,
+    "gravity": 0.022,
+    "repulsion": 0.85,
+    "padding": 4,
+    "damping": 0.85,
+    "approachStrength": 0.035
+  },
+  "bubbles": {
+    "301": { "x": -42.31, "y": -18.05, "diameter": 45, "growSpeed": 0.46 },
+    "302": { "x":  47.25, "y":  22.94, "diameter": 30, "growSpeed": 0.26 },
+    "303": { "x": -22.45, "y": -58.64, "diameter": 25, "growSpeed": 0.62 },  
+    "304": { "x":   3.37, "y":  53.97, "diameter": 23, "growSpeed": 0.63 },
+    "305": { "x":  11.42, "y":  18.41, "diameter": 35, "growSpeed": 0.48 },
+    "306": { "x": -52.01, "y":  15.91, "diameter": 25, "growSpeed": 0.52 },
+    "307": { "x":  36.53, "y": -12.98, "diameter": 40, "growSpeed": 0.68 },
+    "308": { "x":  27.22, "y":  44.94, "diameter": 35, "growSpeed": 0.94 },
+    "309": { "x": -24.06, "y":  35.91, "diameter": 40, "growSpeed": 0.87 },
+    "310": { "x": -14.87, "y":   4.78, "diameter": 22, "growSpeed": 0.71 },
+    "311": { "x":  -8.11, "y": -15.99, "diameter": 18, "growSpeed": 0.91 },
+    "312": { "x":   9.07, "y":  -8.49, "diameter": 15, "growSpeed": 0.55 },
+    "313": { "x":   6.21, "y": -39.24, "diameter": 35, "growSpeed": 0.97 }
+  }
+}

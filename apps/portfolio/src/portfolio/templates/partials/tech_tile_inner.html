@@ -1,0 +1,7 @@
+{% if item.renderMode == 'multicolor_svg' %}
+<img class="tech-tile__svg-img" src="{{ url_for('static', path=item.icon) }}" alt="" width="43" height="43" decoding="async" />
+{% elif item.renderMode == 'raster' %}
+<img class="tech-tile__raster-img" src="{{ url_for('static', path=item.icon) }}" alt="" width="{{ item.rasterWidth }}" height="{{ item.rasterHeight }}" decoding="async" />
+{% elif item.renderMode == 'font_icon' %}
+<i class="{{ item.icon }}" aria-hidden="true"></i>
+{% endif %}

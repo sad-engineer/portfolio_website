@@ -1,0 +1,17 @@
+{% if item.hasDescription %}
+<details class="tech-tile-dropdown">
+    <summary class="tech-tile-dropdown__trigger" aria-label="{{ item.label }}">
+        <span class="{{ item.tileClass }}"{% if item.tileStyle %} style="{{ item.tileStyle }}"{% endif %} title="{{ item.label }}" aria-label="{{ item.label }}">
+            {% include "partials/tech_tile_inner.html" %}
+        </span>
+    </summary>
+    <div class="tech-tile-dropdown__menu" aria-label="{{ item.label }}">
+        <h4 class="tech-tile-dropdown__title">{{ item.label }}</h4>
+        <p class="tech-tile-dropdown__description">{{ item.description }}</p>
+    </div>
+</details>
+{% else %}
+<div class="{{ item.tileClass }}"{% if item.tileStyle %} style="{{ item.tileStyle }}"{% endif %} title="{{ item.label }}" aria-label="{{ item.label }}">
+    {% include "partials/tech_tile_inner.html" %}
+</div>
+{% endif %}

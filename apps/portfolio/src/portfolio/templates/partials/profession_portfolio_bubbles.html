@@ -1,0 +1,29 @@
+{% set bubble_items = profession_portfolio_bubbles.get(profession_key, []) %}
+{% if bubble_items %}
+<section class="card profession-portfolio profession-portfolio--bubbles" data-bubble-portfolio>
+    <div
+        class="profession-portfolio-bubbles__arena"
+        data-bubble-arena
+        aria-label="{{ portfolio_projects_locale.sectionTitle }}"
+    >
+        <h2 class="profession-portfolio-bubbles__title">{{ portfolio_projects_locale.sectionTitle }}</h2>
+        {% set bubble_footer = portfolio_projects_locale.get('bubbleFooter', {}) %}
+        {% if bubble_footer %}
+        <footer class="profession-portfolio-bubbles__footer">
+            <p class="profession-portfolio-bubbles__footer-line profession-portfolio-bubbles__footer-line--accent">
+                {{ bubble_footer.get('comingSoonLine', '') }}
+            </p>
+            <p class="profession-portfolio-bubbles__footer-line">
+                {{ bubble_footer_github_html | safe }}
+            </p>
+        </footer>
+        {% endif %}
+    </div>
+</section>
+<script>
+  window.__PORTFOLIO_BUBBLES__ = {
+    items: {{ bubble_items | tojson }},
+    animation: {{ developer_bubble_animation | tojson }}
+  };
+</script>
+{% endif %}
