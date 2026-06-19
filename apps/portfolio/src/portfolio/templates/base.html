@@ -10,6 +10,7 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.15.1/devicon.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', path='css/portfolio-layout.css') }}" />
+    {% block extra_head %}{% endblock %}
 </head>
 <body style="--site-bg-image: url('{{ url_for('static', path=main_locale.assets.siteBackgroundImage) }}'); --lang-switch-icon: url('{{ url_for('static', path=main_locale.assets.languageSwitcherIcon) }}'); --languages-bg-image: url('{{ url_for('static', path=main_locale.assets.languagesBackgroundImage) }}'); --document-types-bg-image: url('{{ url_for('static', path=main_locale.assets.documentTypesSectionBackgroundImage) }}'); --profession-education-bg-image: url('{{ url_for('static', path=main_locale.assets.educationBackgroundImage) }}');">
     <header class="site-header {{ page_id | default('page-default') }}" style="--header-bg-image: url('{{ url_for('static', path=main_locale.assets.siteBackgroundImage) }}');">
@@ -141,6 +142,7 @@
     {% endif %}
     <script src="{{ url_for('static', path='js/feedback-form.js') }}"></script>
     <script src="{{ url_for('static', path='js/work-hours-refresh.js') }}"></script>
+    {% block pet_scripts %}{% endblock %}
 
 </body>
 </html>

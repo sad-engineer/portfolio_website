@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% set page_id = "page-pet-project" %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ pet_static_base }}/css/app.css">
+{% if pet_portfolio_css %}
+<link rel="stylesheet" href="{{ url_for('static', path=pet_portfolio_css) }}">
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<section class="pet-project-demo scrollbar" data-pet-app="{{ pet_app_slug }}">
+    {% include pet_demo_partial %}
+</section>
+{% endblock %}
+
+{% block pet_scripts %}
+<script>
+    window.__TIC_TAC_TOE__ = {{ client_config_json | safe }};
+</script>
+<script src="{{ pet_static_base }}/js/config.js"></script>
+<script src="{{ pet_static_base }}/js/i18n.js"></script>
+<script src="{{ pet_static_base }}/js/game.js"></script>
+{% endblock %}

@@ -1,0 +1,3 @@
+[submodule "apps/tic_tac_toe"]
+	path = apps/tic_tac_toe
+	url = https://github.com/sad-engineer/tic_tac_toe.git

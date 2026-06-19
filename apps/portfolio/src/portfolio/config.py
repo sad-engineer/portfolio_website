@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     debug: bool = False
 
     base_dir: Path = Path(__file__).resolve().parents[2]
+    apps_dir: Path = base_dir.parent
     app_dir: Path = base_dir / "src" / "portfolio"
     static_dir: Path = app_dir / "static"
     templates_dir: Path = app_dir / "templates"

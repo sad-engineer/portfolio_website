@@ -3,6 +3,11 @@ services:
     name: portfolio
     env: python
     rootDir: apps/portfolio
-    buildCommand: pip install poetry && poetry install --without dev --no-interaction --no-ansi
+    # PET-проекты (git submodules в apps/*) встраиваются в тот же процесс uvicorn.
+    # Их веб-зависимости уже покрыты apps/portfolio/pyproject.toml — отдельный poetry install не нужен.
+    buildCommand: git submodule update --init --recursive && pip install poetry && poetry install --without dev --no-interaction --no-ansi
     startCommand: poetry run uvicorn portfolio.main:app --host 0.0.0.0 --port $PORT
     autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.11"

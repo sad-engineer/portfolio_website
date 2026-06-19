@@ -5,7 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from portfolio.dependencies import get_settings
 from portfolio.feedback_db import init_feedback_db
-from portfolio.routers import feedback_router, pages_router
+from portfolio.routers import feedback_router, pages_router, pet_projects_router
+from portfolio.services.apps.registry import mount_pet_routes
 from portfolio.services.page_context import LANG_COOKIE_NAME
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
@@ -51,6 +52,8 @@ def create_app() -> FastAPI:
 
     my_app.add_middleware(_LocaleCookieMiddleware)
 
+    mount_pet_routes(my_app, settings)
+
     my_app.mount(
         "/static",
         StaticFiles(directory=str(settings.static_dir)),
@@ -58,6 +61,7 @@ def create_app() -> FastAPI:
     )
 
     my_app.include_router(pages_router)
+    my_app.include_router(pet_projects_router)
     my_app.include_router(feedback_router)
 
     @my_app.on_event("startup")

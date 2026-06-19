@@ -1,0 +1,143 @@
+@import url("../../scrollbar.css"); /* Preset полос прокрутки портфолио (.scrollbar). */
+
+/* Токены компонента embed tic_tac_toe: локальные переменные на базе глобальной палитры портфолио. */
+.page-content.page-pet-project .pet-project-demo {
+  --pet-embed-accent: var(--banner); /* Акцентный цвет UI игры на тёмном фоне страницы. */
+  --pet-embed-accent-deep: color-mix(in srgb, var(--banner) 78%, var(--overlay-dark) 22%); /* Более тёмный оттенок акцента для градиента кнопки. */
+  --pet-embed-accent-glow: color-mix(in srgb, var(--banner) 30%, var(--overlay-dark-alpha-0)); /* Мягкое свечение при фокусе и hover. */
+  --pet-embed-cell: var(--surface-dark); /* Фон ячейки поля. */
+  --pet-embed-cell-hover: var(--surface-tile); /* Фон ячейки при наведении. */
+  --pet-embed-panel: var(--overlay-dark-alpha-0); /* Подложка карточки игры: прозрачная, виден фон портфолио. */
+  --pet-embed-text: var(--text-head); /* Основной цвет текста игры. */
+  --pet-embed-text-muted: var(--muted); /* Вторичный цвет подписей и статуса. */
+  --pet-embed-border: var(--line); /* Цвет рамок полей и ячеек. */
+  --pet-embed-input-bg: color-mix(in srgb, var(--surface-dark) 55%, var(--overlay-dark-alpha-0)); /* Полупрозрачный фон числовых полей. */
+  --pet-embed-button-text: var(--text-head-dark); /* Контрастный текст на акцентной кнопке. */
+  --pet-embed-padding-top: 8px; /* Верхний отступ блока встраивания; безопасно: 0–16px. */
+  --pet-embed-padding-bottom: 24px; /* Нижний отступ перед формой обратной связи; безопасно: 16–40px. */
+}
+
+/* Обёртка встраивания PET на странице /projects/{id}: прокрутка и отступы секции. */
+.page-content.page-pet-project .pet-project-demo {
+  width: 100%; /* Занимает всю ширину контейнера .container. */
+  overflow: auto; /* Прокрутка при широком или высоком игровом поле. */
+  scrollbar-gutter: stable; /* Резервирует место под полосу прокрутки (как в .column портфолио). */
+  padding: var(--pet-embed-padding-top) 0 var(--pet-embed-padding-bottom); /* Вертикальные отступы секции. */
+}
+
+/* Горизонтальная полоса: preset .scrollbar задаёт width; для overflow-x нужна height. */
+.page-content.page-pet-project .pet-project-demo.scrollbar::-webkit-scrollbar {
+  height: var(--size); /* Толщина горизонтальной полосы; совпадает с вертикальной (--size). */
+}
+
+/* Корневой блок PET-разметки: сброс центрирования standalone-режима. */
+.page-content.page-pet-project .pet-project-demo .tic-tac-toe-app {
+  min-height: auto; /* Не растягивает блок на высоту viewport. */
+  margin: 0; /* Прижимает игру к левому краю контейнера. */
+  display: block; /* Отключает flex-центрирование из base.css PET. */
+}
+
+/* Карточка игры: прозрачная подложка без тени standalone-страницы. */
+.page-content.page-pet-project .pet-project-demo .game-header-card,
+.page-content.page-pet-project .pet-project-demo .game-container {
+  margin: 0; /* Выравнивание по левому краю; альтернатива: 0 auto для центрирования. */
+  background: var(--pet-embed-panel); /* Прозрачный фон вместо белой карточки PET. */
+  box-shadow: none; /* Убирает тень standalone-карточки. */
+}
+
+/* Заголовок и блок статуса: выравнивание текста по левому краю колонки. */
+.page-content.page-pet-project .pet-project-demo .game-header,
+.page-content.page-pet-project .pet-project-demo .game-info {
+  text-align: left; /* Переопределяет text-align: center из CSS PET. */
+}
+
+/* Заголовок игры: светлая типографика страницы портфолио. */
+.page-content.page-pet-project .pet-project-demo .game-title {
+  color: var(--pet-embed-text); /* Цвет основного заголовка игры. */
+}
+
+/* Подзаголовок, подписи полей и подсказка условия победы. */
+.page-content.page-pet-project .pet-project-demo .game-subtitle,
+.page-content.page-pet-project .pet-project-demo .control-group label,
+.page-content.page-pet-project .pet-project-demo .win-condition small {
+  color: var(--pet-embed-text-muted); /* Приглушённый цвет вторичных подписей. */
+}
+
+/* Числовые поля размера поля: фон и рамка под тёмную тему портфолио. */
+.page-content.page-pet-project .pet-project-demo input[type="number"] {
+  background: var(--pet-embed-input-bg); /* Полупрозрачный фон поля ввода. */
+  border-color: var(--pet-embed-border); /* Цвет рамки в состоянии покоя. */
+  color: var(--pet-embed-text); /* Цвет вводимых цифр. */
+}
+
+/* Числовые поля: акцентная рамка и свечение при наведении и фокусе. */
+.page-content.page-pet-project .pet-project-demo input[type="number"]:hover,
+.page-content.page-pet-project .pet-project-demo input[type="number"]:focus {
+  border-color: var(--pet-embed-accent); /* Оранжевая рамка при взаимодействии. */
+  box-shadow: 0 0 0 3px var(--pet-embed-accent-glow); /* Мягкое свечение вокруг поля. */
+}
+
+/* Кнопка «Новая игра»: градиент акцентного оранжевого портфолио. */
+.page-content.page-pet-project .pet-project-demo .btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--pet-embed-accent) 0%,
+    var(--pet-embed-accent-deep) 100%
+  ); /* Диагональный градиент от основного акцента к тёмному оттенку. */
+  color: var(--pet-embed-button-text); /* Контрастный цвет текста кнопки. */
+}
+
+/* Кнопка «Новая игра»: тень при наведении. */
+.page-content.page-pet-project .pet-project-demo .btn-primary:hover {
+  box-shadow: 0 5px 15px var(--pet-embed-accent-glow); /* Подсветка под кнопкой при hover. */
+}
+
+/* Блок статуса текущего игрока: прозрачный фон и акцентная левая полоса. */
+.page-content.page-pet-project .pet-project-demo .game-info {
+  background: var(--pet-embed-panel); /* Прозрачная подложка вместо серой панели PET. */
+  border-left-color: var(--pet-embed-accent); /* Оранжевая вертикальная полоса слева. */
+}
+
+/* Текст текущего игрока в блоке статуса. */
+.page-content.page-pet-project .pet-project-demo .current-player {
+  color: var(--pet-embed-text); /* Цвет имени активного игрока. */
+}
+
+/* Вспомогательный текст статуса (ход, победа, ничья). */
+.page-content.page-pet-project .pet-project-demo .game-status {
+  color: var(--pet-embed-text-muted); /* Приглушённый цвет строки статуса. */
+}
+
+/* Игровое поле: прозрачная подложка сетки. */
+.page-content.page-pet-project .pet-project-demo .game-board {
+  background: var(--pet-embed-panel); /* Фон области сетки без белой карточки. */
+}
+
+/* Ячейка поля в состоянии покоя. */
+.page-content.page-pet-project .pet-project-demo .cell {
+  background: var(--pet-embed-cell); /* Серый фон ячейки. */
+  border-color: var(--pet-embed-border); /* Цвет рамки ячейки. */
+}
+
+/* Ячейка поля при наведении (доступный ход). */
+.page-content.page-pet-project .pet-project-demo .cell:hover {
+  background: var(--pet-embed-cell-hover); /* Светлее фон при наведении. */
+  border-color: var(--pet-embed-accent); /* Акцентная рамка при наведении. */
+}
+
+/* Ячейка с символом O: оранжевый акцент вместо синего standalone. */
+.page-content.page-pet-project .pet-project-demo .cell.o {
+  background: color-mix(in srgb, var(--pet-embed-cell) 88%, var(--pet-embed-accent) 12%); /* Лёгкий оранжевый оттенок фона. */
+  border-color: var(--pet-embed-accent); /* Акцентная рамка ячейки O. */
+}
+
+/* Кольцо символа O внутри ячейки. */
+.page-content.page-pet-project .pet-project-demo .cell.o::before {
+  border-color: var(--pet-embed-accent); /* Цвет обводки символа O. */
+}
+
+/* Недоступная ячейка при наведении: без подсветки hover. */
+.page-content.page-pet-project .pet-project-demo .cell.disabled:hover {
+  background: var(--pet-embed-cell); /* Возврат к базовому фону ячейки. */
+  border-color: var(--pet-embed-border); /* Возврат к базовой рамке. */
+}

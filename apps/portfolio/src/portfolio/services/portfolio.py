@@ -6,6 +6,8 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Optional
 
+from portfolio.services.apps.registry import project_page_url, resolve_pet_demo
+
 _DOCUMENT_DRAWING_PROFILES = frozenset({"planner-drawing", "technologist-drawing"})
 _DEVELOPER_BUBBLE_PROFILE = "developer-bubble"
 _STANDARD_PROFILE = "standard"
@@ -101,6 +103,9 @@ def enrich_portfolio_item(
         layout_entry = bubble_layout_entry(str(item.get("id", "")).strip(), layout)
         if layout_entry:
             enriched.update(layout_entry)
+        project_id = str(item.get("id", "")).strip()
+        if resolve_pet_demo(project_id):
+            enriched["pageUrl"] = project_page_url(project_id)
 
     return enriched
 

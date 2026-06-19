@@ -1,6 +1,6 @@
 import pytest
 from httpx import AsyncClient
-from portfolio.dependencies import get_settings
+from portfolio.dependencies import get_settings, get_templates
 from portfolio.main import app
 
 
@@ -18,8 +18,10 @@ def isolate_feedback_delivery_env(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("FEEDBACK_RATE_LIMIT_MIN_INTERVAL_SECONDS", "0")
     monkeypatch.setenv("FEEDBACK_DATABASE_URL", "")
     get_settings.cache_clear()
+    get_templates.cache_clear()
     yield
     get_settings.cache_clear()
+    get_templates.cache_clear()
 
 
 @pytest.mark.asyncio
@@ -201,3 +203,20 @@ async def test_feedback_requires_turnstile_token_when_secret_is_set(
         )
 
     assert response.status_code == 403
+
+
+@pytest.mark.asyncio
+async def test_tic_tac_toe_embed_page() -> None:
+    async with AsyncClient(app=app, base_url="http://testserver") as client:
+        response = await client.get("/projects/308")
+
+    if response.status_code == 404:
+        pytest.skip("tic_tac_toe submodule not available")
+
+    assert response.status_code == 200
+    assert 'id="gameBoard"' in response.text
+    assert "languageSelect" not in response.text
+    assert 'id="feedback-form"' in response.text
+    assert "/static/projects/tic-tac-toe/js/game.js" in response.text
+    assert "/api/projects/tic-tac-toe" in response.text
+    assert "css/components/apps/tic_tac_toe/embed.css" in response.text

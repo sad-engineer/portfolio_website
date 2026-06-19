@@ -6,6 +6,7 @@ from datetime import date
 from functools import lru_cache
 
 from fastapi.templating import Jinja2Templates
+from jinja2 import ChoiceLoader, Environment, FileSystemLoader, select_autoescape
 from portfolio.config import Settings
 
 PLACEHOLDER_RE = re.compile(r"\{\{([A-Za-z0-9_]+)\}\}")
@@ -117,8 +118,17 @@ def get_settings() -> Settings:
 def get_templates() -> Jinja2Templates:
     """Создаёт и кэширует Jinja2Templates."""
 
+    from portfolio.services.apps.registry import pet_template_dirs
+
     settings = get_settings()
-    return Jinja2Templates(directory=str(settings.templates_dir))
+    loaders = [FileSystemLoader(str(settings.templates_dir))]
+    for pet_templates_dir in pet_template_dirs(settings):
+        loaders.append(FileSystemLoader(str(pet_templates_dir)))
+    env = Environment(
+        loader=ChoiceLoader(loaders),
+        autoescape=select_autoescape(["html", "xml"]),
+    )
+    return Jinja2Templates(env=env)
 
 
 @lru_cache

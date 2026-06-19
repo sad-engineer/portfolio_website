@@ -120,7 +120,7 @@
     defs.appendChild(gradient);
   };
 
-  const createSoapBubbleLayers = (group, defs, palette, index, documentPath) => {
+  const createSoapBubbleLayers = (group, defs, palette, index, link) => {
     const surfaceGradientId = `bubble-surface-${index}`;
     createTopicSurfaceGradient(defs, surfaceGradientId, palette);
 
@@ -164,12 +164,13 @@
     hitCircle.setAttribute("fill", "transparent");
     hitCircle.setAttribute("stroke", "none");
 
-    if (documentPath) {
+    if (link && link.url) {
       hitCircle.classList.add("profession-portfolio-bubbles__circle--link");
       hitCircle.setAttribute("tabindex", "0");
-      hitCircle.dataset.documentUrl = documentPath.startsWith("/")
-        ? documentPath
-        : `/static/${documentPath.replace(/^\/+/, "")}`;
+      hitCircle.dataset.linkUrl = link.url;
+      if (link.sameTab) {
+        hitCircle.dataset.linkSameTab = "1";
+      }
     }
 
     const shapes = [
@@ -413,7 +414,21 @@
       const diameter = Number(item.bubbleDiameter) || 1;
       const layout = layoutToSim(relX, relY, diameter, scale);
 
-      const documentPath = item.documentUrl || item.documentPath;
+      const link = (() => {
+        if (item.pageUrl) {
+          return { url: item.pageUrl, sameTab: true };
+        }
+        const documentPath = item.documentUrl || item.documentPath;
+        if (!documentPath) {
+          return null;
+        }
+        return {
+          url: documentPath.startsWith("/")
+            ? documentPath
+            : `/static/${documentPath.replace(/^\/+/, "")}`,
+          sameTab: false,
+        };
+      })();
       const group = document.createElementNS(SVG_NS, "g");
       group.setAttribute("class", "profession-portfolio-bubbles__node");
       const { hitCircle, bubbleShapes, clipCircle } = createSoapBubbleLayers(
@@ -421,7 +436,7 @@
         defs,
         palette,
         index,
-        documentPath
+        link
       );
 
       const label = document.createElementNS(SVG_NS, "text");
@@ -637,8 +652,13 @@
 
     runIntroAnimation(nodes, animation);
 
-    const openDocument = (url) => {
+    const openBubbleLink = (target) => {
+      const url = target.dataset.linkUrl;
       if (!url) {
+        return;
+      }
+      if (target.dataset.linkSameTab === "1") {
+        window.location.href = url;
         return;
       }
       window.open(url, "_blank", "noopener,noreferrer");
@@ -649,7 +669,7 @@
       if (!target) {
         return;
       }
-      openDocument(target.dataset.documentUrl);
+      openBubbleLink(target);
     });
 
     arena.addEventListener("keydown", (event) => {
@@ -661,7 +681,7 @@
         return;
       }
       event.preventDefault();
-      openDocument(target.dataset.documentUrl);
+      openBubbleLink(target);
     });
   };
 
